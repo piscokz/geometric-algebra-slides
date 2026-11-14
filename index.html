@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals of Geometric Algebra | Kelompok 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mint: #bfe9d1;
+      --mint-shadow: #91b9a6;
+      --mint-dot: #aee0c4;
+      --teal: #496d70;
+      --teal-dark: #355457;
+      --teal-light: #89b2b9;
+      --yellow: #ffc107;
+      --yellow-deep: #f59e0b;
+      --yellow-frame: #f7c600;
+      --pink-eraser: #f48fb1;
+      --wood: #f6dcb8;
+      --brown-ink: #5e3a20;
+      --pill-bg: #f4deb3;
+      --grid-paper: #93b5c1;
+      --grid-line: #7ea3b0;
+      --white: #ffffff;
+      --paper-shadow: #93baa8;
+      --font-display: "DynaPuff", "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif;
+      --font-body: "Nunito", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      inline-size: 100%;
+      block-size: 100%;
+      overflow: clip;
+      font-family: var(--font-body);
+      color: var(--brown-ink);
+      background-color: var(--mint);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Visually hidden utility; stays reachable by keyboard & screen readers */
+    .visually-hidden:where(:not(:focus-within, :active)) {
+      position: absolute !important;
+      clip-path: inset(50%) !important;
+      overflow: hidden !important;
+      width: 1px !important;
+      height: 1px !important;
+      margin: -1px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      white-space: nowrap !important;
+    }
+
+    .sr-controls {
+      position: fixed;
+      inset-block-start: 0.75rem;
+      inset-inline-start: 0.75rem;
+      z-index: 50;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background: var(--white);
+      border: 2px solid var(--brown-ink);
+    }
+
+    .sr-controls button {
+      min-inline-size: 44px;
+      min-block-size: 44px;
+      padding: 0.4rem 0.75rem;
+      border: 2px solid var(--brown-ink);
+      border-radius: 0.375rem;
+      background: var(--pill-bg);
+      color: var(--brown-ink);
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sr-controls button:focus-visible {
+      outline: 3px solid var(--teal-dark);
+      outline-offset: 2px;
+    }
+
+    /* Fullscreen presentation viewport */
+    .presentation-viewport {
+      inline-size: 100dvw;
+      block-size: 100dvh;
+      display: grid;
+      place-items: center;
+      overflow: clip;
+      background: var(--mint);
+      user-select: text;
+      touch-action: pan-y;
+    }
+
+    .presentation-viewport[data-theme="split"] {
+      background: linear-gradient(
+        90deg,
+        var(--white) 0%,
+        var(--white) calc(50% + 0.23 * min(100dvw, 100dvh * 16 / 9)),
+        var(--mint) calc(50% + 0.23 * min(100dvw, 100dvh * 16 / 9)),
+        var(--mint) 100%
+      );
+    }
+
+    .slide-stage {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      inline-size: min(100dvw, calc(100dvh * 16 / 9));
+      block-size: min(100dvh, calc(100dvw * 9 / 16));
+      container-type: size;
+      container-name: slide;
+      overflow: clip;
+    }
+
+    .slide {
+      position: relative;
+      inline-size: 100%;
+      block-size: 100%;
+      overflow: clip;
+    }
+
+    .slide[hidden] {
+      display: none;
+    }
+
+    .slide svg {
+      display: block;
+    }
+
+    /* Directional View Transitions */
+    ::view-transition-group(root) {
+      animation: 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes slide-to-left {
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes slide-from-right {
+      from {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes slide-to-right {
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes slide-from-left {
+      from {
+        transform: translateX(-100%);
+      }
+    }
+
+    html:active-view-transition-type(forward)::view-transition-old(root) {
+      animation-name: slide-to-left;
+    }
+
+    html:active-view-transition-type(forward)::view-transition-new(root) {
+      animation-name: slide-from-right;
+    }
+
+    html:active-view-transition-type(backward)::view-transition-old(root) {
+      animation-name: slide-to-right;
+    }
+
+    html:active-view-transition-type(backward)::view-transition-new(root) {
+      animation-name: slide-from-left;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(root) {
+        animation: none !important;
+      }
+    }
+
+    /* Decorative layer */
+    .decor {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ============================================================
+       SLIDE 1: COVER
+       ============================================================ */
+    .slide-cover {
+      background-color: var(--mint);
+    }
+
+    .cover-paper-shadow {
+      position: absolute;
+      inset-block-start: 17.5%;
+      inset-inline-start: 16.5%;
+      inline-size: 67.5%;
+      block-size: 84%;
+      background: var(--paper-shadow);
+      transform: rotate(0.9deg);
+    }
+
+    .cover-paper {
+      position: absolute;
+      inset-block-start: 19.8%;
+      inset-inline-start: 15%;
+      inline-size: 67.5%;
+      block-size: 82%;
+      background: var(--white);
+      transform: rotate(0.9deg);
+      display: grid;
+      place-items: center;
+      padding-block-end: 10%;
+      padding-inline: 6%;
+      text-align: center;
+    }
+
+    .cover-content {
+      transform: rotate(-0.9deg);
+      display: grid;
+      gap: 1.5cqb;
+      justify-items: center;
+    }
+
+    .cover-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-wrap: balance;
+      color: var(--brown-ink);
+      font-size: clamp(1.75rem, 4.35vw, 4.35rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .cover-title {
+        font-size: clamp(1.75rem, 4.35cqi, 4.35rem);
+      }
+    }
+
+    .cover-subtitle {
+      font-family: var(--font-body);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--brown-ink);
+      font-size: clamp(1rem, 2.05vw, 2.45rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .cover-subtitle {
+        font-size: clamp(1rem, 2.05cqi, 2.45rem);
+      }
+    }
+
+    /* ============================================================
+       SLIDE 2: ANGGOTA KELOMPOK
+       ============================================================ */
+    .slide-members {
+      background-color: var(--mint);
+    }
+
+    .members-paper-shadow {
+      position: absolute;
+      inset-block-start: 17%;
+      inset-inline-start: 22.5%;
+      inline-size: 66.5%;
+      block-size: 85%;
+      background: var(--paper-shadow);
+    }
+
+    .members-paper {
+      position: absolute;
+      inset-block-start: 16.5%;
+      inset-inline-start: 19.5%;
+      inline-size: 66.8%;
+      block-size: 85%;
+      background: var(--white);
+      padding-block-start: 11cqb;
+      padding-inline: 7%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .members-holes {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 7.5cqb;
+      pointer-events: none;
+    }
+
+    .members-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-align: center;
+      text-wrap: balance;
+      color: var(--brown-ink);
+      margin-block-end: 4.5cqb;
+      font-size: clamp(1.5rem, 3.7vw, 3.75rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .members-title {
+        font-size: clamp(1.5rem, 3.7cqi, 3.75rem);
+      }
+    }
+
+    .members-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 4.5cqi;
+      row-gap: 4.2cqb;
+      align-items: center;
+      inline-size: min(92%, 44cqi);
+      font-size: clamp(0.95rem, 1.85vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    @supports (font-size: 1cqi) {
+      .members-list {
+        font-size: clamp(0.95rem, 1.85cqi, 2.35rem);
+      }
+    }
+
+    .members-list li {
+      display: contents;
+    }
+
+    .member-name {
+      display: flex;
+      align-items: center;
+      gap: 1.4cqi;
+      white-space: nowrap;
+    }
+
+    .member-bullet {
+      inline-size: 2.3cqi;
+      block-size: 1.6cqi;
+      flex-shrink: 0;
+    }
+
+    .member-nim {
+      font-variant-numeric: tabular-nums;
+      text-align: end;
+    }
+
+    /* ============================================================
+       SLIDE 3: DEFINISI
+       ============================================================ */
+    .slide-definition {
+      background-color: var(--mint);
+    }
+
+    .def-paper-shadow {
+      position: absolute;
+      inset-block-start: 19.5%;
+      inset-inline-start: 12%;
+      inline-size: 79.5%;
+      block-size: 82%;
+      background: var(--paper-shadow);
+    }
+
+    .def-paper {
+      position: absolute;
+      inset-block-start: 22.5%;
+      inset-inline-start: 10.5%;
+      inline-size: 79%;
+      block-size: 79%;
+      background: var(--white);
+      padding-block: 5.5cqb 4cqb;
+      padding-inline: 6.5cqi 8cqi;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .def-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-align: center;
+      color: var(--brown-ink);
+      margin-block-end: 4.5cqb;
+      font-size: clamp(1.55rem, 3.7vw, 3.85rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .def-title {
+        font-size: clamp(1.55rem, 3.7cqi, 3.85rem);
+      }
+    }
+
+    .def-list {
+      display: grid;
+      gap: 2.8cqb;
+      inline-size: 100%;
+      max-inline-size: 56ch;
+      padding-inline-start: 2.4cqi;
+      font-size: clamp(0.92rem, 1.75vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.48;
+      color: var(--brown-ink);
+      text-wrap: pretty;
+    }
+
+    @supports (font-size: 1cqi) {
+      .def-list {
+        font-size: clamp(0.92rem, 1.75cqi, 2.25rem);
+      }
+    }
+
+    .def-list li {
+      padding-inline-start: 1.2cqi;
+    }
+
+    .def-list li::marker {
+      font-weight: 800;
+    }
+
+    .def-italic {
+      font-style: italic;
+    }
+
+    /* ============================================================
+       SLIDES 4 & 5: PROPOSITION 1 (SPLIT LAYOUT)
+       ============================================================ */
+    .slide-prop {
+      display: grid;
+      grid-template-columns: 73% 27%;
+      background: var(--white);
+    }
+
+    .prop-left {
+      position: relative;
+      background: var(--white);
+      padding-block-start: 10.5cqb;
+      padding-inline: 5.5cqi 3.2cqi;
+      padding-block-end: 4cqb;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 1;
+    }
+
+    .prop-right {
+      position: relative;
+      background: var(--mint);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4.2cqb;
+      padding-inline: 1.6cqi;
+      padding-block: 10cqb 4cqb;
+    }
+
+    .prop-badge {
+      display: inline-block;
+      background: var(--pill-bg);
+      color: var(--brown-ink);
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      padding-block: 0.9cqb;
+      padding-inline: 2.4cqi;
+      border-radius: 0.9cqi;
+      margin-block-end: 2.2cqb;
+      line-height: 1.15;
+      font-size: clamp(1.3rem, 3.05vw, 3.25rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .prop-badge {
+        font-size: clamp(1.3rem, 3.05cqi, 3.25rem);
+      }
+    }
+
+    /* Slide 4 specifics */
+    .prop1-quote {
+      inline-size: 100%;
+      text-align: center;
+      font-weight: 600;
+      line-height: 1.42;
+      text-wrap: pretty;
+      margin-block-end: 3.2cqb;
+      padding-inline: 1cqi;
+      font-size: clamp(0.86rem, 1.56vw, 2.1rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .prop1-quote {
+        font-size: clamp(0.86rem, 1.56cqi, 2.1rem);
+      }
+    }
+
+    .prop1-body {
+      inline-size: 100%;
+      padding-inline-start: 2.2cqi;
+      display: grid;
+      gap: 2.6cqb;
+      font-size: clamp(0.86rem, 1.56vw, 2.1rem);
+      font-weight: 600;
+      line-height: 1.42;
+    }
+
+    @supports (font-size: 1cqi) {
+      .prop1-body {
+        font-size: clamp(0.86rem, 1.56cqi, 2.1rem);
+      }
+    }
+
+    .prop1-label {
+      font-weight: 800;
+      margin-block-end: -1.4cqb;
+    }
+
+    .inline-figures-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.4cqi 3.2cqi;
+    }
+
+    .inline-figure {
+      display: inline-flex;
+      align-items: center;
+      gap: 1cqi;
+    }
+
+    .fig-line-a {
+      inline-size: 2.6cqi;
+      block-size: 8.6cqb;
+      flex-shrink: 0;
+    }
+
+    .fig-line-bc {
+      inline-size: 13.5cqi;
+      block-size: 4.5cqb;
+      flex-shrink: 0;
+    }
+
+    .fig-line-cut {
+      inline-size: 14.5cqi;
+      block-size: 4.8cqb;
+      flex-shrink: 0;
+    }
+
+    .prop1-conclusion {
+      text-wrap: pretty;
+      max-inline-size: 56ch;
+    }
+
+    /* Slide 5 specifics */
+    .prop1-proof-stack {
+      inline-size: 100%;
+      padding-inline-start: 1.2cqi;
+      display: grid;
+      gap: 2cqb;
+      font-size: clamp(0.8rem, 1.38vw, 1.98rem);
+      font-weight: 600;
+      line-height: 1.36;
+      text-wrap: pretty;
+    }
+
+    @supports (font-size: 1cqi) {
+      .prop1-proof-stack {
+        font-size: clamp(0.8rem, 1.38cqi, 1.98rem);
+      }
+    }
+
+    .prop1-intro {
+      padding-inline-start: 1.5cqi;
+      margin-block-end: 0.3cqb;
+    }
+
+    .prop1-steps {
+      display: grid;
+      gap: 0.45cqb;
+    }
+
+    .prop1-note {
+      padding-inline-start: 3.4cqi;
+    }
+
+    .prop1-equation {
+      margin-block-start: 0.4cqb;
+      padding-inline-start: 1.4cqi;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 0.45cqi;
+      row-gap: 0.3cqb;
+      align-items: baseline;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .prop1-equation-label {
+      white-space: nowrap;
+    }
+
+    .prop1-equation-cont {
+      grid-column: 2;
+    }
+
+    /* Graph paper diagram card on Slide 5 */
+    .diagram-grid-card {
+      position: relative;
+      inline-size: 23.8cqi;
+      block-size: 36cqb;
+      background-color: var(--grid-paper);
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 3.4cqi 3.4cqi;
+      padding: 2cqi;
+      display: grid;
+      place-items: center;
+      margin-block-start: 3cqb;
+    }
+
+    .diagram-inner-frame {
+      inline-size: 100%;
+      block-size: 100%;
+      background: var(--white);
+      border: 0.6cqi solid var(--yellow-frame);
+      display: grid;
+      place-items: center;
+      padding: 0.8cqi;
+    }
+
+    .diagram-inner-frame svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    .algebra-card {
+      inline-size: 25cqi;
+      background: var(--pill-bg);
+      color: var(--brown-ink);
+      padding-block: 1.6cqb;
+      padding-inline: 1.2cqi;
+      text-align: center;
+      display: grid;
+      gap: 0.6cqb;
+    }
+
+    .algebra-title {
+      font-weight: 700;
+      line-height: 1.2;
+      font-size: clamp(0.82rem, 1.45vw, 2rem);
+    }
+
+    .algebra-formula {
+      font-weight: 600;
+      line-height: 1.25;
+      white-space: nowrap;
+      font-size: clamp(0.75rem, 1.15vw, 1.65rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .algebra-title {
+        font-size: clamp(0.82rem, 1.45cqi, 2rem);
+      }
+      .algebra-formula {
+        font-size: clamp(0.75rem, 1.15cqi, 1.65rem);
+      }
+    }
+
+    /* High contrast / Forced colors safety */
+    @media (forced-colors: active) {
+      .cover-paper,
+      .members-paper,
+      .def-paper,
+      .prop-badge,
+      .algebra-card,
+      .diagram-inner-frame {
+        border: 2px solid CanvasText;
+      }
+    }
+
+    /* Print / Save as PDF: 16:9 pages with all 5 slides */
+    @media print {
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+
+      html,
+      body {
+        overflow: visible;
+        background: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .sr-controls,
+      .visually-hidden {
+        display: none !important;
+      }
+
+      .presentation-viewport {
+        display: block;
+        inline-size: auto;
+        block-size: auto;
+        overflow: visible;
+        background: none !important;
+      }
+
+      .slide-stage {
+        inline-size: 16in;
+        block-size: auto;
+        aspect-ratio: auto;
+        overflow: visible;
+      }
+
+      .slide,
+      .slide[hidden] {
+        display: block !important;
+        inline-size: 16in;
+        block-size: 9in;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .slide.slide-prop,
+      .slide.slide-prop[hidden] {
+        display: grid !important;
+      }
+
+      .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="presentation-viewport" id="viewport" data-theme="mint" aria-label="Presentasi Fundamentals of Geometric Algebra">
+    <!-- Keyboard/screen-reader-only navigation controls (completely invisible unless focused via Tab) -->
+    <div class="sr-controls visually-hidden" role="region" aria-label="Navigasi Slide">
+      <button type="button" id="btn-prev" aria-label="Slide sebelumnya">Sebelumnya</button>
+      <button type="button" id="btn-next" aria-label="Slide berikutnya">Berikutnya</button>
+    </div>
+
+    <p class="visually-hidden" id="slide-status" role="status" aria-live="polite"></p>
+
+    <div class="slide-stage" id="slide-stage" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Slide presentasi">
+
+      <!-- ========================================================
+           SLIDE 1: COVER
+           ======================================================== -->
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 5: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+        <!-- Doodles -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:1%; inset-inline-start:16%; inline-size:5cqi; block-size:9cqb;" viewBox="0 0 60 60">
+          <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#91B9A6"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:2.5%; inline-size:6.2cqi; block-size:11cqb;" viewBox="0 0 100 100">
+          <path d="M52 50 C52 44,59 42,61 48 C64 56,54 65,45 62 C34 58,31 44,37 34 C45 21,64 21,73 34 C84 50,74 74,54 79 C31 85,12 65,16 40 C20 17,44 5,67 11" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:-5%; inset-inline-end:2%; inline-size:9cqi; block-size:15cqb;" viewBox="0 0 100 100">
+          <circle cx="50" cy="40" r="34" fill="none" stroke="#91B9A6" stroke-width="14"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:47%; inset-inline-end:2%; inline-size:8cqi; block-size:6cqb;" viewBox="0 0 120 40">
+          <path d="M8 22 C18 8,28 8,36 22 C44 35,54 35,64 20 C74 6,84 8,92 22 C100 34,108 32,114 20" fill="none" stroke="#91B9A6" stroke-width="9" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Stacked papers left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:-1%; inline-size:18cqi; block-size:87cqb;" viewBox="0 0 260 640" preserveAspectRatio="none">
+          <path d="M0,0 L168,0 L164,84 L0,208 Z" fill="#496D70"/>
+          <path d="M0,190 L164,116 L142,418 C136,456 106,482 58,500 L0,524 Z" fill="#89B2B9"/>
+          <path d="M0,182 L154,108 L124,378 C118,412 90,434 44,450 L0,468 Z" fill="#FFFFFF"/>
+          <path d="M0,334 L94,298 L72,416 L0,446 Z" fill="#496D70"/>
+          <path d="M0,396 L88,360 C98,422 90,476 54,498 L0,524 Z" fill="#496D70"/>
+          <path d="M0,556 L152,486 L152,516 L0,590 Z" fill="#89B2B9"/>
+        </svg>
+
+        <!-- Tilted ruler top -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:-1.5%; inset-inline-start:23%; inline-size:59cqi; block-size:16cqb;" viewBox="0 0 900 120">
+          <g transform="rotate(4.5 450 60)">
+            <rect x="10" y="10" width="880" height="86" rx="10" fill="#89B2B9"/>
+            <g stroke="#1D2B2D" stroke-width="4" stroke-linecap="round">
+              <line x1="40" y1="96" x2="40" y2="52"/><line x1="65" y1="96" x2="65" y2="72"/>
+              <line x1="90" y1="96" x2="90" y2="62"/><line x1="115" y1="96" x2="115" y2="72"/>
+              <line x1="140" y1="96" x2="140" y2="52"/><line x1="165" y1="96" x2="165" y2="72"/>
+              <line x1="190" y1="96" x2="190" y2="62"/><line x1="215" y1="96" x2="215" y2="72"/>
+              <line x1="240" y1="96" x2="240" y2="52"/><line x1="265" y1="96" x2="265" y2="72"/>
+              <line x1="290" y1="96" x2="290" y2="62"/><line x1="315" y1="96" x2="315" y2="72"/>
+              <line x1="340" y1="96" x2="340" y2="52"/><line x1="365" y1="96" x2="365" y2="72"/>
+              <line x1="390" y1="96" x2="390" y2="62"/><line x1="415" y1="96" x2="415" y2="72"/>
+              <line x1="440" y1="96" x2="440" y2="52"/><line x1="465" y1="96" x2="465" y2="72"/>
+              <line x1="490" y1="96" x2="490" y2="62"/><line x1="515" y1="96" x2="515" y2="72"/>
+              <line x1="540" y1="96" x2="540" y2="52"/><line x1="565" y1="96" x2="565" y2="72"/>
+              <line x1="590" y1="96" x2="590" y2="62"/><line x1="615" y1="96" x2="615" y2="72"/>
+              <line x1="640" y1="96" x2="640" y2="52"/><line x1="665" y1="96" x2="665" y2="72"/>
+              <line x1="690" y1="96" x2="690" y2="62"/><line x1="715" y1="96" x2="715" y2="72"/>
+              <line x1="740" y1="96" x2="740" y2="52"/><line x1="765" y1="96" x2="765" y2="72"/>
+              <line x1="790" y1="96" x2="790" y2="62"/><line x1="815" y1="96" x2="815" y2="72"/>
+              <line x1="840" y1="96" x2="840" y2="52"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Center paper card -->
+        <div class="cover-paper-shadow" aria-hidden="true"></div>
+        <div class="cover-paper">
+          <div class="cover-content">
+            <h1 class="cover-title" lang="en">Fundamentals of<br>Geometric Algebra</h1>
+            <p class="cover-subtitle">Kelompok 2</p>
+          </div>
+        </div>
+
+        <!-- Yellow paperclip overlapping top-left of white paper -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:13%; inset-inline-start:18%; inline-size:6.5cqi; block-size:16cqb;" viewBox="0 0 110 160">
+          <g transform="rotate(-12 55 80)">
+            <path d="M35 125 L35 45 C35 20,75 20,75 45 L75 118 C75 135,48 135,48 118 L48 56 C48 45,63 45,63 56 L63 108" fill="none" stroke="#F8BD00" stroke-width="11" stroke-linecap="round"/>
+          </g>
+        </svg>
+
+        <!-- Vertical yellow pencil on left edge -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:23.5%; inset-inline-start:11.8%; inline-size:5cqi; block-size:77cqb;" viewBox="0 0 90 600" preserveAspectRatio="none">
+          <g transform="rotate(1.6 45 300)">
+            <polygon points="45,5 20,105 70,105" fill="#FBE3BE"/>
+            <polygon points="45,5 37,38 53,38" fill="#5A5550"/>
+            <rect x="20" y="105" width="50" height="415" fill="#FFC107"/>
+            <rect x="36" y="105" width="18" height="415" fill="#FFB300"/>
+            <rect x="20" y="520" width="50" height="22" fill="#E8ECEF"/>
+            <rect x="20" y="542" width="50" height="58" rx="6" fill="#F48FB1"/>
+          </g>
+        </svg>
+
+        <!-- Yellow desk lamp top-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:11%; inset-inline-end:-1%; inline-size:29cqi; block-size:39cqb;" viewBox="0 0 420 330">
+          <path d="M312 58 L420 124 M302 74 L420 168" stroke="#FFC107" stroke-width="11" stroke-linecap="round"/>
+          <path d="M335 40 Q380 30 420 37" fill="none" stroke="#FFB300" stroke-width="5"/>
+          <rect x="304" y="36" width="22" height="32" rx="6" transform="rotate(-32 315 52)" fill="#FFFFFF"/>
+          <g transform="rotate(-32 230 148)">
+            <rect x="208" y="12" width="84" height="58" rx="20" fill="#FFC107"/>
+            <line x1="230" y1="26" x2="230" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <line x1="250" y1="26" x2="250" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <line x1="270" y1="26" x2="270" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <path d="M116 164 C132 54,344 54,352 164 Z" fill="#FFC107"/>
+            <ellipse cx="234" cy="164" rx="118" ry="20" fill="#FFFFFF"/>
+          </g>
+        </svg>
+
+        <!-- Pen cup bottom-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:0; inline-size:18cqi; block-size:40cqb;" viewBox="0 0 280 310">
+          <!-- Blue mini ruler inside -->
+          <g transform="rotate(-12 65 110)">
+            <rect x="42" y="20" width="46" height="160" rx="4" fill="#89B2B9"/>
+            <g stroke="#FFFFFF" stroke-width="3">
+              <line x1="72" y1="36" x2="88" y2="36"/><line x1="77" y1="48" x2="88" y2="48"/>
+              <line x1="72" y1="60" x2="88" y2="60"/><line x1="77" y1="72" x2="88" y2="72"/>
+              <line x1="72" y1="84" x2="88" y2="84"/><line x1="77" y1="96" x2="88" y2="96"/>
+              <line x1="72" y1="108" x2="88" y2="108"/><line x1="77" y1="120" x2="88" y2="120"/>
+              <line x1="72" y1="132" x2="88" y2="132"/>
+            </g>
+          </g>
+          <!-- Black markers -->
+          <g transform="rotate(6 130 100)">
+            <rect x="115" y="18" width="24" height="150" rx="6" fill="#181A1B"/>
+          </g>
+          <g transform="rotate(20 175 115)">
+            <rect x="165" y="42" width="22" height="130" rx="6" fill="#181A1B"/>
+          </g>
+          <!-- Scissors -->
+          <g transform="rotate(8 235 120)">
+            <circle cx="215" cy="65" r="24" fill="none" stroke="#91B9A6" stroke-width="11"/>
+            <circle cx="255" cy="72" r="24" fill="none" stroke="#91B9A6" stroke-width="11"/>
+            <path d="M210 92 L222 175 M252 98 L236 175" stroke="#FFC107" stroke-width="10" stroke-linecap="round"/>
+          </g>
+          <!-- Cup body -->
+          <rect x="30" y="155" width="245" height="34" rx="16" fill="#111111"/>
+          <path d="M42 189 L264 189 L254 310 L52 310 Z" fill="#496D70"/>
+          <path d="M44 218 Q105 202 155 224 Q205 245 262 214 L259 266 Q205 292 152 268 Q102 246 47 268 Z" fill="#FFFFFF"/>
+        </svg>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 2: ANGGOTA KELOMPOK
+           ======================================================== -->
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 5: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+        <!-- Sticky notes top-left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:31cqi; block-size:74cqb;" viewBox="0 0 420 560" preserveAspectRatio="none">
+          <polygon points="180,62 396,122 318,452 120,392" fill="#FFA000"/>
+          <polygon points="0,375 305,468 282,560 0,518" fill="#FFA000"/>
+          <rect x="0" y="0" width="286" height="445" fill="#FFB300"/>
+        </svg>
+
+        <!-- Background doodles -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:40%; inline-size:8cqi; block-size:6.5cqb;" viewBox="0 0 120 60">
+          <path d="M10 38 C22 14,40 16,38 34 C36 48,22 44,28 28 C34 12,56 12,56 32 C56 46,42 44,48 28 C54 14,74 14,74 34 C74 46,60 44,68 28 C76 14,96 20,104 34" fill="none" stroke="#91B9A6" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-end:8%; inset-inline-start:14.5%; inline-size:4.2cqi; block-size:19cqb;" viewBox="0 0 60 180">
+          <path d="M18 10 C8 25,28 40,18 55 C8 70,28 85,18 100 C8 115,28 130,18 145 C12 155,22 165,18 172" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
+          <path d="M40 10 C30 25,50 40,40 55 C30 70,50 85,40 100 C30 115,50 130,40 145 C34 155,44 165,40 172" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:16%; inset-inline-end:-2%; inline-size:6cqi; block-size:16cqb;" viewBox="0 0 90 140">
+          <rect x="20" y="18" width="22" height="22" rx="6" transform="rotate(-12 31 29)" fill="#91B9A6"/>
+          <rect x="52" y="10" width="22" height="22" rx="6" transform="rotate(-12 63 21)" fill="#91B9A6"/>
+          <rect x="12" y="54" width="22" height="22" rx="6" transform="rotate(-12 23 65)" fill="#91B9A6"/>
+          <rect x="44" y="46" width="22" height="22" rx="6" transform="rotate(-12 55 57)" fill="#91B9A6"/>
+          <rect x="28" y="88" width="22" height="22" rx="6" transform="rotate(-12 39 99)" fill="#91B9A6"/>
+          <rect x="60" y="80" width="22" height="22" rx="6" transform="rotate(-12 71 91)" fill="#91B9A6"/>
+        </svg>
+
+        <!-- Notebook sheet -->
+        <div class="members-paper-shadow" aria-hidden="true"></div>
+        <div class="members-paper">
+          <!-- Perforated spiral holes at top of notebook -->
+          <svg class="members-holes" aria-hidden="true" viewBox="0 0 1000 72" preserveAspectRatio="none">
+            <g fill="#91B9A6">
+              <circle cx="48" cy="36" r="14"/><circle cx="118" cy="36" r="14"/><circle cx="188" cy="36" r="14"/>
+              <circle cx="258" cy="36" r="14"/><circle cx="328" cy="36" r="14"/><circle cx="398" cy="36" r="14"/>
+              <circle cx="468" cy="36" r="14"/><circle cx="538" cy="36" r="14"/><circle cx="608" cy="36" r="14"/>
+              <circle cx="678" cy="36" r="14"/><circle cx="748" cy="36" r="14"/><circle cx="818" cy="36" r="14"/>
+              <circle cx="888" cy="36" r="14"/><circle cx="958" cy="36" r="14"/>
+            </g>
+            <g fill="none" stroke="#91B9A6" stroke-width="10" stroke-linecap="round">
+              <path d="M48 34 C48 2,96 2,96 14"/><path d="M118 34 C118 2,166 2,166 14"/>
+              <path d="M188 34 C188 2,236 2,236 14"/><path d="M258 34 C258 2,306 2,306 14"/>
+              <path d="M328 34 C328 2,376 2,376 14"/><path d="M398 34 C398 2,446 2,446 14"/>
+              <path d="M468 34 C468 2,516 2,516 14"/><path d="M538 34 C538 2,586 2,586 14"/>
+              <path d="M608 34 C608 2,656 2,656 14"/><path d="M678 34 C678 2,726 2,726 14"/>
+              <path d="M748 34 C748 2,796 2,796 14"/><path d="M818 34 C818 2,866 2,866 14"/>
+              <path d="M888 34 C888 2,936 2,936 14"/><path d="M958 34 C958 2,996 2,996 14"/>
+            </g>
+          </svg>
+
+          <h1 class="members-title">Anggota Kelompok:</h1>
+          <ul class="members-list">
+            <li>
+              <span class="member-name">
+                <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
+                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
+                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
+                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
+                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                </svg>
+                <span>Diki Abdisa</span>
+              </span>
+              <span class="member-nim">(0036)</span>
+            </li>
+            <li>
+              <span class="member-name">
+                <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
+                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
+                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
+                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
+                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                </svg>
+                <span>Fahnaz Yazid Azmi</span>
+              </span>
+              <span class="member-nim">(0036)</span>
+            </li>
+            <li>
+              <span class="member-name">
+                <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
+                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
+                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
+                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
+                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                </svg>
+                <span>Frinza Adista Anastasya</span>
+              </span>
+              <span class="member-nim">(0048)</span>
+            </li>
+            <li>
+              <span class="member-name">
+                <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
+                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
+                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
+                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
+                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                </svg>
+                <span>Haura Putri Rahayu</span>
+              </span>
+              <span class="member-nim">(0056)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Yellow pen top-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:5%; inset-inline-end:2%; inline-size:32.5cqi; block-size:19cqb;" viewBox="0 0 480 150">
+          <g transform="rotate(-12 240 75)">
+            <path d="M50 75 L92 58 L92 92 Z" fill="#FFC107"/>
+            <rect x="88" y="54" width="330" height="42" rx="14" fill="#FFC107"/>
+            <rect x="400" y="54" width="38" height="42" rx="12" fill="#FFC107"/>
+            <rect x="385" y="54" width="16" height="42" fill="#496D70"/>
+            <path d="M290 54 L290 42 L412 42 C418 42,422 46,422 52" fill="none" stroke="#496D70" stroke-width="10" stroke-linecap="round"/>
+            <path d="M40 75 L58 68 L58 82 Z" fill="#E69A00"/>
+          </g>
+        </svg>
+
+        <!-- Scissors bottom-left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:-2%; inset-inline-start:-2%; inline-size:14.5cqi; block-size:66cqb;" viewBox="0 0 180 460">
+          <g transform="rotate(8 90 230)">
+            <path d="M120 20 C95 85,82 180,82 230 L118 230 Z" fill="#FFFFFF"/>
+            <path d="M84 130 L42 245 L88 245 Z" fill="#E9EFF1"/>
+            <circle cx="96" cy="220" r="11" fill="#42494B"/>
+            <path d="M86 232 C56 260,22 300,26 360 C30 410,92 415,102 365 C108 332,96 280,98 232 Z" fill="#496D70"/>
+            <ellipse cx="64" cy="352" rx="22" ry="30" fill="#BFE9D1"/>
+            <path d="M104 232 C132 258,158 302,154 362 C150 412,98 415,92 365 C88 332,98 282,96 232 Z" fill="#496D70"/>
+            <ellipse cx="122" cy="354" rx="22" ry="30" fill="#BFE9D1"/>
+          </g>
+        </svg>
+
+        <!-- Drafting compass bottom-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:0.5%; inline-size:17cqi; block-size:64cqb;" viewBox="0 0 240 460">
+          <g transform="rotate(6 120 230)">
+            <rect x="108" y="18" width="28" height="105" fill="#89B2B9"/>
+            <circle cx="122" cy="138" r="24" fill="#89B2B9"/>
+            <circle cx="122" cy="138" r="9" fill="#496D70"/>
+            <path d="M106 155 L42 440 L52 444 L66 408 L120 162 Z" fill="#496D70"/>
+            <path d="M138 155 L198 440 L188 444 L174 408 L124 162 Z" fill="#496D70"/>
+            <polygon points="42,440 34,458 52,444" fill="#2A4042"/>
+            <polygon points="198,440 206,458 188,444" fill="#2A4042"/>
+          </g>
+        </svg>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 3: DEFINISI
+           ======================================================== -->
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 5: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+        <!-- Top scalloped cloud shape -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-start:23%; inline-size:19cqi; block-size:8cqb;" viewBox="0 0 260 60">
+          <circle cx="38" cy="16" r="28" fill="#91B9A6"/>
+          <circle cx="96" cy="16" r="28" fill="#91B9A6"/>
+          <circle cx="154" cy="16" r="28" fill="#91B9A6"/>
+          <circle cx="212" cy="16" r="28" fill="#91B9A6"/>
+        </svg>
+        <!-- Right trefoil doodle -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:40%; inset-inline-end:0.8%; inline-size:6cqi; block-size:12cqb;" viewBox="0 0 90 100">
+          <circle cx="28" cy="36" r="14" fill="#91B9A6"/>
+          <circle cx="62" cy="34" r="14" fill="#91B9A6"/>
+          <circle cx="46" cy="64" r="14" fill="#91B9A6"/>
+          <circle cx="46" cy="46" r="14" fill="#91B9A6"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-end:-2%; inset-inline-start:-2%; inline-size:6cqi; block-size:14cqb;" viewBox="0 0 80 100">
+          <circle cx="30" cy="60" r="34" fill="#91B9A6"/>
+        </svg>
+
+        <!-- White framed paper -->
+        <div class="def-paper-shadow" aria-hidden="true"></div>
+        <div class="def-paper">
+          <h1 class="def-title">Definisi</h1>
+          <ol class="def-list">
+            <li class="def-italic">Setiap jajaran genjang persegi panjang (<span lang="en">rectanguler parallelogram</span>) dikatakan dilingkupi (dibentuk) oleh dua garis lurus yang memuat sudut siku-siku.</li>
+            <li>Dalam setiap figur jajaran genjang (figur persegi panjang), ambilah salah satu jajaran genjang (persegi panjang) di sekitar diagonalnya, (diambil) bersama kedua komplemennya, sebagai gnomon.</li>
+          </ol>
+        </div>
+
+        <!-- Magnifying glass top-left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-start:-1%; inline-size:21cqi; block-size:40cqb;" viewBox="0 0 300 300">
+          <line x1="12" y1="276" x2="104" y2="188" stroke="#496D70" stroke-width="26" stroke-linecap="round"/>
+          <line x1="68" y1="222" x2="112" y2="180" stroke="#355457" stroke-width="28" stroke-linecap="round"/>
+          <circle cx="176" cy="112" r="105" fill="#89B2B9"/>
+          <circle cx="176" cy="112" r="78" fill="#496D70"/>
+          <circle cx="176" cy="112" r="68" fill="#CBE7EC"/>
+          <path d="M126 112 C122 86,142 54,174 52 C180 52,182 62,174 66 C152 72,142 94,142 114 C142 122,128 122,126 112 Z" fill="#FFFFFF"/>
+          <ellipse cx="182" cy="144" rx="26" ry="11" transform="rotate(-32 182 144)" fill="#FFFFFF"/>
+        </svg>
+
+        <!-- Yellow marker top-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-end:0; inline-size:38cqi; block-size:10.5cqb;" viewBox="0 0 560 90">
+          <rect x="0" y="34" width="22" height="22" fill="#FFA000"/>
+          <polygon points="22,22 65,12 65,78 22,68" fill="#181A1B"/>
+          <polygon points="65,12 108,0 108,90 65,78" fill="#FBE3BE"/>
+          <rect x="108" y="0" width="452" height="90" fill="#FFC107"/>
+          <rect x="108" y="22" width="452" height="20" fill="#FFB300"/>
+          <rect x="108" y="54" width="452" height="16" fill="#FFB300"/>
+        </svg>
+
+        <!-- Chunky yellow pencil bottom-left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:4%; inset-inline-start:4.5%; inline-size:9cqi; block-size:50cqb;" viewBox="0 0 130 380">
+          <g transform="rotate(-7 65 190)">
+            <rect x="28" y="16" width="74" height="36" rx="14" fill="#684327"/>
+            <rect x="28" y="42" width="74" height="28" fill="#FBE3BE"/>
+            <rect x="28" y="70" width="74" height="205" fill="#FFC107"/>
+            <rect x="53" y="70" width="24" height="205" fill="#FFB300"/>
+            <polygon points="28,275 102,275 65,360" fill="#FBE3BE"/>
+            <polygon points="55,336 75,336 65,360" fill="#181A1B"/>
+          </g>
+        </svg>
+
+        <!-- Open book bottom-right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:-1%; inline-size:18cqi; block-size:38cqb;" viewBox="0 0 280 280">
+          <polygon points="0,248 22,195 265,245 258,280 0,280" fill="#496D70"/>
+          <path d="M18 190 C70 115,155 110,205 118 L188 225 C135 218,65 225,10 245 Z" fill="#EAE4E7"/>
+          <path d="M205 118 C242 125,272 155,280 188 L260 250 C228 242,202 232,188 225 Z" fill="#DCD4D8"/>
+          <path d="M126 240 L126 280 L146 270 L166 280 L166 242 Z" fill="#89B2B9"/>
+        </svg>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 4: PROPOSITION 1 (PART 1)
+           ======================================================== -->
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 5: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <!-- Left edge mint dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.5%; inline-size:4.5cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="180" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="336" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="492" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="600" r="24" fill="#BFE9D1"/>
+          </svg>
+          <!-- Bottom-left faint pinwheel -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:-2%; inline-size:6cqi; block-size:15cqb;" viewBox="0 0 90 110">
+            <g fill="#9BB3B6" opacity="0.7">
+              <ellipse cx="32" cy="30" rx="10" ry="22" transform="rotate(-25 32 30)"/>
+              <ellipse cx="56" cy="45" rx="10" ry="22" transform="rotate(40 56 45)"/>
+              <ellipse cx="52" cy="76" rx="10" ry="22" transform="rotate(110 52 76)"/>
+              <ellipse cx="22" cy="82" rx="10" ry="22" transform="rotate(165 22 82)"/>
+            </g>
+          </svg>
+          <!-- Horizontal teal pencil top-left -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#496D70"/>
+            <rect x="0" y="18" width="295" height="14" fill="#89B2B9"/>
+            <rect x="0" y="42" width="295" height="12" fill="#355457"/>
+            <polygon points="295,0 380,34 295,68" fill="#FBE3BE"/>
+            <polygon points="344,20 380,34 344,48" fill="#355457"/>
+          </svg>
+          <!-- Gray loop doodle top-center -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4cqi; block-size:12cqb;" viewBox="0 0 60 110">
+            <path d="M26 8 C12 22,12 48,30 48 C46 48,48 26,34 26 C22 26,24 62,38 78 C42 84,36 96,26 102" fill="none" stroke="#9EB6BA" stroke-width="6.5" stroke-linecap="round"/>
+          </svg>
+          <!-- Slanted teal tape bottom -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:14cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,0 380,75 235,120" fill="#496D70"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Proposition 1</h1>
+
+          <p class="prop1-quote">
+            "Jika ada dua garis lurus dan salah satu garis dipotong menjadi beberapa bagian acak, maka luas persegi panjang yang dibentuk oleh dua garis lurus itu adalah sama dengan jumlah dari luas persegi panjang yang dibentuk oleh garis lurus yang tidak dipotong dan setiap bagian dari garis lurus yang terpotong"
+          </p>
+
+          <div class="prop1-body">
+            <p class="prop1-label">Penjelasan :</p>
+
+            <div class="inline-figures-row">
+              <div class="inline-figure">
+                <span>Dibentuk suatu garis A :</span>
+                <svg class="fig-line-a" role="img" viewBox="0 0 56 110">
+                  <title>Garis lurus vertikal A</title>
+                  <line x1="12" y1="6" x2="12" y2="104" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
+                  <text x="26" y="64" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="28" font-weight="700">A</text>
+                </svg>
+              </div>
+
+              <div class="inline-figure">
+                <span>Dibentuk suatu garis BC :</span>
+                <svg class="fig-line-bc" role="img" viewBox="0 0 240 64">
+                  <title>Garis lurus horizontal BC</title>
+                  <text x="4" y="28" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">B</text>
+                  <text x="216" y="28" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">C</text>
+                  <line x1="12" y1="44" x2="226" y2="44" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="inline-figure">
+              <span>Lalu, potong garis BC secara sembarang :</span>
+              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
+                <title>Garis BC yang dipotong di titik D dan E menjadi bagian BD, DE, dan EC</title>
+                <text x="4" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">B</text>
+                <text x="72" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">D</text>
+                <text x="150" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">E</text>
+                <text x="228" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">C</text>
+                <line x1="12" y1="46" x2="238" y2="46" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
+                <circle cx="82" cy="46" r="7" fill="#181818"/>
+                <circle cx="158" cy="46" r="7" fill="#181818"/>
+              </svg>
+            </div>
+
+            <p class="prop1-conclusion">
+              Sehingga, dikatakan bahwa persegi panjang yang luasnya dibentuk oleh A (sebagai lebar) dan BC (sebagai alas) itu sama dengan jumlah persegi panjang yang luasnya dibentuk oleh A dan BD, A dan DE, juga A dan EC.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right mint panel -->
+        <div class="prop-right">
+          <!-- Yellow block top-right -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="18" fill="#FFC107"/>
+              <rect x="20" y="10" width="95" height="120" rx="16" fill="#FFB300"/>
+            </g>
+          </svg>
+          <!-- Magnifying glass middle-right -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:34%; inset-inline-start:3%; inline-size:27cqi; block-size:52cqb;" viewBox="0 0 320 340">
+            <line x1="215" y1="210" x2="310" y2="312" stroke="#496D70" stroke-width="26" stroke-linecap="round"/>
+            <line x1="205" y1="200" x2="242" y2="238" stroke="#355457" stroke-width="28" stroke-linecap="round"/>
+            <circle cx="132" cy="130" r="118" fill="#89B2B9"/>
+            <circle cx="132" cy="130" r="88" fill="#496D70"/>
+            <circle cx="132" cy="130" r="77" fill="#CBE7EC"/>
+            <path d="M78 130 C74 100,96 64,132 62 C139 62,140 73,132 77 C108 83,96 108,96 130 C96 139,80 139,78 130 Z" fill="#FFFFFF"/>
+            <ellipse cx="138" cy="166" rx="30" ry="12" transform="rotate(-32 138 166)" fill="#FFFFFF"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 5: PROPOSITION 1 (PART 2)
+           ======================================================== -->
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 5: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <!-- Left edge mint dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.5%; inline-size:4.5cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="180" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="336" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="492" r="24" fill="#BFE9D1"/>
+            <circle cx="32" cy="600" r="24" fill="#BFE9D1"/>
+          </svg>
+          <!-- Bottom-left faint pinwheel -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:-2%; inline-size:6cqi; block-size:15cqb;" viewBox="0 0 90 110">
+            <g fill="#9BB3B6" opacity="0.7">
+              <ellipse cx="32" cy="30" rx="10" ry="22" transform="rotate(-25 32 30)"/>
+              <ellipse cx="56" cy="45" rx="10" ry="22" transform="rotate(40 56 45)"/>
+              <ellipse cx="52" cy="76" rx="10" ry="22" transform="rotate(110 52 76)"/>
+              <ellipse cx="22" cy="82" rx="10" ry="22" transform="rotate(165 22 82)"/>
+            </g>
+          </svg>
+          <!-- Horizontal teal pencil top-left -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#496D70"/>
+            <rect x="0" y="18" width="295" height="14" fill="#89B2B9"/>
+            <rect x="0" y="42" width="295" height="12" fill="#355457"/>
+            <polygon points="295,0 380,34 295,68" fill="#FBE3BE"/>
+            <polygon points="344,20 380,34 344,48" fill="#355457"/>
+          </svg>
+          <!-- Gray loop doodle top-center -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4cqi; block-size:12cqb;" viewBox="0 0 60 110">
+            <path d="M26 8 C12 22,12 48,30 48 C46 48,48 26,34 26 C22 26,24 62,38 78 C42 84,36 96,26 102" fill="none" stroke="#9EB6BA" stroke-width="6.5" stroke-linecap="round"/>
+          </svg>
+          <!-- Slanted teal tape bottom -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:14cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,0 380,75 235,120" fill="#496D70"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Proposition 1</h1>
+
+          <div class="prop1-proof-stack">
+            <p class="prop1-intro">Mari kita perjelas,</p>
+
+            <div class="prop1-steps">
+              <p>Setelah garis A dan BC dibentuk dan titik potong D E, mari kita buat garis BG yang panjangnya sama seperti A dan ditarik dari titik B tegak lurus dengan garis BC.</p>
+              <p>Lalu, buat GH yang ditarik dari titik G sejajar dengan BC.</p>
+              <p>Tarik garis dari titik D, E, C sejajar dengan BG sehingga membentuk garis DK, EL, dan CH.</p>
+            </div>
+
+            <p class="prop1-note">*garis BG, DK, EL, dan CH saling sejajar dan sama panjang dengan garis A</p>
+
+            <p>Sehingga, persegi panjang BH adalah sama dengan jumlah dari persegi panjang BK, DL, dan EH. Dengan demikian pula, luas persegi panjang yang dibentuk oleh A dan BC sama dengan jumlah dari luas persegi panjang A dan BD, A dan DE, juga A dan EC.</p>
+
+            <div class="prop1-equation">
+              <span class="prop1-equation-label">Luas persegi panjang BH</span>
+              <span>= (A &times; BD) + (A &times; DE) + (A &times; EC)</span>
+              <span class="prop1-equation-cont">= A(BD + DE + EC)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right mint panel -->
+        <div class="prop-right">
+          <!-- Yellow block top-right -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="18" fill="#FFC107"/>
+              <rect x="20" y="10" width="95" height="120" rx="16" fill="#FFB300"/>
+            </g>
+          </svg>
+
+          <!-- Graph-paper framed geometric diagram -->
+          <div class="diagram-grid-card">
+            <!-- Cute leaf accents around the grid card -->
+            <svg class="decor" aria-hidden="true" style="inset-block-start:-7%; inset-inline-end:-7%; inline-size:4.2cqi; block-size:7.5cqb;" viewBox="0 0 70 70">
+              <path d="M12 52 C20 34,36 18,46 6 C50 20,42 40,22 50 Z" fill="#496D70"/>
+              <path d="M14 54 C30 48,48 50,62 60 C46 64,28 62,14 54 Z" fill="#496D70"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-start:42%; inset-inline-start:-11%; inline-size:3.5cqi; block-size:8cqb;" viewBox="0 0 60 80">
+              <path d="M52 40 C36 22,22 14,10 10 C12 24,26 38,48 42 Z" fill="#496D70"/>
+              <path d="M52 42 C34 46,20 56,16 70 C30 68,44 58,52 42 Z" fill="#496D70"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-end:-7%; inset-inline-end:-7%; inline-size:4.2cqi; block-size:7.5cqb;" viewBox="0 0 70 70">
+              <path d="M14 52 C24 30,42 18,60 12 C56 28,42 44,18 52 Z" fill="#496D70"/>
+              <path d="M16 54 C32 52,48 56,60 66 C44 68,28 64,16 54 Z" fill="#496D70"/>
+            </svg>
+
+            <div class="diagram-inner-frame">
+              <svg role="img" viewBox="0 0 320 280">
+                <title>Diagram pembuktian Proposisi 1: garis A di atas persegi panjang BH dengan titik potong D dan E di sisi atas BC serta garis tegak DK dan EL menuju sisi bawah GH sehingga terbentuk tiga persegi panjang BK, DL, dan EH</title>
+                <!-- Line segment A above -->
+                <line x1="168" y1="20" x2="168" y2="112" stroke="#141414" stroke-width="3.6" stroke-linecap="square"/>
+                <text x="178" y="72" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">A</text>
+
+                <!-- Top labels B, D, E, C -->
+                <text x="34" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">B</text>
+                <text x="116" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">D</text>
+                <text x="200" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">E</text>
+                <text x="278" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">C</text>
+
+                <!-- Rectangle BH and dividing lines DK, EL -->
+                <rect x="40" y="142" width="246" height="90" fill="none" stroke="#141414" stroke-width="3.6"/>
+                <line x1="122" y1="142" x2="122" y2="232" stroke="#141414" stroke-width="3.6"/>
+                <line x1="204" y1="142" x2="204" y2="232" stroke="#141414" stroke-width="3.6"/>
+
+                <!-- Bottom labels G, K, L, H -->
+                <text x="32" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">G</text>
+                <text x="116" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">K</text>
+                <text x="198" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">L</text>
+                <text x="278" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">H</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="algebra-card">
+            <p class="algebra-title">Bentuk Aljabar</p>
+            <p class="algebra-formula">a (b + c + d + ... ) = ab + ac + ad + ...</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module">
+    const viewport = document.getElementById('viewport');
+    const stage = document.getElementById('slide-stage');
+    const statusRegion = document.getElementById('slide-status');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const slides = Array.from(stage.querySelectorAll('.slide'));
+    const totalSlides = slides.length;
+
+    let currentIndex = 0;
+    let lastWheelAt = 0;
+    let pointerStartX = null;
+    let pointerStartY = null;
+
+    function parseInitialIndex() {
+      const match = window.location.hash.match(/^#(\d+)$/);
+      if (!match) return 0;
+      const idx = Number.parseInt(match[1], 10) - 1;
+      return idx >= 0 && idx < totalSlides ? idx : 0;
+    }
+
+    function applySlideState(targetIndex, { announce = true, syncHash = true } = {}) {
+      currentIndex = targetIndex;
+
+      slides.forEach((slide, idx) => {
+        slide.hidden = idx !== currentIndex;
+      });
+
+      const active = slides[currentIndex];
+      viewport.dataset.theme = active.dataset.theme || 'mint';
+      document.title = active.dataset.title || 'Fundamentals of Geometric Algebra';
+
+      if (syncHash) {
+        const nextHash = `#${currentIndex + 1}`;
+        if (window.location.hash !== nextHash) {
+          history.replaceState(null, '', nextHash);
+        }
+      }
+
+      if (announce) {
+        statusRegion.textContent = active.getAttribute('aria-label') || `Slide ${currentIndex + 1} dari ${totalSlides}`;
+      }
+    }
+
+    function goToSlide(targetIndex, directionHint) {
+      const clamped = Math.max(0, Math.min(totalSlides - 1, targetIndex));
+      if (clamped === currentIndex) return;
+
+      const direction = directionHint || (clamped > currentIndex ? 'forward' : 'backward');
+      currentIndex = clamped;
+      const updateDOM = () => applySlideState(clamped);
+
+      if (!document.startViewTransition) {
+        updateDOM();
+        return;
+      }
+
+      document.startViewTransition({
+        update: updateDOM,
+        types: [direction]
+      });
+    }
+
+    function stepSlide(delta) {
+      const target = currentIndex + delta;
+      if (target < 0 || target >= totalSlides) return;
+      goToSlide(target, delta > 0 ? 'forward' : 'backward');
+    }
+
+    // Accessible button controls (visible on keyboard focus)
+    btnPrev.addEventListener('click', (event) => {
+      event.stopPropagation();
+      stepSlide(-1);
+    });
+
+    btnNext.addEventListener('click', (event) => {
+      event.stopPropagation();
+      stepSlide(1);
+    });
+
+    // Keyboard presentation controls
+    window.addEventListener('keydown', (event) => {
+      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+
+      const targetTag = event.target?.tagName;
+      if (targetTag === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) {
+        return;
+      }
+
+      switch (event.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+        case 'PageDown':
+        case ' ':
+        case 'Enter':
+          event.preventDefault();
+          stepSlide(1);
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+        case 'PageUp':
+        case 'Backspace':
+          event.preventDefault();
+          stepSlide(-1);
+          break;
+        case 'Home':
+          event.preventDefault();
+          goToSlide(0, 'backward');
+          break;
+        case 'End':
+          event.preventDefault();
+          goToSlide(totalSlides - 1, 'forward');
+          break;
+        case 'f':
+        case 'F':
+          if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else if (document.fullscreenElement && document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          }
+          break;
+        default: {
+          const num = Number.parseInt(event.key, 10);
+          if (num >= 1 && num <= totalSlides) {
+            event.preventDefault();
+            goToSlide(num - 1);
+          }
+          break;
+        }
+      }
+    });
+
+    // Click navigation (left 25% goes backward, right 75% advances; ignores text selection drags)
+    stage.addEventListener('click', (event) => {
+      const selected = window.getSelection()?.toString();
+      if (selected && selected.length > 0) return;
+
+      const rect = stage.getBoundingClientRect();
+      const ratioX = (event.clientX - rect.left) / rect.width;
+      if (ratioX < 0.25) {
+        stepSlide(-1);
+      } else {
+        stepSlide(1);
+      }
+    });
+
+    // Touch / pointer swipe navigation
+    stage.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse') return;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+    });
+
+    stage.addEventListener('pointerup', (event) => {
+      if (event.pointerType === 'mouse' || pointerStartX === null) return;
+      const dx = event.clientX - pointerStartX;
+      const dy = event.clientY - pointerStartY;
+      pointerStartX = null;
+      pointerStartY = null;
+
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        stepSlide(dx < 0 ? 1 : -1);
+      }
+    });
+
+    // Debounced wheel navigation
+    window.addEventListener('wheel', (event) => {
+      const now = Date.now();
+      if (now - lastWheelAt < 450) return;
+      const primaryDelta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      if (Math.abs(primaryDelta) < 25) return;
+      lastWheelAt = now;
+      stepSlide(primaryDelta > 0 ? 1 : -1);
+    }, { passive: true });
+
+    // Sync with URL hash navigation
+    window.addEventListener('hashchange', () => {
+      const idx = parseInitialIndex();
+      if (idx !== currentIndex) {
+        goToSlide(idx);
+      }
+    });
+
+    // Initial silent state sync
+    applySlideState(parseInitialIndex(), { announce: false, syncHash: false });
+  </script>
+</body>
+</html>
