@@ -9,23 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --mint: #bfe9d1;
-      --mint-shadow: #91b9a6;
-      --mint-dot: #aee0c4;
-      --teal: #496d70;
-      --teal-dark: #355457;
-      --teal-light: #89b2b9;
-      --yellow: #ffc107;
-      --yellow-deep: #f59e0b;
-      --yellow-frame: #f7c600;
-      --pink-eraser: #f48fb1;
-      --wood: #f6dcb8;
-      --brown-ink: #5e3a20;
-      --pill-bg: #f4deb3;
-      --grid-paper: #93b5c1;
-      --grid-line: #7ea3b0;
+      /* Bright Pastel Palette */
+      --bg-sky: #ddf3ff;
+      --bg-sky-soft: #eaf7ff;
+      --paper-shadow: #a9d3f5;
+      --lavender: #e6dcff;
+      --lavender-mid: #cbb8fb;
+      --lavender-deep: #8b72d6;
+      --mint: #ccf5e1;
+      --mint-mid: #8ee0ba;
+      --mint-deep: #3ea381;
+      --peach: #ffe2cc;
+      --peach-mid: #ffbfa0;
+      --coral: #ff9c97;
+      --butter: #fff1a8;
+      --butter-border: #f5cf58;
+      --lemon: #ffe26a;
+      --periwinkle: #8ea9ff;
+      --periwinkle-deep: #5c76d8;
+      --aqua: #9ae8de;
+      --ink: #2b2d5c;
+      --diagram-ink: #232652;
       --white: #ffffff;
-      --paper-shadow: #93baa8;
       --font-display: "DynaPuff", "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif;
       --font-body: "Nunito", "Trebuchet MS", system-ui, -apple-system, sans-serif;
     }
@@ -44,8 +49,8 @@
       block-size: 100%;
       overflow: clip;
       font-family: var(--font-body);
-      color: var(--brown-ink);
-      background-color: var(--mint);
+      color: var(--ink);
+      background-color: var(--bg-sky);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -72,24 +77,24 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
       background: var(--white);
-      border: 2px solid var(--brown-ink);
+      border: 2px solid var(--ink);
     }
 
     .sr-controls button {
       min-inline-size: 44px;
       min-block-size: 44px;
       padding: 0.4rem 0.75rem;
-      border: 2px solid var(--brown-ink);
+      border: 2px solid var(--ink);
       border-radius: 0.375rem;
-      background: var(--pill-bg);
-      color: var(--brown-ink);
+      background: var(--butter);
+      color: var(--ink);
       font-family: var(--font-body);
       font-weight: 700;
       cursor: pointer;
     }
 
     .sr-controls button:focus-visible {
-      outline: 3px solid var(--teal-dark);
+      outline: 3px solid var(--periwinkle-deep);
       outline-offset: 2px;
     }
 
@@ -100,7 +105,7 @@
       display: grid;
       place-items: center;
       overflow: clip;
-      background: var(--mint);
+      background: var(--bg-sky);
       user-select: text;
       touch-action: pan-y;
     }
@@ -110,8 +115,8 @@
         90deg,
         var(--white) 0%,
         var(--white) calc(50% + 0.23 * min(100dvw, 100dvh * 16 / 9)),
-        var(--mint) calc(50% + 0.23 * min(100dvw, 100dvh * 16 / 9)),
-        var(--mint) 100%
+        var(--bg-sky) calc(50% + 0.23 * min(100dvw, 100dvh * 16 / 9)),
+        var(--bg-sky) 100%
       );
     }
 
@@ -202,30 +207,35 @@
        SLIDE 1: COVER
        ============================================================ */
     .slide-cover {
-      background-color: var(--mint);
+      background: radial-gradient(circle at 82% 20%, var(--lavender) 0%, transparent 42%),
+                  radial-gradient(circle at 14% 85%, var(--mint) 0%, transparent 38%),
+                  var(--bg-sky);
     }
 
     .cover-paper-shadow {
       position: absolute;
       inset-block-start: 17.5%;
-      inset-inline-start: 16.5%;
+      inset-inline-start: 16.8%;
       inline-size: 67.5%;
       block-size: 84%;
-      background: var(--paper-shadow);
+      background: var(--lavender-mid);
+      border-radius: 1.4cqi 1.4cqi 0 0;
       transform: rotate(0.9deg);
     }
 
     .cover-paper {
       position: absolute;
-      inset-block-start: 19.8%;
-      inset-inline-start: 15%;
+      inset-block-start: 19.6%;
+      inset-inline-start: 15.2%;
       inline-size: 67.5%;
       block-size: 82%;
       background: var(--white);
+      border: 0.28cqi solid var(--paper-shadow);
+      border-radius: 1.4cqi 1.4cqi 0 0;
       transform: rotate(0.9deg);
       display: grid;
       place-items: center;
-      padding-block-end: 10%;
+      padding-block-end: 9%;
       padding-inline: 6%;
       text-align: center;
     }
@@ -233,7 +243,7 @@
     .cover-content {
       transform: rotate(-0.9deg);
       display: grid;
-      gap: 1.5cqb;
+      gap: 1.6cqb;
       justify-items: center;
     }
 
@@ -244,7 +254,7 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       text-wrap: balance;
-      color: var(--brown-ink);
+      color: var(--ink);
       font-size: clamp(1.75rem, 4.35vw, 4.35rem);
     }
 
@@ -255,16 +265,22 @@
     }
 
     .cover-subtitle {
+      display: inline-block;
+      background: var(--butter);
+      border: 0.2cqi solid var(--butter-border);
+      padding-block: 0.55cqb;
+      padding-inline: 2.2cqi;
+      border-radius: 999px;
       font-family: var(--font-body);
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.3;
-      color: var(--brown-ink);
-      font-size: clamp(1rem, 2.05vw, 2.45rem);
+      color: var(--ink);
+      font-size: clamp(1rem, 1.9vw, 2.3rem);
     }
 
     @supports (font-size: 1cqi) {
       .cover-subtitle {
-        font-size: clamp(1rem, 2.05cqi, 2.45rem);
+        font-size: clamp(1rem, 1.9cqi, 2.3rem);
       }
     }
 
@@ -272,27 +288,36 @@
        SLIDE 2: ANGGOTA KELOMPOK
        ============================================================ */
     .slide-members {
-      background-color: var(--mint);
+      background: radial-gradient(circle at 86% 14%, var(--peach) 0%, transparent 38%),
+                  radial-gradient(circle at 15% 88%, var(--mint) 0%, transparent 36%),
+                  var(--bg-sky);
     }
 
     .members-paper-shadow {
       position: absolute;
-      inset-block-start: 17%;
-      inset-inline-start: 22.5%;
-      inline-size: 66.5%;
+      inset-block-start: 16.8%;
+      inset-inline-start: 21.8%;
+      inline-size: 67.5%;
       block-size: 85%;
       background: var(--paper-shadow);
+      border-radius: 1.2cqi 1.2cqi 0 0;
     }
 
     .members-paper {
       position: absolute;
-      inset-block-start: 16.5%;
-      inset-inline-start: 19.5%;
-      inline-size: 66.8%;
-      block-size: 85%;
-      background: var(--white);
-      padding-block-start: 11cqb;
-      padding-inline: 7%;
+      inset-block-start: 16%;
+      inset-inline-start: 19.2%;
+      inline-size: 67.5%;
+      block-size: 85.5%;
+      background-color: var(--white);
+      background-image:
+        linear-gradient(to right, rgba(169, 211, 245, 0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(169, 211, 245, 0.22) 1px, transparent 1px);
+      background-size: 2.8cqi 2.8cqi;
+      border: 0.24cqi solid var(--paper-shadow);
+      border-radius: 1.2cqi 1.2cqi 0 0;
+      padding-block-start: 11.5cqb;
+      padding-inline: 5.5%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -314,14 +339,19 @@
       letter-spacing: 0.02em;
       text-align: center;
       text-wrap: balance;
-      color: var(--brown-ink);
-      margin-block-end: 4.5cqb;
-      font-size: clamp(1.5rem, 3.7vw, 3.75rem);
+      color: var(--ink);
+      background: var(--butter);
+      border: 0.2cqi solid var(--butter-border);
+      padding-block: 0.7cqb;
+      padding-inline: 2.5cqi;
+      border-radius: 1cqi;
+      margin-block-end: 5.5cqb;
+      font-size: clamp(1.45rem, 3.2vw, 3.4rem);
     }
 
     @supports (font-size: 1cqi) {
       .members-title {
-        font-size: clamp(1.5rem, 3.7cqi, 3.75rem);
+        font-size: clamp(1.45rem, 3.2cqi, 3.4rem);
       }
     }
 
@@ -329,18 +359,19 @@
       list-style: none;
       display: grid;
       grid-template-columns: auto auto;
-      column-gap: 4.5cqi;
-      row-gap: 4.2cqb;
+      column-gap: 3.4cqi;
+      row-gap: 4.8cqb;
       align-items: center;
-      inline-size: min(92%, 44cqi);
-      font-size: clamp(0.95rem, 1.85vw, 2.35rem);
-      font-weight: 600;
+      inline-size: fit-content;
+      max-inline-size: 96%;
+      font-size: clamp(0.95rem, 1.72vw, 2.2rem);
+      font-weight: 700;
       line-height: 1.3;
     }
 
     @supports (font-size: 1cqi) {
       .members-list {
-        font-size: clamp(0.95rem, 1.85cqi, 2.35rem);
+        font-size: clamp(0.95rem, 1.72cqi, 2.2rem);
       }
     }
 
@@ -351,12 +382,12 @@
     .member-name {
       display: flex;
       align-items: center;
-      gap: 1.4cqi;
+      gap: 1.3cqi;
       white-space: nowrap;
     }
 
     .member-bullet {
-      inline-size: 2.3cqi;
+      inline-size: 2.2cqi;
       block-size: 1.6cqi;
       flex-shrink: 0;
     }
@@ -364,13 +395,20 @@
     .member-nim {
       font-variant-numeric: tabular-nums;
       text-align: end;
+      white-space: nowrap;
+      padding-block: 0.35cqb;
+      padding-inline: 1cqi;
+      border-radius: 0.6cqi;
+      background: var(--lavender);
     }
 
     /* ============================================================
        SLIDE 3: DEFINISI
        ============================================================ */
     .slide-definition {
-      background-color: var(--mint);
+      background: radial-gradient(circle at 12% 16%, var(--peach) 0%, transparent 34%),
+                  radial-gradient(circle at 88% 82%, var(--lavender) 0%, transparent 36%),
+                  var(--bg-sky);
     }
 
     .def-paper-shadow {
@@ -379,16 +417,19 @@
       inset-inline-start: 12%;
       inline-size: 79.5%;
       block-size: 82%;
-      background: var(--paper-shadow);
+      background: var(--lavender-mid);
+      border-radius: 1.4cqi 1.4cqi 0 0;
     }
 
     .def-paper {
       position: absolute;
-      inset-block-start: 22.5%;
+      inset-block-start: 22.2%;
       inset-inline-start: 10.5%;
       inline-size: 79%;
-      block-size: 79%;
+      block-size: 79.5%;
       background: var(--white);
+      border: 0.24cqi solid var(--paper-shadow);
+      border-radius: 1.4cqi 1.4cqi 0 0;
       padding-block: 5.5cqb 4cqb;
       padding-inline: 6.5cqi 8cqi;
       display: flex;
@@ -402,14 +443,19 @@
       text-transform: uppercase;
       letter-spacing: 0.03em;
       text-align: center;
-      color: var(--brown-ink);
-      margin-block-end: 4.5cqb;
-      font-size: clamp(1.55rem, 3.7vw, 3.85rem);
+      color: var(--ink);
+      background: var(--mint);
+      border: 0.2cqi solid var(--mint-mid);
+      padding-block: 0.6cqb;
+      padding-inline: 2.8cqi;
+      border-radius: 1cqi;
+      margin-block-end: 4.2cqb;
+      font-size: clamp(1.5rem, 3.45vw, 3.6rem);
     }
 
     @supports (font-size: 1cqi) {
       .def-title {
-        font-size: clamp(1.55rem, 3.7cqi, 3.85rem);
+        font-size: clamp(1.5rem, 3.45cqi, 3.6rem);
       }
     }
 
@@ -422,7 +468,7 @@
       font-size: clamp(0.92rem, 1.75vw, 2.25rem);
       font-weight: 600;
       line-height: 1.48;
-      color: var(--brown-ink);
+      color: var(--ink);
       text-wrap: pretty;
     }
 
@@ -438,6 +484,7 @@
 
     .def-list li::marker {
       font-weight: 800;
+      color: var(--periwinkle-deep);
     }
 
     .def-italic {
@@ -467,7 +514,7 @@
 
     .prop-right {
       position: relative;
-      background: var(--mint);
+      background: linear-gradient(180deg, var(--bg-sky) 0%, var(--lavender) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -479,23 +526,24 @@
 
     .prop-badge {
       display: inline-block;
-      background: var(--pill-bg);
-      color: var(--brown-ink);
+      background: var(--butter);
+      border: 0.22cqi solid var(--butter-border);
+      color: var(--ink);
       font-family: var(--font-display);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.02em;
-      padding-block: 0.9cqb;
+      padding-block: 0.85cqb;
       padding-inline: 2.4cqi;
-      border-radius: 0.9cqi;
+      border-radius: 1cqi;
       margin-block-end: 2.2cqb;
       line-height: 1.15;
-      font-size: clamp(1.3rem, 3.05vw, 3.25rem);
+      font-size: clamp(1.3rem, 3vw, 3.2rem);
     }
 
     @supports (font-size: 1cqi) {
       .prop-badge {
-        font-size: clamp(1.3rem, 3.05cqi, 3.25rem);
+        font-size: clamp(1.3rem, 3cqi, 3.2rem);
       }
     }
 
@@ -507,35 +555,39 @@
       line-height: 1.42;
       text-wrap: pretty;
       margin-block-end: 3.2cqb;
-      padding-inline: 1cqi;
-      font-size: clamp(0.86rem, 1.56vw, 2.1rem);
+      padding-inline: 1.4cqi;
+      padding-block: 1.5cqb;
+      background: var(--bg-sky-soft);
+      border-radius: 1.1cqi;
+      border: 0.18cqi solid var(--paper-shadow);
+      font-size: clamp(0.86rem, 1.52vw, 2.05rem);
     }
 
     @supports (font-size: 1cqi) {
       .prop1-quote {
-        font-size: clamp(0.86rem, 1.56cqi, 2.1rem);
+        font-size: clamp(0.86rem, 1.52cqi, 2.05rem);
       }
     }
 
     .prop1-body {
       inline-size: 100%;
-      padding-inline-start: 2.2cqi;
+      padding-inline-start: 2cqi;
       display: grid;
-      gap: 2.6cqb;
-      font-size: clamp(0.86rem, 1.56vw, 2.1rem);
+      gap: 2.4cqb;
+      font-size: clamp(0.86rem, 1.52vw, 2.05rem);
       font-weight: 600;
       line-height: 1.42;
     }
 
     @supports (font-size: 1cqi) {
       .prop1-body {
-        font-size: clamp(0.86rem, 1.56cqi, 2.1rem);
+        font-size: clamp(0.86rem, 1.52cqi, 2.05rem);
       }
     }
 
     .prop1-label {
       font-weight: 800;
-      margin-block-end: -1.4cqb;
+      margin-block-end: -1.2cqb;
     }
 
     .inline-figures-row {
@@ -615,6 +667,7 @@
       row-gap: 0.3cqb;
       align-items: baseline;
       font-variant-numeric: tabular-nums;
+      font-weight: 700;
     }
 
     .prop1-equation-label {
@@ -630,12 +683,13 @@
       position: relative;
       inline-size: 23.8cqi;
       block-size: 36cqb;
-      background-color: var(--grid-paper);
+      background-color: var(--lavender);
       background-image:
-        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+        linear-gradient(to right, var(--lavender-mid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--lavender-mid) 1px, transparent 1px);
       background-size: 3.4cqi 3.4cqi;
-      padding: 2cqi;
+      padding: 1.8cqi;
+      border-radius: 1.2cqi;
       display: grid;
       place-items: center;
       margin-block-start: 3cqb;
@@ -645,7 +699,8 @@
       inline-size: 100%;
       block-size: 100%;
       background: var(--white);
-      border: 0.6cqi solid var(--yellow-frame);
+      border: 0.55cqi solid var(--lemon);
+      border-radius: 0.7cqi;
       display: grid;
       place-items: center;
       padding: 0.8cqi;
@@ -657,9 +712,11 @@
     }
 
     .algebra-card {
-      inline-size: 25cqi;
-      background: var(--pill-bg);
-      color: var(--brown-ink);
+      inline-size: 24.5cqi;
+      background: var(--butter);
+      border: 0.2cqi solid var(--butter-border);
+      border-radius: 0.9cqi;
+      color: var(--ink);
       padding-block: 1.6cqb;
       padding-inline: 1.2cqi;
       text-align: center;
@@ -668,13 +725,13 @@
     }
 
     .algebra-title {
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.2;
       font-size: clamp(0.82rem, 1.45vw, 2rem);
     }
 
     .algebra-formula {
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.25;
       white-space: nowrap;
       font-size: clamp(0.75rem, 1.15vw, 1.65rem);
@@ -695,6 +752,7 @@
       .members-paper,
       .def-paper,
       .prop-badge,
+      .prop1-quote,
       .algebra-card,
       .diagram-inner-frame {
         border: 2px solid CanvasText;
@@ -770,55 +828,66 @@
     <div class="slide-stage" id="slide-stage" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Slide presentasi">
 
       <!-- ========================================================
-           SLIDE 1: COVER
+           SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
       <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 5: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
-        <!-- Doodles -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:1%; inset-inline-start:16%; inline-size:5cqi; block-size:9cqb;" viewBox="0 0 60 60">
-          <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#91B9A6"/>
+        <!-- Geometric sparkle & right-angle doodles -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
+          <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
         </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:2.5%; inline-size:6.2cqi; block-size:11cqb;" viewBox="0 0 100 100">
-          <path d="M52 50 C52 44,59 42,61 48 C64 56,54 65,45 62 C34 58,31 44,37 34 C45 21,64 21,73 34 C84 50,74 74,54 79 C31 85,12 65,16 40 C20 17,44 5,67 11" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:48%; inset-inline-end:2.2%; inline-size:6cqi; block-size:10cqb;" viewBox="0 0 90 90">
+          <polygon points="45,10 80,74 10,74" fill="none" stroke="#CBB8FB" stroke-width="8" stroke-linejoin="round"/>
+          <circle cx="45" cy="52" r="5" fill="#8EA9FF"/>
         </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-start:-5%; inset-inline-end:2%; inline-size:9cqi; block-size:15cqb;" viewBox="0 0 100 100">
-          <circle cx="50" cy="40" r="34" fill="none" stroke="#91B9A6" stroke-width="14"/>
-        </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-start:47%; inset-inline-end:2%; inline-size:8cqi; block-size:6cqb;" viewBox="0 0 120 40">
-          <path d="M8 22 C18 8,28 8,36 22 C44 35,54 35,64 20 C74 6,84 8,92 22 C100 34,108 32,114 20" fill="none" stroke="#91B9A6" stroke-width="9" stroke-linecap="round"/>
-        </svg>
-
-        <!-- Stacked papers left -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:-1%; inline-size:18cqi; block-size:87cqb;" viewBox="0 0 260 640" preserveAspectRatio="none">
-          <path d="M0,0 L168,0 L164,84 L0,208 Z" fill="#496D70"/>
-          <path d="M0,190 L164,116 L142,418 C136,456 106,482 58,500 L0,524 Z" fill="#89B2B9"/>
-          <path d="M0,182 L154,108 L124,378 C118,412 90,434 44,450 L0,468 Z" fill="#FFFFFF"/>
-          <path d="M0,334 L94,298 L72,416 L0,446 Z" fill="#496D70"/>
-          <path d="M0,396 L88,360 C98,422 90,476 54,498 L0,524 Z" fill="#496D70"/>
-          <path d="M0,556 L152,486 L152,516 L0,590 Z" fill="#89B2B9"/>
+        <svg class="decor" aria-hidden="true" style="inset-block-end:4%; inset-inline-start:2%; inline-size:7cqi; block-size:12cqb;" viewBox="0 0 110 110">
+          <rect x="18" y="18" width="74" height="74" rx="10" fill="none" stroke="#8EE0BA" stroke-width="7" stroke-dasharray="10 8"/>
+          <line x1="18" y1="92" x2="92" y2="18" stroke="#A9D3F5" stroke-width="6"/>
         </svg>
 
-        <!-- Tilted ruler top -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:-1.5%; inset-inline-start:23%; inline-size:59cqi; block-size:16cqb;" viewBox="0 0 900 120">
-          <g transform="rotate(4.5 450 60)">
-            <rect x="10" y="10" width="880" height="86" rx="10" fill="#89B2B9"/>
-            <g stroke="#1D2B2D" stroke-width="4" stroke-linecap="round">
-              <line x1="40" y1="96" x2="40" y2="52"/><line x1="65" y1="96" x2="65" y2="72"/>
-              <line x1="90" y1="96" x2="90" y2="62"/><line x1="115" y1="96" x2="115" y2="72"/>
-              <line x1="140" y1="96" x2="140" y2="52"/><line x1="165" y1="96" x2="165" y2="72"/>
-              <line x1="190" y1="96" x2="190" y2="62"/><line x1="215" y1="96" x2="215" y2="72"/>
-              <line x1="240" y1="96" x2="240" y2="52"/><line x1="265" y1="96" x2="265" y2="72"/>
-              <line x1="290" y1="96" x2="290" y2="62"/><line x1="315" y1="96" x2="315" y2="72"/>
-              <line x1="340" y1="96" x2="340" y2="52"/><line x1="365" y1="96" x2="365" y2="72"/>
-              <line x1="390" y1="96" x2="390" y2="62"/><line x1="415" y1="96" x2="415" y2="72"/>
-              <line x1="440" y1="96" x2="440" y2="52"/><line x1="465" y1="96" x2="465" y2="72"/>
-              <line x1="490" y1="96" x2="490" y2="62"/><line x1="515" y1="96" x2="515" y2="72"/>
-              <line x1="540" y1="96" x2="540" y2="52"/><line x1="565" y1="96" x2="565" y2="72"/>
-              <line x1="590" y1="96" x2="590" y2="62"/><line x1="615" y1="96" x2="615" y2="72"/>
-              <line x1="640" y1="96" x2="640" y2="52"/><line x1="665" y1="96" x2="665" y2="72"/>
-              <line x1="690" y1="96" x2="690" y2="62"/><line x1="715" y1="96" x2="715" y2="72"/>
-              <line x1="740" y1="96" x2="740" y2="52"/><line x1="765" y1="96" x2="765" y2="72"/>
-              <line x1="790" y1="96" x2="790" y2="62"/><line x1="815" y1="96" x2="815" y2="72"/>
-              <line x1="840" y1="96" x2="840" y2="52"/>
+        <!-- Subdivided Pastel Area Tiles (Left Geometric Motif) -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:6%; inset-inline-start:-2%; inline-size:16cqi; block-size:66cqb;" viewBox="0 0 220 480">
+          <g transform="rotate(-10 100 240)">
+            <rect x="12" y="24" width="136" height="136" rx="16" fill="#E6DCFF" stroke="#CBB8FB" stroke-width="5"/>
+            <rect x="12" y="24" width="84" height="84" rx="12" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
+            <rect x="96" y="108" width="52" height="52" rx="8" fill="#FFF1A8" stroke="#F5CF58" stroke-width="4"/>
+            <rect x="-10" y="196" width="150" height="150" rx="18" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="5"/>
+            <line x1="-10" y1="346" x2="140" y2="196" stroke="#FF9C97" stroke-width="5" stroke-dasharray="9 7"/>
+          </g>
+        </svg>
+
+        <!-- Pastel Mint Set Square (Penggaris Segitiga Siku-siku) Top -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-start:24%; inline-size:48cqi; block-size:18cqb;" viewBox="0 0 740 160">
+          <g transform="rotate(3 370 80)">
+            <polygon points="30,12 710,12 160,142" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="5" stroke-linejoin="round"/>
+            <polygon points="150,42 480,42 200,108" fill="#DDF3FF" stroke="#8EE0BA" stroke-width="4" stroke-linejoin="round"/>
+            <g stroke="#2B2D5C" stroke-width="3.5" stroke-linecap="round" opacity="0.7">
+              <line x1="70" y1="12" x2="70" y2="30"/><line x1="100" y1="12" x2="100" y2="24"/>
+              <line x1="130" y1="12" x2="130" y2="30"/><line x1="160" y1="12" x2="160" y2="24"/>
+              <line x1="190" y1="12" x2="190" y2="30"/><line x1="220" y1="12" x2="220" y2="24"/>
+              <line x1="250" y1="12" x2="250" y2="30"/><line x1="280" y1="12" x2="280" y2="24"/>
+              <line x1="310" y1="12" x2="310" y2="30"/><line x1="340" y1="12" x2="340" y2="24"/>
+              <line x1="370" y1="12" x2="370" y2="30"/><line x1="400" y1="12" x2="400" y2="24"/>
+              <line x1="430" y1="12" x2="430" y2="30"/><line x1="460" y1="12" x2="460" y2="24"/>
+              <line x1="490" y1="12" x2="490" y2="30"/><line x1="520" y1="12" x2="520" y2="24"/>
+              <line x1="550" y1="12" x2="550" y2="30"/><line x1="580" y1="12" x2="580" y2="24"/>
+              <line x1="610" y1="12" x2="610" y2="30"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Pastel Periwinkle Protractor (Busur Derajat) Top-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-end:-2%; inline-size:24cqi; block-size:32cqb;" viewBox="0 0 320 260">
+          <g transform="rotate(28 160 150)">
+            <path d="M24,180 A136,136 0 0,1 296,180 Z" fill="#CBB8FB" opacity="0.88"/>
+            <path d="M72,180 A88,88 0 0,1 248,180 Z" fill="#DDF3FF"/>
+            <rect x="24" y="180" width="272" height="22" rx="6" fill="#8EA9FF"/>
+            <circle cx="160" cy="180" r="7" fill="#2B2D5C"/>
+            <g stroke="#2B2D5C" stroke-width="3" stroke-linecap="round" opacity="0.7">
+              <line x1="160" y1="44" x2="160" y2="62"/>
+              <line x1="92" y1="62" x2="101" y2="78"/>
+              <line x1="228" y1="62" x2="219" y2="78"/>
+              <line x1="48" y1="112" x2="64" y2="122"/>
+              <line x1="272" y1="112" x2="256" y2="122"/>
             </g>
           </g>
         </svg>
@@ -832,114 +901,82 @@
           </div>
         </div>
 
-        <!-- Yellow paperclip overlapping top-left of white paper -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:13%; inset-inline-start:18%; inline-size:6.5cqi; block-size:16cqb;" viewBox="0 0 110 160">
-          <g transform="rotate(-12 55 80)">
-            <path d="M35 125 L35 45 C35 20,75 20,75 45 L75 118 C75 135,48 135,48 118 L48 56 C48 45,63 45,63 56 L63 108" fill="none" stroke="#F8BD00" stroke-width="11" stroke-linecap="round"/>
+        <!-- Geometric Square-Corner Clip overlapping top-left of white paper -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:13.5%; inset-inline-start:18%; inline-size:6.2cqi; block-size:14.5cqb;" viewBox="0 0 110 150">
+          <g transform="rotate(-12 55 75)">
+            <rect x="28" y="22" width="54" height="106" rx="22" fill="none" stroke="#FF9C97" stroke-width="11"/>
+            <rect x="42" y="42" width="26" height="72" rx="13" fill="none" stroke="#FFE26A" stroke-width="8"/>
           </g>
         </svg>
 
-        <!-- Vertical yellow pencil on left edge -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:23.5%; inset-inline-start:11.8%; inline-size:5cqi; block-size:77cqb;" viewBox="0 0 90 600" preserveAspectRatio="none">
+        <!-- Pastel Coral & Lemon Drafting Pencil on Left Edge -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:23%; inset-inline-start:11.6%; inline-size:4.8cqi; block-size:77cqb;" viewBox="0 0 90 600" preserveAspectRatio="none">
           <g transform="rotate(1.6 45 300)">
-            <polygon points="45,5 20,105 70,105" fill="#FBE3BE"/>
-            <polygon points="45,5 37,38 53,38" fill="#5A5550"/>
-            <rect x="20" y="105" width="50" height="415" fill="#FFC107"/>
-            <rect x="36" y="105" width="18" height="415" fill="#FFB300"/>
-            <rect x="20" y="520" width="50" height="22" fill="#E8ECEF"/>
-            <rect x="20" y="542" width="50" height="58" rx="6" fill="#F48FB1"/>
+            <polygon points="45,6 20,104 70,104" fill="#FFE2CC"/>
+            <polygon points="45,6 37,38 53,38" fill="#2B2D5C"/>
+            <rect x="20" y="104" width="50" height="416" fill="#FFE26A"/>
+            <rect x="37" y="104" width="16" height="416" fill="#F9CF48"/>
+            <rect x="20" y="520" width="50" height="22" fill="#E6DCFF"/>
+            <rect x="20" y="542" width="50" height="58" rx="8" fill="#FF9C97"/>
           </g>
         </svg>
 
-        <!-- Yellow desk lamp top-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:11%; inset-inline-end:-1%; inline-size:29cqi; block-size:39cqb;" viewBox="0 0 420 330">
-          <path d="M312 58 L420 124 M302 74 L420 168" stroke="#FFC107" stroke-width="11" stroke-linecap="round"/>
-          <path d="M335 40 Q380 30 420 37" fill="none" stroke="#FFB300" stroke-width="5"/>
-          <rect x="304" y="36" width="22" height="32" rx="6" transform="rotate(-32 315 52)" fill="#FFFFFF"/>
-          <g transform="rotate(-32 230 148)">
-            <rect x="208" y="12" width="84" height="58" rx="20" fill="#FFC107"/>
-            <line x1="230" y1="26" x2="230" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
-            <line x1="250" y1="26" x2="250" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
-            <line x1="270" y1="26" x2="270" y2="56" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
-            <path d="M116 164 C132 54,344 54,352 164 Z" fill="#FFC107"/>
-            <ellipse cx="234" cy="164" rx="118" ry="20" fill="#FFFFFF"/>
+        <!-- Pastel Drafting Compass & Geometric Arc Bottom-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:0; inline-size:21cqi; block-size:46cqb;" viewBox="0 0 300 350">
+          <circle cx="170" cy="240" r="102" fill="none" stroke="#8EA9FF" stroke-width="5" stroke-dasharray="12 9"/>
+          <g transform="rotate(-10 175 180)">
+            <rect x="162" y="20" width="26" height="78" rx="8" fill="#9AE8DE"/>
+            <circle cx="175" cy="112" r="24" fill="#8EA9FF"/>
+            <circle cx="175" cy="112" r="9" fill="#2B2D5C"/>
+            <path d="M160 128 L102 332 L114 334 L132 292 L172 135 Z" fill="#5C76D8"/>
+            <path d="M190 128 L244 332 L232 334 L214 292 L178 135 Z" fill="#5C76D8"/>
+            <polygon points="102,332 94,348 114,334" fill="#2B2D5C"/>
+            <polygon points="244,332 252,348 232,334" fill="#2B2D5C"/>
           </g>
-        </svg>
-
-        <!-- Pen cup bottom-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:0; inline-size:18cqi; block-size:40cqb;" viewBox="0 0 280 310">
-          <!-- Blue mini ruler inside -->
-          <g transform="rotate(-12 65 110)">
-            <rect x="42" y="20" width="46" height="160" rx="4" fill="#89B2B9"/>
-            <g stroke="#FFFFFF" stroke-width="3">
-              <line x1="72" y1="36" x2="88" y2="36"/><line x1="77" y1="48" x2="88" y2="48"/>
-              <line x1="72" y1="60" x2="88" y2="60"/><line x1="77" y1="72" x2="88" y2="72"/>
-              <line x1="72" y1="84" x2="88" y2="84"/><line x1="77" y1="96" x2="88" y2="96"/>
-              <line x1="72" y1="108" x2="88" y2="108"/><line x1="77" y1="120" x2="88" y2="120"/>
-              <line x1="72" y1="132" x2="88" y2="132"/>
-            </g>
-          </g>
-          <!-- Black markers -->
-          <g transform="rotate(6 130 100)">
-            <rect x="115" y="18" width="24" height="150" rx="6" fill="#181A1B"/>
-          </g>
-          <g transform="rotate(20 175 115)">
-            <rect x="165" y="42" width="22" height="130" rx="6" fill="#181A1B"/>
-          </g>
-          <!-- Scissors -->
-          <g transform="rotate(8 235 120)">
-            <circle cx="215" cy="65" r="24" fill="none" stroke="#91B9A6" stroke-width="11"/>
-            <circle cx="255" cy="72" r="24" fill="none" stroke="#91B9A6" stroke-width="11"/>
-            <path d="M210 92 L222 175 M252 98 L236 175" stroke="#FFC107" stroke-width="10" stroke-linecap="round"/>
-          </g>
-          <!-- Cup body -->
-          <rect x="30" y="155" width="245" height="34" rx="16" fill="#111111"/>
-          <path d="M42 189 L264 189 L254 310 L52 310 Z" fill="#496D70"/>
-          <path d="M44 218 Q105 202 155 224 Q205 245 262 214 L259 266 Q205 292 152 268 Q102 246 47 268 Z" fill="#FFFFFF"/>
         </svg>
       </section>
 
       <!-- ========================================================
-           SLIDE 2: ANGGOTA KELOMPOK
+           SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
       <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 5: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
-        <!-- Sticky notes top-left -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:31cqi; block-size:74cqb;" viewBox="0 0 420 560" preserveAspectRatio="none">
-          <polygon points="180,62 396,122 318,452 120,392" fill="#FFA000"/>
-          <polygon points="0,375 305,468 282,560 0,518" fill="#FFA000"/>
-          <rect x="0" y="0" width="286" height="445" fill="#FFB300"/>
+        <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
+          <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
+          <rect x="20" y="34" width="110" height="110" rx="12" fill="#FFF1A8" opacity="0.9"/>
+          <g transform="rotate(-12 130 340)">
+            <polygon points="10,200 245,450 10,450" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="6" stroke-linejoin="round"/>
+            <polygon points="48,295 148,408 48,408" fill="#DDF3FF" stroke="#8EE0BA" stroke-width="4" stroke-linejoin="round"/>
+          </g>
         </svg>
 
-        <!-- Background doodles -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:40%; inline-size:8cqi; block-size:6.5cqb;" viewBox="0 0 120 60">
-          <path d="M10 38 C22 14,40 16,38 34 C36 48,22 44,28 28 C34 12,56 12,56 32 C56 46,42 44,48 28 C54 14,74 14,74 34 C74 46,60 44,68 28 C76 14,96 20,104 34" fill="none" stroke="#91B9A6" stroke-width="7" stroke-linecap="round"/>
+        <!-- Geometry doodles -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:3.5%; inset-inline-start:40%; inline-size:8cqi; block-size:7cqb;" viewBox="0 0 120 60">
+          <rect x="12" y="14" width="32" height="32" rx="6" fill="#CBB8FB"/>
+          <circle cx="66" cy="30" r="15" fill="#9AE8DE"/>
+          <polygon points="98,14 114,46 82,46" fill="#FF9C97"/>
         </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-end:8%; inset-inline-start:14.5%; inline-size:4.2cqi; block-size:19cqb;" viewBox="0 0 60 180">
-          <path d="M18 10 C8 25,28 40,18 55 C8 70,28 85,18 100 C8 115,28 130,18 145 C12 155,22 165,18 172" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
-          <path d="M40 10 C30 25,50 40,40 55 C30 70,50 85,40 100 C30 115,50 130,40 145 C34 155,44 165,40 172" fill="none" stroke="#91B9A6" stroke-width="6.5" stroke-linecap="round"/>
-        </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-start:16%; inset-inline-end:-2%; inline-size:6cqi; block-size:16cqb;" viewBox="0 0 90 140">
-          <rect x="20" y="18" width="22" height="22" rx="6" transform="rotate(-12 31 29)" fill="#91B9A6"/>
-          <rect x="52" y="10" width="22" height="22" rx="6" transform="rotate(-12 63 21)" fill="#91B9A6"/>
-          <rect x="12" y="54" width="22" height="22" rx="6" transform="rotate(-12 23 65)" fill="#91B9A6"/>
-          <rect x="44" y="46" width="22" height="22" rx="6" transform="rotate(-12 55 57)" fill="#91B9A6"/>
-          <rect x="28" y="88" width="22" height="22" rx="6" transform="rotate(-12 39 99)" fill="#91B9A6"/>
-          <rect x="60" y="80" width="22" height="22" rx="6" transform="rotate(-12 71 91)" fill="#91B9A6"/>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:16%; inset-inline-end:1%; inline-size:6cqi; block-size:16cqb;" viewBox="0 0 90 140">
+          <rect x="20" y="18" width="22" height="22" rx="6" transform="rotate(-12 31 29)" fill="#CBB8FB"/>
+          <rect x="52" y="10" width="22" height="22" rx="6" transform="rotate(-12 63 21)" fill="#A9D3F5"/>
+          <rect x="12" y="54" width="22" height="22" rx="6" transform="rotate(-12 23 65)" fill="#8EE0BA"/>
+          <rect x="44" y="46" width="22" height="22" rx="6" transform="rotate(-12 55 57)" fill="#FFBFA0"/>
+          <rect x="28" y="88" width="22" height="22" rx="6" transform="rotate(-12 39 99)" fill="#CBB8FB"/>
         </svg>
 
-        <!-- Notebook sheet -->
+        <!-- Graph-paper spiral notebook sheet -->
         <div class="members-paper-shadow" aria-hidden="true"></div>
         <div class="members-paper">
           <!-- Perforated spiral holes at top of notebook -->
           <svg class="members-holes" aria-hidden="true" viewBox="0 0 1000 72" preserveAspectRatio="none">
-            <g fill="#91B9A6">
+            <g fill="#A9D3F5">
               <circle cx="48" cy="36" r="14"/><circle cx="118" cy="36" r="14"/><circle cx="188" cy="36" r="14"/>
               <circle cx="258" cy="36" r="14"/><circle cx="328" cy="36" r="14"/><circle cx="398" cy="36" r="14"/>
               <circle cx="468" cy="36" r="14"/><circle cx="538" cy="36" r="14"/><circle cx="608" cy="36" r="14"/>
               <circle cx="678" cy="36" r="14"/><circle cx="748" cy="36" r="14"/><circle cx="818" cy="36" r="14"/>
               <circle cx="888" cy="36" r="14"/><circle cx="958" cy="36" r="14"/>
             </g>
-            <g fill="none" stroke="#91B9A6" stroke-width="10" stroke-linecap="round">
+            <g fill="none" stroke="#8EA9FF" stroke-width="10" stroke-linecap="round">
               <path d="M48 34 C48 2,96 2,96 14"/><path d="M118 34 C118 2,166 2,166 14"/>
               <path d="M188 34 C188 2,236 2,236 14"/><path d="M258 34 C258 2,306 2,306 14"/>
               <path d="M328 34 C328 2,376 2,376 14"/><path d="M398 34 C398 2,446 2,446 14"/>
@@ -955,113 +992,88 @@
             <li>
               <span class="member-name">
                 <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
-                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
-                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
-                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
-                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                  <rect x="2" y="8" width="10" height="10" rx="2" transform="rotate(45 7 13)" fill="#FF9C97"/>
+                  <polygon points="15,4 27,13 15,22" fill="#8EA9FF"/>
+                  <polygon points="25,2 40,13 25,24" fill="#5C76D8"/>
                 </svg>
-                <span>Diki Abdisa</span>
+                <span>Muhammad Fariyd</span>
               </span>
-              <span class="member-nim">(0036)</span>
+              <span class="member-nim">21108052610071</span>
             </li>
             <li>
               <span class="member-name">
                 <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
-                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
-                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
-                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
-                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                  <rect x="2" y="8" width="10" height="10" rx="2" transform="rotate(45 7 13)" fill="#FF9C97"/>
+                  <polygon points="15,4 27,13 15,22" fill="#8EA9FF"/>
+                  <polygon points="25,2 40,13 25,24" fill="#5C76D8"/>
                 </svg>
-                <span>Fahnaz Yazid Azmi</span>
+                <span>Priesnayla Dafa Makarim</span>
               </span>
-              <span class="member-nim">(0036)</span>
+              <span class="member-nim">21108052610079</span>
             </li>
             <li>
               <span class="member-name">
                 <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
-                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
-                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
-                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
-                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
+                  <rect x="2" y="8" width="10" height="10" rx="2" transform="rotate(45 7 13)" fill="#FF9C97"/>
+                  <polygon points="15,4 27,13 15,22" fill="#8EA9FF"/>
+                  <polygon points="25,2 40,13 25,24" fill="#5C76D8"/>
                 </svg>
-                <span>Frinza Adista Anastasya</span>
+                <span>Qonita Faiha Qurrotu’Aini</span>
               </span>
-              <span class="member-nim">(0048)</span>
-            </li>
-            <li>
-              <span class="member-name">
-                <svg class="member-bullet" aria-hidden="true" viewBox="0 0 42 26">
-                  <circle cx="4" cy="13" r="3.5" fill="#684327"/>
-                  <polygon points="10,5 20,13 10,21" fill="#684327"/>
-                  <polygon points="18,4 28,13 18,22" fill="#684327"/>
-                  <polygon points="26,2 40,13 26,24" fill="#684327"/>
-                </svg>
-                <span>Haura Putri Rahayu</span>
-              </span>
-              <span class="member-nim">(0056)</span>
+              <span class="member-nim">21108052610080</span>
             </li>
           </ul>
         </div>
 
-        <!-- Yellow pen top-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:5%; inset-inline-end:2%; inline-size:32.5cqi; block-size:19cqb;" viewBox="0 0 480 150">
+        <!-- Pastel Lavender & Lemon Drafting Pen Top-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:4.5%; inset-inline-end:2%; inline-size:32cqi; block-size:19cqb;" viewBox="0 0 480 150">
           <g transform="rotate(-12 240 75)">
-            <path d="M50 75 L92 58 L92 92 Z" fill="#FFC107"/>
-            <rect x="88" y="54" width="330" height="42" rx="14" fill="#FFC107"/>
-            <rect x="400" y="54" width="38" height="42" rx="12" fill="#FFC107"/>
-            <rect x="385" y="54" width="16" height="42" fill="#496D70"/>
-            <path d="M290 54 L290 42 L412 42 C418 42,422 46,422 52" fill="none" stroke="#496D70" stroke-width="10" stroke-linecap="round"/>
-            <path d="M40 75 L58 68 L58 82 Z" fill="#E69A00"/>
+            <path d="M46 75 L92 56 L92 94 Z" fill="#FFE2CC"/>
+            <path d="M46 75 L64 67 L64 83 Z" fill="#2B2D5C"/>
+            <rect x="90" y="54" width="328" height="42" rx="14" fill="#FFE26A"/>
+            <rect x="398" y="54" width="38" height="42" rx="12" fill="#FF9C97"/>
+            <rect x="382" y="54" width="16" height="42" fill="#8EA9FF"/>
+            <path d="M290 54 L290 40 L410 40 C418 40,422 45,422 52" fill="none" stroke="#5C76D8" stroke-width="10" stroke-linecap="round"/>
           </g>
         </svg>
 
-        <!-- Scissors bottom-left -->
-        <svg class="decor" aria-hidden="true" style="inset-block-end:-2%; inset-inline-start:-2%; inline-size:14.5cqi; block-size:66cqb;" viewBox="0 0 180 460">
-          <g transform="rotate(8 90 230)">
-            <path d="M120 20 C95 85,82 180,82 230 L118 230 Z" fill="#FFFFFF"/>
-            <path d="M84 130 L42 245 L88 245 Z" fill="#E9EFF1"/>
-            <circle cx="96" cy="220" r="11" fill="#42494B"/>
-            <path d="M86 232 C56 260,22 300,26 360 C30 410,92 415,102 365 C108 332,96 280,98 232 Z" fill="#496D70"/>
-            <ellipse cx="64" cy="352" rx="22" ry="30" fill="#BFE9D1"/>
-            <path d="M104 232 C132 258,158 302,154 362 C150 412,98 415,92 365 C88 332,98 282,96 232 Z" fill="#496D70"/>
-            <ellipse cx="122" cy="354" rx="22" ry="30" fill="#BFE9D1"/>
-          </g>
+        <!-- Intersecting Geometric Tile Motif Bottom-Left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:2.5%; inline-size:13.5cqi; block-size:26cqb;" viewBox="0 0 180 180">
+          <rect x="16" y="16" width="144" height="144" rx="18" fill="#E6DCFF" stroke="#CBB8FB" stroke-width="5"/>
+          <rect x="16" y="16" width="84" height="84" rx="10" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
+          <rect x="100" y="100" width="60" height="60" rx="8" fill="#FFF1A8" stroke="#F5CF58" stroke-width="4"/>
+          <line x1="16" y1="160" x2="160" y2="16" stroke="#5C76D8" stroke-width="4" stroke-dasharray="8 6"/>
         </svg>
 
-        <!-- Drafting compass bottom-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:0.5%; inline-size:17cqi; block-size:64cqb;" viewBox="0 0 240 460">
+        <!-- Pastel Periwinkle Compass Bottom-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:1%; inline-size:16.5cqi; block-size:62cqb;" viewBox="0 0 240 460">
           <g transform="rotate(6 120 230)">
-            <rect x="108" y="18" width="28" height="105" fill="#89B2B9"/>
-            <circle cx="122" cy="138" r="24" fill="#89B2B9"/>
-            <circle cx="122" cy="138" r="9" fill="#496D70"/>
-            <path d="M106 155 L42 440 L52 444 L66 408 L120 162 Z" fill="#496D70"/>
-            <path d="M138 155 L198 440 L188 444 L174 408 L124 162 Z" fill="#496D70"/>
-            <polygon points="42,440 34,458 52,444" fill="#2A4042"/>
-            <polygon points="198,440 206,458 188,444" fill="#2A4042"/>
+            <rect x="108" y="18" width="28" height="105" rx="8" fill="#9AE8DE"/>
+            <circle cx="122" cy="138" r="24" fill="#8EA9FF"/>
+            <circle cx="122" cy="138" r="9" fill="#2B2D5C"/>
+            <path d="M106 155 L42 440 L52 444 L66 408 L120 162 Z" fill="#5C76D8"/>
+            <path d="M138 155 L198 440 L188 444 L174 408 L124 162 Z" fill="#5C76D8"/>
+            <polygon points="42,440 34,458 52,444" fill="#2B2D5C"/>
+            <polygon points="198,440 206,458 188,444" fill="#2B2D5C"/>
           </g>
         </svg>
       </section>
 
       <!-- ========================================================
-           SLIDE 3: DEFINISI
+           SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
       <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 5: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
-        <!-- Top scalloped cloud shape -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-start:23%; inline-size:19cqi; block-size:8cqb;" viewBox="0 0 260 60">
-          <circle cx="38" cy="16" r="28" fill="#91B9A6"/>
-          <circle cx="96" cy="16" r="28" fill="#91B9A6"/>
-          <circle cx="154" cy="16" r="28" fill="#91B9A6"/>
-          <circle cx="212" cy="16" r="28" fill="#91B9A6"/>
+        <!-- Top pastel divided-segment bar motif -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
+          <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
+          <rect x="104" y="14" width="120" height="28" rx="14" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="4"/>
+          <rect x="232" y="14" width="80" height="28" rx="14" fill="#E6DCFF" stroke="#CBB8FB" stroke-width="4"/>
         </svg>
-        <!-- Right trefoil doodle -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:40%; inset-inline-end:0.8%; inline-size:6cqi; block-size:12cqb;" viewBox="0 0 90 100">
-          <circle cx="28" cy="36" r="14" fill="#91B9A6"/>
-          <circle cx="62" cy="34" r="14" fill="#91B9A6"/>
-          <circle cx="46" cy="64" r="14" fill="#91B9A6"/>
-          <circle cx="46" cy="46" r="14" fill="#91B9A6"/>
-        </svg>
-        <svg class="decor" aria-hidden="true" style="inset-block-end:-2%; inset-inline-start:-2%; inline-size:6cqi; block-size:14cqb;" viewBox="0 0 80 100">
-          <circle cx="30" cy="60" r="34" fill="#91B9A6"/>
+
+        <!-- Right pastel trefoil / sparkle -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:40%; inset-inline-end:1.2%; inline-size:5.8cqi; block-size:11cqb;" viewBox="0 0 90 100">
+          <polygon points="45,10 80,50 45,90 10,50" fill="#FFF1A8" stroke="#F5CF58" stroke-width="5"/>
+          <circle cx="45" cy="50" r="10" fill="#FF9C97"/>
         </svg>
 
         <!-- White framed paper -->
@@ -1074,45 +1086,54 @@
           </ol>
         </div>
 
-        <!-- Magnifying glass top-left -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-start:-1%; inline-size:21cqi; block-size:40cqb;" viewBox="0 0 300 300">
-          <line x1="12" y1="276" x2="104" y2="188" stroke="#496D70" stroke-width="26" stroke-linecap="round"/>
-          <line x1="68" y1="222" x2="112" y2="180" stroke="#355457" stroke-width="28" stroke-linecap="round"/>
-          <circle cx="176" cy="112" r="105" fill="#89B2B9"/>
-          <circle cx="176" cy="112" r="78" fill="#496D70"/>
-          <circle cx="176" cy="112" r="68" fill="#CBE7EC"/>
-          <path d="M126 112 C122 86,142 54,174 52 C180 52,182 62,174 66 C152 72,142 94,142 114 C142 122,128 122,126 112 Z" fill="#FFFFFF"/>
-          <ellipse cx="182" cy="144" rx="26" ry="11" transform="rotate(-32 182 144)" fill="#FFFFFF"/>
-        </svg>
-
-        <!-- Yellow marker top-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-end:0; inline-size:38cqi; block-size:10.5cqb;" viewBox="0 0 560 90">
-          <rect x="0" y="34" width="22" height="22" fill="#FFA000"/>
-          <polygon points="22,22 65,12 65,78 22,68" fill="#181A1B"/>
-          <polygon points="65,12 108,0 108,90 65,78" fill="#FBE3BE"/>
-          <rect x="108" y="0" width="452" height="90" fill="#FFC107"/>
-          <rect x="108" y="22" width="452" height="20" fill="#FFB300"/>
-          <rect x="108" y="54" width="452" height="16" fill="#FFB300"/>
-        </svg>
-
-        <!-- Chunky yellow pencil bottom-left -->
-        <svg class="decor" aria-hidden="true" style="inset-block-end:4%; inset-inline-start:4.5%; inline-size:9cqi; block-size:50cqb;" viewBox="0 0 130 380">
-          <g transform="rotate(-7 65 190)">
-            <rect x="28" y="16" width="74" height="36" rx="14" fill="#684327"/>
-            <rect x="28" y="42" width="74" height="28" fill="#FBE3BE"/>
-            <rect x="28" y="70" width="74" height="205" fill="#FFC107"/>
-            <rect x="53" y="70" width="24" height="205" fill="#FFB300"/>
-            <polygon points="28,275 102,275 65,360" fill="#FBE3BE"/>
-            <polygon points="55,336 75,336 65,360" fill="#181A1B"/>
+        <!-- Gnomon & Diagonal Geometric Figure Top-Left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:2%; inline-size:16.5cqi; block-size:29cqb;" viewBox="0 0 220 220">
+          <g transform="rotate(-8 110 110)">
+            <rect x="20" y="20" width="180" height="180" rx="18" fill="#FFF1A8" stroke="#F5CF58" stroke-width="6"/>
+            <!-- Gnomon L-shape highlight -->
+            <path d="M28,28 L192,28 L192,192 L122,192 L122,98 L28,98 Z" fill="#FFE2CC"/>
+            <!-- Inner square around diagonal -->
+            <rect x="28" y="98" width="94" height="94" fill="#CCF5E1" stroke="#3EA381" stroke-width="4"/>
+            <line x1="28" y1="192" x2="192" y2="28" stroke="#5C76D8" stroke-width="5" stroke-dasharray="10 7"/>
+            <circle cx="122" cy="98" r="6" fill="#2B2D5C"/>
           </g>
         </svg>
 
-        <!-- Open book bottom-right -->
-        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:-1%; inline-size:18cqi; block-size:38cqb;" viewBox="0 0 280 280">
-          <polygon points="0,248 22,195 265,245 258,280 0,280" fill="#496D70"/>
-          <path d="M18 190 C70 115,155 110,205 118 L188 225 C135 218,65 225,10 245 Z" fill="#EAE4E7"/>
-          <path d="M205 118 C242 125,272 155,280 188 L260 250 C228 242,202 232,188 225 Z" fill="#DCD4D8"/>
-          <path d="M126 240 L126 280 L146 270 L166 280 L166 242 Z" fill="#89B2B9"/>
+        <!-- Pastel Aqua & Periwinkle Drafting Scale Ruler Top-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-end:0; inline-size:37cqi; block-size:11cqb;" viewBox="0 0 560 90">
+          <rect x="0" y="10" width="560" height="72" rx="12" fill="#9AE8DE" stroke="#5EC2B6" stroke-width="4"/>
+          <rect x="0" y="26" width="560" height="16" fill="#CCF5E1"/>
+          <g stroke="#2B2D5C" stroke-width="3.5" stroke-linecap="round">
+            <line x1="36" y1="82" x2="36" y2="54"/><line x1="68" y1="82" x2="68" y2="66"/>
+            <line x1="100" y1="82" x2="100" y2="54"/><line x1="132" y1="82" x2="132" y2="66"/>
+            <line x1="164" y1="82" x2="164" y2="54"/><line x1="196" y1="82" x2="196" y2="66"/>
+            <line x1="228" y1="82" x2="228" y2="54"/><line x1="260" y1="82" x2="260" y2="66"/>
+            <line x1="292" y1="82" x2="292" y2="54"/><line x1="324" y1="82" x2="324" y2="66"/>
+            <line x1="356" y1="82" x2="356" y2="54"/><line x1="388" y1="82" x2="388" y2="66"/>
+            <line x1="420" y1="82" x2="420" y2="54"/><line x1="452" y1="82" x2="452" y2="66"/>
+            <line x1="484" y1="82" x2="484" y2="54"/>
+          </g>
+        </svg>
+
+        <!-- Right-Angle Rectangle Construction Bottom-Left -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:6%; inset-inline-start:2.8%; inline-size:12cqi; block-size:34cqb;" viewBox="0 0 180 260">
+          <g transform="rotate(-7 90 130)">
+            <rect x="26" y="34" width="124" height="190" rx="14" fill="#E6DCFF" stroke="#8B72D6" stroke-width="5"/>
+            <polyline points="26,188 60,188 60,224" fill="none" stroke="#5C76D8" stroke-width="5"/>
+            <line x1="26" y1="224" x2="150" y2="34" stroke="#FF9C97" stroke-width="5" stroke-dasharray="9 7"/>
+            <circle cx="26" cy="224" r="8" fill="#FF9C97"/>
+          </g>
+        </svg>
+
+        <!-- Open Geometry Sketchbook Bottom-Right -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-end:-0.5%; inline-size:18.5cqi; block-size:36cqb;" viewBox="0 0 280 260">
+          <polygon points="0,235 22,185 268,232 260,260 0,260" fill="#8EA9FF"/>
+          <path d="M18 180 C70 105,155 100,205 108 L188 215 C135 208,65 215,10 232 Z" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="4"/>
+          <path d="M205 108 C242 115,272 145,280 178 L260 238 C228 230,202 220,188 215 Z" fill="#F4F0FF" stroke="#CBB8FB" stroke-width="4"/>
+          <!-- Mini diagram drawn on open page -->
+          <rect x="74" y="138" width="84" height="52" fill="#CCF5E1" stroke="#5C76D8" stroke-width="3.5"/>
+          <line x1="74" y1="190" x2="158" y2="138" stroke="#FF9C97" stroke-width="3.5"/>
+          <path d="M132 226 L132 260 L150 250 L168 260 L168 228 Z" fill="#FFE26A"/>
         </svg>
       </section>
 
@@ -1122,38 +1143,31 @@
       <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 5: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
-          <!-- Left edge mint dots -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.5%; inline-size:4.5cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="180" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="336" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="492" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="600" r="24" fill="#BFE9D1"/>
+          <!-- Left edge pastel geometric dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
+            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
+            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
+            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
           </svg>
-          <!-- Bottom-left faint pinwheel -->
-          <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:-2%; inline-size:6cqi; block-size:15cqb;" viewBox="0 0 90 110">
-            <g fill="#9BB3B6" opacity="0.7">
-              <ellipse cx="32" cy="30" rx="10" ry="22" transform="rotate(-25 32 30)"/>
-              <ellipse cx="56" cy="45" rx="10" ry="22" transform="rotate(40 56 45)"/>
-              <ellipse cx="52" cy="76" rx="10" ry="22" transform="rotate(110 52 76)"/>
-              <ellipse cx="22" cy="82" rx="10" ry="22" transform="rotate(165 22 82)"/>
-            </g>
-          </svg>
-          <!-- Horizontal teal pencil top-left -->
+          <!-- Horizontal pastel drafting pencil top-left -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#496D70"/>
-            <rect x="0" y="18" width="295" height="14" fill="#89B2B9"/>
-            <rect x="0" y="42" width="295" height="12" fill="#355457"/>
-            <polygon points="295,0 380,34 295,68" fill="#FBE3BE"/>
-            <polygon points="344,20 380,34 344,48" fill="#355457"/>
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
-          <!-- Gray loop doodle top-center -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4cqi; block-size:12cqb;" viewBox="0 0 60 110">
-            <path d="M26 8 C12 22,12 48,30 48 C46 48,48 26,34 26 C22 26,24 62,38 78 C42 84,36 96,26 102" fill="none" stroke="#9EB6BA" stroke-width="6.5" stroke-linecap="round"/>
+          <!-- Pastel loop/grid doodle top-center -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
+            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
+            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
           </svg>
-          <!-- Slanted teal tape bottom -->
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:14cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,0 380,75 235,120" fill="#496D70"/>
+          <!-- Pastel geometric ribbon bottom -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
+            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
           </svg>
 
           <h1 class="prop-badge" lang="en">Proposition 1</h1>
@@ -1170,8 +1184,8 @@
                 <span>Dibentuk suatu garis A :</span>
                 <svg class="fig-line-a" role="img" viewBox="0 0 56 110">
                   <title>Garis lurus vertikal A</title>
-                  <line x1="12" y1="6" x2="12" y2="104" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
-                  <text x="26" y="64" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="28" font-weight="700">A</text>
+                  <line x1="12" y1="6" x2="12" y2="104" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
+                  <text x="26" y="64" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="28" font-weight="800">A</text>
                 </svg>
               </div>
 
@@ -1179,9 +1193,9 @@
                 <span>Dibentuk suatu garis BC :</span>
                 <svg class="fig-line-bc" role="img" viewBox="0 0 240 64">
                   <title>Garis lurus horizontal BC</title>
-                  <text x="4" y="28" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">B</text>
-                  <text x="216" y="28" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">C</text>
-                  <line x1="12" y1="44" x2="226" y2="44" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
+                  <text x="4" y="28" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
+                  <text x="216" y="28" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
+                  <line x1="12" y1="44" x2="226" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
                 </svg>
               </div>
             </div>
@@ -1190,13 +1204,13 @@
               <span>Lalu, potong garis BC secara sembarang :</span>
               <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
                 <title>Garis BC yang dipotong di titik D dan E menjadi bagian BD, DE, dan EC</title>
-                <text x="4" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">B</text>
-                <text x="72" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">D</text>
-                <text x="150" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">E</text>
-                <text x="228" y="26" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="24" font-weight="700">C</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#181818" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="82" cy="46" r="7" fill="#181818"/>
-                <circle cx="158" cy="46" r="7" fill="#181818"/>
+                <text x="4" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
+                <text x="72" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">D</text>
+                <text x="150" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">E</text>
+                <text x="228" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
+                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
+                <circle cx="82" cy="46" r="7" fill="#5C76D8"/>
+                <circle cx="158" cy="46" r="7" fill="#FF9C97"/>
               </svg>
             </div>
 
@@ -1206,24 +1220,40 @@
           </div>
         </div>
 
-        <!-- Right mint panel -->
+        <!-- Right pastel panel -->
         <div class="prop-right">
-          <!-- Yellow block top-right -->
+          <!-- Pastel peach/lemon corner card top-right -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
             <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="18" fill="#FFC107"/>
-              <rect x="20" y="10" width="95" height="120" rx="16" fill="#FFB300"/>
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
             </g>
           </svg>
-          <!-- Magnifying glass middle-right -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:34%; inset-inline-start:3%; inline-size:27cqi; block-size:52cqb;" viewBox="0 0 320 340">
-            <line x1="215" y1="210" x2="310" y2="312" stroke="#496D70" stroke-width="26" stroke-linecap="round"/>
-            <line x1="205" y1="200" x2="242" y2="238" stroke="#355457" stroke-width="28" stroke-linecap="round"/>
-            <circle cx="132" cy="130" r="118" fill="#89B2B9"/>
-            <circle cx="132" cy="130" r="88" fill="#496D70"/>
-            <circle cx="132" cy="130" r="77" fill="#CBE7EC"/>
-            <path d="M78 130 C74 100,96 64,132 62 C139 62,140 73,132 77 C108 83,96 108,96 130 C96 139,80 139,78 130 Z" fill="#FFFFFF"/>
-            <ellipse cx="138" cy="166" rx="30" ry="12" transform="rotate(-32 138 166)" fill="#FFFFFF"/>
+
+          <!-- Line-Division Visual Card (replaces generic magnifying glass) -->
+          <svg role="img" style="inline-size:23cqi; block-size:38cqb;" viewBox="0 0 300 300">
+            <title>Ilustrasi pembagian garis: tinggi a dikalikan segmen b, c, dan d yang membentuk tiga bagian luas persegi panjang</title>
+            <rect x="14" y="14" width="272" height="272" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
+            <!-- Height segment a -->
+            <line x1="56" y1="92" x2="56" y2="210" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="56" cy="92" r="7" fill="#5C76D8"/>
+            <circle cx="56" cy="210" r="7" fill="#5C76D8"/>
+            <text x="32" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">a</text>
+            <!-- Divided pastel rectangles -->
+            <rect x="82" y="92" width="58" height="118" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
+            <rect x="140" y="92" width="66" height="118" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
+            <rect x="206" y="92" width="52" height="118" fill="#E6DCFF" stroke="#232652" stroke-width="3.5"/>
+            <!-- Segment labels b, c, d -->
+            <text x="104" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">b</text>
+            <text x="166" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">c</text>
+            <text x="226" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">d</text>
+            <!-- Area expressions inside -->
+            <text x="97" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
+            <text x="160" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
+            <text x="219" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ad</text>
+            <!-- Caption pill -->
+            <rect x="44" y="232" width="212" height="36" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
+            <text x="150" y="256" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">a(b+c+d) = ab+ac+ad</text>
           </svg>
         </div>
       </section>
@@ -1234,38 +1264,31 @@
       <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 5: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
-          <!-- Left edge mint dots -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.5%; inline-size:4.5cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="180" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="336" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="492" r="24" fill="#BFE9D1"/>
-            <circle cx="32" cy="600" r="24" fill="#BFE9D1"/>
+          <!-- Left edge pastel geometric dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
+            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
+            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
+            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
           </svg>
-          <!-- Bottom-left faint pinwheel -->
-          <svg class="decor" aria-hidden="true" style="inset-block-end:3%; inset-inline-start:-2%; inline-size:6cqi; block-size:15cqb;" viewBox="0 0 90 110">
-            <g fill="#9BB3B6" opacity="0.7">
-              <ellipse cx="32" cy="30" rx="10" ry="22" transform="rotate(-25 32 30)"/>
-              <ellipse cx="56" cy="45" rx="10" ry="22" transform="rotate(40 56 45)"/>
-              <ellipse cx="52" cy="76" rx="10" ry="22" transform="rotate(110 52 76)"/>
-              <ellipse cx="22" cy="82" rx="10" ry="22" transform="rotate(165 22 82)"/>
-            </g>
-          </svg>
-          <!-- Horizontal teal pencil top-left -->
+          <!-- Horizontal pastel drafting pencil top-left -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#496D70"/>
-            <rect x="0" y="18" width="295" height="14" fill="#89B2B9"/>
-            <rect x="0" y="42" width="295" height="12" fill="#355457"/>
-            <polygon points="295,0 380,34 295,68" fill="#FBE3BE"/>
-            <polygon points="344,20 380,34 344,48" fill="#355457"/>
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
-          <!-- Gray loop doodle top-center -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4cqi; block-size:12cqb;" viewBox="0 0 60 110">
-            <path d="M26 8 C12 22,12 48,30 48 C46 48,48 26,34 26 C22 26,24 62,38 78 C42 84,36 96,26 102" fill="none" stroke="#9EB6BA" stroke-width="6.5" stroke-linecap="round"/>
+          <!-- Pastel loop/grid doodle top-center -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
+            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
+            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
           </svg>
-          <!-- Slanted teal tape bottom -->
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:14cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,0 380,75 235,120" fill="#496D70"/>
+          <!-- Pastel geometric ribbon bottom -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
+            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
           </svg>
 
           <h1 class="prop-badge" lang="en">Proposition 1</h1>
@@ -1291,55 +1314,57 @@
           </div>
         </div>
 
-        <!-- Right mint panel -->
+        <!-- Right pastel panel -->
         <div class="prop-right">
-          <!-- Yellow block top-right -->
+          <!-- Pastel peach/lemon corner card top-right -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
             <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="18" fill="#FFC107"/>
-              <rect x="20" y="10" width="95" height="120" rx="16" fill="#FFB300"/>
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
             </g>
           </svg>
 
           <!-- Graph-paper framed geometric diagram -->
           <div class="diagram-grid-card">
-            <!-- Cute leaf accents around the grid card -->
-            <svg class="decor" aria-hidden="true" style="inset-block-start:-7%; inset-inline-end:-7%; inline-size:4.2cqi; block-size:7.5cqb;" viewBox="0 0 70 70">
-              <path d="M12 52 C20 34,36 18,46 6 C50 20,42 40,22 50 Z" fill="#496D70"/>
-              <path d="M14 54 C30 48,48 50,62 60 C46 64,28 62,14 54 Z" fill="#496D70"/>
+            <!-- Pastel geometric corner accents -->
+            <svg class="decor" aria-hidden="true" style="inset-block-start:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#FF9C97"/>
             </svg>
-            <svg class="decor" aria-hidden="true" style="inset-block-start:42%; inset-inline-start:-11%; inline-size:3.5cqi; block-size:8cqb;" viewBox="0 0 60 80">
-              <path d="M52 40 C36 22,22 14,10 10 C12 24,26 38,48 42 Z" fill="#496D70"/>
-              <path d="M52 42 C34 46,20 56,16 70 C30 68,44 58,52 42 Z" fill="#496D70"/>
+            <svg class="decor" aria-hidden="true" style="inset-block-start:42%; inset-inline-start:-9%; inline-size:3.2cqi; block-size:7cqb;" viewBox="0 0 50 70">
+              <polygon points="8,35 44,12 44,58" fill="#9AE8DE"/>
             </svg>
-            <svg class="decor" aria-hidden="true" style="inset-block-end:-7%; inset-inline-end:-7%; inline-size:4.2cqi; block-size:7.5cqb;" viewBox="0 0 70 70">
-              <path d="M14 52 C24 30,42 18,60 12 C56 28,42 44,18 52 Z" fill="#496D70"/>
-              <path d="M16 54 C32 52,48 56,60 66 C44 68,28 64,16 54 Z" fill="#496D70"/>
+            <svg class="decor" aria-hidden="true" style="inset-block-end:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <rect x="14" y="14" width="32" height="32" rx="6" transform="rotate(45 30 30)" fill="#8EA9FF"/>
             </svg>
 
             <div class="diagram-inner-frame">
               <svg role="img" viewBox="0 0 320 280">
                 <title>Diagram pembuktian Proposisi 1: garis A di atas persegi panjang BH dengan titik potong D dan E di sisi atas BC serta garis tegak DK dan EL menuju sisi bawah GH sehingga terbentuk tiga persegi panjang BK, DL, dan EH</title>
                 <!-- Line segment A above -->
-                <line x1="168" y1="20" x2="168" y2="112" stroke="#141414" stroke-width="3.6" stroke-linecap="square"/>
-                <text x="178" y="72" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">A</text>
+                <line x1="168" y1="20" x2="168" y2="112" stroke="#232652" stroke-width="3.6" stroke-linecap="square"/>
+                <text x="178" y="72" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">A</text>
 
                 <!-- Top labels B, D, E, C -->
-                <text x="34" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">B</text>
-                <text x="116" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">D</text>
-                <text x="200" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">E</text>
-                <text x="278" y="132" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">C</text>
+                <text x="34" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">B</text>
+                <text x="116" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">D</text>
+                <text x="200" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">E</text>
+                <text x="278" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">C</text>
+
+                <!-- Pastel shaded area subdivisions BK, DL, EH -->
+                <rect x="40" y="142" width="82" height="90" fill="#CCF5E1" opacity="0.65"/>
+                <rect x="122" y="142" width="82" height="90" fill="#FFE2CC" opacity="0.65"/>
+                <rect x="204" y="142" width="82" height="90" fill="#E6DCFF" opacity="0.65"/>
 
                 <!-- Rectangle BH and dividing lines DK, EL -->
-                <rect x="40" y="142" width="246" height="90" fill="none" stroke="#141414" stroke-width="3.6"/>
-                <line x1="122" y1="142" x2="122" y2="232" stroke="#141414" stroke-width="3.6"/>
-                <line x1="204" y1="142" x2="204" y2="232" stroke="#141414" stroke-width="3.6"/>
+                <rect x="40" y="142" width="246" height="90" fill="none" stroke="#232652" stroke-width="3.6"/>
+                <line x1="122" y1="142" x2="122" y2="232" stroke="#232652" stroke-width="3.6"/>
+                <line x1="204" y1="142" x2="204" y2="232" stroke="#232652" stroke-width="3.6"/>
 
                 <!-- Bottom labels G, K, L, H -->
-                <text x="32" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">G</text>
-                <text x="116" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">K</text>
-                <text x="198" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">L</text>
-                <text x="278" y="262" fill="#5e3a20" font-family="Nunito, sans-serif" font-size="22" font-weight="700">H</text>
+                <text x="32" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">G</text>
+                <text x="116" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">K</text>
+                <text x="198" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">L</text>
+                <text x="278" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">H</text>
               </svg>
             </div>
           </div>
