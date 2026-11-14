@@ -826,6 +826,49 @@
       }
     }
 
+    /* Combined Teorema + Pembuktian compact layout (Slide 19: Prop 6) */
+    .prop-left--compact {
+      padding-block-start: 8.6cqb;
+      padding-block-end: 2.8cqb;
+    }
+
+    .prop-left--compact .prop-badge {
+      margin-block-end: 1.4cqb;
+      padding-block: 0.7cqb;
+    }
+
+    .prop-left--compact .prop1-quote {
+      margin-block-end: 1.6cqb;
+      padding-block: 1.05cqb;
+      padding-inline: 1.25cqi;
+      line-height: 1.34;
+      font-size: clamp(0.78rem, 1.34vw, 1.82rem);
+    }
+
+    .prop-left--compact .prop1-proof-stack {
+      gap: 1.15cqb;
+      line-height: 1.32;
+      font-size: clamp(0.75rem, 1.22vw, 1.72rem);
+    }
+
+    .prop-left--compact .prop1-steps-list {
+      gap: 0.95cqb;
+    }
+
+    .prop-left--compact .prop1-equation {
+      margin-block-start: 0.1cqb;
+      row-gap: 0.2cqb;
+    }
+
+    @supports (font-size: 1cqi) {
+      .prop-left--compact .prop1-quote {
+        font-size: clamp(0.78rem, 1.34cqi, 1.82rem);
+      }
+      .prop-left--compact .prop1-proof-stack {
+        font-size: clamp(0.75rem, 1.22cqi, 1.72rem);
+      }
+    }
+
     /* ============================================================
        SLIDE 6: INTERACTIVE PROPOSITION 1 SIMULATION
        ============================================================ */
@@ -1268,7 +1311,7 @@
       <!-- ========================================================
            SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
-      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 18: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 20: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
         <!-- Geometric sparkle & right-angle doodles -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
           <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
@@ -1377,7 +1420,7 @@
       <!-- ========================================================
            SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
-      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 18: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 20: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
         <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
           <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
@@ -1500,7 +1543,7 @@
       <!-- ========================================================
            SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
-      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 18: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 20: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
         <!-- Top pastel divided-segment bar motif -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
           <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
@@ -1578,7 +1621,7 @@
       <!-- ========================================================
            SLIDE 4: PROPOSITION 1 (PART 1)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 18: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 20: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1699,7 +1742,7 @@
       <!-- ========================================================
            SLIDE 5: PROPOSITION 1 (PART 2)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 18: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 20: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1826,7 +1869,7 @@
       <!-- ========================================================
            SLIDE 6: SIMULASI INTERAKTIF PROPOSITION 1
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 18: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 20: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel: passive presentation text + live numeric readout -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1957,7 +2000,7 @@
       <!-- ========================================================
            SLIDE 7: PROPOSITION 2 (TEOREMA)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 18: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 20: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2072,7 +2115,7 @@
       <!-- ========================================================
            SLIDE 8: PROPOSITION 2 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 18: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 20: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2189,7 +2232,7 @@
       <!-- ========================================================
            SLIDE 9: SIMULASI INTERAKTIF PROPOSITION 2
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 18: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 20: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2296,7 +2339,7 @@
       <!-- ========================================================
            SLIDE 10: PROPOSITION 3 (TEOREMA)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 18: Proposition 3 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 3 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 20: Proposition 3 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 3 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2411,7 +2454,7 @@
       <!-- ========================================================
            SLIDE 11: PROPOSITION 3 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 18: Proposition 3 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 20: Proposition 3 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2529,7 +2572,7 @@
       <!-- ========================================================
            SLIDE 12: SIMULASI INTERAKTIF PROPOSITION 3
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 18: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 20: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2636,7 +2679,7 @@
       <!-- ========================================================
            SLIDE 13: PROPOSITION 4 (TEOREMA & PENJELASAN AWAL)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 18: Proposition 4 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 4 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 20: Proposition 4 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 4 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2753,7 +2796,7 @@
       <!-- ========================================================
            SLIDE 14: PROPOSITION 4 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 18: Proposition 4 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 20: Proposition 4 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2888,7 +2931,7 @@
       <!-- ========================================================
            SLIDE 15: SIMULASI INTERAKTIF PROPOSITION 4
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 18: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 20: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2995,7 +3038,7 @@
       <!-- ========================================================
            SLIDE 16: PROPOSITION 5 (TEOREMA & PENJELASAN AWAL)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 18: Proposition 5 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 5 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 20: Proposition 5 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 5 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3120,7 +3163,7 @@
       <!-- ========================================================
            SLIDE 17: PROPOSITION 5 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 18: Proposition 5 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 20: Proposition 5 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3264,7 +3307,7 @@
       <!-- ========================================================
            SLIDE 18: SIMULASI INTERAKTIF PROPOSITION 5
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 18: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 20: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3363,6 +3406,264 @@
                 <output class="sim-value-pill" id="sim5-out-c" for="sim5-slider-c">2</output>
               </label>
               <input class="sim-slider" type="range" id="sim5-slider-c" min="1" max="4" step="1" value="2">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 19: PROPOSITION 6 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           ======================================================== -->
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 19 dari 20: Proposition 6 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left prop-left--compact">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
+            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
+            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
+            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
+            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
+            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
+            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Proposition 6</h1>
+
+          <p class="prop1-quote">
+            &ldquo;Jika garis lurus <strong>AB</strong> dibagi dua sama panjang di titik <strong>C</strong> dan diperpanjang dengan garis lurus <strong>BD</strong> secara segaris, maka luas persegi panjang <strong>AD &times; DB</strong> ditambah luas persegi bersisi setengah garis <strong>CB</strong> sama dengan luas persegi bersisi <strong>CD</strong>.&rdquo;
+          </p>
+
+          <div class="prop1-proof-stack">
+            <p class="prop1-intro">Pembuktian memadankan persegi panjang <strong>AD &times; DB</strong> dengan bangun siku <strong>gnomon NOP</strong> (Definisi 2) di dalam persegi <strong>CEFD</strong>:</p>
+
+            <ol class="prop1-steps-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Bangun CEFD &amp; garis bantu:</strong> Pada gabungan <strong>CD</strong> dibentuk persegi <strong>CEFD</strong> dengan diagonal <strong>ED</strong>; melalui <strong>B</strong> ditarik <strong>BG</strong> sejajar <strong>DF</strong> memotong <strong>ED</strong> di <strong>H</strong>, melalui <strong>H</strong> ditarik <strong>KM</strong> sejajar <strong>AD</strong>, lalu ditarik <strong>AK</strong> sejajar <strong>CL</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Buktikan kesamaan AL = HF:</strong> Karena <strong>AC = CB</strong>, diperoleh <span class="area-tag area-tag--mint">AL</span> = <span class="area-tag area-tag--peach">CH</span>. Karena komplemen di sekitar diagonal sama luas (<strong>CH = HF</strong>), diperoleh <span class="area-tag area-tag--mint">AL</span> = <span class="area-tag area-tag--mint">HF</span>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Padankan AM dengan Gnomon NOP:</strong> Penambahan daerah gabungan <strong>CM</strong> (<span class="area-tag area-tag--peach">CH</span> + <span class="area-tag area-tag--lavender">DM</span>) menghasilkan <strong>AM = Gnomon NOP</strong>. Karena <strong>DM = DB</strong>, maka <strong>AD &times; DB = AM = Gnomon NOP</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">4</span>
+                <span><strong>Lengkapi dengan persegi LG:</strong> Penambahan persegi <span class="area-tag area-tag--butter">LG</span> (bersisi <strong>CB</strong>, luas <strong>CB&#178;</strong>) pada gnomon <strong>NOP</strong> melengkapi seluruh persegi <strong>CEFD</strong> (luas <strong>CD&#178;</strong>):</span>
+              </li>
+            </ol>
+
+            <div class="prop1-equation">
+              <span class="prop1-equation-label">Luas CEFD</span>
+              <span>= Gnomon NOP + LG = AM + LG</span>
+              <span class="prop1-equation-cont">= (AD &times; DB) + CB&#178; &nbsp;&there4;&nbsp; (AD &times; DB) + CB&#178; = CD&#178;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right pastel panel -->
+        <div class="prop-right">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <!-- Graph-paper framed diagram -->
+          <div class="diagram-grid-card">
+            <svg class="decor" aria-hidden="true" style="inset-block-start:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#FF9C97"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-start:42%; inset-inline-start:-9%; inline-size:3.2cqi; block-size:7cqb;" viewBox="0 0 50 70">
+              <polygon points="8,35 44,12 44,58" fill="#9AE8DE"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-end:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <rect x="14" y="14" width="32" height="32" rx="6" transform="rotate(45 30 30)" fill="#8EA9FF"/>
+            </svg>
+
+            <div class="diagram-inner-frame">
+              <svg role="img" viewBox="0 0 320 280">
+                <title>Diagram pembuktian Proposisi 6: persegi panjang hijau AL sama luas dengan HF sehingga bangun AM berpadanan dengan gnomon NOP (CH, DM, dan HF), ditambah persegi kuning LG membentuk persegi CEFD</title>
+                <!-- Top labels A, C, B, D -->
+                <text x="54" y="56" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">A</text>
+                <text x="134" y="56" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">C</text>
+                <text x="214" y="56" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">B</text>
+                <text x="260" y="56" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">D</text>
+
+                <!-- Shaded subdivisions: AL (mint), CH (peach), DM (lavender), LG (butter), HF (mint) -->
+                <rect x="54" y="70" width="80" height="46" fill="#CCF5E1" opacity="0.92"/>
+                <rect x="134" y="70" width="80" height="46" fill="#FFE2CC" opacity="0.92"/>
+                <rect x="214" y="70" width="46" height="46" fill="#E6DCFF" opacity="0.92"/>
+                <rect x="134" y="116" width="80" height="80" fill="#FFF1A8" opacity="0.95"/>
+                <rect x="214" y="116" width="46" height="80" fill="#CCF5E1" opacity="0.92"/>
+
+                <!-- Right-angle corner marker inside CEFD at C -->
+                <polyline points="146,70 146,82 134,82" fill="none" stroke="#5C76D8" stroke-width="2.2"/>
+
+                <!-- Outlines AL, square CEFD, BG, KM, diagonal ED -->
+                <rect x="54" y="70" width="80" height="46" fill="none" stroke="#232652" stroke-width="3.2"/>
+                <rect x="134" y="70" width="126" height="126" fill="none" stroke="#232652" stroke-width="3.2"/>
+                <line x1="214" y1="70" x2="214" y2="196" stroke="#232652" stroke-width="2.8"/>
+                <line x1="134" y1="116" x2="260" y2="116" stroke="#232652" stroke-width="2.8"/>
+                <line x1="134" y1="196" x2="260" y2="70" stroke="#5C76D8" stroke-width="2.6"/>
+                <circle cx="214" cy="116" r="4.2" fill="#5C76D8"/>
+
+                <!-- Dashed gnomon arc circling N-O-P around H (CH -> DM -> HF) -->
+                <path d="M 195 110 A 19 19 0 1 1 221 134" fill="none" stroke="#5C76D8" stroke-width="2" stroke-dasharray="4 3"/>
+
+                <!-- Region names avoiding diagonal ED & gnomon arc -->
+                <text x="94" y="98" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="16.5" font-weight="800">AL</text>
+                <text x="161" y="97" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">CH</text>
+                <text x="227" y="85" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="14" font-weight="800">DM</text>
+                <rect x="167" y="160" width="32" height="22" rx="5" fill="#FFF1A8"/>
+                <text x="183" y="176" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="16.5" font-weight="800">LG</text>
+                <text x="240" y="169" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">HF</text>
+
+                <!-- Gnomon markers N, O, P and vertex H -->
+                <text x="181" y="108" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800">N</text>
+                <text x="246" y="108" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="14.5" font-weight="800">O</text>
+                <text x="229" y="149" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="14.5" font-weight="800">P</text>
+                <text x="205" y="111" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800">H</text>
+
+                <!-- Side & bottom labels K, L, M, E, G, F -->
+                <text x="38" y="121" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">K</text>
+                <text x="122" y="132" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="19" font-weight="800">L</text>
+                <text x="275" y="121" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">M</text>
+                <text x="134" y="219" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">E</text>
+                <text x="214" y="219" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">G</text>
+                <text x="260" y="219" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">F</text>
+
+                <text x="160" y="252" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800">Gnomon NOP = CH + DM + HF  |  AL = HF</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="algebra-card">
+            <p class="algebra-title">Bentuk Aljabar</p>
+            <p class="algebra-formula">(2a + b)b + a&#178; = (a + b)&#178;</p>
+            <p class="algebra-formula algebra-formula--compact">(AC = CB = a, BD = b)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 20: SIMULASI INTERAKTIF PROPOSITION 6
+           ======================================================== -->
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 20 dari 20: Simulasi Interaktif Proposition 6" data-theme="split-sim" data-title="Simulasi Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="20" fill="#CCF5E1"/>
+            <rect x="15" y="160" width="34" height="34" rx="8" transform="rotate(45 32 177)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="20" fill="#FFE2CC"/>
+            <polygon points="32,468 52,508 12,508" fill="#FFF1A8"/>
+            <circle cx="32" cy="598" r="20" fill="#DDF3FF"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:19cqi; block-size:6.8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Simulasi Proposition 6</h1>
+
+          <div class="sim-copy-stack">
+            <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang setengah garis a dan perpanjangan b:</p>
+
+            <ol class="sim-copy-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Perpanjangan garis:</strong> Dari garis awal <strong>AB = 2a</strong> dengan titik tengah <strong>C</strong>, penambahan segmen lurus <strong>BD = b</strong> membentuk <strong>AD = 2a + b</strong> dan <strong>CD = a + b</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Kesamaan Gnomon NOP:</strong> Karena <strong>AL = CH = HF</strong>, penambahan daerah <strong>CM</strong> (peach + ungu) menyamakan persegi panjang <strong>AM (AD &times; DB)</strong> dengan bangun siku <strong>gnomon NOP</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Bentuk aljabar:</strong> Penambahan persegi kuning <strong>LG (CB&#178; = a&#178;)</strong> melengkapi gnomon <strong>NOP</strong> menjadi persegi <strong>CEFD</strong>: <strong>(2a + b)b + a&#178; = (a + b)&#178;</strong>.</span>
+              </li>
+            </ol>
+
+            <div class="sim-readout-card" aria-live="polite">
+              <div class="sim-readout-row">
+                <span>Luas CEFD (CD&#178;)</span>
+                <span id="sim6-eq-total">6&#178; = 36</span>
+              </div>
+              <div class="sim-readout-row">
+                <span>(AD &times; DB) + CB&#178;</span>
+                <span id="sim6-eq-parts">20 + 16 = 36</span>
+              </div>
+              <p class="sim-readout-badge" id="sim6-eq-verify">&#10003; (10 &times; 2) + 4&#178; = 6&#178; (36 = 36)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right pastel panel -->
+        <div class="prop-right" data-interactive>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:15cqi; block-size:14cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <p class="visually-hidden" id="sim6-status" role="status" aria-live="polite"></p>
+
+          <div class="sim-toolbar" role="toolbar" focusgroup="toolbar wrap" aria-label="Kontrol simulasi Proposisi 6" aria-controls="sim6-svg">
+            <div class="sim-toolbar-group" role="group" aria-label="Tahap konstruksi">
+              <button type="button" class="sim-btn" data-step="1" aria-pressed="false">1. Garis AB &amp; BD</button>
+              <button type="button" class="sim-btn" data-step="2" aria-pressed="false">2. Persegi CEFD &amp; ED</button>
+              <button type="button" class="sim-btn" data-step="3" aria-pressed="true">3. Gnomon NOP &amp; LG</button>
+            </div>
+            <span role="separator" aria-orientation="vertical"></span>
+            <button type="button" class="sim-btn sim-btn--accent" id="sim6-random-btn">Acak Ukuran</button>
+          </div>
+
+          <div class="sim-canvas-card">
+            <div class="sim-canvas-inner">
+              <svg id="sim6-svg" role="img" viewBox="0 0 540 276" aria-labelledby="sim6-svg-title">
+                <title id="sim6-svg-title">Simulasi interaktif pembuktian Proposisi 6: persegi panjang AD kali DB ditambah persegi LG pada setengah garis sama dengan persegi CEFD pada CD</title>
+                <g id="sim6-layer-fills"></g>
+                <g id="sim6-layer-geometry"></g>
+                <g id="sim6-layer-labels"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="sim-controls-card" aria-label="Pengatur panjang setengah AB dan perpanjangan BD">
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim6-slider-a">
+                <span>Setengah AB (a)</span>
+                <output class="sim-value-pill" id="sim6-out-a" for="sim6-slider-a">4</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim6-slider-a" min="2" max="5" step="1" value="4">
+            </div>
+
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim6-slider-c">
+                <span>Perpanjangan BD (b)</span>
+                <output class="sim-value-pill" id="sim6-out-c" for="sim6-slider-c">2</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim6-slider-c" min="1" max="5" step="1" value="2">
             </div>
           </div>
         </div>
@@ -5360,6 +5661,411 @@
     }
 
     initProp5Simulation(document.getElementById('sim5-svg')?.closest('.slide'));
+
+    // Interactive Proposition 6 Simulation (Slide 20)
+    function initProp6Simulation(slideEl) {
+      if (!slideEl) return;
+
+      const svg = document.getElementById('sim6-svg');
+      if (!svg) return;
+
+      const layerFills = document.getElementById('sim6-layer-fills');
+      const layerGeom = document.getElementById('sim6-layer-geometry');
+      const layerLabels = document.getElementById('sim6-layer-labels');
+      const eqTotal = document.getElementById('sim6-eq-total');
+      const eqParts = document.getElementById('sim6-eq-parts');
+      const eqVerify = document.getElementById('sim6-eq-verify');
+      const simStatus = document.getElementById('sim6-status');
+      const stepButtons = Array.from(slideEl.querySelectorAll('.sim-btn[data-step]'));
+      const randomBtn = document.getElementById('sim6-random-btn');
+      const toolbar = slideEl.querySelector('.sim-toolbar');
+      const sliderA = document.getElementById('sim6-slider-a');
+      const sliderB = document.getElementById('sim6-slider-c');
+      const outA = document.getElementById('sim6-out-a');
+      const outB = document.getElementById('sim6-out-c');
+
+      const state = { a: 4, b: 2, step: 3 };
+      const CENTER_X = 264;
+      const CENTER_Y = 136;
+
+      /** Sync slider visuals, output pills, aria-valuetext, and toolbar active state. */
+      function syncControls() {
+        sliderA.value = String(state.a);
+        syncSliderStyle(sliderA, outA, `a = ${state.a} satuan (AB = ${2 * state.a}, CD = ${state.a + state.b})`);
+
+        sliderB.value = String(state.b);
+        syncSliderStyle(sliderB, outB, `b = ${state.b} satuan (AD = ${2 * state.a + state.b}, BD = ${state.b})`);
+
+        stepButtons.forEach((btn) => {
+          btn.setAttribute('aria-pressed', String(Number(btn.dataset.step) === state.step));
+        });
+      }
+
+      /** Draw A, C, B, D top points and stagger BD label upward when b is narrow. */
+      function renderTopLabels({ xA, xC, xB, xD, yTop, a, b, wA, wB }) {
+        layerGeom.append(svgEl('circle', {
+          cx: xC, cy: yTop, r: 5.5, fill: '#5C76D8', stroke: '#232652', 'stroke-width': 1.6
+        }));
+        layerGeom.append(svgEl('circle', {
+          cx: xB, cy: yTop, r: 6, fill: '#FF9C97', stroke: '#232652', 'stroke-width': 2
+        }));
+
+        const pts = [
+          { x: xA, txt: 'A' },
+          { x: xC, txt: 'C' },
+          { x: xB, txt: 'B' },
+          { x: xD, txt: 'D' }
+        ];
+        pts.forEach(({ x, txt }) => {
+          layerLabels.append(svgEl('text', {
+            x, y: yTop - 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+          }, txt));
+        });
+
+        const segs = [
+          { midX: (xA + xC) / 2, w: wA, txt: `AC=${a}` },
+          { midX: (xC + xB) / 2, w: wA, txt: `CB=${a}` },
+          { midX: (xB + xD) / 2, w: wB, txt: `BD=${b}` }
+        ];
+        segs.forEach(({ midX, w, txt }) => {
+          const raised = w < 38;
+          if (raised) {
+            layerGeom.append(svgEl('line', {
+              x1: midX, y1: yTop - 40, x2: midX, y2: yTop - 25,
+              stroke: '#5C76D8', 'stroke-width': 1.4, 'stroke-dasharray': '2 2'
+            }));
+          }
+          layerLabels.append(svgEl('text', {
+            x: midX, y: raised ? yTop - 45 : yTop - 31, 'text-anchor': 'middle', fill: '#5C76D8',
+            'font-family': 'Nunito, sans-serif', 'font-size': 13.5, 'font-weight': 800
+          }, txt));
+        });
+      }
+
+      /** Render right-side height brace CD = a + b clear of M and external corner pills. */
+      function renderRightHeightBrace({ braceX, yTop, yBot, labelText }) {
+        layerGeom.append(svgEl('line', {
+          x1: braceX, y1: yTop, x2: braceX, y2: yBot,
+          stroke: '#5C76D8', 'stroke-width': 2.2, 'stroke-dasharray': '4 4'
+        }));
+        layerGeom.append(svgEl('line', {
+          x1: braceX - 4, y1: yTop, x2: braceX + 4, y2: yTop,
+          stroke: '#5C76D8', 'stroke-width': 2.2
+        }));
+        layerGeom.append(svgEl('line', {
+          x1: braceX - 4, y1: yBot, x2: braceX + 4, y2: yBot,
+          stroke: '#5C76D8', 'stroke-width': 2.2
+        }));
+        layerLabels.append(svgEl('text', {
+          x: braceX + 7, y: CENTER_Y + 5, 'text-anchor': 'start', fill: '#5C76D8',
+          'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+        }, labelText));
+      }
+
+      /** Draw diagonal square label (DM or LG) with opaque halo or safe top-right external pill. */
+      function renderDiagSquareLabel({
+        name, fill, x, y, w, dim, area, braceX, yTop
+      }) {
+        const cx = x + w / 2;
+        const cy = y + w / 2;
+        if (w >= 64) {
+          const haloW = Math.min(w - 6, 68);
+          layerLabels.append(svgEl('rect', {
+            x: cx - haloW / 2, y: cy - 20, width: haloW, height: 36, rx: 8, fill, opacity: 1
+          }));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy - 6, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14, 'font-weight': 800
+          }, name));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy + 11, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 12.5, 'font-weight': 700
+          }, `${dim} × ${dim} = ${area}`));
+          return;
+        }
+        if (w >= 40) {
+          const haloW = Math.min(w - 4, 42);
+          layerLabels.append(svgEl('rect', {
+            x: cx - haloW / 2, y: cy - 10, width: haloW, height: 20, rx: 5, fill, opacity: 1
+          }));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy + 4.5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 12, 'font-weight': 800
+          }, `${name}=${area}`));
+          return;
+        }
+
+        const anchorX = braceX + 8;
+        renderSvgPillCallout(layerGeom, layerLabels, {
+          dotX: cx, dotY: cy, anchorX, pillX: anchorX, pillY: yTop - 6,
+          pillW: 82, fill, labelText: `${name} = ${area}`
+        });
+      }
+
+      /** Render an interior compartment label or compact fallback for rectangles AL, CH, HF. */
+      function renderRectLabel({ name, w, h, cx, cy, dim1, dim2, area, compactThresholdW = 42, compactThresholdH = 22 }) {
+        if (w >= 58 && h >= 48) {
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy - 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+          }, name));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy + 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 13, 'font-weight': 700
+          }, `${dim1}×${dim2}=${area}`));
+          return true;
+        }
+        if (w >= compactThresholdW && h >= compactThresholdH) {
+          layerLabels.append(svgEl('text', {
+            x: cx, y: cy + 4.5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 11.5, 'font-weight': 800
+          }, `${name}=${area}`));
+          return true;
+        }
+        return false;
+      }
+
+      function render() {
+        syncControls();
+
+        const a = state.a;
+        const b = state.b;
+        const ad = 2 * a + b;
+        const cd = a + b;
+        const pxPerUnit = Math.min(28, Math.floor(330 / ad), Math.floor(148 / cd));
+        const wA = a * pxPerUnit;
+        const wB = b * pxPerUnit;
+        const totalW = ad * pxPerUnit;
+        const sideSq = cd * pxPerUnit;
+
+        const xA = Math.round(CENTER_X - totalW / 2);
+        const xC = xA + wA;
+        const xB = xC + wA;
+        const xD = xB + wB;
+        const yTop = Math.round(CENTER_Y - sideSq / 2);
+        const ySplit = yTop + wB;
+        const yBot = yTop + sideSq;
+
+        const areaAL = a * b;
+        const areaCH = a * b;
+        const areaDM = b * b;
+        const areaLG = a * a;
+        const areaHF = b * a;
+        const areaGnomon = ad * b;
+        const areaTotal = cd * cd;
+
+        layerFills.replaceChildren();
+        layerGeom.replaceChildren();
+        layerLabels.replaceChildren();
+
+        if (state.step === 2) {
+          layerFills.append(svgEl('rect', {
+            x: xC, y: yTop, width: sideSq, height: sideSq, fill: '#EAF7FF', opacity: 1
+          }));
+        } else if (state.step >= 3) {
+          layerFills.append(svgEl('rect', {
+            x: xA, y: yTop, width: wA, height: wB, fill: '#CCF5E1', opacity: 1
+          }));
+          layerFills.append(svgEl('rect', {
+            x: xC, y: yTop, width: wA, height: wB, fill: '#FFE2CC', opacity: 1
+          }));
+          layerFills.append(svgEl('rect', {
+            x: xB, y: yTop, width: wB, height: wB, fill: '#E6DCFF', opacity: 1
+          }));
+          layerFills.append(svgEl('rect', {
+            x: xC, y: ySplit, width: wA, height: wA, fill: '#FFF1A8', opacity: 1
+          }));
+          layerFills.append(svgEl('rect', {
+            x: xB, y: ySplit, width: wB, height: wA, fill: '#CCF5E1', opacity: 1
+          }));
+        }
+
+        // Top line AD (always shown)
+        layerGeom.append(svgEl('line', {
+          x1: xA, y1: yTop, x2: xD, y2: yTop,
+          stroke: '#232652', 'stroke-width': 3.6, 'stroke-linecap': 'square'
+        }));
+
+        if (state.step === 1) {
+          layerGeom.append(svgEl('circle', { cx: xA, cy: yTop, r: 4.5, fill: '#232652' }));
+          layerGeom.append(svgEl('circle', { cx: xD, cy: yTop, r: 4.5, fill: '#232652' }));
+        } else {
+          const braceX = state.step >= 3 ? (wB < 40 ? xD + 30 : xD + 26) : xD + 16;
+          renderRightHeightBrace({
+            braceX,
+            yTop,
+            yBot,
+            labelText: `CD=${cd}`
+          });
+
+          layerGeom.append(svgEl('rect', {
+            x: xC, y: yTop, width: sideSq, height: sideSq,
+            fill: 'none', stroke: '#232652', 'stroke-width': 3.4
+          }));
+          layerGeom.append(svgEl('line', {
+            x1: xC, y1: yBot, x2: xD, y2: yTop,
+            stroke: '#5C76D8', 'stroke-width': 2.5
+          }));
+
+          const szCorner = Math.min(10, Math.floor(sideSq * 0.22));
+          layerGeom.append(svgEl('polyline', {
+            points: `${xC + szCorner},${yTop} ${xC + szCorner},${yTop + szCorner} ${xC},${yTop + szCorner}`,
+            fill: 'none', stroke: '#5C76D8', 'stroke-width': 2
+          }));
+
+          if (state.step === 2) {
+            layerGeom.append(svgEl('circle', { cx: xA, cy: yTop, r: 4.5, fill: '#232652' }));
+            const sqCx = xC + sideSq / 2;
+            const haloW = Math.min(sideSq - 10, 88);
+            layerLabels.append(svgEl('rect', {
+              x: sqCx - haloW / 2, y: CENTER_Y - 22, width: haloW, height: 44, rx: 9, fill: '#EAF7FF', opacity: 1
+            }));
+            layerLabels.append(svgEl('text', {
+              x: sqCx, y: CENTER_Y - 4, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+            }, 'CEFD'));
+            layerLabels.append(svgEl('text', {
+              x: sqCx, y: CENTER_Y + 15, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 13.5, 'font-weight': 700
+            }, sideSq >= 96 ? `${cd} × ${cd} = ${areaTotal}` : `${cd}²=${areaTotal}`));
+          } else {
+            layerGeom.append(svgEl('rect', {
+              x: xA, y: yTop, width: wA, height: wB,
+              fill: 'none', stroke: '#232652', 'stroke-width': 3.2
+            }));
+            layerGeom.append(svgEl('line', {
+              x1: xB, y1: yTop, x2: xB, y2: yBot,
+              stroke: '#232652', 'stroke-width': 2.8
+            }));
+            layerGeom.append(svgEl('line', {
+              x1: xC, y1: ySplit, x2: xD, y2: ySplit,
+              stroke: '#232652', 'stroke-width': 2.8
+            }));
+            layerGeom.append(svgEl('circle', { cx: xB, cy: ySplit, r: 4.2, fill: '#5C76D8' }));
+
+            // Compartment labels: AL, CH, DM, LG, HF
+            renderRectLabel({
+              name: 'AL', w: wA, h: wB, cx: (xA + xC) / 2, cy: yTop + wB / 2,
+              dim1: a, dim2: b, area: areaAL, compactThresholdW: 36, compactThresholdH: 20
+            });
+            renderRectLabel({
+              name: 'CH', w: wA, h: wB, cx: (xC + xB) / 2, cy: yTop + wB / 2,
+              dim1: a, dim2: b, area: areaCH, compactThresholdW: 36, compactThresholdH: 20
+            });
+            renderDiagSquareLabel({
+              name: 'DM', fill: '#E6DCFF', x: xB, y: yTop, w: wB,
+              dim: b, area: areaDM, braceX, yTop
+            });
+            renderDiagSquareLabel({
+              name: 'LG', fill: '#FFF1A8', x: xC, y: ySplit, w: wA,
+              dim: a, area: areaLG, braceX, yTop
+            });
+
+            const hfInside = renderRectLabel({
+              name: 'HF', w: wB, h: wA, cx: xB + wB / 2, cy: ySplit + wA / 2,
+              dim1: b, dim2: a, area: areaHF, compactThresholdW: 40, compactThresholdH: 28
+            });
+            if (!hfInside) {
+              const anchorX = braceX + 8;
+              renderSvgPillCallout(layerGeom, layerLabels, {
+                dotX: xD - Math.min(wB / 2, 12), dotY: yBot - Math.min(wA / 2, 14),
+                anchorX, pillX: anchorX, pillY: yBot + 10,
+                pillW: 82, fill: '#CCF5E1', labelText: `HF = ${areaHF}`
+              });
+            }
+
+            layerLabels.append(svgEl('text', {
+              x: xA - 13, y: ySplit + 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+            }, 'K'));
+            layerLabels.append(svgEl('text', {
+              x: xC - 11, y: ySplit + 15, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14, 'font-weight': 800
+            }, 'L'));
+            layerLabels.append(svgEl('text', {
+              x: xD + 13, y: ySplit + 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+            }, 'M'));
+            layerLabels.append(svgEl('text', {
+              x: xB, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+            }, 'G'));
+            layerLabels.append(svgEl('text', {
+              x: hfInside ? xB - 10 : xB + 9,
+              y: hfInside ? ySplit - 5 : ySplit + 14,
+              'text-anchor': 'middle', fill: '#5C76D8',
+              'font-family': 'Nunito, sans-serif', 'font-size': 12.5, 'font-weight': 800
+            }, 'H'));
+          }
+
+          layerLabels.append(svgEl('text', {
+            x: xC, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+          }, 'E'));
+          layerLabels.append(svgEl('text', {
+            x: xD, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+          }, 'F'));
+        }
+
+        renderTopLabels({ xA, xC, xB, xD, yTop, a, b, wA, wB });
+
+        const bottomCaption = state.step === 1
+          ? `AB = 2a = ${2 * a},  BD = b = ${b},  AD = ${ad},  CD = ${cd}`
+          : state.step === 2
+            ? `Luas Persegi CEFD = ${cd} × ${cd} = ${areaTotal}`
+            : `Gnomon NOP (${areaGnomon}) + LG (${areaLG}) = CEFD (${areaTotal})`;
+        layerLabels.append(svgEl('text', {
+          x: CENTER_X, y: 264, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+        }, bottomCaption));
+
+        eqTotal.textContent = `${cd}² = ${areaTotal}`;
+        eqParts.textContent = `${areaGnomon} + ${areaLG} = ${areaTotal}`;
+        eqVerify.textContent = `✓ (${ad} × ${b}) + ${a}² = ${cd}² (${areaTotal} = ${areaTotal})`;
+      }
+
+      sliderA.addEventListener('input', () => {
+        state.a = Number(sliderA.value);
+        simStatus.textContent = `Setengah AB diubah menjadi a = ${state.a} (AD = ${2 * state.a + state.b}, CD = ${state.a + state.b}).`;
+        render();
+      });
+
+      sliderB.addEventListener('input', () => {
+        state.b = Number(sliderB.value);
+        simStatus.textContent = `Perpanjangan BD diubah menjadi b = ${state.b} (AD = ${2 * state.a + state.b}, CD = ${state.a + state.b}).`;
+        render();
+      });
+
+      stepButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.step = Number(btn.dataset.step);
+          simStatus.textContent = `Tahap konstruksi ${state.step} dipilih.`;
+          render();
+        });
+      });
+
+      randomBtn.addEventListener('click', () => {
+        const candidates = [];
+        for (let a = 2; a <= 5; a += 1) {
+          for (let b = 1; b <= 5; b += 1) {
+            if (a !== state.a || b !== state.b) candidates.push([a, b]);
+          }
+        }
+        const [nextA, nextB] = candidates[Math.floor(Math.random() * candidates.length)];
+        state.a = nextA;
+        state.b = nextB;
+        state.step = 3;
+        simStatus.textContent = `Ukuran diacak menjadi a = ${state.a}, b = ${state.b} (AD = ${2 * state.a + state.b}, CD = ${state.a + state.b}).`;
+        render();
+      });
+
+      setupToolbarNavigation(toolbar);
+      render();
+    }
+
+    initProp6Simulation(document.getElementById('sim6-svg')?.closest('.slide'));
 
     // Initial silent state sync
     applySlideState(parseInitialIndex(), { announce: false, syncHash: false });
