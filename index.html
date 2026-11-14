@@ -120,6 +120,16 @@
       );
     }
 
+    .presentation-viewport[data-theme="split-sim"] {
+      background: linear-gradient(
+        90deg,
+        var(--white) 0%,
+        var(--white) calc(50% - 0.05 * min(100dvw, 100dvh * 16 / 9)),
+        var(--bg-sky) calc(50% - 0.05 * min(100dvw, 100dvh * 16 / 9)),
+        var(--bg-sky) 100%
+      );
+    }
+
     .slide-stage {
       position: relative;
       aspect-ratio: 16 / 9;
@@ -645,17 +655,66 @@
     }
 
     .prop1-intro {
-      padding-inline-start: 1.5cqi;
-      margin-block-end: 0.3cqb;
+      padding-inline-start: 0.4cqi;
+      margin-block-end: 0.2cqb;
+      font-weight: 700;
     }
 
-    .prop1-steps {
+    .prop1-steps-list {
+      list-style: none;
+      padding-inline-start: 0.4cqi;
       display: grid;
-      gap: 0.45cqb;
+      gap: 1.55cqb;
     }
 
-    .prop1-note {
-      padding-inline-start: 3.4cqi;
+    .prop1-steps-list li {
+      display: grid;
+      grid-template-columns: 2.35cqi 1fr;
+      gap: 1cqi;
+      align-items: start;
+    }
+
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      inline-size: 2.2cqi;
+      block-size: 2.2cqi;
+      border-radius: 0.6cqi;
+      background: var(--lavender);
+      border: 0.16cqi solid var(--lavender-mid);
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 0.92em;
+      margin-block-start: 0.15cqb;
+    }
+
+    .area-tag {
+      display: inline-block;
+      padding-block: 0.05cqb;
+      padding-inline: 0.45cqi;
+      border-radius: 0.4cqi;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .area-tag--mint {
+      background: var(--mint);
+      border: 0.12cqi solid var(--mint-mid);
+    }
+
+    .area-tag--peach {
+      background: var(--peach);
+      border: 0.12cqi solid var(--peach-mid);
+    }
+
+    .area-tag--lavender {
+      background: var(--lavender);
+      border: 0.12cqi solid var(--lavender-mid);
+    }
+
+    .area-tag--butter {
+      background: var(--butter);
+      border: 0.12cqi solid var(--butter-border);
     }
 
     .prop1-equation {
@@ -746,6 +805,349 @@
       }
     }
 
+    /* ============================================================
+       SLIDE 6: INTERACTIVE PROPOSITION 1 SIMULATION
+       ============================================================ */
+    .slide-sim {
+      grid-template-columns: 45% 55%;
+    }
+
+    .slide-sim .prop-left {
+      padding-block-start: 9.2cqb;
+      padding-inline: 4.5cqi 2.4cqi;
+      padding-block-end: 3.2cqb;
+    }
+
+    .slide-sim .prop-badge {
+      font-size: clamp(1.15rem, 2.35vw, 2.55rem);
+      margin-block-end: 1.8cqb;
+    }
+
+    @supports (font-size: 1cqi) {
+      .slide-sim .prop-badge {
+        font-size: clamp(1.15rem, 2.35cqi, 2.55rem);
+      }
+    }
+
+    .sim-copy-stack {
+      inline-size: 100%;
+      display: grid;
+      gap: 1.8cqb;
+      font-size: clamp(0.78rem, 1.26vw, 1.78rem);
+      font-weight: 600;
+      line-height: 1.38;
+      text-wrap: pretty;
+    }
+
+    @supports (font-size: 1cqi) {
+      .sim-copy-stack {
+        font-size: clamp(0.78rem, 1.26cqi, 1.78rem);
+      }
+    }
+
+    .sim-copy-list {
+      list-style: none;
+      display: grid;
+      gap: 1.45cqb;
+    }
+
+    .sim-copy-list li {
+      display: grid;
+      grid-template-columns: 2.1cqi 1fr;
+      gap: 0.85cqi;
+      align-items: start;
+    }
+
+    .sim-readout-card {
+      margin-block-start: 0.6cqb;
+      inline-size: 100%;
+      background: var(--bg-sky-soft);
+      border: 0.18cqi solid var(--paper-shadow);
+      border-radius: 1cqi;
+      padding: 1.5cqb 1.5cqi;
+      display: grid;
+      gap: 0.75cqb;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sim-readout-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.4cqi 1cqi;
+      font-weight: 700;
+    }
+
+    .sim-readout-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5cqi;
+      inline-size: fit-content;
+      background: var(--butter);
+      border: 0.16cqi solid var(--butter-border);
+      border-radius: 0.65cqi;
+      padding: 0.5cqb 1cqi;
+      font-weight: 800;
+      font-size: 0.92em;
+    }
+
+    .slide-sim .prop-right {
+      padding-block: 3.4cqb 3cqb;
+      padding-inline: 2.2cqi;
+      gap: 1.8cqb;
+      justify-content: center;
+    }
+
+    .sim-toolbar {
+      position: relative;
+      z-index: 2;
+      inline-size: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55cqb 0.38cqi;
+      padding: 0.72cqb 0.65cqi;
+      background: var(--white);
+      border: 0.18cqi solid var(--lavender-mid);
+      border-radius: 1cqi;
+    }
+
+    .sim-toolbar-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35cqi;
+    }
+
+    .sim-toolbar [role="separator"] {
+      inline-size: 2px;
+      block-size: 2.5cqb;
+      border-inline-start: 2px solid var(--lavender-mid);
+      margin-inline: 0.08cqi;
+    }
+
+    .sim-btn {
+      min-inline-size: 24px;
+      min-block-size: 24px;
+      padding: 0.45cqb 0.62cqi;
+      border: 0.16cqi solid var(--paper-shadow);
+      border-radius: 0.55cqi;
+      background: var(--bg-sky-soft);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: clamp(0.68rem, 0.9vw, 1.25rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .sim-btn {
+        font-size: clamp(0.68rem, 0.9cqi, 1.25rem);
+      }
+    }
+
+    @media (pointer: coarse) {
+      .sim-btn {
+        min-inline-size: 3rem;
+        min-block-size: 2.75rem;
+      }
+    }
+
+    @media (hover: hover) {
+      .sim-btn:hover {
+        background: var(--lavender);
+        border-color: var(--periwinkle-deep);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .sim-btn {
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+    }
+
+    .sim-btn:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .sim-btn[aria-pressed="true"] {
+      background: #3f56bc;
+      border-color: var(--ink);
+      color: var(--white);
+      box-shadow: inset 0 0 0 1px var(--ink);
+    }
+
+    .sim-btn--accent {
+      background: var(--butter);
+      border-color: var(--butter-border);
+    }
+
+    @media (hover: hover) {
+      .sim-btn--accent:hover {
+        background: var(--lemon);
+        border-color: var(--ink);
+      }
+    }
+
+    .sim-canvas-card {
+      position: relative;
+      z-index: 1;
+      inline-size: 100%;
+      background-color: var(--lavender);
+      background-image:
+        linear-gradient(to right, var(--lavender-mid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--lavender-mid) 1px, transparent 1px);
+      background-size: 2.8cqi 2.8cqi;
+      padding: 1.25cqi;
+      border-radius: 1.1cqi;
+    }
+
+    .sim-canvas-inner {
+      background: var(--white);
+      border: 0.42cqi solid var(--lemon);
+      border-radius: 0.75cqi;
+      padding: 0.6cqi 0.9cqi;
+    }
+
+    .sim-canvas-inner svg {
+      inline-size: 100%;
+      block-size: 38.5cqb;
+    }
+
+    .sim-controls-card {
+      position: relative;
+      z-index: 2;
+      inline-size: 100%;
+      background: var(--white);
+      border: 0.18cqi solid var(--lavender-mid);
+      border-radius: 1cqi;
+      padding: 1.3cqb 1.6cqi;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25cqb 2.2cqi;
+    }
+
+    .sim-control-item {
+      display: grid;
+      gap: 0.35cqb;
+    }
+
+    .sim-control-item[hidden] {
+      display: none;
+    }
+
+    .sim-control-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5cqi;
+      font-weight: 800;
+      font-size: clamp(0.72rem, 1.04vw, 1.4rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .sim-control-head {
+        font-size: clamp(0.72rem, 1.04cqi, 1.4rem);
+      }
+    }
+
+    .sim-value-pill {
+      padding: 0.1cqb 0.55cqi;
+      border-radius: 0.45cqi;
+      background: var(--lavender);
+      border: 0.12cqi solid var(--lavender-mid);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sim-slider {
+      --slider-track-size: 0.5rem;
+      --slider-thumb-size: 1.25rem;
+      --slider-track-radius: 999px;
+      --slider-thumb-radius: 50%;
+      --slider-track-color: #dce6ff;
+      --slider-fill-color: #5c76d8;
+      --slider-thumb-color: #2b2d5c;
+      --slider-direction: to right;
+      --attr-min: attr(min type(<number>), 1);
+      --attr-max: attr(max type(<number>), 9);
+      --control-value: attr(value type(<number>), 4);
+      --slider-progress: calc(
+        progress(var(--control-value), var(--attr-min), var(--attr-max)) * 100%
+      );
+
+      appearance: none;
+      inline-size: 100%;
+      block-size: 1.55rem;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    @supports not (opacity: progress(1, 0, 100)) {
+      .sim-slider {
+        --slider-progress: calc(
+          (var(--control-value) - var(--attr-min)) /
+          (var(--attr-max) - var(--attr-min)) * 100%
+        );
+      }
+    }
+
+    .sim-slider::-webkit-slider-runnable-track {
+      block-size: var(--slider-track-size);
+      border: 1px solid var(--periwinkle);
+      border-radius: var(--slider-track-radius);
+      background: linear-gradient(
+        var(--slider-direction),
+        var(--slider-fill-color) var(--slider-progress),
+        var(--slider-track-color) var(--slider-progress)
+      );
+    }
+
+    .sim-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      inline-size: var(--slider-thumb-size);
+      block-size: var(--slider-thumb-size);
+      margin-block-start: calc((var(--slider-track-size) - var(--slider-thumb-size)) / 2 - 1px);
+      border: 2px solid var(--white);
+      border-radius: var(--slider-thumb-radius);
+      background: var(--slider-thumb-color);
+    }
+
+    .sim-slider::-moz-range-track {
+      block-size: var(--slider-track-size);
+      border: 1px solid var(--periwinkle);
+      border-radius: var(--slider-track-radius);
+      background: var(--slider-track-color);
+    }
+
+    .sim-slider::-moz-range-progress {
+      block-size: var(--slider-track-size);
+      border-radius: var(--slider-track-radius);
+      background: var(--slider-fill-color);
+    }
+
+    .sim-slider::-moz-range-thumb {
+      inline-size: var(--slider-thumb-size);
+      block-size: var(--slider-thumb-size);
+      border: 2px solid var(--white);
+      border-radius: var(--slider-thumb-radius);
+      background: var(--slider-thumb-color);
+    }
+
+    .sim-slider:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
     /* High contrast / Forced colors safety */
     @media (forced-colors: active) {
       .cover-paper,
@@ -754,12 +1156,26 @@
       .prop-badge,
       .prop1-quote,
       .algebra-card,
-      .diagram-inner-frame {
+      .diagram-inner-frame,
+      .sim-readout-card,
+      .sim-toolbar,
+      .sim-canvas-inner,
+      .sim-controls-card,
+      .sim-btn {
         border: 2px solid CanvasText;
+      }
+
+      .sim-btn[aria-pressed="true"] {
+        background: Highlight;
+        color: HighlightText;
+      }
+
+      .sim-toolbar [role="separator"] {
+        border-inline-start-color: CanvasText;
       }
     }
 
-    /* Print / Save as PDF: 16:9 pages with all 5 slides */
+    /* Print / Save as PDF: 16:9 pages with all 6 slides */
     @media print {
       @page {
         size: 16in 9in;
@@ -830,7 +1246,7 @@
       <!-- ========================================================
            SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
-      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 5: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 6: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
         <!-- Geometric sparkle & right-angle doodles -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
           <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
@@ -939,7 +1355,7 @@
       <!-- ========================================================
            SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
-      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 5: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 6: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
         <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
           <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
@@ -1062,7 +1478,7 @@
       <!-- ========================================================
            SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
-      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 5: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 6: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
         <!-- Top pastel divided-segment bar motif -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
           <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
@@ -1140,7 +1556,7 @@
       <!-- ========================================================
            SLIDE 4: PROPOSITION 1 (PART 1)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 5: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 6: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1173,7 +1589,7 @@
           <h1 class="prop-badge" lang="en">Proposition 1</h1>
 
           <p class="prop1-quote">
-            "Jika ada dua garis lurus dan salah satu garis dipotong menjadi beberapa bagian acak, maka luas persegi panjang yang dibentuk oleh dua garis lurus itu adalah sama dengan jumlah dari luas persegi panjang yang dibentuk oleh garis lurus yang tidak dipotong dan setiap bagian dari garis lurus yang terpotong"
+            "Jika terdapat dua garis lurus dan salah satu garis dipotong menjadi sejumlah bagian sembarang, maka luas persegi panjang yang dibentuk oleh kedua garis lurus itu sama dengan jumlah dari luas persegi panjang yang dibentuk oleh garis lurus yang tidak dipotong dan setiap bagian dari garis lurus yang terpotong."
           </p>
 
           <div class="prop1-body">
@@ -1201,21 +1617,21 @@
             </div>
 
             <div class="inline-figure">
-              <span>Lalu, potong garis BC secara sembarang :</span>
+              <span>Lalu, garis BC dipotong secara sembarang :</span>
               <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis BC yang dipotong di titik D dan E menjadi bagian BD, DE, dan EC</title>
+                <title>Garis BC yang dipotong secara tidak sama panjang di titik D dan E menjadi bagian BD, DE, dan EC</title>
                 <text x="4" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                <text x="72" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">D</text>
-                <text x="150" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">E</text>
+                <text x="58" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">D</text>
+                <text x="172" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">E</text>
                 <text x="228" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
                 <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="82" cy="46" r="7" fill="#5C76D8"/>
-                <circle cx="158" cy="46" r="7" fill="#FF9C97"/>
+                <circle cx="67" cy="46" r="7" fill="#5C76D8"/>
+                <circle cx="180" cy="46" r="7" fill="#FF9C97"/>
               </svg>
             </div>
 
             <p class="prop1-conclusion">
-              Sehingga, dikatakan bahwa persegi panjang yang luasnya dibentuk oleh A (sebagai lebar) dan BC (sebagai alas) itu sama dengan jumlah persegi panjang yang luasnya dibentuk oleh A dan BD, A dan DE, juga A dan EC.
+              Sehingga, luas persegi panjang yang dibentuk oleh A (sebagai lebar) dan BC (sebagai alas) sama dengan jumlah luas persegi panjang yang dibentuk oleh A dan BD, A dan DE, serta A dan EC.
             </p>
           </div>
         </div>
@@ -1230,27 +1646,27 @@
             </g>
           </svg>
 
-          <!-- Line-Division Visual Card (replaces generic magnifying glass) -->
+          <!-- Line-Division Visual Card -->
           <svg role="img" style="inline-size:23cqi; block-size:38cqb;" viewBox="0 0 300 300">
-            <title>Ilustrasi pembagian garis: tinggi a dikalikan segmen b, c, dan d yang membentuk tiga bagian luas persegi panjang</title>
+            <title>Ilustrasi pembagian garis: tinggi a dikalikan segmen sembarang b, c, dan d yang membentuk tiga bagian luas persegi panjang</title>
             <rect x="14" y="14" width="272" height="272" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
             <!-- Height segment a -->
             <line x1="56" y1="92" x2="56" y2="210" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
             <circle cx="56" cy="92" r="7" fill="#5C76D8"/>
             <circle cx="56" cy="210" r="7" fill="#5C76D8"/>
             <text x="32" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">a</text>
-            <!-- Divided pastel rectangles -->
-            <rect x="82" y="92" width="58" height="118" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
-            <rect x="140" y="92" width="66" height="118" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
-            <rect x="206" y="92" width="52" height="118" fill="#E6DCFF" stroke="#232652" stroke-width="3.5"/>
+            <!-- Divided pastel rectangles (unequal widths to reflect arbitrary cut) -->
+            <rect x="82" y="92" width="44" height="118" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
+            <rect x="126" y="92" width="84" height="118" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
+            <rect x="210" y="92" width="48" height="118" fill="#E6DCFF" stroke="#232652" stroke-width="3.5"/>
             <!-- Segment labels b, c, d -->
-            <text x="104" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">b</text>
-            <text x="166" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">c</text>
-            <text x="226" y="76" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">d</text>
+            <text x="104" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">b</text>
+            <text x="168" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">c</text>
+            <text x="234" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">d</text>
             <!-- Area expressions inside -->
-            <text x="97" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
-            <text x="160" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
-            <text x="219" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ad</text>
+            <text x="104" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
+            <text x="168" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
+            <text x="234" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ad</text>
             <!-- Caption pill -->
             <rect x="44" y="232" width="212" height="36" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
             <text x="150" y="256" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">a(b+c+d) = ab+ac+ad</text>
@@ -1261,7 +1677,7 @@
       <!-- ========================================================
            SLIDE 5: PROPOSITION 1 (PART 2)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 5: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 6: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1294,22 +1710,31 @@
           <h1 class="prop-badge" lang="en">Proposition 1</h1>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Mari kita perjelas,</p>
+            <p class="prop1-intro">Pembuktian dilakukan dengan membentuk luas persegi panjang dari kedua garis tersebut:</p>
 
-            <div class="prop1-steps">
-              <p>Setelah garis A dan BC dibentuk dan titik potong D E, mari kita buat garis BG yang panjangnya sama seperti A dan ditarik dari titik B tegak lurus dengan garis BC.</p>
-              <p>Lalu, buat GH yang ditarik dari titik G sejajar dengan BC.</p>
-              <p>Tarik garis dari titik D, E, C sejajar dengan BG sehingga membentuk garis DK, EL, dan CH.</p>
-            </div>
-
-            <p class="prop1-note">*garis BG, DK, EL, dan CH saling sejajar dan sama panjang dengan garis A</p>
-
-            <p>Sehingga, persegi panjang BH adalah sama dengan jumlah dari persegi panjang BK, DL, dan EH. Dengan demikian pula, luas persegi panjang yang dibentuk oleh A dan BC sama dengan jumlah dari luas persegi panjang A dan BD, A dan DE, juga A dan EC.</p>
+            <ol class="prop1-steps-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Bangun persegi panjang utuh:</strong> Dari titik B, ditarik garis BG tegak lurus terhadap BC sepanjang A, lalu dari titik G ditarik GH sejajar BC hingga terbentuk persegi panjang <strong>BH</strong> <em>(area dari pojok B ke H)</em>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Bagi sejajar titik potong:</strong> Dari titik D, E, dan C ditarik garis DK, EL, dan CH sejajar BG, sehingga seluruh garis tegak tersebut sama panjang dengan A.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Identifikasi bagian luas:</strong> Persegi panjang <strong>BH</strong> tersusun tepat dari tiga bagian, yaitu <span class="area-tag area-tag--mint">BK</span> (A &times; BD), <span class="area-tag area-tag--peach">DL</span> (A &times; DE), dan <span class="area-tag area-tag--lavender">EH</span> (A &times; EC).</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">4</span>
+                <span><strong>Kesimpulan:</strong> Karena luas keseluruhan sama dengan jumlah seluruh bagiannya, diperoleh kesetaraan luas berikut:</span>
+              </li>
+            </ol>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas persegi panjang BH</span>
-              <span>= (A &times; BD) + (A &times; DE) + (A &times; EC)</span>
-              <span class="prop1-equation-cont">= A(BD + DE + EC)</span>
+              <span>= Luas BK + Luas DL + Luas EH</span>
+              <span class="prop1-equation-cont">= (A &times; BD) + (A &times; DE) + (A &times; EC) = A(BD + DE + EC)</span>
             </div>
           </div>
         </div>
@@ -1339,32 +1764,32 @@
 
             <div class="diagram-inner-frame">
               <svg role="img" viewBox="0 0 320 280">
-                <title>Diagram pembuktian Proposisi 1: garis A di atas persegi panjang BH dengan titik potong D dan E di sisi atas BC serta garis tegak DK dan EL menuju sisi bawah GH sehingga terbentuk tiga persegi panjang BK, DL, dan EH</title>
+                <title>Diagram pembuktian Proposisi 1: garis A di atas persegi panjang BH dengan titik potong sembarang D dan E di sisi atas BC serta garis tegak DK dan EL menuju sisi bawah GH sehingga terbentuk tiga persegi panjang tidak sama lebar BK, DL, dan EH</title>
                 <!-- Line segment A above -->
                 <line x1="168" y1="20" x2="168" y2="112" stroke="#232652" stroke-width="3.6" stroke-linecap="square"/>
                 <text x="178" y="72" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">A</text>
 
                 <!-- Top labels B, D, E, C -->
-                <text x="34" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">B</text>
-                <text x="116" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">D</text>
-                <text x="200" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">E</text>
-                <text x="278" y="132" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">C</text>
+                <text x="40" y="132" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">B</text>
+                <text x="96" y="132" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">D</text>
+                <text x="214" y="132" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">E</text>
+                <text x="286" y="132" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">C</text>
 
-                <!-- Pastel shaded area subdivisions BK, DL, EH -->
-                <rect x="40" y="142" width="82" height="90" fill="#CCF5E1" opacity="0.65"/>
-                <rect x="122" y="142" width="82" height="90" fill="#FFE2CC" opacity="0.65"/>
-                <rect x="204" y="142" width="82" height="90" fill="#E6DCFF" opacity="0.65"/>
+                <!-- Pastel shaded area subdivisions BK, DL, EH (unequal widths) -->
+                <rect x="40" y="142" width="56" height="90" fill="#CCF5E1" opacity="0.72"/>
+                <rect x="96" y="142" width="118" height="90" fill="#FFE2CC" opacity="0.72"/>
+                <rect x="214" y="142" width="72" height="90" fill="#E6DCFF" opacity="0.72"/>
 
                 <!-- Rectangle BH and dividing lines DK, EL -->
                 <rect x="40" y="142" width="246" height="90" fill="none" stroke="#232652" stroke-width="3.6"/>
-                <line x1="122" y1="142" x2="122" y2="232" stroke="#232652" stroke-width="3.6"/>
-                <line x1="204" y1="142" x2="204" y2="232" stroke="#232652" stroke-width="3.6"/>
+                <line x1="96" y1="142" x2="96" y2="232" stroke="#232652" stroke-width="3.6"/>
+                <line x1="214" y1="142" x2="214" y2="232" stroke="#232652" stroke-width="3.6"/>
 
                 <!-- Bottom labels G, K, L, H -->
-                <text x="32" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">G</text>
-                <text x="116" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">K</text>
-                <text x="198" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">L</text>
-                <text x="278" y="262" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">H</text>
+                <text x="40" y="262" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">G</text>
+                <text x="96" y="262" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">K</text>
+                <text x="214" y="262" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">L</text>
+                <text x="286" y="262" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">H</text>
               </svg>
             </div>
           </div>
@@ -1372,6 +1797,137 @@
           <div class="algebra-card">
             <p class="algebra-title">Bentuk Aljabar</p>
             <p class="algebra-formula">a (b + c + d + ... ) = ab + ac + ad + ...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 6: SIMULASI INTERAKTIF PROPOSITION 1
+           ======================================================== -->
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 6: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel: passive presentation text + live numeric readout -->
+        <div class="prop-left">
+          <!-- Left edge pastel geometric dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="20" fill="#CCF5E1"/>
+            <rect x="15" y="160" width="34" height="34" rx="8" transform="rotate(45 32 177)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="20" fill="#FFE2CC"/>
+            <polygon points="32,468 52,508 12,508" fill="#FFF1A8"/>
+            <circle cx="32" cy="598" r="20" fill="#DDF3FF"/>
+          </svg>
+          <!-- Horizontal pastel drafting pencil top-left -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:19cqi; block-size:6.8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Simulasi Proposition 1</h1>
+
+          <div class="sim-copy-stack">
+            <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang ukuran dan pembagian garis:</p>
+
+            <ol class="sim-copy-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Perubahan panjang A:</strong> Saat panjang garis A diubah, tinggi seluruh sub-persegi panjang berubah seragam sehingga proporsi luas tetap terjaga.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Pergeseran titik potong:</strong> Ketika titik potong digeser tidak sama rata, luas tiap bagian berubah, namun jumlah seluruhnya tetap sama dengan luas total BH.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Jumlah potongan (2–4 bagian):</strong> Berapa pun banyaknya potongan pada garis BC, luas persegi panjang utuh selalu sama dengan penjumlahan luas tiap potongannya.</span>
+              </li>
+            </ol>
+
+            <div class="sim-readout-card" aria-live="polite">
+              <div class="sim-readout-row">
+                <span>Luas total BH</span>
+                <span id="sim-eq-total">4 &times; 10 = 40</span>
+              </div>
+              <div class="sim-readout-row">
+                <span>Jumlah sub-luas</span>
+                <span id="sim-eq-parts">12 + 20 + 8 = 40</span>
+              </div>
+              <p class="sim-readout-badge" id="sim-eq-verify">&#10003; a(b + c + d) = ab + ac + ad (40 = 40)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right pastel panel: toolbar + dynamic geometric canvas + sliders -->
+        <div class="prop-right" data-interactive>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:15cqi; block-size:14cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <p class="visually-hidden" id="sim-status" role="status" aria-live="polite"></p>
+
+          <div class="sim-toolbar" role="toolbar" focusgroup="toolbar wrap" aria-label="Kontrol simulasi Proposisi 1" aria-controls="sim-svg">
+            <div class="sim-toolbar-group" role="group" aria-label="Tahap konstruksi">
+              <button type="button" class="sim-btn" data-step="1" aria-pressed="false">1. Garis</button>
+              <button type="button" class="sim-btn" data-step="2" aria-pressed="false">2. Bangun BH</button>
+              <button type="button" class="sim-btn" data-step="3" aria-pressed="true">3. Bagi &amp; Hitung</button>
+            </div>
+            <span role="separator" aria-orientation="vertical"></span>
+            <div class="sim-toolbar-group" role="group" aria-label="Jumlah potongan garis BC">
+              <button type="button" class="sim-btn" data-cuts="2" aria-pressed="false">2 Bagian</button>
+              <button type="button" class="sim-btn" data-cuts="3" aria-pressed="true">3 Bagian</button>
+              <button type="button" class="sim-btn" data-cuts="4" aria-pressed="false">4 Bagian</button>
+            </div>
+            <span role="separator" aria-orientation="vertical"></span>
+            <button type="button" class="sim-btn sim-btn--accent" id="sim-random-btn">Acak Potongan</button>
+          </div>
+
+          <div class="sim-canvas-card">
+            <div class="sim-canvas-inner">
+              <svg id="sim-svg" role="img" viewBox="0 0 540 276" aria-labelledby="sim-svg-title">
+                <title id="sim-svg-title">Simulasi interaktif pembuktian Proposisi 1: luas persegi panjang BH sama dengan jumlah luas potongan-potongannya</title>
+                <g id="sim-layer-fills"></g>
+                <g id="sim-layer-geometry"></g>
+                <g id="sim-layer-labels"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="sim-controls-card" aria-label="Pengatur panjang garis dan titik potong">
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim-slider-a">
+                <span>Panjang A (a)</span>
+                <output class="sim-value-pill" id="sim-out-a" for="sim-slider-a">4</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim-slider-a" min="2" max="8" step="1" value="4">
+            </div>
+
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim-slider-d">
+                <span>Titik Potong D</span>
+                <output class="sim-value-pill" id="sim-out-d" for="sim-slider-d">3</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim-slider-d" min="1" max="8" step="1" value="3">
+            </div>
+
+            <div class="sim-control-item" id="sim-wrap-e">
+              <label class="sim-control-head" for="sim-slider-e">
+                <span>Titik Potong E</span>
+                <output class="sim-value-pill" id="sim-out-e" for="sim-slider-e">8</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim-slider-e" min="2" max="9" step="1" value="8">
+            </div>
+
+            <div class="sim-control-item" id="sim-wrap-f" hidden>
+              <label class="sim-control-head" for="sim-slider-f">
+                <span>Titik Potong F</span>
+                <output class="sim-value-pill" id="sim-out-f" for="sim-slider-f">9</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim-slider-f" min="3" max="9" step="1" value="9">
+            </div>
           </div>
         </div>
       </section>
@@ -1463,8 +2019,14 @@
     window.addEventListener('keydown', (event) => {
       if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
 
-      const targetTag = event.target?.tagName;
-      if (targetTag === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) {
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest('input, select, textarea')) return;
+
+      const handledByToolbar = target?.closest('[role="toolbar"]') &&
+        ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', ' ', 'Enter'].includes(event.key);
+      if (handledByToolbar) return;
+
+      if (target?.tagName === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) {
         return;
       }
 
@@ -1511,8 +2073,11 @@
       }
     });
 
-    // Click navigation (left 25% goes backward, right 75% advances; ignores text selection drags)
+    // Click navigation (left 25% goes backward, right 75% advances; ignores interactive simulation & text selection)
     stage.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label')) {
+        return;
+      }
       const selected = window.getSelection()?.toString();
       if (selected && selected.length > 0) return;
 
@@ -1528,6 +2093,10 @@
     // Touch / pointer swipe navigation
     stage.addEventListener('pointerdown', (event) => {
       if (event.pointerType === 'mouse') return;
+      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label')) {
+        pointerStartX = null;
+        return;
+      }
       pointerStartX = event.clientX;
       pointerStartY = event.clientY;
     });
@@ -1561,6 +2130,396 @@
         goToSlide(idx);
       }
     });
+
+    // Interactive Proposition 1 Simulation (Slide 6)
+    function initProp1Simulation() {
+      const TOTAL_BC = 10;
+      const X_START = 108;
+      const X_WIDTH = 400;
+      const UNIT_PX = X_WIDTH / TOTAL_BC;
+      const Y_TOP = 64;
+      const FILLS = ['#CCF5E1', '#FFE2CC', '#E6DCFF', '#FFF1A8'];
+      const TOP_CUT_NAMES = ['D', 'E', 'F'];
+      const BOT_CUT_NAMES = ['K', 'L', 'M'];
+      const VAR_NAMES = ['b', 'c', 'd', 'e'];
+      const CUT_COLORS = ['#5C76D8', '#FF9C97', '#3EA381'];
+
+      const layerFills = document.getElementById('sim-layer-fills');
+      const layerGeom = document.getElementById('sim-layer-geometry');
+      const layerLabels = document.getElementById('sim-layer-labels');
+      const eqTotal = document.getElementById('sim-eq-total');
+      const eqParts = document.getElementById('sim-eq-parts');
+      const eqVerify = document.getElementById('sim-eq-verify');
+      const simStatus = document.getElementById('sim-status');
+      const toolbar = document.querySelector('.sim-toolbar');
+      const randomBtn = document.getElementById('sim-random-btn');
+
+      const sliderA = document.getElementById('sim-slider-a');
+      const sliderD = document.getElementById('sim-slider-d');
+      const sliderE = document.getElementById('sim-slider-e');
+      const sliderF = document.getElementById('sim-slider-f');
+      const wrapE = document.getElementById('sim-wrap-e');
+      const wrapF = document.getElementById('sim-wrap-f');
+      const outA = document.getElementById('sim-out-a');
+      const outD = document.getElementById('sim-out-d');
+      const outE = document.getElementById('sim-out-e');
+      const outF = document.getElementById('sim-out-f');
+
+      const state = {
+        step: 3,
+        cuts: 3,
+        a: 4,
+        points: [3, 8, 9]
+      };
+
+      const stepButtons = Array.from(document.querySelectorAll('.sim-btn[data-step]'));
+      const cutButtons = Array.from(document.querySelectorAll('.sim-btn[data-cuts]'));
+
+      function svgEl(tag, attrs = {}, text = null) {
+        const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        for (const [k, v] of Object.entries(attrs)) {
+          node.setAttribute(k, String(v));
+        }
+        if (text !== null) node.textContent = text;
+        return node;
+      }
+
+      function syncSliderStyle(slider, outputEl, text) {
+        slider.style.setProperty('--attr-min', slider.min || 0);
+        slider.style.setProperty('--attr-max', slider.max || 100);
+        slider.style.setProperty('--control-value', slider.value);
+        slider.setAttribute('aria-valuetext', text);
+        outputEl.textContent = slider.value;
+      }
+
+      function enforcePointOrder(changedIdx) {
+        const activeCount = state.cuts - 1;
+        const pts = state.points;
+
+        for (let i = changedIdx - 1; i >= 0; i -= 1) {
+          pts[i] = Math.min(pts[i], pts[i + 1] - 1);
+        }
+        for (let i = changedIdx + 1; i < activeCount; i += 1) {
+          pts[i] = Math.max(pts[i], pts[i - 1] + 1);
+        }
+        // Clamp final bounds from right to left and left to right
+        for (let i = activeCount - 1; i >= 0; i -= 1) {
+          const maxAllowed = TOTAL_BC - (activeCount - i);
+          pts[i] = Math.min(pts[i], maxAllowed);
+          if (i < activeCount - 1) pts[i] = Math.min(pts[i], pts[i + 1] - 1);
+        }
+        for (let i = 0; i < activeCount; i += 1) {
+          const minAllowed = i + 1;
+          pts[i] = Math.max(pts[i], minAllowed);
+          if (i > 0) pts[i] = Math.max(pts[i], pts[i - 1] + 1);
+        }
+      }
+
+      function getSegments() {
+        const boundaries = [0, ...state.points.slice(0, state.cuts - 1), TOTAL_BC];
+        return boundaries.slice(0, -1).map((start, idx) => ({
+          start,
+          end: boundaries[idx + 1],
+          len: boundaries[idx + 1] - start,
+          topStart: idx === 0 ? 'B' : TOP_CUT_NAMES[idx - 1],
+          botEnd: idx === boundaries.length - 2 ? 'H' : BOT_CUT_NAMES[idx],
+          varName: VAR_NAMES[idx],
+          fill: FILLS[idx]
+        }));
+      }
+
+      function syncControls() {
+        const maxCut1 = TOTAL_BC - (state.cuts - 1);
+        sliderD.max = String(maxCut1);
+        sliderD.value = String(state.points[0]);
+        syncSliderStyle(sliderD, outD, `${sliderD.value} satuan`);
+
+        wrapE.hidden = state.cuts < 3;
+        if (state.cuts >= 3) {
+          const maxCut2 = TOTAL_BC - (state.cuts - 2);
+          sliderE.min = '2';
+          sliderE.max = String(maxCut2);
+          sliderE.value = String(state.points[1]);
+          syncSliderStyle(sliderE, outE, `${sliderE.value} satuan`);
+        }
+
+        wrapF.hidden = state.cuts < 4;
+        if (state.cuts >= 4) {
+          sliderF.min = '3';
+          sliderF.max = String(TOTAL_BC - 1);
+          sliderF.value = String(state.points[2]);
+          syncSliderStyle(sliderF, outF, `${sliderF.value} satuan`);
+        }
+
+        sliderA.value = String(state.a);
+        syncSliderStyle(sliderA, outA, `${state.a} satuan`);
+
+        stepButtons.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.step) === state.step)));
+        cutButtons.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.cuts) === state.cuts)));
+      }
+
+      function render() {
+        syncControls();
+
+        const segments = getSegments();
+        const rectH = 16 * state.a + 20;
+        const yBot = Y_TOP + rectH;
+        const xEnd = X_START + X_WIDTH;
+
+        layerFills.replaceChildren();
+        layerGeom.replaceChildren();
+        layerLabels.replaceChildren();
+
+        // Reference uncut line A alongside BG (exact 1:1 height)
+        layerGeom.append(svgEl('line', {
+          x1: 52, y1: Y_TOP, x2: 52, y2: yBot,
+          stroke: '#5C76D8', 'stroke-width': 5, 'stroke-linecap': 'round'
+        }));
+        layerGeom.append(svgEl('circle', { cx: 52, cy: Y_TOP, r: 5.5, fill: '#5C76D8' }));
+        layerGeom.append(svgEl('circle', { cx: 52, cy: yBot, r: 5.5, fill: '#5C76D8' }));
+        layerLabels.append(svgEl('text', {
+          x: 34, y: Y_TOP + rectH / 2 + 6,
+          'text-anchor': 'end', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 20, 'font-weight': 800
+        }, 'A'));
+        layerLabels.append(svgEl('text', {
+          x: 64, y: Y_TOP + rectH / 2 + 6,
+          'text-anchor': 'start', fill: '#5C76D8',
+          'font-family': 'Nunito, sans-serif', 'font-size': 16, 'font-weight': 800
+        }, `a=${state.a}`));
+
+        // Dotted construction height alignment guides when rectangle is shown
+        if (state.step >= 2) {
+          layerGeom.append(svgEl('line', {
+            x1: 58, y1: Y_TOP, x2: X_START, y2: Y_TOP,
+            stroke: '#A9D3F5', 'stroke-width': 2, 'stroke-dasharray': '5 5'
+          }));
+          layerGeom.append(svgEl('line', {
+            x1: 58, y1: yBot, x2: X_START, y2: yBot,
+            stroke: '#A9D3F5', 'stroke-width': 2, 'stroke-dasharray': '5 5'
+          }));
+        }
+
+        // Step 3 fills inside each compartment
+        if (state.step >= 3) {
+          segments.forEach((seg) => {
+            const x = X_START + seg.start * UNIT_PX;
+            const w = seg.len * UNIT_PX;
+            const cx = x + w / 2;
+            const area = state.a * seg.len;
+            const rectName = `${seg.topStart}${seg.botEnd}`;
+
+            layerFills.append(svgEl('rect', {
+              x, y: Y_TOP, width: w, height: rectH, fill: seg.fill, opacity: 0.78
+            }));
+
+            const midY = Y_TOP + rectH / 2;
+            const compact = seg.len <= 1;
+            layerLabels.append(svgEl('text', {
+              x: cx, y: midY - 4,
+              'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': compact ? 13.5 : 16, 'font-weight': 800
+            }, rectName));
+            layerLabels.append(svgEl('text', {
+              x: cx, y: midY + 15,
+              'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': compact ? 13.5 : 16, 'font-weight': 700
+            }, compact ? String(area) : `${state.a}×${seg.len}=${area}`));
+          });
+        } else if (state.step === 2) {
+          // Unified rectangle fill for step 2
+          layerFills.append(svgEl('rect', {
+            x: X_START, y: Y_TOP, width: X_WIDTH, height: rectH, fill: '#EAF7FF', opacity: 0.8
+          }));
+          layerLabels.append(svgEl('text', {
+            x: X_START + X_WIDTH / 2, y: Y_TOP + rectH / 2 + 6,
+            'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+          }, `Persegi panjang BH = ${state.a} × ${TOTAL_BC} = ${state.a * TOTAL_BC}`));
+        }
+
+        // Top line BC (always visible)
+        layerGeom.append(svgEl('line', {
+          x1: X_START, y1: Y_TOP, x2: xEnd, y2: Y_TOP,
+          stroke: '#232652', 'stroke-width': 3.6, 'stroke-linecap': 'square'
+        }));
+
+        // Outer rectangle walls (Step >= 2)
+        if (state.step >= 2) {
+          layerGeom.append(svgEl('rect', {
+            x: X_START, y: Y_TOP, width: X_WIDTH, height: rectH,
+            fill: 'none', stroke: '#232652', 'stroke-width': 3.6
+          }));
+
+          // Right-angle corner square at B
+          layerGeom.append(svgEl('polyline', {
+            points: `${X_START + 12},${Y_TOP} ${X_START + 12},${Y_TOP + 12} ${X_START},${Y_TOP + 12}`,
+            fill: 'none', stroke: '#5C76D8', 'stroke-width': 2.2
+          }));
+
+          layerLabels.append(svgEl('text', {
+            x: X_START, y: yBot + 24, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+          }, 'G'));
+          layerLabels.append(svgEl('text', {
+            x: xEnd, y: yBot + 24, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+          }, 'H'));
+        }
+
+        // Segment length badges above top line BC & vertex labels
+        layerLabels.append(svgEl('text', {
+          x: X_START, y: Y_TOP - 16, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+        }, 'B'));
+        layerLabels.append(svgEl('text', {
+          x: xEnd, y: Y_TOP - 16, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+        }, 'C'));
+
+        segments.forEach((seg, idx) => {
+          const midX = X_START + (seg.start + seg.len / 2) * UNIT_PX;
+          layerLabels.append(svgEl('text', {
+            x: midX, y: Y_TOP - 32, 'text-anchor': 'middle', fill: '#5C76D8',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+          }, `${seg.varName}=${seg.len}`));
+
+          if (idx < segments.length - 1) {
+            const cutX = X_START + seg.end * UNIT_PX;
+            if (state.step >= 3) {
+              layerGeom.append(svgEl('line', {
+                x1: cutX, y1: Y_TOP, x2: cutX, y2: yBot,
+                stroke: '#232652', 'stroke-width': 3.2
+              }));
+              layerLabels.append(svgEl('text', {
+                x: cutX, y: yBot + 24, 'text-anchor': 'middle', fill: '#2b2d5c',
+                'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+              }, BOT_CUT_NAMES[idx]));
+            }
+            layerGeom.append(svgEl('circle', {
+              cx: cutX, cy: Y_TOP, r: 6.5, fill: CUT_COLORS[idx], stroke: '#232652', 'stroke-width': 2
+            }));
+            layerLabels.append(svgEl('text', {
+              x: cutX, y: Y_TOP - 16, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 18, 'font-weight': 800
+            }, TOP_CUT_NAMES[idx]));
+          }
+        });
+
+        // Total BC caption along bottom
+        layerLabels.append(svgEl('text', {
+          x: X_START + X_WIDTH / 2, y: 264, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+        }, `Panjang BC = ${segments.map((s) => s.len).join(' + ')} = ${TOTAL_BC}`));
+
+        // Update readout card on left panel
+        const segLens = segments.map((s) => s.len);
+        const areas = segLens.map((l) => state.a * l);
+        const totalArea = state.a * TOTAL_BC;
+        const activeVars = segments.map((s) => s.varName);
+
+        eqTotal.textContent = `${state.a} × (${segLens.join(' + ')}) = ${totalArea}`;
+        eqParts.textContent = `${areas.join(' + ')} = ${totalArea}`;
+        eqVerify.textContent = `✓ ${activeVars.length ? `a(${activeVars.join(' + ')}) = ${activeVars.map((v) => 'a' + v).join(' + ')}` : ''} (${totalArea} = ${totalArea})`;
+      }
+
+      sliderA.addEventListener('input', () => {
+        state.a = Number(sliderA.value);
+        render();
+      });
+
+      sliderD.addEventListener('input', () => {
+        state.points[0] = Number(sliderD.value);
+        enforcePointOrder(0);
+        render();
+      });
+
+      sliderE.addEventListener('input', () => {
+        state.points[1] = Number(sliderE.value);
+        enforcePointOrder(1);
+        render();
+      });
+
+      sliderF.addEventListener('input', () => {
+        state.points[2] = Number(sliderF.value);
+        enforcePointOrder(2);
+        render();
+      });
+
+      stepButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.step = Number(btn.dataset.step);
+          simStatus.textContent = `Tahap konstruksi ${state.step} dipilih.`;
+          render();
+        });
+      });
+
+      cutButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.cuts = Number(btn.dataset.cuts);
+          if (state.cuts === 2) state.points = [Math.min(7, Math.max(2, state.points[0])), 8, 9];
+          if (state.cuts === 3) state.points = [3, 8, 9];
+          if (state.cuts === 4) state.points = [2, 5, 8];
+          enforcePointOrder(0);
+          simStatus.textContent = `Garis BC dibagi menjadi ${state.cuts} bagian.`;
+          render();
+        });
+      });
+
+      randomBtn.addEventListener('click', () => {
+        const count = state.cuts - 1;
+        const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        for (let i = candidates.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+        }
+        const picked = candidates.slice(0, count).sort((x, y) => x - y);
+        state.points = [...picked, 9, 9].slice(0, 3);
+        state.step = 3;
+        enforcePointOrder(0);
+        simStatus.textContent = 'Titik potong diacak ulang untuk menguji kesamaan luas.';
+        render();
+      });
+
+      // Fallback for browsers without native focusgroup="toolbar wrap"
+      if (toolbar && !('focusGroup' in HTMLElement.prototype)) {
+        const items = Array.from(toolbar.querySelectorAll('button'));
+        items.forEach((b, i) => {
+          b.tabIndex = i === 0 ? 0 : -1;
+        });
+
+        toolbar.addEventListener('focusin', ({ target }) => {
+          if (items.includes(target)) {
+            items.forEach((b) => {
+              b.tabIndex = b === target ? 0 : -1;
+            });
+          }
+        });
+
+        toolbar.addEventListener('keydown', (event) => {
+          const idx = items.indexOf(document.activeElement);
+          if (idx === -1) return;
+          const rtl = getComputedStyle(toolbar).direction === 'rtl';
+          const stepMap = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 };
+          let nextIdx = null;
+          if (event.key in stepMap) {
+            nextIdx = (idx + stepMap[event.key] + items.length) % items.length;
+          } else if (event.key === 'Home') {
+            nextIdx = 0;
+          } else if (event.key === 'End') {
+            nextIdx = items.length - 1;
+          }
+          if (nextIdx !== null) {
+            event.preventDefault();
+            items[nextIdx].focus();
+          }
+        });
+      }
+
+      render();
+    }
+
+    initProp1Simulation();
 
     // Initial silent state sync
     applySlideState(parseInitialIndex(), { announce: false, syncHash: false });
