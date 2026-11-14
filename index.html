@@ -2,8 +2,10 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Media pembelajaran dan simulasi interaktif Geometric Algebra (Euclid's Elements Book II Proposisi 1–14) oleh Kelompok 2.">
   <title>Fundamentals of Geometric Algebra | Kelompok 2</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='%23ccf5e1' stroke='%232b2d5c' stroke-width='2.5'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%23fff1a8' stroke='%232b2d5c' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&family=Nunito:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
@@ -502,7 +504,7 @@
     }
 
     /* ============================================================
-       SLIDES 4 & 5: PROPOSITION 1 (SPLIT LAYOUT)
+       PROPOSITION SPLIT LAYOUT (TEOREMA, BUKTI & ALJABAR)
        ============================================================ */
     .slide-prop {
       display: grid;
@@ -579,64 +581,7 @@
       }
     }
 
-    .prop1-body {
-      inline-size: 100%;
-      padding-inline-start: 2cqi;
-      display: grid;
-      gap: 2.4cqb;
-      font-size: clamp(0.86rem, 1.52vw, 2.05rem);
-      font-weight: 600;
-      line-height: 1.42;
-    }
-
-    @supports (font-size: 1cqi) {
-      .prop1-body {
-        font-size: clamp(0.86rem, 1.52cqi, 2.05rem);
-      }
-    }
-
-    .prop1-label {
-      font-weight: 800;
-      margin-block-end: -1.2cqb;
-    }
-
-    .inline-figures-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.4cqi 3.2cqi;
-    }
-
-    .inline-figure {
-      display: inline-flex;
-      align-items: center;
-      gap: 1cqi;
-    }
-
-    .fig-line-a {
-      inline-size: 2.6cqi;
-      block-size: 8.6cqb;
-      flex-shrink: 0;
-    }
-
-    .fig-line-bc {
-      inline-size: 13.5cqi;
-      block-size: 4.5cqb;
-      flex-shrink: 0;
-    }
-
-    .fig-line-cut {
-      inline-size: 14.5cqi;
-      block-size: 4.8cqb;
-      flex-shrink: 0;
-    }
-
-    .prop1-conclusion {
-      text-wrap: pretty;
-      max-inline-size: 56ch;
-    }
-
-    /* Slide 5 specifics */
+    /* Proof layout specifics */
     .prop1-proof-stack {
       inline-size: 100%;
       padding-inline-start: 1.2cqi;
@@ -800,17 +745,6 @@
       font-size: clamp(0.68rem, 0.98vw, 1.45rem);
     }
 
-    .prop2-bridge {
-      padding: 1.1cqb 1.4cqi;
-      background: var(--lavender);
-      border: 0.16cqi solid var(--lavender-mid);
-      border-radius: 0.85cqi;
-      font-size: clamp(0.76rem, 1.26vw, 1.78rem);
-      line-height: 1.38;
-      max-inline-size: 58ch;
-      text-wrap: pretty;
-    }
-
     @supports (font-size: 1cqi) {
       .algebra-title {
         font-size: clamp(0.82rem, 1.45cqi, 2rem);
@@ -820,9 +754,6 @@
       }
       .algebra-formula--compact {
         font-size: clamp(0.68rem, 0.98cqi, 1.45rem);
-      }
-      .prop2-bridge {
-        font-size: clamp(0.76rem, 1.26cqi, 1.78rem);
       }
     }
 
@@ -870,7 +801,7 @@
     }
 
     /* ============================================================
-       SLIDE 6: INTERACTIVE PROPOSITION 1 SIMULATION
+       SLIDE 5: INTERACTIVE PROPOSITION 1 SIMULATION
        ============================================================ */
     .slide-sim {
       grid-template-columns: 45% 55%;
@@ -1213,7 +1144,7 @@
     }
 
     /* ============================================================
-       SLIDE 37: CLOSING (TERIMA KASIH + 2D ANIMATION & WEB AUDIO)
+       SLIDE 27: CLOSING (TERIMA KASIH + 2D ANIMATION & WEB AUDIO)
        ============================================================ */
     .presentation-viewport[data-theme="closing"] {
       background: #bae9d7;
@@ -1474,6 +1405,744 @@
       }
     }
 
+    /* ============================================================
+       MOBILE STUDY NAVIGATION & SLIDE DIRECTORY (<dialog>)
+       ============================================================ */
+    .mobile-nav {
+      display: none;
+    }
+
+    .mobile-toc-dialog {
+      margin: auto;
+      inline-size: min(92dvw, 28rem);
+      max-block-size: 82dvh;
+      border-radius: 1.125rem;
+      border: 2px solid var(--paper-shadow);
+      background: var(--white);
+      color: var(--ink);
+      padding: 0;
+      box-shadow: 0 20px 50px rgba(43, 45, 92, 0.24);
+      overflow: hidden;
+    }
+
+    .mobile-toc-dialog[open] {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-toc-dialog::backdrop {
+      background: rgba(43, 45, 92, 0.45);
+      backdrop-filter: blur(3px);
+    }
+
+    .mobile-toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-sky-soft);
+      border-block-end: 1.5px solid var(--paper-shadow);
+      flex-shrink: 0;
+    }
+
+    .mobile-toc-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .mobile-toc-close {
+      min-inline-size: 44px;
+      min-block-size: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 0.7rem;
+      border: 1.5px solid var(--paper-shadow);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .mobile-toc-close:focus-visible,
+    .mobile-nav-btn:focus-visible,
+    .mobile-nav-toc-btn:focus-visible,
+    .mobile-toc-item:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .mobile-toc-list {
+      list-style: none;
+      padding: 0.75rem;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .mobile-toc-item {
+      inline-size: 100%;
+      min-block-size: 44px;
+      padding: 0.55rem 0.75rem;
+      border-radius: 0.7rem;
+      border: 1.5px solid var(--paper-shadow);
+      background: var(--white);
+      color: var(--ink);
+      display: grid;
+      grid-template-columns: 2.1rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.55rem;
+      text-align: start;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .mobile-toc-item[aria-current="page"] {
+      background: var(--butter);
+      border-color: var(--butter-border);
+      box-shadow: inset 0 0 0 1.5px var(--ink);
+    }
+
+    .mobile-toc-num {
+      display: inline-grid;
+      place-items: center;
+      inline-size: 2rem;
+      block-size: 1.75rem;
+      border-radius: 0.45rem;
+      background: var(--bg-sky-soft);
+      border: 1px solid var(--paper-shadow);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .mobile-toc-item[aria-current="page"] .mobile-toc-num {
+      background: var(--white);
+      border-color: var(--ink);
+    }
+
+    .mobile-toc-name {
+      min-inline-size: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .mobile-toc-kind {
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .mobile-toc-kind--intro {
+      background: var(--mint);
+      border-color: var(--mint-mid);
+    }
+
+    .mobile-toc-kind--proof {
+      background: var(--lavender);
+      border-color: var(--lavender-mid);
+    }
+
+    .mobile-toc-kind--sim {
+      background: var(--peach);
+      border-color: var(--peach-mid);
+    }
+
+    /* ============================================================
+       MOBILE WEB RESPONSIVE MODE (STUDY & GROUP MATERIAL TEST)
+       Preserves desktop 16:9 presentation & 16x9 PDF print intact.
+       ============================================================ */
+    @media screen and (max-width: 900px), screen and (max-height: 540px) and (pointer: coarse) {
+      html,
+      body {
+        block-size: auto;
+        min-block-size: 100dvh;
+        overflow-x: clip;
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+      }
+
+      .presentation-viewport {
+        inline-size: 100%;
+        block-size: auto;
+        min-block-size: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        overflow: visible;
+        padding-block-end: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      .presentation-viewport[data-theme="split"],
+      .presentation-viewport[data-theme="split-sim"] {
+        background: var(--bg-sky);
+      }
+
+      .slide-stage {
+        aspect-ratio: auto;
+        inline-size: 100%;
+        block-size: auto;
+        container-type: inline-size;
+        overflow: visible;
+      }
+
+      .slide {
+        position: relative;
+        inset: auto;
+        inline-size: 100%;
+        min-block-size: calc(100dvh - 4.75rem - env(safe-area-inset-bottom, 0px));
+        overflow: visible;
+      }
+
+      .slide[hidden] {
+        display: none;
+      }
+
+      /* Hide fixed-aspect decorative stickers on compact portrait screens for clutter-free study */
+      .slide > .decor,
+      .prop-left > .decor,
+      .prop-right > .decor,
+      .diagram-grid-card > .decor {
+        display: none;
+      }
+
+      .slide-cover {
+        display: grid;
+        place-items: center;
+        padding: 1.5rem 1rem;
+      }
+
+      .cover-paper-shadow {
+        display: none;
+      }
+
+      .cover-paper {
+        position: relative;
+        inset: auto;
+        inline-size: 100%;
+        max-inline-size: 32rem;
+        block-size: auto;
+        min-block-size: 17.5rem;
+        border-radius: 1.125rem;
+        border-width: 2.5px;
+        transform: none;
+        padding: 2.25rem 1.25rem;
+        box-shadow: 0.45rem 0.5rem 0 var(--lavender-mid);
+      }
+
+      .cover-content {
+        transform: none;
+        gap: 1rem;
+      }
+
+      .cover-title {
+        font-size: clamp(1.65rem, 1.1rem + 4vw, 2.75rem);
+      }
+
+      .cover-subtitle {
+        font-size: clamp(0.95rem, 0.85rem + 1.5vw, 1.35rem);
+        padding: 0.45rem 1.25rem;
+        border-width: 2px;
+      }
+
+      .slide-members {
+        display: grid;
+        place-items: center;
+        padding: 1.25rem 0.875rem;
+      }
+
+      .members-paper-shadow {
+        display: none;
+      }
+
+      .members-paper {
+        position: relative;
+        inset: auto;
+        inline-size: 100%;
+        max-inline-size: 36rem;
+        block-size: auto;
+        background-size: 22px 22px;
+        border-width: 2.5px;
+        border-radius: 1.125rem;
+        box-shadow: 0.45rem 0.5rem 0 var(--paper-shadow);
+        padding: 3.1rem 1rem 1.5rem;
+      }
+
+      .members-holes {
+        block-size: 2.2rem;
+      }
+
+      .members-title {
+        font-size: clamp(1.25rem, 1rem + 2.5vw, 1.85rem);
+        border-width: 2px;
+        border-radius: 0.75rem;
+        padding: 0.45rem 1.1rem;
+        margin-block-end: 1.25rem;
+      }
+
+      .members-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        inline-size: 100%;
+        max-inline-size: 100%;
+        font-size: clamp(0.95rem, 0.86rem + 0.8vw, 1.15rem);
+      }
+
+      .members-list li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.45rem 0.75rem;
+        padding: 0.75rem 0.85rem;
+        border-radius: 0.75rem;
+        background: var(--bg-sky-soft);
+        border: 1.5px solid var(--paper-shadow);
+      }
+
+      .member-name {
+        white-space: normal;
+        gap: 0.55rem;
+      }
+
+      .member-bullet {
+        inline-size: 1.35rem;
+        block-size: 0.9rem;
+      }
+
+      .member-nim {
+        font-size: 0.92rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 0.45rem;
+      }
+
+      .slide-definition {
+        display: grid;
+        place-items: center;
+        padding: 1.25rem 0.875rem;
+      }
+
+      .def-paper-shadow {
+        display: none;
+      }
+
+      .def-paper {
+        position: relative;
+        inset: auto;
+        inline-size: 100%;
+        max-inline-size: 38rem;
+        block-size: auto;
+        border-width: 2.5px;
+        border-radius: 1.125rem;
+        box-shadow: 0.45rem 0.5rem 0 var(--lavender-mid);
+        padding: 1.4rem 1.05rem 1.65rem;
+      }
+
+      .def-title {
+        font-size: clamp(1.3rem, 1rem + 2.5vw, 1.95rem);
+        border-width: 2px;
+        border-radius: 0.75rem;
+        padding: 0.45rem 1.3rem;
+        margin-block-end: 1.15rem;
+      }
+
+      .def-list {
+        gap: 0.95rem;
+        padding-inline-start: 1.4rem;
+        font-size: clamp(0.95rem, 0.88rem + 0.8vw, 1.18rem);
+        line-height: 1.55;
+      }
+
+      .def-list li {
+        padding-inline-start: 0.35rem;
+      }
+
+      .slide-prop,
+      .slide-prop.slide-sim {
+        grid-template-columns: minmax(0, 1fr);
+        align-content: start;
+      }
+
+      .prop-left,
+      .prop-left--compact,
+      .slide-sim .prop-left {
+        min-inline-size: 0;
+        padding: 1.25rem 1rem 1.35rem;
+      }
+
+      .prop-badge,
+      .prop-left--compact .prop-badge,
+      .slide-sim .prop-badge {
+        font-size: clamp(1.15rem, 0.95rem + 2vw, 1.65rem);
+        border-width: 2px;
+        border-radius: 0.65rem;
+        padding: 0.4rem 0.95rem;
+        margin-block-end: 0.9rem;
+      }
+
+      .prop1-quote,
+      .prop-left--compact .prop1-quote {
+        font-size: clamp(0.92rem, 0.85rem + 0.7vw, 1.08rem);
+        line-height: 1.5;
+        padding: 0.85rem 0.9rem;
+        border-width: 1.5px;
+        border-radius: 0.75rem;
+        margin-block-end: 1rem;
+        text-align: start;
+      }
+
+      .prop1-proof-stack,
+      .prop-left--compact .prop1-proof-stack,
+      .sim-copy-stack {
+        min-inline-size: 0;
+        padding-inline-start: 0;
+        gap: 0.85rem;
+        font-size: clamp(0.9rem, 0.84rem + 0.6vw, 1.05rem);
+        line-height: 1.5;
+      }
+
+      .prop1-intro {
+        padding-inline-start: 0;
+        margin-block-end: 0;
+      }
+
+      .prop1-steps-list,
+      .prop-left--compact .prop1-steps-list,
+      .sim-copy-list {
+        padding-inline-start: 0;
+        gap: 0.75rem;
+      }
+
+      .prop1-steps-list li,
+      .sim-copy-list li {
+        grid-template-columns: 1.65rem minmax(0, 1fr);
+        gap: 0.6rem;
+      }
+
+      .step-num {
+        inline-size: 1.65rem;
+        block-size: 1.65rem;
+        border-radius: 0.45rem;
+        border-width: 1.5px;
+        font-size: 0.88rem;
+        margin-block-start: 0.1rem;
+      }
+
+      .area-tag {
+        padding: 0.06rem 0.38rem;
+        border-radius: 0.35rem;
+        border-width: 1px;
+      }
+
+      .prop1-equation,
+      .prop-left--compact .prop1-equation {
+        margin-block-start: 0.15rem;
+        padding: 0.75rem 0.85rem;
+        background: var(--bg-sky-soft);
+        border: 1.5px solid var(--paper-shadow);
+        border-radius: 0.75rem;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.25rem;
+        font-size: clamp(0.88rem, 0.82rem + 0.6vw, 1.02rem);
+        overflow-wrap: anywhere;
+      }
+
+      .prop1-equation-label {
+        white-space: normal;
+      }
+
+      .prop1-equation-cont {
+        grid-column: 1;
+      }
+
+      .prop-right,
+      .slide-sim .prop-right {
+        min-inline-size: 0;
+        padding: 1.2rem 0.95rem 1.5rem;
+        gap: 1rem;
+        justify-content: flex-start;
+        border-block-start: 2px solid var(--paper-shadow);
+      }
+
+      .diagram-grid-card {
+        inline-size: 100%;
+        max-inline-size: 25rem;
+        block-size: auto;
+        aspect-ratio: 320 / 280;
+        background-size: 20px 20px;
+        padding: 0.65rem;
+        border-radius: 0.85rem;
+        margin-block-start: 0;
+      }
+
+      .diagram-inner-frame {
+        border-width: 4px;
+        border-radius: 0.6rem;
+        padding: 0.45rem;
+      }
+
+      .algebra-card {
+        inline-size: 100%;
+        max-inline-size: 25rem;
+        border-width: 2px;
+        border-radius: 0.75rem;
+        padding: 0.85rem 0.9rem;
+        gap: 0.4rem;
+      }
+
+      .algebra-title {
+        font-size: clamp(0.95rem, 0.86rem + 0.8vw, 1.15rem);
+      }
+
+      .algebra-formula,
+      .algebra-formula--compact {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        font-size: clamp(0.88rem, 0.82rem + 0.6vw, 1.05rem);
+      }
+
+      .sim-readout-card {
+        min-inline-size: 0;
+        border-width: 1.5px;
+        border-radius: 0.75rem;
+        padding: 0.8rem 0.9rem;
+        gap: 0.45rem;
+        margin-block-start: 0.25rem;
+      }
+
+      .sim-readout-row {
+        gap: 0.25rem 0.75rem;
+      }
+
+      .sim-readout-badge {
+        border-width: 1.5px;
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.7rem;
+        max-inline-size: 100%;
+        overflow-wrap: anywhere;
+      }
+
+      .sim-toolbar {
+        gap: 0.45rem;
+        padding: 0.55rem;
+        border-width: 1.5px;
+        border-radius: 0.75rem;
+      }
+
+      .sim-toolbar-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.35rem;
+        max-inline-size: 100%;
+      }
+
+      .sim-toolbar [role="separator"] {
+        display: none;
+      }
+
+      .sim-btn {
+        min-inline-size: 44px;
+        min-block-size: 44px;
+        padding: 0.45rem 0.72rem;
+        border-width: 1.5px;
+        border-radius: 0.55rem;
+        font-size: clamp(0.82rem, 0.78rem + 0.45vw, 0.95rem);
+        white-space: normal;
+        text-align: center;
+      }
+
+      .sim-canvas-card {
+        background-size: 20px 20px;
+        padding: 0.65rem;
+        border-radius: 0.85rem;
+      }
+
+      .sim-canvas-inner {
+        border-width: 3.5px;
+        border-radius: 0.6rem;
+        padding: 0.35rem;
+      }
+
+      .sim-canvas-inner svg {
+        inline-size: 100%;
+        block-size: auto;
+        aspect-ratio: 540 / 276;
+      }
+
+      .sim-controls-card {
+        grid-template-columns: 1fr;
+        padding: 0.85rem 0.95rem;
+        gap: 0.85rem;
+        border-width: 1.5px;
+        border-radius: 0.75rem;
+      }
+
+      .sim-control-head {
+        font-size: clamp(0.88rem, 0.82rem + 0.5vw, 1rem);
+        gap: 0.5rem;
+      }
+
+      .sim-value-pill {
+        padding: 0.14rem 0.55rem;
+        border-radius: 0.4rem;
+        border-width: 1.5px;
+      }
+
+      .sim-slider {
+        block-size: 2.75rem;
+        --slider-thumb-size: 1.65rem;
+        --slider-track-size: 0.55rem;
+      }
+
+      .slide-closing {
+        display: grid;
+        place-items: center;
+        padding: 1.5rem 1rem;
+        overflow: clip;
+      }
+
+      .closing-paper-shadow {
+        display: none;
+      }
+
+      .closing-paper {
+        position: relative;
+        inset: auto;
+        inline-size: 100%;
+        max-inline-size: 32rem;
+        block-size: auto;
+        min-block-size: 17.5rem;
+        border-radius: 1.125rem;
+        border-width: 2.5px;
+        box-shadow: 0.45rem 0.5rem 0 #98c3b5;
+        transform: none;
+        padding: 2rem 1.1rem 2rem 2.35rem;
+        background-size: 20px 20px;
+      }
+
+      .closing-spiral {
+        inline-size: 1.85rem;
+      }
+
+      .closing-stagger {
+        transform: none;
+        gap: 0.85rem;
+      }
+
+      .closing-title {
+        font-size: clamp(1.85rem, 1.3rem + 3.5vw, 2.8rem);
+      }
+
+      .closing-underline-svg {
+        inline-size: clamp(10rem, 62vw, 18rem);
+      }
+
+      .closing-subtitle-pill {
+        font-size: clamp(0.85rem, 0.8rem + 0.6vw, 1.05rem);
+        padding: 0.45rem 1rem;
+        border-width: 1.5px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .closing-note {
+        font-size: clamp(0.82rem, 0.78rem + 0.5vw, 0.98rem);
+      }
+
+      .mobile-nav {
+        position: fixed;
+        inset-block-end: 0;
+        inset-inline: 0;
+        z-index: 50;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0.45rem;
+        padding-block: 0.45rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+        padding-inline: max(0.65rem, env(safe-area-inset-left, 0px)) max(0.65rem, env(safe-area-inset-right, 0px));
+        background: rgba(255, 255, 255, 0.96);
+        border-block-start: 2px solid var(--paper-shadow);
+        box-shadow: 0 -6px 20px rgba(43, 45, 92, 0.1);
+        backdrop-filter: blur(8px);
+      }
+
+      .mobile-nav-btn,
+      .mobile-nav-toc-btn {
+        min-inline-size: 44px;
+        min-block-size: 44px;
+        font-family: var(--font-body);
+        font-weight: 800;
+        color: var(--ink);
+        border-radius: 0.7rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        font-size: 0.88rem;
+        line-height: 1.15;
+      }
+
+      .mobile-nav-btn {
+        padding: 0.4rem 0.72rem;
+        background: var(--bg-sky-soft);
+        border: 1.5px solid var(--paper-shadow);
+      }
+
+      .mobile-nav-btn:disabled {
+        opacity: 0.42;
+        cursor: not-allowed;
+      }
+
+      .mobile-nav-toc-btn {
+        min-inline-size: 0;
+        padding: 0.4rem 0.65rem;
+        background: var(--butter);
+        border: 1.5px solid var(--butter-border);
+      }
+
+      .mobile-nav-toc-count {
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .mobile-nav-toc-label {
+        min-inline-size: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+      .sim-controls-card {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .prop-left,
+      .prop-left--compact,
+      .slide-sim .prop-left,
+      .prop-right,
+      .slide-sim .prop-right {
+        padding-inline: 1.75rem;
+      }
+    }
+
     /* High contrast / Forced colors safety */
     @media (forced-colors: active) {
       .cover-paper,
@@ -1482,18 +2151,24 @@
       .closing-paper,
       .prop-badge,
       .prop1-quote,
-      .prop2-bridge,
       .algebra-card,
       .diagram-inner-frame,
       .sim-readout-card,
       .sim-toolbar,
       .sim-canvas-inner,
       .sim-controls-card,
-      .sim-btn {
+      .sim-btn,
+      .mobile-nav,
+      .mobile-nav-btn,
+      .mobile-nav-toc-btn,
+      .mobile-toc-dialog,
+      .mobile-toc-close,
+      .mobile-toc-item {
         border: 2px solid CanvasText;
       }
 
-      .sim-btn[aria-pressed="true"] {
+      .sim-btn[aria-pressed="true"],
+      .mobile-toc-item[aria-current="page"] {
         background: Highlight;
         color: HighlightText;
       }
@@ -1520,7 +2195,9 @@
 
       .sr-controls,
       .visually-hidden,
-      .closing-confetti {
+      .closing-confetti,
+      .mobile-nav,
+      .mobile-toc-dialog {
         display: none !important;
       }
 
@@ -1583,7 +2260,7 @@
       <!-- ========================================================
            SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
-      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 37: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 32: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
         <!-- Geometric sparkle & right-angle doodles -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
           <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
@@ -1692,7 +2369,7 @@
       <!-- ========================================================
            SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
-      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 37: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 32: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
         <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
           <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
@@ -1815,7 +2492,7 @@
       <!-- ========================================================
            SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
-      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 37: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 32: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
         <!-- Top pastel divided-segment bar motif -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
           <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
@@ -1891,11 +2568,11 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 4: PROPOSITION 1 (PART 1)
+           SLIDE 4: PROPOSITION 1 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 37: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 32: Proposition 1 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
-        <div class="prop-left">
+        <div class="prop-left prop-left--compact">
           <!-- Left edge pastel geometric dots -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
             <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
@@ -1926,150 +2603,33 @@
           <h1 class="prop-badge" lang="en">Proposition 1</h1>
 
           <p class="prop1-quote">
-            "Jika terdapat dua garis lurus dan salah satu garis dipotong menjadi sejumlah bagian sembarang, maka luas persegi panjang yang dibentuk oleh kedua garis lurus itu sama dengan jumlah dari luas persegi panjang yang dibentuk oleh garis lurus yang tidak dipotong dan setiap bagian dari garis lurus yang terpotong."
+            &ldquo;Jika terdapat dua garis lurus dan salah satu garis dipotong menjadi sejumlah bagian sembarang, maka luas persegi panjang yang dibentuk oleh kedua garis lurus itu sama dengan jumlah dari luas persegi panjang yang dibentuk oleh garis lurus yang tidak dipotong dan setiap bagian dari garis lurus yang terpotong.&rdquo;
           </p>
 
-          <div class="prop1-body">
-            <p class="prop1-label">Penjelasan :</p>
-
-            <div class="inline-figures-row">
-              <div class="inline-figure">
-                <span>Dibentuk suatu garis A :</span>
-                <svg class="fig-line-a" role="img" viewBox="0 0 56 110">
-                  <title>Garis lurus vertikal A</title>
-                  <line x1="12" y1="6" x2="12" y2="104" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                  <text x="26" y="64" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="28" font-weight="800">A</text>
-                </svg>
-              </div>
-
-              <div class="inline-figure">
-                <span>Dibentuk suatu garis BC :</span>
-                <svg class="fig-line-bc" role="img" viewBox="0 0 240 64">
-                  <title>Garis lurus horizontal BC</title>
-                  <text x="4" y="28" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                  <text x="216" y="28" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
-                  <line x1="12" y1="44" x2="226" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="inline-figure">
-              <span>Lalu, garis BC dipotong secara sembarang :</span>
-              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis BC yang dipotong secara tidak sama panjang di titik D dan E menjadi bagian BD, DE, dan EC</title>
-                <text x="4" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                <text x="58" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">D</text>
-                <text x="172" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">E</text>
-                <text x="228" y="26" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="67" cy="46" r="7" fill="#5C76D8"/>
-                <circle cx="180" cy="46" r="7" fill="#FF9C97"/>
-              </svg>
-            </div>
-
-            <p class="prop1-conclusion">
-              Sehingga, luas persegi panjang yang dibentuk oleh A (sebagai lebar) dan BC (sebagai alas) sama dengan jumlah luas persegi panjang yang dibentuk oleh A dan BD, A dan DE, serta A dan EC.
-            </p>
-          </div>
-        </div>
-
-        <!-- Right pastel panel -->
-        <div class="prop-right">
-          <!-- Pastel peach/lemon corner card top-right -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
-            <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
-              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
-            </g>
-          </svg>
-
-          <!-- Line-Division Visual Card -->
-          <svg role="img" style="inline-size:23cqi; block-size:38cqb;" viewBox="0 0 300 300">
-            <title>Ilustrasi pembagian garis: tinggi a dikalikan segmen sembarang b, c, dan d yang membentuk tiga bagian luas persegi panjang</title>
-            <rect x="14" y="14" width="272" height="272" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
-            <!-- Height segment a -->
-            <line x1="56" y1="92" x2="56" y2="210" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="56" cy="92" r="7" fill="#5C76D8"/>
-            <circle cx="56" cy="210" r="7" fill="#5C76D8"/>
-            <text x="32" y="158" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">a</text>
-            <!-- Divided pastel rectangles (unequal widths to reflect arbitrary cut) -->
-            <rect x="82" y="92" width="44" height="118" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
-            <rect x="126" y="92" width="84" height="118" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
-            <rect x="210" y="92" width="48" height="118" fill="#E6DCFF" stroke="#232652" stroke-width="3.5"/>
-            <!-- Segment labels b, c, d -->
-            <text x="104" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">b</text>
-            <text x="168" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">c</text>
-            <text x="234" y="76" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">d</text>
-            <!-- Area expressions inside -->
-            <text x="104" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
-            <text x="168" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
-            <text x="234" y="158" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ad</text>
-            <!-- Caption pill -->
-            <rect x="44" y="232" width="212" height="36" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
-            <text x="150" y="256" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">a(b+c+d) = ab+ac+ad</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SLIDE 5: PROPOSITION 1 (PART 2)
-           ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 37: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
-        <!-- Left white panel -->
-        <div class="prop-left">
-          <!-- Left edge pastel geometric dots -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
-            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
-            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
-            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
-            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
-          </svg>
-          <!-- Horizontal pastel drafting pencil top-left -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
-            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
-            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
-            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
-            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
-          </svg>
-          <!-- Pastel loop/grid doodle top-center -->
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
-            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
-            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
-          </svg>
-          <!-- Pastel geometric ribbon bottom -->
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
-            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
-          </svg>
-
-          <h1 class="prop-badge" lang="en">Proposition 1</h1>
-
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian dilakukan dengan membentuk luas persegi panjang dari kedua garis tersebut:</p>
+            <p class="prop1-intro">Garis lurus <strong>A</strong> (tak terpotong) dan <strong>BC</strong> (dipotong sembarang di <strong>D</strong> &amp; <strong>E</strong> menjadi <strong>BD</strong>, <strong>DE</strong>, <strong>EC</strong>) membentuk luas persegi panjang:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun persegi panjang utuh:</strong> Dari titik B, ditarik garis BG tegak lurus terhadap BC sepanjang A, lalu dari titik G ditarik GH sejajar BC hingga terbentuk persegi panjang <strong>BH</strong> <em>(area dari pojok B ke H)</em>.</span>
+                <span><strong>Konstruksi Persegi Panjang BH:</strong> Dari titik <strong>B</strong> ditarik garis <strong>BG &perp; BC</strong> sepanjang <strong>A</strong>, lalu ditarik <strong>GH &#8741; BC</strong> hingga terbentuk persegi panjang <strong>BH</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Bagi sejajar titik potong:</strong> Dari titik D, E, dan C ditarik garis DK, EL, dan CH sejajar BG, sehingga seluruh garis tegak tersebut sama panjang dengan A.</span>
+                <span><strong>Garis Sejajar DK, EL &amp; CH:</strong> Dari titik <strong>D</strong>, <strong>E</strong>, dan <strong>C</strong> ditarik garis tegak sejajar <strong>BG</strong>, sehingga seluruh ruas garis tersebut sama panjang dengan <strong>A</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Identifikasi bagian luas:</strong> Persegi panjang <strong>BH</strong> tersusun tepat dari tiga bagian, yaitu <span class="area-tag area-tag--mint">BK</span> (A &times; BD), <span class="area-tag area-tag--peach">DL</span> (A &times; DE), dan <span class="area-tag area-tag--lavender">EH</span> (A &times; EC).</span>
+                <span><strong>Identifikasi Bagian Luas:</strong> Persegi panjang <strong>BH</strong> tersusun tepat dari tiga bagian: <span class="area-tag area-tag--mint">BK</span> (<strong>A &times; BD</strong>), <span class="area-tag area-tag--peach">DL</span> (<strong>A &times; DE</strong>), dan <span class="area-tag area-tag--lavender">EH</span> (<strong>A &times; EC</strong>).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan:</strong> Karena luas keseluruhan sama dengan jumlah seluruh bagiannya, diperoleh kesetaraan luas berikut:</span>
+                <span><strong>Kesimpulan Luas:</strong> Karena luas keseluruhan sama dengan jumlah seluruh bagiannya, diperoleh kesetaraan:</span>
               </li>
             </ol>
 
             <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas persegi panjang BH</span>
+              <span class="prop1-equation-label">Luas Persegi Panjang BH</span>
               <span>= Luas BK + Luas DL + Luas EH</span>
               <span class="prop1-equation-cont">= (A &times; BD) + (A &times; DE) + (A &times; EC) = A(BD + DE + EC)</span>
             </div>
@@ -2139,9 +2699,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 6: SIMULASI INTERAKTIF PROPOSITION 1
+           SLIDE 5: SIMULASI INTERAKTIF PROPOSITION 1
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 37: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 32: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel: passive presentation text + live numeric readout -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2169,25 +2729,25 @@
             <ol class="sim-copy-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Perubahan panjang A:</strong> Saat panjang garis A diubah, tinggi seluruh sub-persegi panjang berubah seragam sehingga proporsi luas tetap terjaga.</span>
+                <span><strong>Perubahan Panjang A:</strong> Saat panjang garis A diubah, tinggi seluruh sub-persegi panjang berubah seragam sehingga proporsi luas tetap terjaga.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Pergeseran titik potong:</strong> Ketika titik potong digeser tidak sama rata, luas tiap bagian berubah, namun jumlah seluruhnya tetap sama dengan luas total BH.</span>
+                <span><strong>Pergeseran Titik Potong:</strong> Ketika titik potong digeser tidak sama rata, luas tiap bagian berubah, namun jumlah seluruhnya tetap sama dengan luas total BH.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Jumlah potongan (2–4 bagian):</strong> Berapa pun banyaknya potongan pada garis BC, luas persegi panjang utuh selalu sama dengan penjumlahan luas tiap potongannya.</span>
+                <span><strong>Jumlah Potongan (2–4 Bagian):</strong> Berapa pun banyaknya potongan pada garis BC, luas persegi panjang utuh selalu sama dengan penjumlahan luas tiap potongannya.</span>
               </li>
             </ol>
 
             <div class="sim-readout-card" aria-live="polite">
               <div class="sim-readout-row">
-                <span>Luas total BH</span>
+                <span>Luas Total BH</span>
                 <span id="sim-eq-total">4 &times; 10 = 40</span>
               </div>
               <div class="sim-readout-row">
-                <span>Jumlah sub-luas</span>
+                <span>Jumlah Sub-Luas</span>
                 <span id="sim-eq-parts">12 + 20 + 8 = 40</span>
               </div>
               <p class="sim-readout-badge" id="sim-eq-verify">&#10003; a(b + c + d) = ab + ac + ad (40 = 40)</p>
@@ -2270,12 +2830,11 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 7: PROPOSITION 2 (TEOREMA)
+           SLIDE 6: PROPOSITION 2 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 37: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 32: Proposition 2 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
-        <div class="prop-left">
-          <!-- Left edge pastel geometric dots -->
+        <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
             <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
             <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
@@ -2283,7 +2842,6 @@
             <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
             <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
           </svg>
-          <!-- Horizontal pastel drafting pencil top-left -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
             <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
             <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
@@ -2291,12 +2849,10 @@
             <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
-          <!-- Pastel loop/grid doodle top-center -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
             <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
             <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
           </svg>
-          <!-- Pastel geometric ribbon bottom -->
           <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
             <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
             <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
@@ -2305,140 +2861,33 @@
           <h1 class="prop-badge" lang="en">Proposition 2</h1>
 
           <p class="prop1-quote">
-            "Jika sebuah garis lurus dipotong secara sembarang, maka jumlah luas persegi panjang yang dibentuk oleh keseluruhan garis lurus dan masing-masing bagiannya sama dengan luas persegi pada keseluruhan garis tersebut."
+            &ldquo;Jika sebuah garis lurus dipotong secara sembarang, maka jumlah luas persegi panjang yang dibentuk oleh keseluruhan garis lurus dan masing-masing bagiannya sama dengan luas persegi pada keseluruhan garis tersebut.&rdquo;
           </p>
 
-          <div class="prop1-body">
-            <p class="prop1-label">Penjelasan Awal :</p>
-
-            <div class="inline-figures-row">
-              <div class="inline-figure">
-                <span>Dibentuk garis lurus AB :</span>
-                <svg class="fig-line-bc" role="img" viewBox="0 0 230 64">
-                  <title>Garis lurus horizontal AB</title>
-                  <text x="12" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                  <text x="218" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                  <line x1="12" y1="44" x2="218" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="inline-figure">
-              <span>Lalu, garis AB dipotong secara sembarang di C :</span>
-              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis AB yang dipotong tidak sama panjang di titik C menjadi bagian AC dan CB</title>
-                <text x="12" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                <text x="86" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
-                <text x="238" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="86" cy="46" r="7" fill="#5C76D8"/>
-              </svg>
-            </div>
-
-            <p class="prop1-conclusion">
-              Keseluruhan garis AB berperan sebagai sisi persegi, sedangkan setiap bagiannya (AC dan CB) berpasangan dengan AB membentuk dua persegi panjang yang jumlah luasnya sama dengan luas persegi pada AB.
-            </p>
-
-            <p class="prop2-bridge">
-              <strong>Hubungan dengan Proposisi 1:</strong> Proposisi 2 merupakan kasus khusus Proposisi 1 saat garis yang tidak dipotong memiliki panjang sama dengan keseluruhan garis alas (<em>a = b + c</em>).
-            </p>
-          </div>
-        </div>
-
-        <!-- Right pastel panel -->
-        <div class="prop-right">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
-            <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
-              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
-            </g>
-          </svg>
-
-          <!-- Square Partition Concept Card -->
-          <svg role="img" style="inline-size:23cqi; block-size:40cqb;" viewBox="0 0 300 315">
-            <title>Konsep Proposisi 2: persegi bersisi a yang terbagi menjadi dua persegi panjang ab dan ac dengan a = b + c</title>
-            <rect x="14" y="14" width="272" height="287" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
-            <!-- Side height indicator a -->
-            <line x1="60" y1="78" x2="60" y2="230" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="60" cy="78" r="7" fill="#5C76D8"/>
-            <circle cx="60" cy="230" r="7" fill="#5C76D8"/>
-            <text x="36" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">a</text>
-
-            <!-- Square split into unequal ab and ac -->
-            <rect x="92" y="78" width="54" height="152" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
-            <rect x="146" y="78" width="98" height="152" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
-
-            <!-- Segment labels b and c -->
-            <text x="119" y="63" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">b</text>
-            <text x="195" y="63" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">c</text>
-            <text x="168" y="40" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="16" font-weight="800">a = b + c</text>
-
-            <!-- Area expressions inside -->
-            <text x="119" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
-            <text x="195" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
-
-            <!-- Caption pill -->
-            <rect x="44" y="250" width="212" height="36" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
-            <text x="150" y="274" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">ab + ac = a&#178;</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SLIDE 8: PROPOSITION 2 (PENJELASAN & PEMBUKTIAN)
-           ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 37: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
-        <!-- Left white panel -->
-        <div class="prop-left">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
-            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
-            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
-            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
-            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
-            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
-            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
-            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
-            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
-            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
-            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
-            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
-          </svg>
-
-          <h1 class="prop-badge" lang="en">Proposition 2</h1>
-
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian dilakukan dengan membentuk persegi pada garis AB dan membaginya sesuai titik potong C:</p>
+            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong> (kasus khusus Prop. 1 saat <strong>a = b + c</strong>); pembuktian membentuk persegi pada <strong>AB</strong> lalu membaginya di titik potong <strong>C</strong>:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun persegi pada AB:</strong> Dibentuk persegi <strong>ADEB</strong> <em>(disebut juga persegi <strong>AE</strong> dari sudut diagonalnya)</em> dengan panjang sisi AD, DE, dan EB sama dengan AB.</span>
+                <span><strong>Konstruksi Persegi ADEB:</strong> Dibentuk persegi <strong>ADEB</strong> (persegi <strong>AE</strong>) dengan panjang sisi <strong>AD</strong>, <strong>DE</strong>, dan <strong>EB</strong> sama dengan <strong>AB</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Bagi melalui titik potong C:</strong> Garis AB dipotong secara sembarang di titik C, lalu dari C ditarik garis CF sejajar AD sehingga persegi AE terbagi menjadi persegi panjang <span class="area-tag area-tag--mint">AF</span> dan <span class="area-tag area-tag--peach">CE</span>.</span>
+                <span><strong>Pembagian Garis CF:</strong> Dari titik potong sembarang <strong>C</strong> ditarik garis <strong>CF &#8741; AD</strong> sehingga persegi <strong>AE</strong> terbagi menjadi <span class="area-tag area-tag--mint">AF</span> dan <span class="area-tag area-tag--peach">CE</span>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Nyatakan luas tiap bagian:</strong> Persegi panjang <strong>AF</strong> = AD &times; AC <em>(karena AD = AB, diperoleh AB &times; AC)</em>, dan <strong>CE</strong> = BE &times; CB <em>(karena BE = AB, diperoleh AB &times; CB)</em>.</span>
+                <span><strong>Luas Tiap Bagian:</strong> Diperoleh persegi panjang <strong>AF = AD &times; AC = AB &times; AC</strong> dan <strong>CE = BE &times; CB = AB &times; CB</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan:</strong> Karena persegi AE tersusun tepat dari AF dan CE, diperoleh kesamaan luas berikut:</span>
+                <span><strong>Kesimpulan Luas:</strong> Karena persegi <strong>AE</strong> tersusun tepat dari <strong>AF</strong> dan <strong>CE</strong>, diperoleh kesamaan luas:</span>
               </li>
             </ol>
 
             <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas persegi ADEB</span>
+              <span class="prop1-equation-label">Luas Persegi ADEB</span>
               <span>= (AB &times; AC) + (AB &times; CB) = AB(AC + CB)</span>
               <span class="prop1-equation-cont">= AB &times; AB = AB&#178;</span>
             </div>
@@ -2502,9 +2951,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 9: SIMULASI INTERAKTIF PROPOSITION 2
+           SLIDE 7: SIMULASI INTERAKTIF PROPOSITION 2
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 37: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 32: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2530,21 +2979,21 @@
             <ol class="sim-copy-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Perubahan panjang AB (a):</strong> Saat panjang AB diubah, lebar dan tinggi bangun berubah bersama dalam rasio 1:1 sehingga bangun tetap berupa persegi sejati seluas a&#178;.</span>
+                <span><strong>Perubahan Panjang AB (a):</strong> Saat panjang AB diubah, lebar dan tinggi bangun berubah bersama dalam rasio 1:1 sehingga bangun tetap berupa persegi sejati seluas a&#178;.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Pergeseran titik potong C:</strong> Ketika C digeser tidak sama rata, luas persegi panjang AF (ab) dan CE (ac) berubah, namun jumlah keduanya selalu sama dengan luas persegi ADEB.</span>
+                <span><strong>Pergeseran Titik Potong C:</strong> Ketika C digeser tidak sama rata, luas persegi panjang AF (ab) dan CE (ac) berubah, namun jumlah keduanya selalu sama dengan luas persegi ADEB.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Bentuk aljabar:</strong> Untuk setiap pasangan b dan c dengan a = b + c, jumlah ab + ac selalu memenuhi (b + c)b + (b + c)c = (b + c)&#178;.</span>
+                <span><strong>Bentuk Aljabar:</strong> Untuk setiap pasangan b dan c dengan a = b + c, jumlah ab + ac selalu memenuhi (b + c)b + (b + c)c = (b + c)&#178;.</span>
               </li>
             </ol>
 
             <div class="sim-readout-card" aria-live="polite">
               <div class="sim-readout-row">
-                <span>Luas persegi AE (a&#178;)</span>
+                <span>Luas Persegi AE (a&#178;)</span>
                 <span id="sim2-eq-total">10&#178; = 100</span>
               </div>
               <div class="sim-readout-row">
@@ -2609,12 +3058,11 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 10: PROPOSITION 3 (TEOREMA)
+           SLIDE 8: PROPOSITION 3 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 37: Proposition 3 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 3 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 32: Proposition 3 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
-        <div class="prop-left">
-          <!-- Left edge pastel geometric dots -->
+        <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
             <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
             <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
@@ -2622,7 +3070,6 @@
             <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
             <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
           </svg>
-          <!-- Horizontal pastel drafting pencil top-left -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
             <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
             <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
@@ -2630,12 +3077,10 @@
             <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
-          <!-- Pastel loop/grid doodle top-center -->
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
             <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
             <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
           </svg>
-          <!-- Pastel geometric ribbon bottom -->
           <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
             <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
             <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
@@ -2644,142 +3089,34 @@
           <h1 class="prop-badge" lang="en">Proposition 3</h1>
 
           <p class="prop1-quote">
-            "Jika sebuah garis lurus dipotong secara sembarang, maka luas persegi panjang yang dibentuk oleh keseluruhan garis lurus dan salah satu bagiannya sama dengan jumlah luas persegi panjang yang dibentuk oleh kedua bagian tersebut dan persegi pada bagian yang disebut tadi."
+            &ldquo;Jika sebuah garis lurus dipotong secara sembarang, maka luas persegi panjang yang dibentuk oleh keseluruhan garis lurus dan salah satu bagiannya sama dengan jumlah luas persegi panjang yang dibentuk oleh kedua bagian tersebut dan persegi pada bagian yang disebut tadi.&rdquo;
           </p>
 
-          <div class="prop1-body">
-            <p class="prop1-label">Penjelasan Awal :</p>
-
-            <div class="inline-figures-row">
-              <div class="inline-figure">
-                <span>Dibentuk garis lurus AB :</span>
-                <svg class="fig-line-bc" role="img" viewBox="0 0 230 64">
-                  <title>Garis lurus horizontal AB</title>
-                  <text x="12" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                  <text x="218" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                  <line x1="12" y1="44" x2="218" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="inline-figure">
-              <span>Lalu, garis AB dipotong secara sembarang di C :</span>
-              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis AB yang dipotong secara sembarang di titik C menjadi bagian AC dan CB</title>
-                <text x="12" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                <text x="86" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
-                <text x="238" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="86" cy="46" r="7" fill="#5C76D8"/>
-              </svg>
-            </div>
-
-            <p class="prop1-conclusion">
-              Garis keseluruhan AB berpasangan dengan salah satu bagiannya (CB) membentuk persegi panjang berlebar AB dan setinggi CB, yang luasnya tepat terbagi atas persegi panjang AC &times; CB dan persegi bersisi CB.
-            </p>
-
-            <p class="prop2-bridge">
-              <strong>Hubungan dengan Proposisi 1:</strong> Proposisi 3 merupakan kasus khusus Proposisi 1 saat garis yang tidak dipotong memiliki panjang sama dengan salah satu bagian garis alas (<em>CB = c</em>).
-            </p>
-          </div>
-        </div>
-
-        <!-- Right pastel panel -->
-        <div class="prop-right">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
-            <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
-              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
-            </g>
-          </svg>
-
-          <!-- Rectangle & Square Partition Concept Card -->
-          <svg role="img" style="inline-size:23cqi; block-size:40cqb;" viewBox="0 0 300 315">
-            <title>Konsep Proposisi 3: persegi panjang selebar b tambah c dan setinggi c terbagi menjadi persegi panjang bc dan persegi c kuadrat</title>
-            <rect x="14" y="14" width="272" height="287" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
-            <!-- Side height indicator c -->
-            <line x1="58" y1="104" x2="58" y2="202" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="58" cy="104" r="7" fill="#5C76D8"/>
-            <circle cx="58" cy="202" r="7" fill="#5C76D8"/>
-            <text x="36" y="159" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">c</text>
-
-            <!-- Left rectangle b*c and right true square c*c -->
-            <rect x="86" y="104" width="64" height="98" fill="#E6DCFF" stroke="#232652" stroke-width="3.5"/>
-            <rect x="150" y="104" width="98" height="98" fill="#FFF1A8" stroke="#232652" stroke-width="3.5"/>
-
-            <!-- Segment labels b and c -->
-            <text x="118" y="89" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">b</text>
-            <text x="199" y="89" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">c</text>
-            <text x="167" y="62" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="16" font-weight="800">a = b + c</text>
-
-            <!-- Area expressions inside -->
-            <text x="118" y="159" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">bc</text>
-            <text x="199" y="159" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">c&#178;</text>
-
-            <!-- Caption pill -->
-            <rect x="44" y="240" width="212" height="38" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
-            <text x="150" y="265" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">(b + c)c = bc + c&#178;</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SLIDE 11: PROPOSITION 3 (PENJELASAN & PEMBUKTIAN)
-           ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 37: Proposition 3 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
-        <!-- Left white panel -->
-        <div class="prop-left">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
-            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
-            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
-            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
-            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
-            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
-            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
-            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
-            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
-            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
-            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
-            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
-          </svg>
-
-          <h1 class="prop-badge" lang="en">Proposition 3</h1>
-
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian dilakukan dengan membentuk persegi pada salah satu bagian garis (CB), lalu melengkapinya menjadi persegi panjang bersisi keseluruhan AB:</p>
+            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong> (kasus khusus Prop. 1 saat tinggi <strong>CB = c</strong>); dibentuk persegi pada <strong>CB</strong> lalu diperluas ke <strong>AB</strong>:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun persegi pada CB:</strong> Pada bagian CB dibentuk persegi <strong>CDEB</strong> <em>(disebut juga persegi <strong>CE</strong> dari sudut diagonalnya)</em> sehingga sisi BC, BE, ED, dan DC sama panjang.</span>
+                <span><strong>Konstruksi Persegi CDEB:</strong> Pada bagian <strong>CB</strong> dibentuk persegi <strong>CDEB</strong> (persegi <strong>CE</strong>) sehingga <strong>BC = BE = ED = DC</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Perluas menjadi persegi panjang AE:</strong> Garis ED diperpanjang hingga titik F yang sejajar dengan A, lalu ditarik garis AF sejajar CD dan BE hingga terbentuk persegi panjang keseluruhan <strong>AE</strong>.</span>
+                <span><strong>Perluasan Persegi Panjang AE:</strong> Perpanjang <strong>ED</strong> ke <strong>F</strong> sejajar <strong>A</strong>, lalu tarik <strong>AF &#8741; CD</strong> hingga terbentuk persegi panjang <strong>AE</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Identifikasi luas tiap bagian:</strong> Persegi panjang <strong>AE</strong> tersusun tepat dari persegi panjang <span class="area-tag area-tag--lavender">AD</span> <em>(luas AC &times; DC = AC &times; CB)</em> dan persegi <span class="area-tag area-tag--butter">CE</span> <em>(luas CB&#178;)</em>.</span>
+                <span><strong>Identifikasi Bagian Luas:</strong> Persegi panjang <strong>AE</strong> tersusun tepat dari <span class="area-tag area-tag--lavender">AD</span> (<strong>AC &times; DC = AC &times; CB</strong>) dan persegi <span class="area-tag area-tag--butter">CE</span> (<strong>CB&#178;</strong>).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan:</strong> Karena sisi panjang AE adalah AB dan tingginya BE (= CB), diperoleh kesamaan luas berikut:</span>
+                <span><strong>Kesimpulan Luas:</strong> Karena panjang <strong>AE</strong> adalah <strong>AB</strong> dan tingginya <strong>BE = CB</strong>, berlaku kesamaan luas:</span>
               </li>
             </ol>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas AE</span>
-              <span>= AB &times; BE = AB &times; CB</span>
-              <span class="prop1-equation-cont">= AD + CE = (AC &times; CB) + CB&#178;</span>
+              <span>= AB &times; BE = AB &times; CB = AD + CE</span>
               <span class="prop1-equation-cont">&there4; AB &times; CB = (AC &times; CB) + CB&#178;</span>
             </div>
           </div>
@@ -2842,9 +3179,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 12: SIMULASI INTERAKTIF PROPOSITION 3
+           SLIDE 9: SIMULASI INTERAKTIF PROPOSITION 3
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 37: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 32: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2870,15 +3207,15 @@
             <ol class="sim-copy-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Tinggi mengikuti CB (c):</strong> Karena CE merupakan persegi pada CB, tinggi persegi panjang AD dan keseluruhan AE selalu berubah tepat sama dengan panjang c dalam rasio 1:1.</span>
+                <span><strong>Tinggi Mengikuti CB (c):</strong> Karena CE merupakan persegi pada CB, tinggi persegi panjang AD dan keseluruhan AE selalu berubah tepat sama dengan panjang c dalam rasio 1:1.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Pergeseran titik potong C:</strong> Ketika C digeser, luas persegi panjang AD (bc) dan persegi CE (c&#178;) berubah seketika, namun jumlah keduanya selalu sama dengan luas AE ((b + c)c).</span>
+                <span><strong>Pergeseran Titik Potong C:</strong> Ketika C digeser, luas persegi panjang AD (bc) dan persegi CE (c&#178;) berubah seketika, namun jumlah keduanya selalu sama dengan luas AE ((b + c)c).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Bentuk aljabar:</strong> Untuk setiap nilai b dan c dengan a = b + c, jumlah luas bc + c&#178; selalu memenuhi (b + c)c = bc + c&#178;.</span>
+                <span><strong>Bentuk Aljabar:</strong> Untuk setiap nilai b dan c dengan a = b + c, jumlah luas bc + c&#178; selalu memenuhi (b + c)c = bc + c&#178;.</span>
               </li>
             </ol>
 
@@ -2949,11 +3286,11 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 13: PROPOSITION 4 (TEOREMA & PENJELASAN AWAL)
+           SLIDE 10: PROPOSITION 4 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 37: Proposition 4 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 4 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 32: Proposition 4 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
-        <div class="prop-left">
+        <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
             <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
             <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
@@ -2980,148 +3317,34 @@
           <h1 class="prop-badge" lang="en">Proposition 4</h1>
 
           <p class="prop1-quote">
-            "Jika sebuah garis lurus dipotong secara sembarang, maka luas persegi pada keseluruhan garis tersebut sama dengan jumlah luas persegi-persegi pada kedua bagiannya dan dua kali persegi panjang yang dibentuk oleh kedua bagian tersebut."
+            &ldquo;Jika sebuah garis lurus dipotong secara sembarang, maka luas persegi pada keseluruhan garis tersebut sama dengan jumlah luas persegi-persegi pada kedua bagiannya dan dua kali persegi panjang yang dibentuk oleh kedua bagian tersebut.&rdquo;
           </p>
 
-          <div class="prop1-body">
-            <p class="prop1-label">Penjelasan Awal :</p>
-
-            <div class="inline-figures-row">
-              <div class="inline-figure">
-                <span>Dibentuk garis lurus AB :</span>
-                <svg class="fig-line-bc" role="img" viewBox="0 0 230 64">
-                  <title>Garis lurus horizontal AB</title>
-                  <text x="12" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                  <text x="218" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                  <line x1="12" y1="44" x2="218" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="inline-figure">
-              <span>Lalu, garis AB dipotong secara sembarang di C :</span>
-              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis AB yang dipotong secara sembarang di titik C menjadi bagian AC dan CB</title>
-                <text x="12" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                <text x="86" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
-                <text x="238" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="86" cy="46" r="7" fill="#5C76D8"/>
-              </svg>
-            </div>
-
-            <p class="prop1-conclusion">
-              Garis keseluruhan AB membentuk satu persegi besar bersisi AB, yang luasnya tepat terbagi atas dua persegi pada bagiannya (persegi bersisi AC dan persegi bersisi CB) serta dua persegi panjang identik yang masing-masing berdimensi AC &times; CB.
-            </p>
-
-            <p class="prop2-bridge">
-              <strong>Hubungan dengan Proposisi 2:</strong> Pada Proposisi 2, persegi bersisi AB hanya dipotong secara vertikal menjadi dua persegi panjang; pada Proposisi 4, pemotongan dilanjutkan secara horizontal sehingga keseluruhannya terurai menjadi dua persegi kecil dan dua persegi panjang identik.
-            </p>
-          </div>
-        </div>
-
-        <!-- Right pastel panel -->
-        <div class="prop-right">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
-            <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
-              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
-            </g>
-          </svg>
-
-          <!-- Square of a Binomial Concept Card -->
-          <svg role="img" style="inline-size:23cqi; block-size:40cqb;" viewBox="0 0 300 315">
-            <title>Konsep Proposisi 4: persegi bersisi b tambah c terbagi menjadi persegi b kuadrat, persegi c kuadrat, dan dua persegi panjang bc</title>
-            <rect x="14" y="14" width="272" height="287" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
-            <!-- Left side height labels c and b -->
-            <line x1="72" y1="68" x2="72" y2="212" stroke="#5C76D8" stroke-width="4.5" stroke-linecap="round"/>
-            <circle cx="72" cy="68" r="5" fill="#5C76D8"/>
-            <circle cx="72" cy="158" r="5" fill="#5C76D8"/>
-            <circle cx="72" cy="212" r="5" fill="#5C76D8"/>
-            <text x="51" y="119" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">c</text>
-            <text x="51" y="191" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">b</text>
-
-            <!-- Four partitions: AG (bc), CK (c^2), HF (b^2), GE (bc) -->
-            <rect x="92" y="68" width="54" height="90" fill="#FFE2CC" stroke="#232652" stroke-width="3.2"/>
-            <rect x="146" y="68" width="90" height="90" fill="#FFF1A8" stroke="#232652" stroke-width="3.2"/>
-            <rect x="92" y="158" width="54" height="54" fill="#CCF5E1" stroke="#232652" stroke-width="3.2"/>
-            <rect x="146" y="158" width="90" height="54" fill="#FFE2CC" stroke="#232652" stroke-width="3.2"/>
-
-            <!-- Top segment labels b and c -->
-            <text x="164" y="38" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">a = b + c</text>
-            <text x="119" y="59" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">b</text>
-            <text x="191" y="59" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">c</text>
-
-            <!-- Area expressions inside -->
-            <text x="119" y="119" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="19" font-weight="800">bc</text>
-            <text x="191" y="119" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">c&#178;</text>
-            <text x="119" y="191" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="19" font-weight="800">b&#178;</text>
-            <text x="191" y="191" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="19" font-weight="800">bc</text>
-
-            <!-- Caption pill -->
-            <rect x="28" y="238" width="244" height="40" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
-            <text x="150" y="264" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="17" font-weight="800">(b + c)&#178; = b&#178; + c&#178; + 2bc</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SLIDE 14: PROPOSITION 4 (PENJELASAN & PEMBUKTIAN)
-           ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 37: Proposition 4 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
-        <!-- Left white panel -->
-        <div class="prop-left">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
-            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
-            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
-            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
-            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
-            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
-            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
-            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
-            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
-            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
-            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
-            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
-          </svg>
-
-          <h1 class="prop-badge" lang="en">Proposition 4</h1>
-
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian dimulai dengan membentuk persegi pada garis keseluruhan AB, lalu membaginya secara vertikal dan horizontal melewati titik potong:</p>
+            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong>. Melanjutkan pemotongan vertikal pada Proposisi 2, persegi <strong>ADEB</strong> diurai secara vertikal &amp; horizontal:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun persegi &amp; diagonal BD:</strong> Pada garis AB dibentuk persegi <strong>ADEB</strong>, kemudian ditarik garis diagonal <strong>BD</strong> dari sudut B menuju sudut D.</span>
+                <span><strong>Konstruksi Persegi ADEB &amp; Diagonal BD:</strong> Pada <strong>AB</strong> dibentuk persegi <strong>ADEB</strong>, lalu ditarik garis diagonal <strong>BD</strong> dari sudut B menuju sudut D.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Tarik garis sejajar CF dan HK:</strong> Melalui C ditarik <strong>CF</strong> sejajar AD dan BE hingga memotong BD di titik G; melalui G ditarik <strong>HK</strong> sejajar AB dan DE.</span>
+                <span><strong>Tarik Garis Sejajar CF &amp; HK:</strong> Melalui <strong>C</strong> ditarik <strong>CF &#8741; AD, BE</strong> memotong <strong>BD</strong> di <strong>G</strong>; melalui <strong>G</strong> ditarik <strong>HK &#8741; AB, DE</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Buktikan persegi &amp; komplemennya:</strong> Karena diagonal BD membagi sudut siku-siku persegi tepat 45&deg;, <span class="area-tag area-tag--mint">HF</span> terbukti persegi bersisi <em>AC</em> dan <span class="area-tag area-tag--butter">CK</span> persegi bersisi <em>CB</em>, sedangkan dua komplemennya <span class="area-tag area-tag--peach">AG</span> dan <span class="area-tag area-tag--peach">GE</span> merupakan dua persegi panjang sama besar (<em>AC &times; CB</em>).</span>
+                <span><strong>Buktikan Persegi &amp; Komplemen:</strong> Diagonal <strong>BD</strong> membagi sudut siku-siku 45&deg;; <span class="area-tag area-tag--mint">HF</span> terbukti persegi bersisi <em>AC</em> dan <span class="area-tag area-tag--butter">CK</span> persegi bersisi <em>CB</em>, sedang dua komplemennya <span class="area-tag area-tag--peach">AG</span> = <span class="area-tag area-tag--peach">GE</span> (<em>AC &times; CB</em>).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan:</strong> Persegi keseluruhan <strong>ADEB</strong> tersusun tepat dari kedua persegi tersebut dan dua komplemen yang sama luasnya:</span>
+                <span><strong>Kesimpulan Luas Keseluruhan:</strong> Persegi <strong>ADEB</strong> tersusun tepat dari kedua persegi tersebut dan dua komplemen yang sama luasnya:</span>
               </li>
             </ol>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas ADEB</span>
-              <span>= HF + CK + AG + GE</span>
-              <span class="prop1-equation-cont">= AC&#178; + CB&#178; + 2(AC &times; CB)</span>
+              <span>= HF + CK + AG + GE = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
               <span class="prop1-equation-cont">&there4; AB&#178; = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
             </div>
           </div>
@@ -3201,9 +3424,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 15: SIMULASI INTERAKTIF PROPOSITION 4
+           SLIDE 11: SIMULASI INTERAKTIF PROPOSITION 4
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 37: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 32: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3229,15 +3452,15 @@
             <ol class="sim-copy-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Persegi keseluruhan ADEB:</strong> Panjang sisi persegi ADEB selalu mengikuti panjang garis AB = a = b + c dalam rasio 1:1.</span>
+                <span><strong>Persegi Keseluruhan ADEB:</strong> Panjang sisi persegi ADEB selalu mengikuti panjang garis AB = a = b + c dalam rasio 1:1.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Empat bagian oleh diagonal BD:</strong> Garis CF, HK, dan diagonal BD selalu membagi ADEB menjadi dua persegi (HF = b&#178;, CK = c&#178;) dan dua persegi panjang sama besar (AG = GE = bc).</span>
+                <span><strong>Empat Bagian oleh Diagonal BD:</strong> Garis CF, HK, dan diagonal BD selalu membagi ADEB menjadi dua persegi (HF = b&#178;, CK = c&#178;) dan dua persegi panjang sama besar (AG = GE = bc).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Bentuk aljabar:</strong> Untuk setiap nilai b dan c dengan a = b + c, jumlah keempat luas bagian selalu memenuhi (b + c)&#178; = b&#178; + c&#178; + 2bc.</span>
+                <span><strong>Bentuk Aljabar:</strong> Untuk setiap nilai b dan c dengan a = b + c, jumlah keempat luas bagian selalu memenuhi (b + c)&#178; = b&#178; + c&#178; + 2bc.</span>
               </li>
             </ol>
 
@@ -3308,11 +3531,11 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 16: PROPOSITION 5 (TEOREMA & PENJELASAN AWAL)
+           SLIDE 12: PROPOSITION 5 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 37: Proposition 5 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 5 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 32: Proposition 5 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
-        <div class="prop-left">
+        <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
             <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
             <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
@@ -3339,156 +3562,34 @@
           <h1 class="prop-badge" lang="en">Proposition 5</h1>
 
           <p class="prop1-quote">
-            "Jika sebuah garis lurus dipotong menjadi dua bagian yang sama panjang dan dua bagian yang tidak sama panjang, maka luas persegi panjang yang dibentuk oleh kedua bagian yang tidak sama panjang tersebut, ditambah luas persegi pada ruas garis di antara kedua titik potongnya, sama dengan luas persegi pada setengah garis tersebut."
+            &ldquo;Jika sebuah garis lurus dipotong menjadi dua bagian yang sama panjang dan dua bagian yang tidak sama panjang, maka luas persegi panjang yang dibentuk oleh kedua bagian yang tidak sama panjang tersebut, ditambah luas persegi pada ruas garis di antara kedua titik potongnya, sama dengan luas persegi pada setengah garis tersebut.&rdquo;
           </p>
 
-          <div class="prop1-body">
-            <p class="prop1-label">Penjelasan Awal :</p>
-
-            <div class="inline-figures-row">
-              <div class="inline-figure">
-                <span>Dibentuk garis lurus AB :</span>
-                <svg class="fig-line-bc" role="img" viewBox="0 0 230 64">
-                  <title>Garis lurus horizontal AB</title>
-                  <text x="12" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
-                  <text x="218" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
-                  <line x1="12" y1="44" x2="218" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="inline-figure">
-              <span>Lalu, garis AB dipotong di C (AC = CB) dan di D :</span>
-              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
-                <title>Garis AB dipotong sama panjang di titik tengah C dan tidak sama panjang di titik D</title>
-                <text x="12" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="23" font-weight="800">A</text>
-                <text x="125" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="23" font-weight="800">C</text>
-                <text x="172" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="23" font-weight="800">D</text>
-                <text x="238" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="23" font-weight="800">B</text>
-                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
-                <circle cx="125" cy="46" r="7" fill="#5C76D8"/>
-                <circle cx="172" cy="46" r="7" fill="#FF9C97" stroke="#232652" stroke-width="1.8"/>
-              </svg>
-            </div>
-
-            <p class="prop1-conclusion">
-              Pemotongan ini membentuk dua bagian tak sama panjang AD dan DB serta ruas selisih CD di antara C dan D. Luas persegi panjang AD &times; DB bersama persegi bersisi CD tepat menyamai luas persegi bersisi CB.
-            </p>
-
-            <p class="prop2-bridge">
-              <strong>Kaitan dengan Definisi 2 (Gnomon):</strong> Luas persegi panjang <em>AD &times; DB</em> tidak langsung terletak di dalam persegi setengah garis <em>CEFB</em>, melainkan dipadankan terlebih dahulu dengan bangun siku <strong>gnomon NOP</strong> sebelum dilengkapi oleh persegi kecil <em>LG</em>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Right pastel panel -->
-        <div class="prop-right">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
-            <g transform="rotate(14 140 90)">
-              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
-              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
-            </g>
-          </svg>
-
-          <!-- Difference of Squares / Gnomon Concept Card -->
-          <svg role="img" style="inline-size:23cqi; block-size:40cqb;" viewBox="0 0 300 315">
-            <title>Konsep Proposisi 5: persegi panjang AL sama luas dengan DF sehingga gnomon NOP menyamai AD kali DB, dan ditambah d kuadrat membentuk persegi penuh m kuadrat</title>
-            <rect x="14" y="14" width="272" height="287" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
-
-            <!-- Segment labels above line AB -->
-            <text x="98" y="42" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="16" font-weight="800">m</text>
-            <text x="168" y="42" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="16" font-weight="800">d</text>
-            <text x="220" y="42" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">m&#8722;d</text>
-
-            <text x="46" y="65" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">A</text>
-            <text x="150" y="65" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">C</text>
-            <text x="186" y="65" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">D</text>
-            <text x="254" y="65" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">B</text>
-
-            <!-- 5 concept blocks: AL (mint), CH (peach), DM (mint), LG (butter), HF (mint) -->
-            <rect x="46" y="76" width="104" height="68" fill="#CCF5E1" stroke="#232652" stroke-width="3"/>
-            <rect x="150" y="76" width="36" height="68" fill="#FFE2CC" stroke="#232652" stroke-width="3"/>
-            <rect x="186" y="76" width="68" height="68" fill="#CCF5E1" stroke="#232652" stroke-width="3"/>
-            <rect x="150" y="144" width="36" height="36" fill="#FFF1A8" stroke="#232652" stroke-width="3"/>
-            <rect x="186" y="144" width="68" height="36" fill="#CCF5E1" stroke="#232652" stroke-width="3"/>
-
-            <!-- Inside labels -->
-            <text x="98" y="106" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="16" font-weight="800">AL</text>
-            <text x="98" y="125" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="14" font-weight="700">m(m&#8722;d)</text>
-            <text x="168" y="114" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="14.5" font-weight="800">CH</text>
-            <text x="220" y="114" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">DM</text>
-            <text x="168" y="167" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="16" font-weight="800">d&#178;</text>
-            <text x="220" y="167" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="15.5" font-weight="800">HF</text>
-
-            <!-- Equivalence pill inside bottom-left open quadrant -->
-            <rect x="46" y="164" width="90" height="28" rx="8" fill="#CCF5E1" stroke="#6AC89D" stroke-width="2.2"/>
-            <text x="91" y="183" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="14" font-weight="800">AL = DF</text>
-            <text x="150" y="218" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800">Gnomon = CH + DF = (m+d)(m&#8722;d)</text>
-
-            <!-- Caption pill -->
-            <rect x="26" y="238" width="248" height="40" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
-            <text x="150" y="264" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="16.5" font-weight="800">(m + d)(m &#8722; d) + d&#178; = m&#178;</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SLIDE 17: PROPOSITION 5 (PENJELASAN & PEMBUKTIAN)
-           ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 37: Proposition 5 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
-        <!-- Left white panel -->
-        <div class="prop-left">
-          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
-            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
-            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
-            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
-            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
-            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
-            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
-            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
-            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
-            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
-            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
-            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
-            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
-          </svg>
-          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
-            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
-            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
-          </svg>
-
-          <h1 class="prop-badge" lang="en">Proposition 5</h1>
-
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian dibangun dengan persegi pada setengah garis CB, lalu memadankan luas persegi panjang AD &times; DB dengan bangun siku gnomon NOP:</p>
+            <p class="prop1-intro">Garis <strong>AB</strong> dibagi sama di <strong>C</strong> (<strong>AC = CB</strong>) &amp; tak sama di <strong>D</strong>; luas <strong>AD &times; DB</strong> dipadankan dengan <strong>gnomon NOP</strong> (Definisi 2) pada persegi <strong>CEFB</strong>:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun CEFB &amp; garis bantu:</strong> Pada CB dibentuk persegi <strong>CEFB</strong> dan diagonal <strong>BE</strong>. Melalui D ditarik <strong>DG</strong> sejajar BF memotong BE di H, melalui H ditarik <strong>KM</strong> sejajar AB, lalu ditarik <strong>AK</strong> sejajar CL.</span>
+                <span><strong>Konstruksi CEFB &amp; Garis Bantu:</strong> Pada <strong>CB</strong> dibentuk persegi <strong>CEFB</strong> dan diagonal <strong>BE</strong>; tarik <strong>DG &#8741; BF</strong> memotong <strong>BE</strong> di <strong>H</strong>, <strong>KM &#8741; AB</strong>, dan <strong>AK &#8741; CL</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Buktikan kesamaan AL = DF:</strong> Karena komplemen di sekitar diagonal sama luas (<strong>CH = HF</strong>), penambahan persegi sudut DM menghasilkan <strong>CM = DF</strong>. Karena AC = CB, maka <span class="area-tag area-tag--mint">AL</span> = CM = <span class="area-tag area-tag--mint">DF</span>.</span>
+                <span><strong>Buktikan Kesamaan AL = DF:</strong> Karena komplemen diagonal sama luas (<strong>CH = HF</strong>), diperoleh <strong>CM = DF</strong>; karena <strong>AC = CB</strong>, maka <span class="area-tag area-tag--mint">AL</span> = <strong>CM</strong> = <span class="area-tag area-tag--mint">DF</span>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Padankan dengan Gnomon NOP:</strong> Penambahan <span class="area-tag area-tag--peach">CH</span> pada kedua ruas menghasilkan <strong>AH = DF + CH = Gnomon NOP</strong>. Karena diagonal BE membuat DH = DB, maka <strong>AD &times; DB = Gnomon NOP</strong>.</span>
+                <span><strong>Padankan Gnomon NOP:</strong> Penambahan <span class="area-tag area-tag--peach">CH</span> memberi <strong>AH = DF + CH = Gnomon NOP</strong>; karena <strong>DH = DB</strong>, maka <strong>AD &times; DB = Gnomon NOP</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Tambahkan persegi kecil LG:</strong> Persegi bersisi CD (<span class="area-tag area-tag--butter">LG</span> = CD&#178;) tepat melengkapi gnomon NOP menjadi persegi penuh <strong>CEFB</strong>:</span>
+                <span><strong>Lengkapi Persegi LG:</strong> Persegi kecil bersisi <strong>CD</strong> (<span class="area-tag area-tag--butter">LG</span> = <strong>CD&#178;</strong>) tepat melengkapi <strong>gnomon NOP</strong> menjadi persegi <strong>CEFB</strong>:</span>
               </li>
             </ol>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas CEFB</span>
-              <span>= Gnomon NOP + LG</span>
-              <span class="prop1-equation-cont">= AH + LG = (AD &times; DB) + CD&#178;</span>
+              <span>= Gnomon NOP + LG = AH + LG = (AD &times; DB) + CD&#178;</span>
               <span class="prop1-equation-cont">&there4; CB&#178; = (AD &times; DB) + CD&#178;</span>
             </div>
           </div>
@@ -3577,9 +3678,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 18: SIMULASI INTERAKTIF PROPOSITION 5
+           SLIDE 13: SIMULASI INTERAKTIF PROPOSITION 5
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 37: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 32: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3605,7 +3706,7 @@
             <ol class="sim-copy-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bagian tak sama panjang:</strong> Dengan setengah garis CB = m dan ruas selisih CD = d, diperoleh AD = m + d dan DB = m &#8722; d.</span>
+                <span><strong>Bagian Tak Sama Panjang:</strong> Dengan setengah garis CB = m dan ruas selisih CD = d, diperoleh AD = m + d dan DB = m &#8722; d.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
@@ -3613,7 +3714,7 @@
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Bentuk aljabar:</strong> Penambahan persegi kuning LG (d&#178;) melengkapi Gnomon NOP menjadi persegi penuh CEFB (m&#178;): (m + d)(m &#8722; d) + d&#178; = m&#178;.</span>
+                <span><strong>Bentuk Aljabar:</strong> Penambahan persegi kuning LG (d&#178;) melengkapi Gnomon NOP menjadi persegi penuh CEFB (m&#178;): (m + d)(m &#8722; d) + d&#178; = m&#178;.</span>
               </li>
             </ol>
 
@@ -3684,9 +3785,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 19: PROPOSITION 6 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 14: PROPOSITION 6 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 19 dari 37: Proposition 6 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 32: Proposition 6 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 6 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3835,9 +3936,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 20: SIMULASI INTERAKTIF PROPOSITION 6
+           SLIDE 15: SIMULASI INTERAKTIF PROPOSITION 6
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 20 dari 37: Simulasi Interaktif Proposition 6" data-theme="split-sim" data-title="Simulasi Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 32: Simulasi Interaktif Proposition 6" data-theme="split-sim" data-title="Simulasi Proposition 6 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3942,9 +4043,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 21: PROPOSITION 7 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 16: PROPOSITION 7 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 21 dari 37: Proposition 7 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 7 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 32: Proposition 7 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 7 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4088,9 +4189,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 22: SIMULASI INTERAKTIF PROPOSITION 7
+           SLIDE 17: SIMULASI INTERAKTIF PROPOSITION 7
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 22 dari 37: Simulasi Interaktif Proposition 7" data-theme="split-sim" data-title="Simulasi Proposition 7 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 32: Simulasi Interaktif Proposition 7" data-theme="split-sim" data-title="Simulasi Proposition 7 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4195,9 +4296,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 23: PROPOSITION 8 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 18: PROPOSITION 8 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 23 dari 37: Proposition 8 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 8 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 32: Proposition 8 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 8 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4363,9 +4464,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 24: SIMULASI INTERAKTIF PROPOSITION 8
+           SLIDE 19: SIMULASI INTERAKTIF PROPOSITION 8
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 24 dari 37: Simulasi Interaktif Proposition 8" data-theme="split-sim" data-title="Simulasi Proposition 8 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 19 dari 32: Simulasi Interaktif Proposition 8" data-theme="split-sim" data-title="Simulasi Proposition 8 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4470,9 +4571,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 25: PROPOSITION 9 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 20: PROPOSITION 9 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 25 dari 37: Proposition 9 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 9 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 20 dari 32: Proposition 9 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 9 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4611,9 +4712,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 26: SIMULASI INTERAKTIF PROPOSITION 9
+           SLIDE 21: SIMULASI INTERAKTIF PROPOSITION 9
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 26 dari 37: Simulasi Interaktif Proposition 9" data-theme="split-sim" data-title="Simulasi Proposition 9 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 21 dari 32: Simulasi Interaktif Proposition 9" data-theme="split-sim" data-title="Simulasi Proposition 9 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4718,9 +4819,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 27: PROPOSITION 10 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 22: PROPOSITION 10 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 27 dari 37: Proposition 10 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 10 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 22 dari 32: Proposition 10 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 10 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4858,9 +4959,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 28: SIMULASI INTERAKTIF PROPOSITION 10
+           SLIDE 23: SIMULASI INTERAKTIF PROPOSITION 10
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 28 dari 37: Simulasi Interaktif Proposition 10" data-theme="split-sim" data-title="Simulasi Proposition 10 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 23 dari 32: Simulasi Interaktif Proposition 10" data-theme="split-sim" data-title="Simulasi Proposition 10 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4965,9 +5066,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 29: PROPOSITION 11 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 24: PROPOSITION 11 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 29 dari 37: Proposition 11 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 11 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 24 dari 32: Proposition 11 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 11 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5107,9 +5208,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 30: SIMULASI INTERAKTIF PROPOSITION 11
+           SLIDE 25: SIMULASI INTERAKTIF PROPOSITION 11
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 30 dari 37: Simulasi Interaktif Proposition 11" data-theme="split-sim" data-title="Simulasi Proposition 11 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 25 dari 32: Simulasi Interaktif Proposition 11" data-theme="split-sim" data-title="Simulasi Proposition 11 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5214,9 +5315,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 31: PROPOSITION 12 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 26: PROPOSITION 12 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 31 dari 37: Proposition 12 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 12 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 26 dari 32: Proposition 12 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 12 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5348,9 +5449,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 32: SIMULASI INTERAKTIF PROPOSITION 12
+           SLIDE 27: SIMULASI INTERAKTIF PROPOSITION 12
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 32 dari 37: Simulasi Interaktif Proposition 12" data-theme="split-sim" data-title="Simulasi Proposition 12 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 27 dari 32: Simulasi Interaktif Proposition 12" data-theme="split-sim" data-title="Simulasi Proposition 12 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5455,9 +5556,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 33: PROPOSITION 13 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 28: PROPOSITION 13 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 33 dari 37: Proposition 13 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 13 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 28 dari 32: Proposition 13 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 13 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5588,9 +5689,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 34: SIMULASI INTERAKTIF PROPOSITION 13
+           SLIDE 29: SIMULASI INTERAKTIF PROPOSITION 13
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 34 dari 37: Simulasi Interaktif Proposition 13" data-theme="split-sim" data-title="Simulasi Proposition 13 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 29 dari 32: Simulasi Interaktif Proposition 13" data-theme="split-sim" data-title="Simulasi Proposition 13 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5695,9 +5796,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 35: PROPOSITION 14 (TEOREMA, PEMBUKTIAN & ALJABAR)
+           SLIDE 30: PROPOSITION 14 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 35 dari 37: Proposition 14 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 14 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 30 dari 32: Proposition 14 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 14 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5838,9 +5939,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 36: SIMULASI INTERAKTIF PROPOSITION 14
+           SLIDE 31: SIMULASI INTERAKTIF PROPOSITION 14
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 36 dari 37: Simulasi Interaktif Proposition 14" data-theme="split-sim" data-title="Simulasi Proposition 14 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 31 dari 32: Simulasi Interaktif Proposition 14" data-theme="split-sim" data-title="Simulasi Proposition 14 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5945,9 +6046,9 @@
       </section>
 
       <!-- ========================================================
-           SLIDE 37: PENUTUP (TERIMA KASIH + ANIMASI 2D & WEB AUDIO)
+           SLIDE 32: PENUTUP (TERIMA KASIH + ANIMASI 2D & WEB AUDIO)
            ======================================================== -->
-      <section class="slide slide-closing" id="slide-closing" role="group" aria-roledescription="slide" aria-label="Slide 37 dari 37: Terima Kasih" data-theme="closing" data-title="Terima Kasih | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-closing" id="slide-closing" role="group" aria-roledescription="slide" aria-label="Slide 32 dari 32: Terima Kasih" data-theme="closing" data-title="Terima Kasih | Fundamentals of Geometric Algebra" hidden>
         <!-- Ambient pastel desk doodles & right geometric folder corner -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:11%; inset-inline-start:44.5%; inline-size:8cqi; block-size:10cqb;" viewBox="0 0 120 90">
           <path d="M18 68 C28 60, 26 42, 42 36 C56 31, 68 38, 78 24 C84 16, 94 12, 102 18 C108 24, 100 38, 86 42 C72 46, 62 52, 56 64 C50 76, 32 82, 18 76 Z" fill="#9AC5B7" opacity="0.72"/>
@@ -6119,12 +6220,50 @@
     </div>
   </main>
 
+  <!-- ============================================================
+       MOBILE STUDY NAVIGATION & SLIDE DIRECTORY
+       ============================================================ -->
+  <nav class="mobile-nav" aria-label="Navigasi Materi Mobile">
+    <button type="button" class="mobile-nav-btn" id="mobile-btn-prev" aria-label="Prev: slide sebelumnya">
+      <span aria-hidden="true">&#8249;</span>
+      <span>Prev</span>
+    </button>
+
+    <button type="button" class="mobile-nav-toc-btn" id="mobile-btn-toc" aria-haspopup="dialog" aria-controls="mobile-toc-dialog" aria-expanded="false">
+      <span class="mobile-nav-toc-count" id="mobile-toc-count">1/32</span>
+      <span class="mobile-nav-toc-label" id="mobile-toc-label">Sampul</span>
+      <span aria-hidden="true">&#9662;</span>
+    </button>
+
+    <button type="button" class="mobile-nav-btn" id="mobile-btn-next" aria-label="Next: slide berikutnya">
+      <span>Next</span>
+      <span aria-hidden="true">&#8250;</span>
+    </button>
+  </nav>
+
+  <dialog class="mobile-toc-dialog" id="mobile-toc-dialog" aria-labelledby="mobile-toc-title">
+    <div class="mobile-toc-header">
+      <h2 class="mobile-toc-title" id="mobile-toc-title">Daftar Materi &amp; Simulasi</h2>
+      <button type="button" class="mobile-toc-close" id="mobile-toc-close" aria-label="Tutup daftar materi">&times;</button>
+    </div>
+    <ul class="mobile-toc-list" id="mobile-toc-list"></ul>
+  </dialog>
+
   <script type="module">
     const viewport = document.getElementById('viewport');
     const stage = document.getElementById('slide-stage');
     const statusRegion = document.getElementById('slide-status');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+    const mobileBtnPrev = document.getElementById('mobile-btn-prev');
+    const mobileBtnNext = document.getElementById('mobile-btn-next');
+    const mobileBtnToc = document.getElementById('mobile-btn-toc');
+    const mobileTocCount = document.getElementById('mobile-toc-count');
+    const mobileTocLabel = document.getElementById('mobile-toc-label');
+    const tocDialog = document.getElementById('mobile-toc-dialog');
+    const tocCloseBtn = document.getElementById('mobile-toc-close');
+    const tocList = document.getElementById('mobile-toc-list');
+    const mobileLayoutMQ = window.matchMedia('(max-width: 900px), (max-height: 540px) and (pointer: coarse)');
     const slides = Array.from(stage.querySelectorAll('.slide'));
     const totalSlides = slides.length;
 
@@ -6132,6 +6271,99 @@
     let lastWheelAt = 0;
     let pointerStartX = null;
     let pointerStartY = null;
+
+    function getSlideTocMeta(slideEl, index) {
+      if (index === 0) {
+        return { title: 'Sampul Materi', shortTitle: 'Sampul', kind: 'Pengantar', kindClass: 'intro' };
+      }
+      if (index === 1) {
+        return { title: 'Anggota Kelompok', shortTitle: 'Anggota', kind: 'Pengantar', kindClass: 'intro' };
+      }
+      if (index === 2) {
+        return { title: 'Definisi', shortTitle: 'Definisi', kind: 'Pengantar', kindClass: 'intro' };
+      }
+      if (slideEl.id === 'slide-closing' || index === totalSlides - 1) {
+        return { title: 'Terima Kasih', shortTitle: 'Penutup', kind: 'Penutup', kindClass: 'intro' };
+      }
+
+      const badgeText = slideEl.querySelector('.prop-badge')?.textContent.trim();
+      if (slideEl.classList.contains('slide-sim')) {
+        const numMatch = badgeText?.match(/(\d+)/);
+        return {
+          title: badgeText || `Simulasi Slide ${index + 1}`,
+          shortTitle: numMatch ? `Sim. Prop. ${numMatch[1]}` : 'Simulasi',
+          kind: 'Simulasi',
+          kindClass: 'sim'
+        };
+      }
+
+      return {
+        title: badgeText || `Slide ${index + 1}`,
+        shortTitle: badgeText || `Slide ${index + 1}`,
+        kind: 'Materi',
+        kindClass: 'proof'
+      };
+    }
+
+    const slideMetaList = slides.map((slide, idx) => getSlideTocMeta(slide, idx));
+    const tocItemButtons = [];
+
+    if (tocList) {
+      const frag = document.createDocumentFragment();
+      slideMetaList.forEach((meta, idx) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'mobile-toc-item';
+        btn.dataset.slideIndex = String(idx);
+
+        const numSpan = document.createElement('span');
+        numSpan.className = 'mobile-toc-num';
+        numSpan.textContent = String(idx + 1);
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'mobile-toc-name';
+        nameSpan.textContent = meta.title;
+
+        const kindSpan = document.createElement('span');
+        kindSpan.className = `mobile-toc-kind mobile-toc-kind--${meta.kindClass}`;
+        kindSpan.textContent = meta.kind;
+
+        btn.append(numSpan, nameSpan, kindSpan);
+        btn.addEventListener('click', () => {
+          tocDialog?.close();
+          goToSlide(idx);
+        });
+
+        li.appendChild(btn);
+        frag.appendChild(li);
+        tocItemButtons.push(btn);
+      });
+      tocList.appendChild(frag);
+    }
+
+    function syncMobileControls() {
+      const meta = slideMetaList[currentIndex];
+      if (mobileTocCount) {
+        mobileTocCount.textContent = `${currentIndex + 1}/${totalSlides}`;
+      }
+      if (mobileTocLabel && meta) {
+        mobileTocLabel.textContent = meta.shortTitle;
+      }
+      if (mobileBtnPrev) {
+        mobileBtnPrev.disabled = currentIndex === 0;
+      }
+      if (mobileBtnNext) {
+        mobileBtnNext.disabled = currentIndex === totalSlides - 1;
+      }
+      tocItemButtons.forEach((btn, idx) => {
+        if (idx === currentIndex) {
+          btn.setAttribute('aria-current', 'page');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
 
     function parseInitialIndex() {
       const match = window.location.hash.match(/^#(\d+)$/);
@@ -6150,6 +6382,7 @@
       const active = slides[currentIndex];
       viewport.dataset.theme = active.dataset.theme || 'mint';
       document.title = active.dataset.title || 'Fundamentals of Geometric Algebra';
+      syncMobileControls();
 
       if (syncHash) {
         const nextHash = `#${currentIndex + 1}`;
@@ -6174,9 +6407,13 @@
       const direction = directionHint || (clamped > currentIndex ? 'forward' : 'backward');
       currentIndex = clamped;
       const updateDOM = () => applySlideState(clamped);
+      const isMobile = mobileLayoutMQ.matches;
 
-      if (!document.startViewTransition) {
+      if (isMobile || !document.startViewTransition) {
         updateDOM();
+        if (isMobile) {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        }
         return;
       }
 
@@ -6203,8 +6440,54 @@
       stepSlide(1);
     });
 
+    mobileBtnPrev?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      stepSlide(-1);
+    });
+
+    mobileBtnNext?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      stepSlide(1);
+    });
+
+    mobileBtnToc?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (!tocDialog) return;
+      if (tocDialog.open) {
+        tocDialog.close();
+        return;
+      }
+      syncMobileControls();
+      tocDialog.showModal();
+      mobileBtnToc.setAttribute('aria-expanded', 'true');
+      const activeBtn = tocItemButtons[currentIndex];
+      activeBtn?.scrollIntoView({ block: 'center', behavior: 'instant' });
+    });
+
+    tocCloseBtn?.addEventListener('click', () => {
+      tocDialog?.close();
+    });
+
+    tocDialog?.addEventListener('close', () => {
+      mobileBtnToc?.setAttribute('aria-expanded', 'false');
+    });
+
+    tocDialog?.addEventListener('click', (event) => {
+      if (event.target !== tocDialog) return;
+      const rect = tocDialog.getBoundingClientRect();
+      const clickedBackdrop =
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom;
+      if (clickedBackdrop) {
+        tocDialog.close();
+      }
+    });
+
     // Keyboard presentation controls
     window.addEventListener('keydown', (event) => {
+      if (tocDialog?.open) return;
       if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
 
       const target = event.target instanceof Element ? event.target : null;
@@ -6261,9 +6544,10 @@
       }
     });
 
-    // Click navigation (left 25% goes backward, right 75% advances; ignores interactive simulation & text selection)
+    // Click navigation (desktop only: left 25% goes backward, right 75% advances; ignores interactive simulation & text selection)
     stage.addEventListener('click', (event) => {
-      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label')) {
+      if (mobileLayoutMQ.matches || tocDialog?.open) return;
+      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label, select, a')) {
         return;
       }
       const selected = window.getSelection()?.toString();
@@ -6280,8 +6564,11 @@
 
     // Touch / pointer swipe navigation
     stage.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse') return;
-      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label')) {
+      if (event.pointerType === 'mouse' || tocDialog?.open) {
+        pointerStartX = null;
+        return;
+      }
+      if (event.target instanceof Element && event.target.closest('[data-interactive], button, input, label, select, a, .sim-controls-card, .sim-canvas-card, .sim-toolbar, .mobile-nav, dialog')) {
         pointerStartX = null;
         return;
       }
@@ -6290,19 +6577,25 @@
     });
 
     stage.addEventListener('pointerup', (event) => {
-      if (event.pointerType === 'mouse' || pointerStartX === null) return;
+      if (event.pointerType === 'mouse' || pointerStartX === null || tocDialog?.open) return;
       const dx = event.clientX - pointerStartX;
       const dy = event.clientY - pointerStartY;
       pointerStartX = null;
       pointerStartY = null;
 
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      const selected = window.getSelection()?.toString();
+      if (selected && selected.length > 0) return;
+
+      const minDx = mobileLayoutMQ.matches ? 60 : 40;
+      const horizFactor = mobileLayoutMQ.matches ? 1.5 : 1;
+      if (Math.abs(dx) > minDx && Math.abs(dx) > Math.abs(dy) * horizFactor) {
         stepSlide(dx < 0 ? 1 : -1);
       }
     });
 
-    // Debounced wheel navigation
+    // Debounced wheel navigation (desktop stage only; allow vertical page scroll in mobile study mode)
     window.addEventListener('wheel', (event) => {
+      if (mobileLayoutMQ.matches || tocDialog?.open) return;
       const now = Date.now();
       if (now - lastWheelAt < 450) return;
       const primaryDelta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
@@ -11305,7 +11598,7 @@
     initProp14Simulation(document.getElementById('sim14-svg')?.closest('.slide'));
 
     /**
-     * Final closing slide (Slide 37): staged 2D animations + pure Web Audio chime.
+     * Final closing slide (Slide 32): staged 2D animations + pure Web Audio chime.
      */
     function initClosingSlide(slideEl) {
       if (!slideEl) return;
