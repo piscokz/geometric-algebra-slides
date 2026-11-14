@@ -776,11 +776,11 @@
       border: 0.2cqi solid var(--butter-border);
       border-radius: 0.9cqi;
       color: var(--ink);
-      padding-block: 1.6cqb;
-      padding-inline: 1.2cqi;
+      padding-block: 1.45cqb;
+      padding-inline: 1.1cqi;
       text-align: center;
       display: grid;
-      gap: 0.6cqb;
+      gap: 0.5cqb;
     }
 
     .algebra-title {
@@ -796,12 +796,33 @@
       font-size: clamp(0.75rem, 1.15vw, 1.65rem);
     }
 
+    .algebra-formula--compact {
+      font-size: clamp(0.68rem, 0.98vw, 1.45rem);
+    }
+
+    .prop2-bridge {
+      padding: 1.1cqb 1.4cqi;
+      background: var(--lavender);
+      border: 0.16cqi solid var(--lavender-mid);
+      border-radius: 0.85cqi;
+      font-size: clamp(0.76rem, 1.26vw, 1.78rem);
+      line-height: 1.38;
+      max-inline-size: 58ch;
+      text-wrap: pretty;
+    }
+
     @supports (font-size: 1cqi) {
       .algebra-title {
         font-size: clamp(0.82rem, 1.45cqi, 2rem);
       }
       .algebra-formula {
         font-size: clamp(0.75rem, 1.15cqi, 1.65rem);
+      }
+      .algebra-formula--compact {
+        font-size: clamp(0.68rem, 0.98cqi, 1.45rem);
+      }
+      .prop2-bridge {
+        font-size: clamp(0.76rem, 1.26cqi, 1.78rem);
       }
     }
 
@@ -1155,6 +1176,7 @@
       .def-paper,
       .prop-badge,
       .prop1-quote,
+      .prop2-bridge,
       .algebra-card,
       .diagram-inner-frame,
       .sim-readout-card,
@@ -1175,7 +1197,7 @@
       }
     }
 
-    /* Print / Save as PDF: 16:9 pages with all 6 slides */
+    /* Print / Save as PDF: 16:9 pages with all 9 slides */
     @media print {
       @page {
         size: 16in 9in;
@@ -1246,7 +1268,7 @@
       <!-- ========================================================
            SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
-      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 6: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 9: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
         <!-- Geometric sparkle & right-angle doodles -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
           <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
@@ -1355,7 +1377,7 @@
       <!-- ========================================================
            SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
-      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 6: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 9: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
         <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
           <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
@@ -1478,7 +1500,7 @@
       <!-- ========================================================
            SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
-      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 6: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 9: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
         <!-- Top pastel divided-segment bar motif -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
           <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
@@ -1556,7 +1578,7 @@
       <!-- ========================================================
            SLIDE 4: PROPOSITION 1 (PART 1)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 6: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 9: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1677,7 +1699,7 @@
       <!-- ========================================================
            SLIDE 5: PROPOSITION 1 (PART 2)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 6: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 9: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1804,7 +1826,7 @@
       <!-- ========================================================
            SLIDE 6: SIMULASI INTERAKTIF PROPOSITION 1
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 6: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 9: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel: passive presentation text + live numeric readout -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1927,6 +1949,345 @@
                 <output class="sim-value-pill" id="sim-out-f" for="sim-slider-f">9</output>
               </label>
               <input class="sim-slider" type="range" id="sim-slider-f" min="3" max="9" step="1" value="9">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 7: PROPOSITION 2 (TEOREMA)
+           ======================================================== -->
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 9: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <!-- Left edge pastel geometric dots -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
+            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
+            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
+            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
+          </svg>
+          <!-- Horizontal pastel drafting pencil top-left -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+          <!-- Pastel loop/grid doodle top-center -->
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
+            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
+            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
+          </svg>
+          <!-- Pastel geometric ribbon bottom -->
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
+            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Proposition 2</h1>
+
+          <p class="prop1-quote">
+            "Jika sebuah garis lurus dipotong secara sembarang, maka jumlah luas persegi panjang yang dibentuk oleh keseluruhan garis lurus dan masing-masing bagiannya sama dengan luas persegi pada keseluruhan garis tersebut."
+          </p>
+
+          <div class="prop1-body">
+            <p class="prop1-label">Penjelasan Awal :</p>
+
+            <div class="inline-figures-row">
+              <div class="inline-figure">
+                <span>Dibentuk garis lurus AB :</span>
+                <svg class="fig-line-bc" role="img" viewBox="0 0 230 64">
+                  <title>Garis lurus horizontal AB</title>
+                  <text x="12" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
+                  <text x="218" y="28" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
+                  <line x1="12" y1="44" x2="218" y2="44" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="inline-figure">
+              <span>Lalu, garis AB dipotong secara sembarang di C :</span>
+              <svg class="fig-line-cut" role="img" viewBox="0 0 260 66">
+                <title>Garis AB yang dipotong tidak sama panjang di titik C menjadi bagian AC dan CB</title>
+                <text x="12" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">A</text>
+                <text x="86" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">C</text>
+                <text x="238" y="26" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="24" font-weight="800">B</text>
+                <line x1="12" y1="46" x2="238" y2="46" stroke="#232652" stroke-width="4" stroke-linecap="square"/>
+                <circle cx="86" cy="46" r="7" fill="#5C76D8"/>
+              </svg>
+            </div>
+
+            <p class="prop1-conclusion">
+              Keseluruhan garis AB berperan sebagai sisi persegi, sedangkan setiap bagiannya (AC dan CB) berpasangan dengan AB membentuk dua persegi panjang yang jumlah luasnya sama dengan luas persegi pada AB.
+            </p>
+
+            <p class="prop2-bridge">
+              <strong>Hubungan dengan Proposisi 1:</strong> Proposisi 2 merupakan kasus khusus Proposisi 1 saat garis yang tidak dipotong memiliki panjang sama dengan keseluruhan garis alas (<em>a = b + c</em>).
+            </p>
+          </div>
+        </div>
+
+        <!-- Right pastel panel -->
+        <div class="prop-right">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <!-- Square Partition Concept Card -->
+          <svg role="img" style="inline-size:23cqi; block-size:40cqb;" viewBox="0 0 300 315">
+            <title>Konsep Proposisi 2: persegi bersisi a yang terbagi menjadi dua persegi panjang ab dan ac dengan a = b + c</title>
+            <rect x="14" y="14" width="272" height="287" rx="24" fill="#FFFFFF" stroke="#CBB8FB" stroke-width="6"/>
+            <!-- Side height indicator a -->
+            <line x1="60" y1="78" x2="60" y2="230" stroke="#5C76D8" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="60" cy="78" r="7" fill="#5C76D8"/>
+            <circle cx="60" cy="230" r="7" fill="#5C76D8"/>
+            <text x="36" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">a</text>
+
+            <!-- Square split into unequal ab and ac -->
+            <rect x="92" y="78" width="54" height="152" fill="#CCF5E1" stroke="#232652" stroke-width="3.5"/>
+            <rect x="146" y="78" width="98" height="152" fill="#FFE2CC" stroke="#232652" stroke-width="3.5"/>
+
+            <!-- Segment labels b and c -->
+            <text x="119" y="63" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">b</text>
+            <text x="195" y="63" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="21" font-weight="800">c</text>
+            <text x="168" y="40" text-anchor="middle" fill="#5C76D8" font-family="Nunito, sans-serif" font-size="16" font-weight="800">a = b + c</text>
+
+            <!-- Area expressions inside -->
+            <text x="119" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ab</text>
+            <text x="195" y="160" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="20" font-weight="800">ac</text>
+
+            <!-- Caption pill -->
+            <rect x="44" y="250" width="212" height="36" rx="12" fill="#FFF1A8" stroke="#F5CF58" stroke-width="3"/>
+            <text x="150" y="274" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="18" font-weight="800">ab + ac = a&#178;</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 8: PROPOSITION 2 (PENJELASAN & PEMBUKTIAN)
+           ======================================================== -->
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 9: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="22" fill="#CCF5E1"/>
+            <rect x="14" y="156" width="36" height="36" rx="8" transform="rotate(45 32 174)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="22" fill="#FFE2CC"/>
+            <polygon points="32,468 54,510 10,510" fill="#FFF1A8"/>
+            <circle cx="32" cy="600" r="22" fill="#DDF3FF"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:64%; inline-size:4.5cqi; block-size:11cqb;" viewBox="0 0 70 100">
+            <circle cx="24" cy="28" r="14" fill="none" stroke="#CBB8FB" stroke-width="6"/>
+            <circle cx="44" cy="54" r="10" fill="#9AE8DE"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-end:0; inset-inline-start:54%; inline-size:26cqi; block-size:13cqb;" viewBox="0 0 380 120">
+            <polygon points="0,120 355,8 380,78 235,120" fill="#CBB8FB"/>
+            <polygon points="105,120 365,36 380,78 235,120" fill="#8EA9FF" opacity="0.55"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Proposition 2</h1>
+
+          <div class="prop1-proof-stack">
+            <p class="prop1-intro">Pembuktian dilakukan dengan membentuk persegi pada garis AB dan membaginya sesuai titik potong C:</p>
+
+            <ol class="prop1-steps-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Bangun persegi pada AB:</strong> Dibentuk persegi <strong>ADEB</strong> <em>(disebut juga persegi <strong>AE</strong> dari sudut diagonalnya)</em> dengan panjang sisi AD, DE, dan EB sama dengan AB.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Bagi melalui titik potong C:</strong> Garis AB dipotong secara sembarang di titik C, lalu dari C ditarik garis CF sejajar AD sehingga persegi AE terbagi menjadi persegi panjang <span class="area-tag area-tag--mint">AF</span> dan <span class="area-tag area-tag--peach">CE</span>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Nyatakan luas tiap bagian:</strong> Persegi panjang <strong>AF</strong> = AD &times; AC <em>(karena AD = AB, diperoleh AB &times; AC)</em>, dan <strong>CE</strong> = BE &times; CB <em>(karena BE = AB, diperoleh AB &times; CB)</em>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">4</span>
+                <span><strong>Kesimpulan:</strong> Karena persegi AE tersusun tepat dari AF dan CE, diperoleh kesamaan luas berikut:</span>
+              </li>
+            </ol>
+
+            <div class="prop1-equation">
+              <span class="prop1-equation-label">Luas persegi ADEB</span>
+              <span>= (AB &times; AC) + (AB &times; CB) = AB(AC + CB)</span>
+              <span class="prop1-equation-cont">= AB &times; AB = AB&#178;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right pastel panel -->
+        <div class="prop-right">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:21cqi; block-size:21cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <!-- Graph-paper framed square diagram -->
+          <div class="diagram-grid-card">
+            <svg class="decor" aria-hidden="true" style="inset-block-start:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#FF9C97"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-start:42%; inset-inline-start:-9%; inline-size:3.2cqi; block-size:7cqb;" viewBox="0 0 50 70">
+              <polygon points="8,35 44,12 44,58" fill="#9AE8DE"/>
+            </svg>
+            <svg class="decor" aria-hidden="true" style="inset-block-end:-6%; inset-inline-end:-6%; inline-size:4cqi; block-size:7cqb;" viewBox="0 0 60 60">
+              <rect x="14" y="14" width="32" height="32" rx="6" transform="rotate(45 30 30)" fill="#8EA9FF"/>
+            </svg>
+
+            <div class="diagram-inner-frame">
+              <svg role="img" viewBox="0 0 320 280">
+                <title>Diagram pembuktian Proposisi 2: persegi ADEB dibagi oleh garis tegak CF di titik sembarang C menjadi persegi panjang mint AF dan peach CE</title>
+                <!-- Top labels A, C, B -->
+                <text x="72" y="42" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">A</text>
+                <text x="136" y="42" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">C</text>
+                <text x="248" y="42" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">B</text>
+
+                <!-- Pastel shaded subdivisions AF and CE (unequal widths) -->
+                <rect x="72" y="54" width="64" height="176" fill="#CCF5E1" opacity="0.78"/>
+                <rect x="136" y="54" width="112" height="176" fill="#FFE2CC" opacity="0.78"/>
+
+                <!-- Right-angle corner marker at A -->
+                <polyline points="86,54 86,68 72,68" fill="none" stroke="#5C76D8" stroke-width="2.4"/>
+
+                <!-- Square ADEB and dividing line CF -->
+                <rect x="72" y="54" width="176" height="176" fill="none" stroke="#232652" stroke-width="3.6"/>
+                <line x1="136" y1="54" x2="136" y2="230" stroke="#232652" stroke-width="3.6"/>
+
+                <!-- Bottom labels D, F, E -->
+                <text x="72" y="258" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">D</text>
+                <text x="136" y="258" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">F</text>
+                <text x="248" y="258" text-anchor="middle" fill="#2b2d5c" font-family="Nunito, sans-serif" font-size="22" font-weight="800">E</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="algebra-card">
+            <p class="algebra-title">Bentuk Aljabar</p>
+            <p class="algebra-formula">ab + ac = a&#178; (dengan a = b + c)</p>
+            <p class="algebra-formula algebra-formula--compact">(b + c)b + (b + c)c = (b + c)&#178;</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           SLIDE 9: SIMULASI INTERAKTIF PROPOSITION 2
+           ======================================================== -->
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 9: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
+        <!-- Left white panel -->
+        <div class="prop-left">
+          <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
+            <circle cx="32" cy="26" r="20" fill="#CCF5E1"/>
+            <rect x="15" y="160" width="34" height="34" rx="8" transform="rotate(45 32 177)" fill="#E6DCFF"/>
+            <circle cx="32" cy="336" r="20" fill="#FFE2CC"/>
+            <polygon points="32,468 52,508 12,508" fill="#FFF1A8"/>
+            <circle cx="32" cy="598" r="20" fill="#DDF3FF"/>
+          </svg>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:19cqi; block-size:6.8cqb;" viewBox="0 0 380 68">
+            <rect x="0" y="0" width="295" height="68" fill="#8EA9FF"/>
+            <rect x="0" y="18" width="295" height="14" fill="#B6C8FF"/>
+            <rect x="0" y="42" width="295" height="12" fill="#6F8CEE"/>
+            <polygon points="295,0 380,34 295,68" fill="#FFE2CC"/>
+            <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
+          </svg>
+
+          <h1 class="prop-badge" lang="en">Simulasi Proposition 2</h1>
+
+          <div class="sim-copy-stack">
+            <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang panjang garis AB dan letak titik potong C:</p>
+
+            <ol class="sim-copy-list">
+              <li>
+                <span class="step-num" aria-hidden="true">1</span>
+                <span><strong>Perubahan panjang AB (a):</strong> Saat panjang AB diubah, lebar dan tinggi bangun berubah bersama dalam rasio 1:1 sehingga bangun tetap berupa persegi sejati seluas a&#178;.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">2</span>
+                <span><strong>Pergeseran titik potong C:</strong> Ketika C digeser tidak sama rata, luas persegi panjang AF (ab) dan CE (ac) berubah, namun jumlah keduanya selalu sama dengan luas persegi ADEB.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">3</span>
+                <span><strong>Bentuk aljabar:</strong> Untuk setiap pasangan b dan c dengan a = b + c, jumlah ab + ac selalu memenuhi (b + c)b + (b + c)c = (b + c)&#178;.</span>
+              </li>
+            </ol>
+
+            <div class="sim-readout-card" aria-live="polite">
+              <div class="sim-readout-row">
+                <span>Luas persegi AE (a&#178;)</span>
+                <span id="sim2-eq-total">10&#178; = 100</span>
+              </div>
+              <div class="sim-readout-row">
+                <span>Jumlah AF + CE</span>
+                <span id="sim2-eq-parts">30 + 70 = 100</span>
+              </div>
+              <p class="sim-readout-badge" id="sim2-eq-verify">&#10003; (3 + 7)3 + (3 + 7)7 = (3 + 7)&#178; (100 = 100)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right pastel panel -->
+        <div class="prop-right" data-interactive>
+          <svg class="decor" aria-hidden="true" style="inset-block-start:-2%; inset-inline-end:-2%; inline-size:15cqi; block-size:14cqb;" viewBox="0 0 280 180">
+            <g transform="rotate(14 140 90)">
+              <rect x="20" y="10" width="270" height="120" rx="22" fill="#FFE2CC"/>
+              <rect x="20" y="10" width="95" height="120" rx="18" fill="#FFBFA0"/>
+            </g>
+          </svg>
+
+          <p class="visually-hidden" id="sim2-status" role="status" aria-live="polite"></p>
+
+          <div class="sim-toolbar" role="toolbar" focusgroup="toolbar wrap" aria-label="Kontrol simulasi Proposisi 2" aria-controls="sim2-svg">
+            <div class="sim-toolbar-group" role="group" aria-label="Tahap konstruksi">
+              <button type="button" class="sim-btn" data-step="1" aria-pressed="false">1. Garis AB &amp; C</button>
+              <button type="button" class="sim-btn" data-step="2" aria-pressed="false">2. Persegi ADEB</button>
+              <button type="button" class="sim-btn" data-step="3" aria-pressed="true">3. Bagi CF &amp; Hitung</button>
+            </div>
+            <span role="separator" aria-orientation="vertical"></span>
+            <button type="button" class="sim-btn sim-btn--accent" id="sim2-random-btn">Acak Potongan</button>
+          </div>
+
+          <div class="sim-canvas-card">
+            <div class="sim-canvas-inner">
+              <svg id="sim2-svg" role="img" viewBox="0 0 540 276" aria-labelledby="sim2-svg-title">
+                <title id="sim2-svg-title">Simulasi interaktif pembuktian Proposisi 2: luas persegi ADEB sama dengan jumlah luas persegi panjang AF dan CE</title>
+                <g id="sim2-layer-fills"></g>
+                <g id="sim2-layer-geometry"></g>
+                <g id="sim2-layer-labels"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="sim-controls-card" aria-label="Pengatur panjang sisi AB dan titik potong C">
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim2-slider-a">
+                <span>Panjang AB (a)</span>
+                <output class="sim-value-pill" id="sim2-out-a" for="sim2-slider-a">10</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim2-slider-a" min="4" max="10" step="1" value="10">
+            </div>
+
+            <div class="sim-control-item">
+              <label class="sim-control-head" for="sim2-slider-c">
+                <span>Titik Potong C (b)</span>
+                <output class="sim-value-pill" id="sim2-out-c" for="sim2-slider-c">3</output>
+              </label>
+              <input class="sim-slider" type="range" id="sim2-slider-c" min="1" max="9" step="1" value="3">
             </div>
           </div>
         </div>
@@ -2131,8 +2492,63 @@
       }
     });
 
+    /** Create an SVG namespace element with attributes and optional text. */
+    function svgEl(tag, attrs = {}, text = null) {
+      const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        node.setAttribute(k, String(v));
+      }
+      if (text !== null) node.textContent = text;
+      return node;
+    }
+
+    /** Sync range slider CSS custom properties, aria-valuetext, and <output>. */
+    function syncSliderStyle(slider, outputEl, text) {
+      slider.style.setProperty('--attr-min', slider.min || 0);
+      slider.style.setProperty('--attr-max', slider.max || 100);
+      slider.style.setProperty('--control-value', slider.value);
+      slider.setAttribute('aria-valuetext', text);
+      outputEl.textContent = slider.value;
+    }
+
+    /** Provide roving tabindex toolbar keyboard navigation when native focusgroup is unavailable. */
+    function setupToolbarNavigation(toolbar) {
+      if (!toolbar || ('focusGroup' in HTMLElement.prototype)) return;
+      const items = Array.from(toolbar.querySelectorAll('button'));
+      items.forEach((b, i) => {
+        b.tabIndex = i === 0 ? 0 : -1;
+      });
+
+      toolbar.addEventListener('focusin', ({ target }) => {
+        if (!items.includes(target)) return;
+        items.forEach((b) => {
+          b.tabIndex = b === target ? 0 : -1;
+        });
+      });
+
+      toolbar.addEventListener('keydown', (event) => {
+        const idx = items.indexOf(document.activeElement);
+        if (idx === -1) return;
+        const rtl = getComputedStyle(toolbar).direction === 'rtl';
+        const stepMap = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 };
+        let nextIdx = null;
+        if (event.key in stepMap) {
+          nextIdx = (idx + stepMap[event.key] + items.length) % items.length;
+        } else if (event.key === 'Home') {
+          nextIdx = 0;
+        } else if (event.key === 'End') {
+          nextIdx = items.length - 1;
+        }
+        if (nextIdx !== null) {
+          event.preventDefault();
+          items[nextIdx].focus();
+        }
+      });
+    }
+
     // Interactive Proposition 1 Simulation (Slide 6)
-    function initProp1Simulation() {
+    function initProp1Simulation(slideEl) {
+      if (!slideEl) return;
       const TOTAL_BC = 10;
       const X_START = 108;
       const X_WIDTH = 400;
@@ -2151,7 +2567,7 @@
       const eqParts = document.getElementById('sim-eq-parts');
       const eqVerify = document.getElementById('sim-eq-verify');
       const simStatus = document.getElementById('sim-status');
-      const toolbar = document.querySelector('.sim-toolbar');
+      const toolbar = slideEl.querySelector('.sim-toolbar');
       const randomBtn = document.getElementById('sim-random-btn');
 
       const sliderA = document.getElementById('sim-slider-a');
@@ -2172,25 +2588,8 @@
         points: [3, 8, 9]
       };
 
-      const stepButtons = Array.from(document.querySelectorAll('.sim-btn[data-step]'));
-      const cutButtons = Array.from(document.querySelectorAll('.sim-btn[data-cuts]'));
-
-      function svgEl(tag, attrs = {}, text = null) {
-        const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
-        for (const [k, v] of Object.entries(attrs)) {
-          node.setAttribute(k, String(v));
-        }
-        if (text !== null) node.textContent = text;
-        return node;
-      }
-
-      function syncSliderStyle(slider, outputEl, text) {
-        slider.style.setProperty('--attr-min', slider.min || 0);
-        slider.style.setProperty('--attr-max', slider.max || 100);
-        slider.style.setProperty('--control-value', slider.value);
-        slider.setAttribute('aria-valuetext', text);
-        outputEl.textContent = slider.value;
-      }
+      const stepButtons = Array.from(slideEl.querySelectorAll('.sim-btn[data-step]'));
+      const cutButtons = Array.from(slideEl.querySelectorAll('.sim-btn[data-cuts]'));
 
       function enforcePointOrder(changedIdx) {
         const activeCount = state.cuts - 1;
@@ -2481,45 +2880,330 @@
         render();
       });
 
-      // Fallback for browsers without native focusgroup="toolbar wrap"
-      if (toolbar && !('focusGroup' in HTMLElement.prototype)) {
-        const items = Array.from(toolbar.querySelectorAll('button'));
-        items.forEach((b, i) => {
-          b.tabIndex = i === 0 ? 0 : -1;
-        });
-
-        toolbar.addEventListener('focusin', ({ target }) => {
-          if (items.includes(target)) {
-            items.forEach((b) => {
-              b.tabIndex = b === target ? 0 : -1;
-            });
-          }
-        });
-
-        toolbar.addEventListener('keydown', (event) => {
-          const idx = items.indexOf(document.activeElement);
-          if (idx === -1) return;
-          const rtl = getComputedStyle(toolbar).direction === 'rtl';
-          const stepMap = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 };
-          let nextIdx = null;
-          if (event.key in stepMap) {
-            nextIdx = (idx + stepMap[event.key] + items.length) % items.length;
-          } else if (event.key === 'Home') {
-            nextIdx = 0;
-          } else if (event.key === 'End') {
-            nextIdx = items.length - 1;
-          }
-          if (nextIdx !== null) {
-            event.preventDefault();
-            items[nextIdx].focus();
-          }
-        });
-      }
+      setupToolbarNavigation(toolbar);
 
       render();
     }
 
-    initProp1Simulation();
+    // Interactive Proposition 2 Simulation (Slide 9)
+    function initProp2Simulation(slideEl) {
+      if (!slideEl) return;
+
+      const PX_PER_UNIT = 17;
+      const CENTER_X = 270;
+      const CENTER_Y = 136;
+
+      const layerFills = document.getElementById('sim2-layer-fills');
+      const layerGeom = document.getElementById('sim2-layer-geometry');
+      const layerLabels = document.getElementById('sim2-layer-labels');
+      const eqTotal = document.getElementById('sim2-eq-total');
+      const eqParts = document.getElementById('sim2-eq-parts');
+      const eqVerify = document.getElementById('sim2-eq-verify');
+      const simStatus = document.getElementById('sim2-status');
+      const toolbar = slideEl.querySelector('.sim-toolbar');
+      const randomBtn = document.getElementById('sim2-random-btn');
+
+      const sliderA = document.getElementById('sim2-slider-a');
+      const sliderC = document.getElementById('sim2-slider-c');
+      const outA = document.getElementById('sim2-out-a');
+      const outC = document.getElementById('sim2-out-c');
+      const stepButtons = Array.from(slideEl.querySelectorAll('.sim-btn[data-step]'));
+
+      const state = {
+        step: 3,
+        a: 10,
+        b: 3
+      };
+
+      function syncControls() {
+        sliderA.value = String(state.a);
+        syncSliderStyle(sliderA, outA, `${state.a} satuan, sisi persegi ${state.a} kali ${state.a}`);
+
+        sliderC.min = '1';
+        sliderC.max = String(state.a - 1);
+        state.b = Math.max(1, Math.min(state.b, state.a - 1));
+        sliderC.value = String(state.b);
+        const c = state.a - state.b;
+        syncSliderStyle(sliderC, outC, `b = ${state.b} satuan, c = ${c} satuan`);
+
+        stepButtons.forEach((btn) => {
+          btn.setAttribute('aria-pressed', String(Number(btn.dataset.step) === state.step));
+        });
+      }
+
+      function renderCompartmentLabel({ rectName, fill, x, w, lenVal, area, yTop, yBot, xStart, xEnd, isLeft }) {
+        const cx = x + w / 2;
+        if (w >= 68) {
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y - 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 16, 'font-weight': 800
+          }, rectName));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y + 15, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 700
+          }, `${state.a} × ${lenVal} = ${area}`));
+        } else if (w >= 48) {
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y - 14, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+          }, rectName));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y + 4, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 13.5, 'font-weight': 700
+          }, `${state.a}×${lenVal}`));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 13.5, 'font-weight': 800
+          }, `=${area}`));
+        } else if (w >= 32) {
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y - 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14, 'font-weight': 800
+          }, rectName));
+          layerLabels.append(svgEl('text', {
+            x: cx, y: CENTER_Y + 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 14, 'font-weight': 800
+          }, String(area)));
+        } else {
+          const anchorX = isLeft ? xStart - 26 : xEnd + 26;
+          const pillW = 82;
+          const pillH = 24;
+          const pillY = yBot + 4;
+          const pillX = isLeft ? anchorX - pillW : anchorX;
+          layerGeom.append(svgEl('line', {
+            x1: cx, y1: yBot - 10, x2: anchorX, y2: pillY,
+            stroke: '#232652', 'stroke-width': 1.8
+          }));
+          layerGeom.append(svgEl('circle', {
+            cx, cy: yBot - 10, r: 2.8, fill: '#232652'
+          }));
+          layerLabels.append(svgEl('rect', {
+            x: pillX, y: pillY - pillH / 2, width: pillW, height: pillH, rx: 12,
+            fill, stroke: '#232652', 'stroke-width': 1.6
+          }));
+          layerLabels.append(svgEl('text', {
+            x: pillX + pillW / 2, y: pillY + 4.5, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 13, 'font-weight': 800
+          }, `${rectName} = ${area}`));
+        }
+      }
+
+      function render() {
+        syncControls();
+
+        const b = state.b;
+        const c = state.a - b;
+        const side = state.a * PX_PER_UNIT;
+        const xStart = CENTER_X - side / 2;
+        const xEnd = CENTER_X + side / 2;
+        const yTop = CENTER_Y - side / 2;
+        const yBot = CENTER_Y + side / 2;
+        const w1 = b * PX_PER_UNIT;
+        const w2 = c * PX_PER_UNIT;
+        const xCut = xStart + w1;
+
+        const areaAF = state.a * b;
+        const areaCE = state.a * c;
+        const totalArea = state.a * state.a;
+
+        layerFills.replaceChildren();
+        layerGeom.replaceChildren();
+        layerLabels.replaceChildren();
+
+        // Fills & interior labels by step
+        if (state.step === 2) {
+          layerFills.append(svgEl('rect', {
+            x: xStart, y: yTop, width: side, height: side, fill: '#EAF7FF', opacity: 0.85
+          }));
+          if (side >= 100) {
+            layerLabels.append(svgEl('text', {
+              x: CENTER_X, y: CENTER_Y - 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 16, 'font-weight': 800
+            }, 'Persegi ADEB (AE)'));
+            layerLabels.append(svgEl('text', {
+              x: CENTER_X, y: CENTER_Y + 16, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 700
+            }, `${state.a} × ${state.a} = ${totalArea}`));
+          } else {
+            layerLabels.append(svgEl('text', {
+              x: CENTER_X, y: CENTER_Y - 5, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+            }, 'AE'));
+            layerLabels.append(svgEl('text', {
+              x: CENTER_X, y: CENTER_Y + 14, 'text-anchor': 'middle', fill: '#2b2d5c',
+              'font-family': 'Nunito, sans-serif', 'font-size': 14, 'font-weight': 800
+            }, `${state.a}²=${totalArea}`));
+          }
+        } else if (state.step >= 3) {
+          layerFills.append(svgEl('rect', {
+            x: xStart, y: yTop, width: w1, height: side, fill: '#CCF5E1', opacity: 0.86
+          }));
+          layerFills.append(svgEl('rect', {
+            x: xCut, y: yTop, width: w2, height: side, fill: '#FFE2CC', opacity: 0.86
+          }));
+          renderCompartmentLabel({
+            rectName: 'AF', fill: '#CCF5E1', x: xStart, w: w1,
+            lenVal: b, area: areaAF, yTop, yBot, xStart, xEnd, isLeft: true
+          });
+          renderCompartmentLabel({
+            rectName: 'CE', fill: '#FFE2CC', x: xCut, w: w2,
+            lenVal: c, area: areaCE, yTop, yBot, xStart, xEnd, isLeft: false
+          });
+        }
+
+        // Top line AB (always shown)
+        layerGeom.append(svgEl('line', {
+          x1: xStart, y1: yTop, x2: xEnd, y2: yTop,
+          stroke: '#232652', 'stroke-width': 3.6, 'stroke-linecap': 'square'
+        }));
+
+        if (state.step === 1) {
+          layerGeom.append(svgEl('circle', { cx: xStart, cy: yTop, r: 4.5, fill: '#232652' }));
+          layerGeom.append(svgEl('circle', { cx: xEnd, cy: yTop, r: 4.5, fill: '#232652' }));
+        } else {
+          // Square perimeter ADEB
+          layerGeom.append(svgEl('rect', {
+            x: xStart, y: yTop, width: side, height: side,
+            fill: 'none', stroke: '#232652', 'stroke-width': 3.6
+          }));
+          // Right-angle corner mark at A
+          layerGeom.append(svgEl('polyline', {
+            points: `${xStart + 12},${yTop} ${xStart + 12},${yTop + 12} ${xStart},${yTop + 12}`,
+            fill: 'none', stroke: '#5C76D8', 'stroke-width': 2.2
+          }));
+
+          // Left vertical brace showing AD = a (true 1:1 square height)
+          const braceX = xStart - 15;
+          layerGeom.append(svgEl('line', {
+            x1: braceX, y1: yTop, x2: braceX, y2: yBot,
+            stroke: '#5C76D8', 'stroke-width': 2.2, 'stroke-dasharray': '4 4'
+          }));
+          layerGeom.append(svgEl('line', {
+            x1: braceX - 4, y1: yTop, x2: braceX + 4, y2: yTop,
+            stroke: '#5C76D8', 'stroke-width': 2.2
+          }));
+          layerGeom.append(svgEl('line', {
+            x1: braceX - 4, y1: yBot, x2: braceX + 4, y2: yBot,
+            stroke: '#5C76D8', 'stroke-width': 2.2
+          }));
+          layerLabels.append(svgEl('text', {
+            x: braceX - 7, y: CENTER_Y + 5, 'text-anchor': 'end', fill: '#5C76D8',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+          }, `a=${state.a}`));
+
+          // Bottom corner labels D & E
+          layerLabels.append(svgEl('text', {
+            x: xStart, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+          }, 'D'));
+          layerLabels.append(svgEl('text', {
+            x: xEnd, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+          }, 'E'));
+        }
+
+        // Parallel dividing line CF in Step 3
+        if (state.step >= 3) {
+          layerGeom.append(svgEl('line', {
+            x1: xCut, y1: yTop, x2: xCut, y2: yBot,
+            stroke: '#232652', 'stroke-width': 3.2
+          }));
+          layerLabels.append(svgEl('text', {
+            x: xCut, y: yBot + 20, 'text-anchor': 'middle', fill: '#2b2d5c',
+            'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+          }, 'F'));
+        }
+
+        // Cut dot C on AB
+        layerGeom.append(svgEl('circle', {
+          cx: xCut, cy: yTop, r: 6.5, fill: '#FF9C97', stroke: '#232652', 'stroke-width': 2
+        }));
+
+        // Top vertex labels & segment lengths b and c
+        layerLabels.append(svgEl('text', {
+          x: xStart, y: yTop - 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+        }, 'A'));
+        layerLabels.append(svgEl('text', {
+          x: xCut, y: yTop - 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+        }, 'C'));
+        layerLabels.append(svgEl('text', {
+          x: xEnd, y: yTop - 13, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 15.5, 'font-weight': 800
+        }, 'B'));
+
+        layerLabels.append(svgEl('text', {
+          x: xStart + w1 / 2, y: yTop - 31, 'text-anchor': 'middle', fill: '#5C76D8',
+          'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+        }, `b=${b}`));
+        layerLabels.append(svgEl('text', {
+          x: xCut + w2 / 2, y: yTop - 31, 'text-anchor': 'middle', fill: '#5C76D8',
+          'font-family': 'Nunito, sans-serif', 'font-size': 14.5, 'font-weight': 800
+        }, `c=${c}`));
+
+        // Bottom caption matching current construction stage
+        const bottomCaption = state.step === 1
+          ? `Garis AB = b + c = ${b} + ${c} = ${state.a} satuan`
+          : state.step === 2
+            ? `Luas Persegi AE = ${state.a} × ${state.a} = ${totalArea}`
+            : `Luas AF + CE = ${areaAF} + ${areaCE} = ${totalArea} = Luas AE`;
+        layerLabels.append(svgEl('text', {
+          x: CENTER_X, y: 264, 'text-anchor': 'middle', fill: '#2b2d5c',
+          'font-family': 'Nunito, sans-serif', 'font-size': 15, 'font-weight': 800
+        }, bottomCaption));
+
+        // Update left readout card
+        eqTotal.textContent = `${state.a}² = ${totalArea}`;
+        eqParts.textContent = `${areaAF} + ${areaCE} = ${totalArea}`;
+        eqVerify.textContent = `✓ (${b} + ${c})${b} + (${b} + ${c})${c} = (${b} + ${c})² (${totalArea} = ${totalArea})`;
+      }
+
+      sliderA.addEventListener('input', () => {
+        state.a = Number(sliderA.value);
+        if (state.b >= state.a) {
+          state.b = state.a - 1;
+        }
+        simStatus.textContent = `Panjang AB diubah menjadi ${state.a} satuan (b = ${state.b}, c = ${state.a - state.b}).`;
+        render();
+      });
+
+      sliderC.addEventListener('input', () => {
+        state.b = Number(sliderC.value);
+        simStatus.textContent = `Titik potong C digeser ke b = ${state.b} dan c = ${state.a - state.b}.`;
+        render();
+      });
+
+      stepButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.step = Number(btn.dataset.step);
+          simStatus.textContent = `Tahap konstruksi ${state.step} dipilih.`;
+          render();
+        });
+      });
+
+      randomBtn.addEventListener('click', () => {
+        const unequalChoices = [];
+        const allChoices = [];
+        for (let candidate = 1; candidate < state.a; candidate += 1) {
+          if (candidate !== state.b) {
+            allChoices.push(candidate);
+            if (candidate * 2 !== state.a) unequalChoices.push(candidate);
+          }
+        }
+        const pool = unequalChoices.length > 0 ? unequalChoices : allChoices;
+        state.b = pool[Math.floor(Math.random() * pool.length)];
+        state.step = 3;
+        simStatus.textContent = `Titik potong C diacak ke b = ${state.b} dan c = ${state.a - state.b}.`;
+        render();
+      });
+
+      setupToolbarNavigation(toolbar);
+      render();
+    }
+
+    initProp1Simulation(document.getElementById('sim-svg')?.closest('.slide'));
+    initProp2Simulation(document.getElementById('sim2-svg')?.closest('.slide'));
 
     // Initial silent state sync
     applySlideState(parseInitialIndex(), { announce: false, syncHash: false });
