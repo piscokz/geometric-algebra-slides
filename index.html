@@ -1212,11 +1212,328 @@
       outline-offset: 2px;
     }
 
+    /* ============================================================
+       SLIDE 37: CLOSING (TERIMA KASIH + 2D ANIMATION & WEB AUDIO)
+       ============================================================ */
+    .presentation-viewport[data-theme="closing"] {
+      background: #bae9d7;
+    }
+
+    .slide-closing {
+      background:
+        radial-gradient(circle at 24% 22%, rgba(255, 241, 168, 0.42) 0%, transparent 38%),
+        radial-gradient(circle at 86% 84%, rgba(154, 232, 222, 0.6) 0%, transparent 40%),
+        #bae9d7;
+    }
+
+    .closing-paper-shadow {
+      position: absolute;
+      inset-block-start: 33.2%;
+      inset-inline-start: 16%;
+      inline-size: 70%;
+      block-size: 68%;
+      background: #98c3b5;
+      border-radius: 1.2cqi 1.2cqi 0 0;
+      transform: rotate(0.9deg);
+      z-index: 2;
+    }
+
+    .closing-paper {
+      position: absolute;
+      inset-block-start: 35.4%;
+      inset-inline-start: 14.4%;
+      inline-size: 70%;
+      block-size: 66.5%;
+      background-color: var(--white);
+      background-image:
+        linear-gradient(to right, rgba(169, 211, 245, 0.24) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(169, 211, 245, 0.24) 1px, transparent 1px);
+      background-size: 2.6cqi 2.6cqi;
+      border: 0.25cqi solid #b5d8cb;
+      border-radius: 1.2cqi 1.2cqi 0 0;
+      transform: rotate(0.9deg);
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding-block: 3.2cqb 3.8cqb;
+      padding-inline: 7.4cqi 5.6cqi;
+      overflow: hidden;
+    }
+
+    .closing-spiral {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 4.5cqi;
+      block-size: 100%;
+      pointer-events: none;
+    }
+
+    .closing-stagger {
+      transform: rotate(-0.9deg);
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 1.45cqb;
+      text-align: center;
+      inline-size: 100%;
+    }
+
+    .closing-title-stage {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      gap: 0.4cqb;
+    }
+
+    .closing-title-reveal {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .closing-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #6a3f2b;
+      font-size: clamp(2.1rem, 4.75vw, 4.75rem);
+    }
+
+    @supports (font-size: 1cqi) {
+      .closing-title {
+        font-size: clamp(2.1rem, 4.75cqi, 4.75rem);
+      }
+    }
+
+    .closing-underline-svg {
+      inline-size: clamp(14rem, 31cqi, 31rem);
+      block-size: auto;
+      overflow: visible;
+    }
+
+    .closing-underline-path {
+      stroke-dasharray: 420;
+      stroke-dashoffset: 0;
+    }
+
+    .closing-subtitle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65cqi;
+      background: var(--mint);
+      border: 0.18cqi solid var(--mint-mid);
+      border-radius: 999px;
+      padding: 0.55cqb 1.8cqi;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: clamp(0.92rem, 1.5cqi, 1.5rem);
+      line-height: 1.3;
+    }
+
+    .closing-note {
+      color: #3f56bc;
+      font-weight: 800;
+      font-size: clamp(0.85rem, 1.25cqi, 1.25rem);
+      letter-spacing: 0.015em;
+    }
+
+    .closing-toolbar {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65cqi;
+      padding: 0.55cqb 0.9cqi;
+      margin-block-start: 0.4cqb;
+      background: #f5fbf8;
+      border: 0.18cqi solid var(--mint-mid);
+      border-radius: 999px;
+    }
+
+    .closing-toolbar [role="separator"] {
+      display: inline-block;
+      inline-size: 0;
+      block-size: 1.5rem;
+      border-inline-start: 2px solid var(--mint-mid);
+      margin-inline: 0.1cqi;
+    }
+
+    .closing-btn-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .closing-btn-icon svg {
+      inline-size: 1.15em;
+      block-size: 1.15em;
+      flex-shrink: 0;
+    }
+
+    .closing-sound-wave {
+      transform-origin: left center;
+      opacity: 0.9;
+    }
+
+    .closing-confetti {
+      position: absolute;
+      inset: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .confetti-piece {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .closing-lamp-beam {
+      transform-origin: 31% 39%;
+      opacity: 0.85;
+    }
+
+    .closing-steam {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .slide-closing.is-playing .closing-title-reveal {
+        animation: closing-handwrite 1.05s cubic-bezier(0.22, 0.72, 0.2, 1) both;
+      }
+
+      .slide-closing.is-playing .closing-underline-path {
+        animation: closing-stroke-draw 0.85s 0.35s ease-out both;
+      }
+
+      .slide-closing.is-playing .closing-stagger > * {
+        --stagger-time: 0.13s;
+        animation: closing-rise-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        animation-delay: calc(var(--sibling-index, 1) * var(--stagger-time));
+        animation-delay: calc(sibling-index() * var(--stagger-time));
+      }
+
+      .slide-closing.is-playing .closing-lamp-beam {
+        animation: closing-lamp-glow 2.4s ease-out both;
+      }
+
+      .slide-closing.is-playing .closing-steam {
+        animation: closing-steam-rise 3.2s ease-out both;
+      }
+
+      .slide-closing.is-playing .confetti-piece {
+        --stagger-time: 0.08s;
+        animation: closing-confetti-burst 2.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+        animation-delay: calc(var(--sibling-index, 1) * var(--stagger-time));
+        animation-delay: calc(sibling-index() * var(--stagger-time));
+      }
+
+      .closing-sound-btn.is-ringing .closing-sound-wave {
+        animation: closing-wave-pulse 0.45s ease-in-out 2;
+      }
+    }
+
+    @keyframes closing-handwrite {
+      from {
+        clip-path: inset(0 100% 0 0);
+      }
+      to {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    @keyframes closing-stroke-draw {
+      from {
+        stroke-dashoffset: 420;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes closing-rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes closing-lamp-glow {
+      0% {
+        opacity: 0.22;
+        transform: scale(0.9);
+      }
+      55% {
+        opacity: 1;
+        transform: scale(1.03);
+      }
+      100% {
+        opacity: 0.86;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes closing-steam-rise {
+      0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.85);
+      }
+      35% {
+        opacity: 0.65;
+        transform: translateY(-6px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-28px) scale(1.1);
+      }
+    }
+
+    @keyframes closing-confetti-burst {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -34px, 0) rotate(0deg) scale(0.55);
+      }
+      18% {
+        opacity: 0.95;
+        transform: translate3d(var(--dx, 10px), 24px, 0) rotate(85deg) scale(1);
+      }
+      75% {
+        opacity: 0.88;
+        transform: translate3d(calc(var(--dx, 10px) * -0.7), 130px, 0) rotate(260deg) scale(0.95);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(calc(var(--dx, 10px) * 0.4), 190px, 0) rotate(360deg) scale(0.75);
+      }
+    }
+
+    @keyframes closing-wave-pulse {
+      0%, 100% {
+        opacity: 0.85;
+        transform: scaleX(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scaleX(1.28);
+      }
+    }
+
     /* High contrast / Forced colors safety */
     @media (forced-colors: active) {
       .cover-paper,
       .members-paper,
       .def-paper,
+      .closing-paper,
+      .closing-toolbar,
       .prop-badge,
       .prop1-quote,
       .prop2-bridge,
@@ -1235,12 +1552,13 @@
         color: HighlightText;
       }
 
-      .sim-toolbar [role="separator"] {
+      .sim-toolbar [role="separator"],
+      .closing-toolbar [role="separator"] {
         border-inline-start-color: CanvasText;
       }
     }
 
-    /* Print / Save as PDF: 16:9 pages with all 18 slides */
+    /* Print / Save as PDF: 16:9 pages with all slides */
     @media print {
       @page {
         size: 16in 9in;
@@ -1256,8 +1574,18 @@
       }
 
       .sr-controls,
-      .visually-hidden {
+      .visually-hidden,
+      .closing-toolbar,
+      .closing-confetti {
         display: none !important;
+      }
+
+      .closing-title-reveal {
+        clip-path: none !important;
+      }
+
+      .closing-underline-path {
+        stroke-dashoffset: 0 !important;
       }
 
       .presentation-viewport {
@@ -1311,7 +1639,7 @@
       <!-- ========================================================
            SLIDE 1: COVER (Geometric Drafting Theme, Bright Pastel)
            ======================================================== -->
-      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 36: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
+      <section class="slide slide-cover" role="group" aria-roledescription="slide" aria-label="Slide 1 dari 37: Fundamentals of Geometric Algebra" data-theme="mint" data-title="Fundamentals of Geometric Algebra | Kelompok 2">
         <!-- Geometric sparkle & right-angle doodles -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2%; inset-inline-start:15%; inline-size:4.5cqi; block-size:8cqb;" viewBox="0 0 60 60">
           <path d="M30 4 C32 22,38 28,56 30 C38 32,32 38,30 56 C28 38,22 32,4 30 C22 28,28 22,30 4Z" fill="#A9D3F5"/>
@@ -1420,7 +1748,7 @@
       <!-- ========================================================
            SLIDE 2: ANGGOTA KELOMPOK (3 Members + Geometry Theme)
            ======================================================== -->
-      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 36: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-members" role="group" aria-roledescription="slide" aria-label="Slide 2 dari 37: Anggota Kelompok" data-theme="mint" data-title="Anggota Kelompok | Fundamentals of Geometric Algebra" hidden>
         <!-- Left pastel area blocks + 30-60-90 triangle ruler -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:26cqi; block-size:74cqb;" viewBox="0 0 360 540">
           <rect x="-10" y="0" width="235" height="290" rx="22" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="6"/>
@@ -1543,7 +1871,7 @@
       <!-- ========================================================
            SLIDE 3: DEFINISI (Gnomon & Right-Angle Theme Graphics)
            ======================================================== -->
-      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 36: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-definition" role="group" aria-roledescription="slide" aria-label="Slide 3 dari 37: Definisi" data-theme="mint" data-title="Definisi | Fundamentals of Geometric Algebra" hidden>
         <!-- Top pastel divided-segment bar motif -->
         <svg class="decor" aria-hidden="true" style="inset-block-start:2.5%; inset-inline-start:24%; inline-size:21cqi; block-size:7.5cqb;" viewBox="0 0 320 60">
           <rect x="6" y="14" width="90" height="28" rx="14" fill="#CCF5E1" stroke="#8EE0BA" stroke-width="4"/>
@@ -1621,7 +1949,7 @@
       <!-- ========================================================
            SLIDE 4: PROPOSITION 1 (PART 1)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 36: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 4 dari 37: Proposition 1 - Pernyataan dan Penjelasan Awal" data-theme="split" data-title="Proposition 1 (Bagian 1) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1742,7 +2070,7 @@
       <!-- ========================================================
            SLIDE 5: PROPOSITION 1 (PART 2)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 36: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 5 dari 37: Proposition 1 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 1 (Bagian 2) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -1869,7 +2197,7 @@
       <!-- ========================================================
            SLIDE 6: SIMULASI INTERAKTIF PROPOSITION 1
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 36: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 6 dari 37: Simulasi Interaktif Proposition 1" data-theme="split-sim" data-title="Simulasi Proposition 1 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel: passive presentation text + live numeric readout -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2000,7 +2328,7 @@
       <!-- ========================================================
            SLIDE 7: PROPOSITION 2 (TEOREMA)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 36: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 7 dari 37: Proposition 2 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 2 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2115,7 +2443,7 @@
       <!-- ========================================================
            SLIDE 8: PROPOSITION 2 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 36: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 8 dari 37: Proposition 2 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 2 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2232,7 +2560,7 @@
       <!-- ========================================================
            SLIDE 9: SIMULASI INTERAKTIF PROPOSITION 2
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 36: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 9 dari 37: Simulasi Interaktif Proposition 2" data-theme="split-sim" data-title="Simulasi Proposition 2 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2339,7 +2667,7 @@
       <!-- ========================================================
            SLIDE 10: PROPOSITION 3 (TEOREMA)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 36: Proposition 3 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 3 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 10 dari 37: Proposition 3 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 3 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <!-- Left edge pastel geometric dots -->
@@ -2454,7 +2782,7 @@
       <!-- ========================================================
            SLIDE 11: PROPOSITION 3 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 36: Proposition 3 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 11 dari 37: Proposition 3 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 3 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2572,7 +2900,7 @@
       <!-- ========================================================
            SLIDE 12: SIMULASI INTERAKTIF PROPOSITION 3
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 36: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 12 dari 37: Simulasi Interaktif Proposition 3" data-theme="split-sim" data-title="Simulasi Proposition 3 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -2679,7 +3007,7 @@
       <!-- ========================================================
            SLIDE 13: PROPOSITION 4 (TEOREMA & PENJELASAN AWAL)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 36: Proposition 4 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 4 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 13 dari 37: Proposition 4 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 4 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2796,7 +3124,7 @@
       <!-- ========================================================
            SLIDE 14: PROPOSITION 4 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 36: Proposition 4 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 14 dari 37: Proposition 4 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 4 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -2931,7 +3259,7 @@
       <!-- ========================================================
            SLIDE 15: SIMULASI INTERAKTIF PROPOSITION 4
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 36: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 15 dari 37: Simulasi Interaktif Proposition 4" data-theme="split-sim" data-title="Simulasi Proposition 4 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3038,7 +3366,7 @@
       <!-- ========================================================
            SLIDE 16: PROPOSITION 5 (TEOREMA & PENJELASAN AWAL)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 36: Proposition 5 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 5 (Teorema) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 16 dari 37: Proposition 5 - Teorema dan Penjelasan Awal" data-theme="split" data-title="Proposition 5 (Teorema) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3163,7 +3491,7 @@
       <!-- ========================================================
            SLIDE 17: PROPOSITION 5 (PENJELASAN & PEMBUKTIAN)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 36: Proposition 5 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 17 dari 37: Proposition 5 - Pembuktian dan Bentuk Aljabar" data-theme="split" data-title="Proposition 5 (Penjelasan) | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3307,7 +3635,7 @@
       <!-- ========================================================
            SLIDE 18: SIMULASI INTERAKTIF PROPOSITION 5
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 36: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 18 dari 37: Simulasi Interaktif Proposition 5" data-theme="split-sim" data-title="Simulasi Proposition 5 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3414,7 +3742,7 @@
       <!-- ========================================================
            SLIDE 19: PROPOSITION 6 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 19 dari 36: Proposition 6 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 19 dari 37: Proposition 6 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 6 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3565,7 +3893,7 @@
       <!-- ========================================================
            SLIDE 20: SIMULASI INTERAKTIF PROPOSITION 6
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 20 dari 36: Simulasi Interaktif Proposition 6" data-theme="split-sim" data-title="Simulasi Proposition 6 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 20 dari 37: Simulasi Interaktif Proposition 6" data-theme="split-sim" data-title="Simulasi Proposition 6 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3672,7 +4000,7 @@
       <!-- ========================================================
            SLIDE 21: PROPOSITION 7 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 21 dari 36: Proposition 7 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 7 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 21 dari 37: Proposition 7 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 7 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -3818,7 +4146,7 @@
       <!-- ========================================================
            SLIDE 22: SIMULASI INTERAKTIF PROPOSITION 7
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 22 dari 36: Simulasi Interaktif Proposition 7" data-theme="split-sim" data-title="Simulasi Proposition 7 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 22 dari 37: Simulasi Interaktif Proposition 7" data-theme="split-sim" data-title="Simulasi Proposition 7 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -3925,7 +4253,7 @@
       <!-- ========================================================
            SLIDE 23: PROPOSITION 8 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 23 dari 36: Proposition 8 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 8 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 23 dari 37: Proposition 8 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 8 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4093,7 +4421,7 @@
       <!-- ========================================================
            SLIDE 24: SIMULASI INTERAKTIF PROPOSITION 8
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 24 dari 36: Simulasi Interaktif Proposition 8" data-theme="split-sim" data-title="Simulasi Proposition 8 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 24 dari 37: Simulasi Interaktif Proposition 8" data-theme="split-sim" data-title="Simulasi Proposition 8 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4200,7 +4528,7 @@
       <!-- ========================================================
            SLIDE 25: PROPOSITION 9 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 25 dari 36: Proposition 9 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 9 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 25 dari 37: Proposition 9 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 9 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4341,7 +4669,7 @@
       <!-- ========================================================
            SLIDE 26: SIMULASI INTERAKTIF PROPOSITION 9
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 26 dari 36: Simulasi Interaktif Proposition 9" data-theme="split-sim" data-title="Simulasi Proposition 9 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 26 dari 37: Simulasi Interaktif Proposition 9" data-theme="split-sim" data-title="Simulasi Proposition 9 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4448,7 +4776,7 @@
       <!-- ========================================================
            SLIDE 27: PROPOSITION 10 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 27 dari 36: Proposition 10 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 10 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 27 dari 37: Proposition 10 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 10 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4588,7 +4916,7 @@
       <!-- ========================================================
            SLIDE 28: SIMULASI INTERAKTIF PROPOSITION 10
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 28 dari 36: Simulasi Interaktif Proposition 10" data-theme="split-sim" data-title="Simulasi Proposition 10 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 28 dari 37: Simulasi Interaktif Proposition 10" data-theme="split-sim" data-title="Simulasi Proposition 10 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4695,7 +5023,7 @@
       <!-- ========================================================
            SLIDE 29: PROPOSITION 11 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 29 dari 36: Proposition 11 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 11 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 29 dari 37: Proposition 11 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 11 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -4837,7 +5165,7 @@
       <!-- ========================================================
            SLIDE 30: SIMULASI INTERAKTIF PROPOSITION 11
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 30 dari 36: Simulasi Interaktif Proposition 11" data-theme="split-sim" data-title="Simulasi Proposition 11 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 30 dari 37: Simulasi Interaktif Proposition 11" data-theme="split-sim" data-title="Simulasi Proposition 11 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -4944,7 +5272,7 @@
       <!-- ========================================================
            SLIDE 31: PROPOSITION 12 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 31 dari 36: Proposition 12 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 12 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 31 dari 37: Proposition 12 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 12 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5078,7 +5406,7 @@
       <!-- ========================================================
            SLIDE 32: SIMULASI INTERAKTIF PROPOSITION 12
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 32 dari 36: Simulasi Interaktif Proposition 12" data-theme="split-sim" data-title="Simulasi Proposition 12 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 32 dari 37: Simulasi Interaktif Proposition 12" data-theme="split-sim" data-title="Simulasi Proposition 12 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5185,7 +5513,7 @@
       <!-- ========================================================
            SLIDE 33: PROPOSITION 13 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 33 dari 36: Proposition 13 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 13 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 33 dari 37: Proposition 13 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 13 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5318,7 +5646,7 @@
       <!-- ========================================================
            SLIDE 34: SIMULASI INTERAKTIF PROPOSITION 13
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 34 dari 36: Simulasi Interaktif Proposition 13" data-theme="split-sim" data-title="Simulasi Proposition 13 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 34 dari 37: Simulasi Interaktif Proposition 13" data-theme="split-sim" data-title="Simulasi Proposition 13 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5425,7 +5753,7 @@
       <!-- ========================================================
            SLIDE 35: PROPOSITION 14 (TEOREMA, PEMBUKTIAN & ALJABAR)
            ======================================================== -->
-      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 35 dari 36: Proposition 14 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 14 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop" role="group" aria-roledescription="slide" aria-label="Slide 35 dari 37: Proposition 14 - Teorema, Pembuktian, dan Bentuk Aljabar" data-theme="split" data-title="Proposition 14 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left prop-left--compact">
           <svg class="decor" aria-hidden="true" style="inset-block-start:3%; inset-inline-start:0.6%; inline-size:4.2cqi; block-size:90cqb;" viewBox="0 0 70 640">
@@ -5568,7 +5896,7 @@
       <!-- ========================================================
            SLIDE 36: SIMULASI INTERAKTIF PROPOSITION 14
            ======================================================== -->
-      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 36 dari 36: Simulasi Interaktif Proposition 14" data-theme="split-sim" data-title="Simulasi Proposition 14 | Fundamentals of Geometric Algebra" hidden>
+      <section class="slide slide-prop slide-sim" role="group" aria-roledescription="slide" aria-label="Slide 36 dari 37: Simulasi Interaktif Proposition 14" data-theme="split-sim" data-title="Simulasi Proposition 14 | Fundamentals of Geometric Algebra" hidden>
         <!-- Left white panel -->
         <div class="prop-left">
           <svg class="decor" aria-hidden="true" style="inset-block-start:4%; inset-inline-start:0.5%; inline-size:3.2cqi; block-size:88cqb;" viewBox="0 0 70 640">
@@ -5672,6 +6000,206 @@
         </div>
       </section>
 
+      <!-- ========================================================
+           SLIDE 37: PENUTUP (TERIMA KASIH + ANIMASI 2D & WEB AUDIO)
+           ======================================================== -->
+      <section class="slide slide-closing" id="slide-closing" role="group" aria-roledescription="slide" aria-label="Slide 37 dari 37: Terima Kasih" data-theme="closing" data-title="Terima Kasih | Fundamentals of Geometric Algebra" hidden>
+        <!-- Ambient pastel desk doodles & right geometric folder corner -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:11%; inset-inline-start:44.5%; inline-size:8cqi; block-size:10cqb;" viewBox="0 0 120 90">
+          <path d="M18 68 C28 60, 26 42, 42 36 C56 31, 68 38, 78 24 C84 16, 94 12, 102 18 C108 24, 100 38, 86 42 C72 46, 62 52, 56 64 C50 76, 32 82, 18 76 Z" fill="#9AC5B7" opacity="0.72"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:36.5%; inset-inline-end:0.6%; inline-size:5.5cqi; block-size:8cqb;" viewBox="0 0 80 70">
+          <path d="M40 12 C58 10, 72 22, 70 36 C68 50, 52 56, 36 52 C20 48, 12 34, 22 22 C30 12, 48 16, 54 26 C58 34, 48 44, 36 40 C28 38, 28 28, 38 26" fill="none" stroke="#8FB8AA" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-end:0; inline-size:38cqi; block-size:36cqb;" viewBox="0 0 490 260">
+          <!-- Monitor edge & stand top-right -->
+          <rect x="20" y="-12" width="465" height="62" rx="10" fill="#DDE4EC"/>
+          <polygon points="48,50 470,50 462,22 56,22" fill="#232652"/>
+          <rect x="200" y="50" width="110" height="44" rx="14" fill="#D4DCE5"/>
+          <!-- Wireless mouse -->
+          <rect x="74" y="114" width="54" height="78" rx="26" fill="#E6ECF2"/>
+          <circle cx="101" cy="172" r="5" fill="#232652"/>
+          <!-- Compact keyboard -->
+          <rect x="174" y="138" width="298" height="106" rx="12" fill="#E7EDF4"/>
+          <g fill="#232652">
+            <rect x="184" y="148" width="16" height="14" rx="2"/><rect x="204" y="148" width="16" height="14" rx="2"/>
+            <rect x="224" y="148" width="16" height="14" rx="2"/><rect x="248" y="148" width="16" height="14" rx="2"/>
+            <rect x="268" y="148" width="16" height="14" rx="2"/><rect x="288" y="148" width="16" height="14" rx="2"/>
+            <rect x="308" y="148" width="16" height="14" rx="2"/><rect x="332" y="148" width="16" height="14" rx="2"/>
+            <rect x="352" y="148" width="16" height="14" rx="2"/><rect x="372" y="148" width="16" height="14" rx="2"/>
+            <rect x="392" y="148" width="16" height="14" rx="2"/><rect x="416" y="148" width="16" height="14" rx="2"/>
+            <rect x="436" y="148" width="24" height="14" rx="2"/>
+            <rect x="184" y="166" width="22" height="14" rx="2"/><rect x="210" y="166" width="16" height="14" rx="2"/>
+            <rect x="230" y="166" width="16" height="14" rx="2"/><rect x="250" y="166" width="16" height="14" rx="2"/>
+            <rect x="270" y="166" width="16" height="14" rx="2"/><rect x="290" y="166" width="16" height="14" rx="2"/>
+            <rect x="310" y="166" width="16" height="14" rx="2"/><rect x="330" y="166" width="16" height="14" rx="2"/>
+            <rect x="350" y="166" width="16" height="14" rx="2"/><rect x="370" y="166" width="16" height="14" rx="2"/>
+            <rect x="390" y="166" width="16" height="14" rx="2"/><rect x="410" y="166" width="16" height="14" rx="2"/>
+            <rect x="430" y="166" width="30" height="14" rx="2"/>
+            <rect x="184" y="184" width="28" height="14" rx="2"/><rect x="216" y="184" width="16" height="14" rx="2"/>
+            <rect x="236" y="184" width="16" height="14" rx="2"/><rect x="256" y="184" width="16" height="14" rx="2"/>
+            <rect x="276" y="184" width="16" height="14" rx="2"/><rect x="296" y="184" width="16" height="14" rx="2"/>
+            <rect x="316" y="184" width="16" height="14" rx="2"/><rect x="336" y="184" width="16" height="14" rx="2"/>
+            <rect x="356" y="184" width="16" height="14" rx="2"/><rect x="376" y="184" width="16" height="14" rx="2"/>
+            <rect x="396" y="184" width="16" height="14" rx="2"/><rect x="416" y="184" width="44" height="14" rx="2"/>
+            <rect x="184" y="202" width="36" height="14" rx="2"/><rect x="224" y="202" width="16" height="14" rx="2"/>
+            <rect x="244" y="202" width="16" height="14" rx="2"/><rect x="264" y="202" width="16" height="14" rx="2"/>
+            <rect x="284" y="202" width="16" height="14" rx="2"/><rect x="304" y="202" width="16" height="14" rx="2"/>
+            <rect x="324" y="202" width="16" height="14" rx="2"/><rect x="344" y="202" width="16" height="14" rx="2"/>
+            <rect x="364" y="202" width="16" height="14" rx="2"/><rect x="384" y="202" width="16" height="14" rx="2"/>
+            <rect x="404" y="202" width="56" height="14" rx="2"/>
+            <rect x="184" y="220" width="24" height="14" rx="2"/><rect x="212" y="220" width="24" height="14" rx="2"/>
+            <rect x="240" y="220" width="24" height="14" rx="2"/><rect x="268" y="220" width="96" height="14" rx="2"/>
+            <rect x="368" y="220" width="24" height="14" rx="2"/><rect x="396" y="220" width="24" height="14" rx="2"/>
+            <rect x="424" y="220" width="36" height="14" rx="2"/>
+          </g>
+        </svg>
+
+        <!-- Bottom-right teal folder corner & pastel geometry accents -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:-2%; inset-inline-end:-1%; inline-size:22cqi; block-size:56cqb;" viewBox="0 0 280 410">
+          <polygon points="280,10 280,410 12,410 12,265" fill="#89BEC7"/>
+          <polygon points="280,220 280,410 45,320" fill="#77ACB5"/>
+          <polygon points="10,270 280,340 280,352 10,282" fill="#5D929B" opacity="0.4"/>
+        </svg>
+
+        <!-- Center white spiral-punched notebook sheet -->
+        <div class="closing-paper-shadow" aria-hidden="true"></div>
+        <div class="closing-paper">
+          <svg class="closing-spiral" aria-hidden="true" viewBox="0 0 60 480" preserveAspectRatio="none">
+            <g fill="#9BC7B9">
+              <circle cx="30" cy="40" r="10"/><circle cx="30" cy="108" r="10"/>
+              <circle cx="30" cy="176" r="10"/><circle cx="30" cy="244" r="10"/>
+              <circle cx="30" cy="312" r="10"/><circle cx="30" cy="380" r="10"/>
+              <circle cx="30" cy="448" r="10"/>
+            </g>
+          </svg>
+
+          <div class="closing-stagger" id="closing-stagger">
+            <!-- Small pastel geometry emblem echoing deck theme -->
+            <svg width="78" height="22" viewBox="0 0 78 22" aria-hidden="true">
+              <rect x="4" y="3" width="16" height="16" rx="4" fill="#E6DCFF" stroke="#8B72D6" stroke-width="2"/>
+              <circle cx="39" cy="11" r="8" fill="#FFE2CC" stroke="#FFBFA0" stroke-width="2"/>
+              <polygon points="65,3 74,19 56,19" fill="#CCF5E1" stroke="#3EA381" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="closing-title-stage">
+              <div class="closing-title-reveal">
+                <h1 class="closing-title">TERIMA KASIH</h1>
+              </div>
+              <svg class="closing-underline-svg" aria-hidden="true" viewBox="0 0 420 18">
+                <path class="closing-underline-path" d="M 16 11 Q 140 3, 220 9 T 404 7" fill="none" stroke="#F5CF58" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <p class="closing-subtitle-pill" lang="en">Fundamentals of Geometric Algebra &middot; Kelompok 2</p>
+            <p class="closing-note" lang="en">Euclid&rsquo;s Elements &mdash; Book II (Proposisi 1&ndash;14)</p>
+
+            <p class="visually-hidden" id="closing-status" role="status" aria-live="polite"></p>
+
+            <div class="closing-toolbar" role="toolbar" focusgroup="toolbar wrap" aria-label="Kontrol animasi dan efek suara halaman penutup">
+              <button type="button" class="sim-btn closing-btn-icon" id="closing-replay-btn">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 10a6 6 0 1 1 1.75 4.24"/>
+                  <polyline points="4 15 4 10 9 10"/>
+                </svg>
+                <span>Putar Ulang Animasi</span>
+              </button>
+              <button type="button" class="sim-btn sim-btn--accent closing-btn-icon closing-sound-btn" id="closing-sound-btn">
+                <svg viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="3 7.5 7 7.5 11.5 4 11.5 16 7 12.5 3 12.5" fill="currentColor" stroke="none"/>
+                  <path class="closing-sound-wave" d="M14.5 7.2a4.5 4.5 0 0 1 0 5.6M17.5 5a7.8 7.8 0 0 1 0 10"/>
+                </svg>
+                <span>Efek Sound</span>
+              </button>
+              <span role="separator" aria-orientation="vertical"></span>
+              <button type="button" class="sim-btn closing-btn-icon" id="closing-mute-btn" aria-pressed="false">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="3 7.5 7 7.5 11 4 11 16 7 12.5 3 12.5" fill="currentColor" stroke="none"/>
+                  <line x1="14.5" y1="7.5" x2="18.5" y2="12.5"/>
+                  <line x1="18.5" y1="7.5" x2="14.5" y2="12.5"/>
+                </svg>
+                <span>Bisu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desk Lamp with warm 2D light cone (top-left) -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:0; inset-inline-start:0; inline-size:44cqi; block-size:66cqb; z-index:3;" viewBox="0 0 560 475">
+          <defs>
+            <linearGradient id="closing-lamp-light" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FFE26A" stop-opacity="0.52"/>
+              <stop offset="55%" stop-color="#FFF1A8" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#FFF1A8" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Warm animated light cone -->
+          <polygon class="closing-lamp-beam" points="294,180 416,180 515,430 220,430" fill="url(#closing-lamp-light)"/>
+          <!-- Lamp bulb glow -->
+          <path d="M 314 176 A 42 40 0 0 0 398 176 Z" fill="#F9BD15"/>
+          <path d="M 330 176 A 26 24 0 0 0 382 176 Z" fill="#FFF1A8"/>
+          <!-- Lamp lower arm, hinge joint, upper frame, lampshade -->
+          <line x1="-10" y1="265" x2="55" y2="105" stroke="#232652" stroke-width="11" stroke-linecap="round"/>
+          <path d="M 60 88 L 242 82 A 30 30 0 0 1 242 142 L 60 136 Z" fill="none" stroke="#232652" stroke-width="11" stroke-linejoin="round"/>
+          <circle cx="52" cy="112" r="52" fill="#232652"/>
+          <circle cx="52" cy="112" r="24" fill="#F9B515"/>
+          <rect x="266" y="90" width="44" height="22" rx="4" fill="#232652"/>
+          <rect x="304" y="60" width="102" height="58" rx="14" fill="#232652"/>
+          <path d="M 304 102 L 406 102 L 444 166 C 447 172, 443 178, 434 178 L 276 178 C 267 178, 263 172, 266 166 Z" fill="#232652"/>
+        </svg>
+
+        <!-- Bottom-left golden ceramic coffee mug + subtle steam -->
+        <svg class="decor" aria-hidden="true" style="inset-block-end:-3%; inset-inline-start:-2.5%; inline-size:21cqi; block-size:38cqb; z-index:3;" viewBox="0 0 270 280">
+          <!-- Gentle steam curls -->
+          <path class="closing-steam" style="animation-delay:0.2s;" d="M 105 46 C 98 30, 114 20, 108 6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <path class="closing-steam" style="animation-delay:0.75s;" d="M 135 52 C 144 36, 128 24, 136 8" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+          <!-- Mug base & rim -->
+          <circle cx="118" cy="158" r="112" fill="#FFFFFF"/>
+          <circle cx="118" cy="158" r="95" fill="#DFE7EA"/>
+          <path d="M 32 152 A 86 86 0 0 0 204 152 A 86 78 0 0 1 32 152 Z" fill="#CBD7DC"/>
+          <circle cx="118" cy="154" r="82" fill="#F9A800"/>
+          <circle cx="110" cy="148" r="68" fill="#FFD12B"/>
+        </svg>
+
+        <!-- Sharpened yellow pencil on right margin -->
+        <svg class="decor" aria-hidden="true" style="inset-block-start:40%; inset-inline-end:7.5%; inline-size:8.5cqi; block-size:56cqb; z-index:3;" viewBox="0 0 110 410">
+          <g transform="rotate(9 55 205)">
+            <!-- Eraser & ferrule -->
+            <rect x="40" y="14" width="30" height="24" rx="5" fill="#FF9C97"/>
+            <rect x="40" y="34" width="30" height="12" rx="2" fill="#E6DCFF"/>
+            <!-- Hex yellow barrel -->
+            <rect x="40" y="46" width="10" height="286" fill="#F39C12"/>
+            <rect x="50" y="46" width="10" height="286" fill="#FFD12B"/>
+            <rect x="60" y="46" width="10" height="286" fill="#F5B700"/>
+            <!-- Wooden collar & graphite tip -->
+            <polygon points="40,332 70,332 55,392" fill="#F7D5B4"/>
+            <polygon points="50,372 60,372 55,392" fill="#232652"/>
+          </g>
+        </svg>
+
+        <!-- 2D Pastel Geometric Confetti Burst Layer (GPU-composited transform + opacity) -->
+        <svg class="closing-confetti" id="closing-confetti-svg" aria-hidden="true" viewBox="0 0 1280 720">
+          <rect class="confetti-piece" style="--dx:-18px;" x="230" y="28" width="16" height="16" rx="3" fill="#CBB8FB"/>
+          <circle class="confetti-piece" style="--dx:22px;" cx="350" cy="40" r="8" fill="#FFE26A"/>
+          <polygon class="confetti-piece" style="--dx:-14px;" points="470,18 482,42 458,42" fill="#8EE0BA"/>
+          <rect class="confetti-piece" style="--dx:26px;" x="590" y="22" width="14" height="14" rx="3" transform="rotate(30 597 29)" fill="#FF9C97"/>
+          <circle class="confetti-piece" style="--dx:-24px;" cx="715" cy="34" r="7" fill="#A9D3F5"/>
+          <polygon class="confetti-piece" style="--dx:16px;" points="835,18 847,40 823,40" fill="#FFBFA0"/>
+          <rect class="confetti-piece" style="--dx:-16px;" x="960" y="26" width="15" height="15" rx="4" fill="#FFE26A"/>
+          <circle class="confetti-piece" style="--dx:20px;" cx="1075" cy="44" r="8" fill="#CBB8FB"/>
+          <polygon class="confetti-piece" style="--dx:-22px;" points="1165,64 1179,86 1151,86" fill="#8EE0BA"/>
+          <path class="confetti-piece" style="--dx:18px;" d="M 310 92 L 315 104 L 327 109 L 315 114 L 310 126 L 305 114 L 293 109 L 305 104 Z" fill="#FFE26A"/>
+          <rect class="confetti-piece" style="--dx:-20px;" x="430" y="88" width="13" height="13" rx="3" fill="#FFBFA0"/>
+          <circle class="confetti-piece" style="--dx:14px;" cx="555" cy="96" r="6.5" fill="#9AE8DE"/>
+          <polygon class="confetti-piece" style="--dx:-15px;" points="680,74 691,96 669,96" fill="#CBB8FB"/>
+          <path class="confetti-piece" style="--dx:24px;" d="M 800 80 L 804 91 L 815 95 L 804 99 L 800 110 L 796 99 L 785 95 L 796 91 Z" fill="#FF9C97"/>
+          <rect class="confetti-piece" style="--dx:-12px;" x="910" y="86" width="14" height="14" rx="3" fill="#A9D3F5"/>
+          <circle class="confetti-piece" style="--dx:19px;" cx="1025" cy="94" r="7" fill="#FFE26A"/>
+          <polygon class="confetti-piece" style="--dx:-18px;" points="180,220 192,242 168,242" fill="#FF9C97"/>
+          <rect class="confetti-piece" style="--dx:16px;" x="1120" y="210" width="15" height="15" rx="4" fill="#CBB8FB"/>
+        </svg>
+      </section>
+
     </div>
   </main>
 
@@ -5717,6 +6245,10 @@
       if (announce) {
         statusRegion.textContent = active.getAttribute('aria-label') || `Slide ${currentIndex + 1} dari ${totalSlides}`;
       }
+
+      window.dispatchEvent(new CustomEvent('slideactive', {
+        detail: { slide: active, index: currentIndex, fromNavigation: announce }
+      }));
     }
 
     function goToSlide(targetIndex, directionHint) {
@@ -10855,6 +11387,170 @@
     }
 
     initProp14Simulation(document.getElementById('sim14-svg')?.closest('.slide'));
+
+    /**
+     * Final closing slide (Slide 37): staged 2D animations + pure Web Audio chime.
+     */
+    function initClosingSlide(slideEl) {
+      if (!slideEl) return;
+
+      const replayBtn = document.getElementById('closing-replay-btn');
+      const soundBtn = document.getElementById('closing-sound-btn');
+      const muteBtn = document.getElementById('closing-mute-btn');
+      const closingStatus = document.getElementById('closing-status');
+      const toolbar = slideEl.querySelector('.closing-toolbar');
+      const staggerWrap = document.getElementById('closing-stagger');
+      const confettiSvg = document.getElementById('closing-confetti-svg');
+
+      let audioCtx = null;
+      let isMuted = false;
+      let ringTimer = null;
+
+      // Polyfill --sibling-index only when CSS sibling-index() is unsupported
+      if (!CSS.supports('animation-delay: calc(sibling-index() * 0.1s)')) {
+        if (staggerWrap) {
+          Array.from(staggerWrap.children).forEach((el, idx) => {
+            el.style.setProperty('--sibling-index', String(idx + 1));
+          });
+        }
+        if (confettiSvg) {
+          Array.from(confettiSvg.children).forEach((el, idx) => {
+            el.style.setProperty('--sibling-index', String(idx + 1));
+          });
+        }
+      }
+
+      /** Lazily initialize and resume AudioContext safely inside user-activated flows. */
+      async function getReadyAudioContext() {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+        if (!audioCtx) {
+          audioCtx = new AudioCtx();
+        }
+        if (audioCtx.state === 'suspended') {
+          await audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      /** Synthesize warm major-9th harmonic celebration chime (~1.2s, zero external assets). */
+      async function playCelebrationChime({ auto = false } = {}) {
+        if (auto) {
+          if (isMuted) return;
+          if ('userActivation' in navigator && !navigator.userActivation.hasBeenActive) return;
+        }
+
+        try {
+          const ctx = await getReadyAudioContext();
+          if (!ctx || ctx.state !== 'running') return;
+
+          const now = ctx.currentTime + 0.02;
+          const compressor = ctx.createDynamicsCompressor();
+          compressor.threshold.setValueAtTime(-16, now);
+          compressor.knee.setValueAtTime(18, now);
+          compressor.ratio.setValueAtTime(4, now);
+          compressor.connect(ctx.destination);
+
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(3400, now);
+          filter.connect(compressor);
+
+          // Warm ascending chime: C5, E5, G5, B5, C6 + soft G6 shimmer
+          const notes = [
+            { freq: 523.25, delay: 0.00, dur: 0.72, gain: 0.14, type: 'triangle' },
+            { freq: 659.25, delay: 0.09, dur: 0.75, gain: 0.13, type: 'triangle' },
+            { freq: 783.99, delay: 0.18, dur: 0.80, gain: 0.13, type: 'sine' },
+            { freq: 987.77, delay: 0.28, dur: 0.85, gain: 0.11, type: 'sine' },
+            { freq: 1046.50, delay: 0.39, dur: 0.95, gain: 0.15, type: 'sine' },
+            { freq: 1567.98, delay: 0.44, dur: 0.68, gain: 0.05, type: 'sine' }
+          ];
+
+          notes.forEach(({ freq, delay, dur, gain, type }) => {
+            const t0 = now + delay;
+            const osc = ctx.createOscillator();
+            const env = ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, t0);
+
+            env.gain.setValueAtTime(0.0001, t0);
+            env.gain.exponentialRampToValueAtTime(gain, t0 + 0.018);
+            env.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+
+            osc.connect(env);
+            env.connect(filter);
+            osc.start(t0);
+            osc.stop(t0 + dur + 0.03);
+          });
+
+          if (soundBtn) {
+            soundBtn.classList.remove('is-ringing');
+            void soundBtn.offsetWidth;
+            soundBtn.classList.add('is-ringing');
+            clearTimeout(ringTimer);
+            ringTimer = setTimeout(() => soundBtn.classList.remove('is-ringing'), 1000);
+          }
+        } catch {
+          // Audio playback skipped cleanly if blocked by environment policy
+        }
+      }
+
+      /** Trigger or replay 2D lamp glow, title write reveal, steam, and confetti burst. */
+      function replayAnimation() {
+        slideEl.classList.remove('is-playing');
+        void slideEl.offsetWidth;
+        slideEl.classList.add('is-playing');
+      }
+
+      function syncMuteUi() {
+        if (muteBtn) {
+          muteBtn.setAttribute('aria-pressed', String(isMuted));
+        }
+      }
+
+      window.addEventListener('slideactive', ({ detail }) => {
+        if (detail?.slide === slideEl) {
+          replayAnimation();
+          if (detail.fromNavigation) {
+            playCelebrationChime({ auto: true });
+          }
+        } else {
+          slideEl.classList.remove('is-playing');
+        }
+      });
+
+      replayBtn?.addEventListener('click', () => {
+        replayAnimation();
+        if (!isMuted) {
+          playCelebrationChime({ auto: false });
+          closingStatus.textContent = 'Animasi 2D dan efek suara penutup diputar ulang.';
+        } else {
+          closingStatus.textContent = 'Animasi 2D penutup diputar ulang dalam mode bisu.';
+        }
+      });
+
+      soundBtn?.addEventListener('click', () => {
+        if (isMuted) {
+          isMuted = false;
+          syncMuteUi();
+        }
+        playCelebrationChime({ auto: false });
+        closingStatus.textContent = 'Efek suara penutup diputar.';
+      });
+
+      muteBtn?.addEventListener('click', () => {
+        isMuted = !isMuted;
+        syncMuteUi();
+        closingStatus.textContent = isMuted
+          ? 'Mode bisu diaktifkan untuk animasi masuk dan putar ulang.'
+          : 'Mode suara aktif kembali.';
+      });
+
+      setupToolbarNavigation(toolbar);
+      syncMuteUi();
+    }
+
+    initClosingSlide(document.getElementById('slide-closing'));
 
     // Initial silent state sync
     applySlideState(parseInitialIndex(), { announce: false, syncHash: false });
