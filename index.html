@@ -206,6 +206,12 @@
       ::view-transition-group(root) {
         animation: none !important;
       }
+
+      .prop-badge:has(> .prop-badge-link),
+      .prop-badge:has(> .prop-badge-link):hover {
+        transition: none;
+        transform: none;
+      }
     }
 
     /* Decorative layer */
@@ -551,6 +557,48 @@
       margin-block-end: 2.2cqb;
       line-height: 1.15;
       font-size: clamp(1.3rem, 3vw, 3.2rem);
+    }
+
+    .prop-badge:has(> .prop-badge-link) {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+
+    .prop-badge-link {
+      color: inherit;
+      text-decoration: none;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      touch-action: manipulation;
+    }
+
+    .prop-badge-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+    }
+
+    .prop-badge:has(> .prop-badge-link):hover {
+      transform: translateY(-0.14cqb);
+      box-shadow: 0 0.34cqb 0.65cqb rgba(43, 45, 92, 0.14);
+      filter: brightness(0.985);
+    }
+
+    .prop-badge:has(> .prop-badge-link):active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .prop-badge-link:focus-visible {
+      outline: none;
+    }
+
+    .prop-badge:has(> .prop-badge-link:focus-visible) {
+      outline: 0.2cqi solid var(--periwinkle-deep);
+      outline-offset: 0.25cqi;
     }
 
     @supports (font-size: 1cqi) {
@@ -1794,6 +1842,17 @@
         margin-block-end: 0.9rem;
       }
 
+      .prop-badge:has(> .prop-badge-link) {
+        display: inline-flex;
+        align-items: center;
+        min-block-size: 44px;
+      }
+
+      .prop-badge:has(> .prop-badge-link:focus-visible) {
+        outline: 2.5px solid var(--periwinkle-deep);
+        outline-offset: 3px;
+      }
+
       .prop1-quote,
       .prop-left--compact .prop1-quote {
         font-size: clamp(0.92rem, 0.85rem + 0.7vw, 1.08rem);
@@ -2721,7 +2780,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 1</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#3" title="Buka materi Proposition 1">Simulasi Proposition 1</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang ukuran dan pembagian garis:</p>
@@ -2971,7 +3030,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 2</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#4" title="Buka materi Proposition 2">Simulasi Proposition 2</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang panjang garis AB dan letak titik potong C:</p>
@@ -3199,7 +3258,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 3</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#4" title="Buka materi Proposition 3">Simulasi Proposition 3</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang panjang garis AB dan letak titik potong C:</p>
@@ -3444,7 +3503,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 4</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#5" title="Buka materi Proposition 4">Simulasi Proposition 4</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang panjang sisi AB dan letak titik potong C:</p>
@@ -3698,7 +3757,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 5</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#6" title="Buka materi Proposition 5">Simulasi Proposition 5</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang setengah garis CB dan posisi titik potong D:</p>
@@ -3956,7 +4015,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 6</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#7" title="Buka materi Proposition 6">Simulasi Proposition 6</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang setengah garis a dan perpanjangan b:</p>
@@ -4209,7 +4268,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 7</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#8" title="Buka materi Proposition 7">Simulasi Proposition 7</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Kesamaan luas tetap berlaku untuk sembarang panjang garis AB dan posisi titik potong C:</p>
@@ -4484,7 +4543,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 8</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#9" title="Buka materi Proposition 8">Simulasi Proposition 8</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Pembagian 9 daerah pada persegi AEFD mempertahankan kesamaan luas untuk sembarang AB dan C:</p>
@@ -4732,7 +4791,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 9</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#10" title="Buka materi Proposition 9">Simulasi Proposition 9</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Perubahan titik bagi C (tengah) dan D (tak sama panjang) mempertahankan kesamaan hipotenusa AF&#178;:</p>
@@ -4979,7 +5038,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 10</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#11" title="Buka materi Proposition 10">Simulasi Proposition 10</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Perubahan setengah garis AC (a) dan tambahan BD (b) mempertahankan kesamaan hipotenusa AG&#178;:</p>
@@ -5228,7 +5287,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 11</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#12" title="Buka materi Proposition 11">Simulasi Proposition 11</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Konstruksi titik <strong>H</strong> tepat pada rasio emas menyamakan luas <strong>FH (AH&#178;)</strong> dengan <strong>HD (AB &times; BH)</strong>:</p>
@@ -5469,7 +5528,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 12</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#13" title="Buka materi Proposition 12">Simulasi Proposition 12</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Mengubah alas <strong>CA</strong> dan perpanjangan <strong>AD</strong> memperlihatkan selisih kuadrat <strong>BC&#178; &minus; (BA&#178; + AC&#178;) = 2(CA&middot;AD)</strong> secara langsung:</p>
@@ -5709,7 +5768,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 13</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#13" title="Buka materi Proposition 13">Simulasi Proposition 13</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Mengubah alas <strong>CB</strong> dan jarak titik tinggi <strong>BD</strong> memperlihatkan selisih kuadrat <strong>(CB&#178; + BA&#178;) &minus; AC&#178; = 2(CB&middot;BD)</strong>:</p>
@@ -5959,7 +6018,7 @@
             <polygon points="344,20 380,34 344,48" fill="#2B2D5C"/>
           </svg>
 
-          <h1 class="prop-badge" lang="en">Simulasi Proposition 14</h1>
+          <h1 class="prop-badge" lang="en"><a class="prop-badge-link" href="https://piscokz.github.io/geometric-algebra-materi/#14" title="Buka materi Proposition 14">Simulasi Proposition 14</a></h1>
 
           <div class="sim-copy-stack">
             <p class="prop1-intro">Konstruksi setengah lingkaran berdiameter <strong>BF = p + q</strong> membentuk tinggi <strong>EH = &radic;(p&middot;q)</strong> yang menghasilkan persegi tepat seluas <strong>BD</strong>:</p>
@@ -6497,7 +6556,8 @@
         ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', ' ', 'Enter'].includes(event.key);
       if (handledByToolbar) return;
 
-      if (target?.tagName === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) {
+      if ((target?.tagName === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) ||
+          (target?.closest('a') && event.key === 'Enter')) {
         return;
       }
 
