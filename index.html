@@ -653,6 +653,38 @@
       font-weight: 700;
     }
 
+    .prop1-section-label {
+      padding-inline-start: 0.4cqi;
+      margin-block-end: -0.25cqb;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(0.84rem, 1.42vw, 1.9rem);
+      line-height: 1.2;
+      color: var(--periwinkle-deep);
+    }
+
+    .prop1-prose {
+      padding-inline-start: 0.4cqi;
+      display: grid;
+      gap: 0.95cqb;
+    }
+
+    .prop1-bullets {
+      list-style: disc;
+      padding-inline-start: 2.1cqi;
+      display: grid;
+      gap: 0.45cqb;
+    }
+
+    .prop1-bullets li {
+      padding-inline-start: 0.25cqi;
+    }
+
+    .prop1-bullets li::marker {
+      color: var(--periwinkle-deep);
+      font-weight: 800;
+    }
+
     .prop1-steps-list {
       list-style: none;
       padding-inline-start: 0.4cqi;
@@ -817,21 +849,35 @@
     }
 
     .prop-left--compact .prop1-quote {
-      margin-block-end: 1.6cqb;
-      padding-block: 1.05cqb;
+      margin-block-end: 1.25cqb;
+      padding-block: 0.98cqb;
       padding-inline: 1.25cqi;
       line-height: 1.34;
       font-size: clamp(0.78rem, 1.34vw, 1.82rem);
     }
 
     .prop-left--compact .prop1-proof-stack {
-      gap: 1.15cqb;
+      gap: 0.85cqb;
       line-height: 1.32;
-      font-size: clamp(0.75rem, 1.22vw, 1.72rem);
+      font-size: clamp(0.75rem, 1.2vw, 1.68rem);
+    }
+
+    .prop-left--compact .prop1-section-label {
+      font-size: clamp(0.8rem, 1.28vw, 1.72rem);
+      margin-block-end: -0.15cqb;
+    }
+
+    .prop-left--compact .prop1-prose {
+      gap: 0.72cqb;
+    }
+
+    .prop-left--compact .prop1-bullets {
+      gap: 0.34cqb;
+      padding-inline-start: 1.85cqi;
     }
 
     .prop-left--compact .prop1-steps-list {
-      gap: 0.95cqb;
+      gap: 0.82cqb;
     }
 
     .prop-left--compact .prop1-equation {
@@ -840,11 +886,17 @@
     }
 
     @supports (font-size: 1cqi) {
+      .prop1-section-label {
+        font-size: clamp(0.84rem, 1.42cqi, 1.9rem);
+      }
       .prop-left--compact .prop1-quote {
         font-size: clamp(0.78rem, 1.34cqi, 1.82rem);
       }
       .prop-left--compact .prop1-proof-stack {
-        font-size: clamp(0.75rem, 1.22cqi, 1.72rem);
+        font-size: clamp(0.75rem, 1.2cqi, 1.68rem);
+      }
+      .prop-left--compact .prop1-section-label {
+        font-size: clamp(0.8rem, 1.28cqi, 1.72rem);
       }
     }
 
@@ -1879,6 +1931,25 @@
         margin-block-end: 0;
       }
 
+      .prop1-section-label,
+      .prop-left--compact .prop1-section-label {
+        padding-inline-start: 0;
+        margin-block-end: 0;
+        font-size: clamp(0.96rem, 0.9rem + 0.6vw, 1.14rem);
+      }
+
+      .prop1-prose,
+      .prop-left--compact .prop1-prose {
+        padding-inline-start: 0;
+        gap: 0.65rem;
+      }
+
+      .prop1-bullets,
+      .prop-left--compact .prop1-bullets {
+        padding-inline-start: 1.35rem;
+        gap: 0.42rem;
+      }
+
       .prop1-steps-list,
       .prop-left--compact .prop1-steps-list,
       .sim-copy-list {
@@ -2666,31 +2737,15 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Garis lurus <strong>A</strong> (tak terpotong) dan <strong>BC</strong> (dipotong sembarang di <strong>D</strong> &amp; <strong>E</strong> menjadi <strong>BD</strong>, <strong>DE</strong>, <strong>EC</strong>) membentuk luas persegi panjang:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Persegi Panjang BH:</strong> Dari titik <strong>B</strong> ditarik garis <strong>BG &perp; BC</strong> sepanjang <strong>A</strong>, lalu ditarik <strong>GH &#8741; BC</strong> hingga terbentuk persegi panjang <strong>BH</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Garis Sejajar DK, EL &amp; CH:</strong> Dari titik <strong>D</strong>, <strong>E</strong>, dan <strong>C</strong> ditarik garis tegak sejajar <strong>BG</strong>, sehingga seluruh ruas garis tersebut sama panjang dengan <strong>A</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Identifikasi Bagian Luas:</strong> Persegi panjang <strong>BH</strong> tersusun tepat dari tiga bagian: <span class="area-tag area-tag--mint">BK</span> (<strong>A &times; BD</strong>), <span class="area-tag area-tag--peach">DL</span> (<strong>A &times; DE</strong>), dan <span class="area-tag area-tag--lavender">EH</span> (<strong>A &times; EC</strong>).</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan Luas:</strong> Karena luas keseluruhan sama dengan jumlah seluruh bagiannya, diperoleh kesetaraan:</span>
-              </li>
-            </ol>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Dibentuk suatu garis <strong>A</strong> (tak terpotong) dan garis <strong>BC</strong>, lalu garis <strong>BC</strong> dipotong secara sembarang di titik <strong>D</strong> dan <strong>E</strong> menjadi <strong>BD</strong>, <strong>DE</strong>, dan <strong>EC</strong>. Setelah garis <strong>A</strong> dan <strong>BC</strong> beserta titik potong <strong>D, E</strong> dibentuk, ditarik garis <strong>BG</strong> yang panjangnya sama dengan <strong>A</strong> dari titik <strong>B</strong> tegak lurus terhadap <strong>BC</strong>, lalu ditarik <strong>GH</strong> dari titik <strong>G</strong> sejajar <strong>BC</strong>. Dari titik <strong>D</strong>, <strong>E</strong>, dan <strong>C</strong> ditarik garis sejajar <strong>BG</strong> membentuk <strong>DK</strong>, <strong>EL</strong>, dan <strong>CH</strong> (keempatnya saling sejajar dan sama panjang dengan garis <strong>A</strong>). Sehingga, persegi panjang <strong>BH</strong> sama dengan jumlah persegi panjang <span class="area-tag area-tag--mint">BK</span>, <span class="area-tag area-tag--peach">DL</span>, dan <span class="area-tag area-tag--lavender">EH</span>, yang berarti persegi panjang dari <strong>A</strong> dan <strong>BC</strong> sama dengan jumlah persegi panjang dari <strong>A</strong> dan <strong>BD</strong>, <strong>A</strong> dan <strong>DE</strong>, serta <strong>A</strong> dan <strong>EC</strong>.</p>
+            </div>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas Persegi Panjang BH</span>
-              <span>= Luas BK + Luas DL + Luas EH</span>
-              <span class="prop1-equation-cont">= (A &times; BD) + (A &times; DE) + (A &times; EC) = A(BD + DE + EC)</span>
+              <span>= (A &times; BD) + (A &times; DE) + (A &times; EC)</span>
+              <span class="prop1-equation-cont">= A(BD + DE + EC)</span>
             </div>
           </div>
         </div>
@@ -2924,31 +2979,15 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong> (kasus khusus Prop. 1 saat <strong>a = b + c</strong>); pembuktian membentuk persegi pada <strong>AB</strong> lalu membaginya di titik potong <strong>C</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Persegi ADEB:</strong> Dibentuk persegi <strong>ADEB</strong> (persegi <strong>AE</strong>) dengan panjang sisi <strong>AD</strong>, <strong>DE</strong>, dan <strong>EB</strong> sama dengan <strong>AB</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Pembagian Garis CF:</strong> Dari titik potong sembarang <strong>C</strong> ditarik garis <strong>CF &#8741; AD</strong> sehingga persegi <strong>AE</strong> terbagi menjadi <span class="area-tag area-tag--mint">AF</span> dan <span class="area-tag area-tag--peach">CE</span>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Luas Tiap Bagian:</strong> Diperoleh persegi panjang <strong>AF = AD &times; AC = AB &times; AC</strong> dan <strong>CE = BE &times; CB = AB &times; CB</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan Luas:</strong> Karena persegi <strong>AE</strong> tersusun tepat dari <strong>AF</strong> dan <strong>CE</strong>, diperoleh kesamaan luas:</span>
-              </li>
-            </ol>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Pertama-tama, buat persegi <strong>ADEB</strong> dengan panjang sisi <strong>AB</strong> sama dengan sisi <strong>AD</strong>, <strong>DE</strong>, dan <strong>EB</strong>. Potong sembarang garis <strong>AB</strong> pada titik <strong>C</strong>, lalu tarik garis sejajar <strong>AD</strong> dari titik <strong>C</strong> menjadi garis <strong>CF</strong>. Maka terlihat bahwa persegi <strong>ADEB</strong> (<strong>AE</strong>) dibentuk oleh persegi panjang <span class="area-tag area-tag--mint">AF</span> (<strong>AD &times; AC</strong>, dengan <strong>AD = AB</strong>) dan persegi panjang <span class="area-tag area-tag--peach">CE</span> (<strong>BE &times; CB</strong>, dengan <strong>BE = AB</strong>).</p>
+            </div>
 
             <div class="prop1-equation">
               <span class="prop1-equation-label">Luas Persegi ADEB</span>
               <span>= (AB &times; AC) + (AB &times; CB) = AB(AC + CB)</span>
-              <span class="prop1-equation-cont">= AB &times; AB = AB&#178;</span>
+              <span class="prop1-equation-cont">= AB(AB) = AB&#178;</span>
             </div>
           </div>
         </div>
@@ -3152,31 +3191,15 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong> (kasus khusus Prop. 1 saat tinggi <strong>CB = c</strong>); dibentuk persegi pada <strong>CB</strong> lalu diperluas ke <strong>AB</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Persegi CDEB:</strong> Pada bagian <strong>CB</strong> dibentuk persegi <strong>CDEB</strong> (persegi <strong>CE</strong>) sehingga <strong>BC = BE = ED = DC</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Perluasan Persegi Panjang AE:</strong> Perpanjang <strong>ED</strong> ke <strong>F</strong> sejajar <strong>A</strong>, lalu tarik <strong>AF &#8741; CD</strong> hingga terbentuk persegi panjang <strong>AE</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Identifikasi Bagian Luas:</strong> Persegi panjang <strong>AE</strong> tersusun tepat dari <span class="area-tag area-tag--lavender">AD</span> (<strong>AC &times; DC = AC &times; CB</strong>) dan persegi <span class="area-tag area-tag--butter">CE</span> (<strong>CB&#178;</strong>).</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan Luas:</strong> Karena panjang <strong>AE</strong> adalah <strong>AB</strong> dan tingginya <strong>BE = CB</strong>, berlaku kesamaan luas:</span>
-              </li>
-            </ol>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Buat garis <strong>AB</strong> lalu potong sembarang pada garis tersebut di titik <strong>C</strong>. Tarik garis dari titik <strong>B</strong> lurus ke bawah sampai titik <strong>E</strong> sepanjang garis <strong>CB</strong>, tarik garis sejajar <strong>CB</strong> dari <strong>E</strong> menuju <strong>D</strong>, lalu tarik garis dari <strong>D</strong> tegak lurus menuju <strong>C</strong> sehingga <strong>BC = BE = ED = DC</strong>. Pada garis <strong>ED</strong>, perpanjang garis hingga titik <strong>F</strong> yang sejajar dengan <strong>A</strong>, lalu tarik garis dari <strong>F</strong> menuju <strong>A</strong> sejajar <strong>CD</strong> dan <strong>BE</strong> (<strong>AF = BC</strong>). Sehingga persegi panjang <strong>AE</strong> tersusun atas persegi panjang <span class="area-tag area-tag--lavender">AD</span> (<strong>DC &times; AC</strong>) dan persegi <span class="area-tag area-tag--butter">CE</span> (<strong>BC &times; BE</strong>).</p>
+            </div>
 
             <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas AE</span>
-              <span>= AB &times; BE = AB &times; CB = AD + CE</span>
-              <span class="prop1-equation-cont">&there4; AB &times; CB = (AC &times; CB) + CB&#178;</span>
+              <span class="prop1-equation-label">Luas Persegi Panjang AE</span>
+              <span>= (DC &times; AC) + (BC &times; BE) = (BC &times; AC) + (BC &times; BC)</span>
+              <span class="prop1-equation-cont">= BC &times; AC + BC&#178; = BC(AC + CB) = AB &times; BC</span>
             </div>
           </div>
         </div>
@@ -3380,31 +3403,21 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Garis <strong>AB</strong> dipotong sembarang di <strong>C</strong>. Melanjutkan pemotongan vertikal pada Proposisi 2, persegi <strong>ADEB</strong> diurai secara vertikal &amp; horizontal:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Persegi ADEB &amp; Diagonal BD:</strong> Pada <strong>AB</strong> dibentuk persegi <strong>ADEB</strong>, lalu ditarik garis diagonal <strong>BD</strong> dari sudut B menuju sudut D.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Tarik Garis Sejajar CF &amp; HK:</strong> Melalui <strong>C</strong> ditarik <strong>CF &#8741; AD, BE</strong> memotong <strong>BD</strong> di <strong>G</strong>; melalui <strong>G</strong> ditarik <strong>HK &#8741; AB, DE</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Buktikan Persegi &amp; Komplemen:</strong> Diagonal <strong>BD</strong> membagi sudut siku-siku 45&deg;; <span class="area-tag area-tag--mint">HF</span> terbukti persegi bersisi <em>AC</em> dan <span class="area-tag area-tag--butter">CK</span> persegi bersisi <em>CB</em>, sedang dua komplemennya <span class="area-tag area-tag--peach">AG</span> = <span class="area-tag area-tag--peach">GE</span> (<em>AC &times; CB</em>).</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Kesimpulan Luas Keseluruhan:</strong> Persegi <strong>ADEB</strong> tersusun tepat dari kedua persegi tersebut dan dua komplemen yang sama luasnya:</span>
-              </li>
-            </ol>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Buat garis lurus <strong>AB</strong> lalu potong sembarang pada titik <strong>C</strong>, kemudian buat persegi besar <strong>ADEB</strong> dari garis <strong>AB</strong> tersebut. Tarik garis diagonal <strong>BD</strong>. Dari titik <strong>C</strong>, tarik garis <strong>CF</strong> sejajar <strong>AD</strong> memotong diagonal <strong>BD</strong> di titik <strong>G</strong>. Lalu dari titik <strong>G</strong>, tarik garis <strong>HK</strong> sejajar <strong>AB</strong> yang melewati titik <strong>G</strong>. Maka terbentuk 4 bangun di dalam persegi <strong>ADEB</strong>, yaitu:</p>
+              <ul class="prop1-bullets">
+                <li>Persegi <span class="area-tag area-tag--mint">HF</span> (dengan sisi <strong>HG = AC</strong>)</li>
+                <li>Persegi <span class="area-tag area-tag--butter">KC</span> (dengan sisi <strong>CB</strong>)</li>
+                <li>Persegi panjang <span class="area-tag area-tag--peach">AG</span> dan <span class="area-tag area-tag--peach">GE</span> (masing-masing bersisi <strong>AC</strong> dan <strong>CB</strong>)</li>
+              </ul>
+              <p>Sehingga, seluruh bagian tersebut membentuk persegi besar <strong>ADEB</strong>.</p>
+            </div>
 
             <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas ADEB</span>
-              <span>= HF + CK + AG + GE = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
-              <span class="prop1-equation-cont">&there4; AB&#178; = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
+              <span class="prop1-equation-label">Luas Persegi ADEB</span>
+              <span>= HF + KC + AG + GE = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
+              <span class="prop1-equation-cont">&there4; (AC + CB)&#178; = AC&#178; + CB&#178; + 2(AC &times; CB)</span>
             </div>
           </div>
         </div>
@@ -3625,30 +3638,14 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Garis <strong>AB</strong> dibagi sama di <strong>C</strong> (<strong>AC = CB</strong>) &amp; tak sama di <strong>D</strong>; luas <strong>AD &times; DB</strong> dipadankan dengan <strong>gnomon NOP</strong> (Definisi 2) pada persegi <strong>CEFB</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi CEFB &amp; Garis Bantu:</strong> Pada <strong>CB</strong> dibentuk persegi <strong>CEFB</strong> dan diagonal <strong>BE</strong>; tarik <strong>DG &#8741; BF</strong> memotong <strong>BE</strong> di <strong>H</strong>, <strong>KM &#8741; AB</strong>, dan <strong>AK &#8741; CL</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Buktikan Kesamaan AL = DF:</strong> Karena komplemen diagonal sama luas (<strong>CH = HF</strong>), diperoleh <strong>CM = DF</strong>; karena <strong>AC = CB</strong>, maka <span class="area-tag area-tag--mint">AL</span> = <strong>CM</strong> = <span class="area-tag area-tag--mint">DF</span>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Padankan Gnomon NOP:</strong> Penambahan <span class="area-tag area-tag--peach">CH</span> memberi <strong>AH = DF + CH = Gnomon NOP</strong>; karena <strong>DH = DB</strong>, maka <strong>AD &times; DB = Gnomon NOP</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Lengkapi Persegi LG:</strong> Persegi kecil bersisi <strong>CD</strong> (<span class="area-tag area-tag--butter">LG</span> = <strong>CD&#178;</strong>) tepat melengkapi <strong>gnomon NOP</strong> menjadi persegi <strong>CEFB</strong>:</span>
-              </li>
-            </ol>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Buat garis lurus <strong>AB</strong>. Potong menjadi dua bagian sama panjang di titik <strong>C</strong> (<strong>AC = CB</strong>), dan potong tidak sama panjang di titik <strong>D</strong>. Buat persegi <strong>CEFB</strong> dari setengah garis <strong>CB</strong>, tarik garis ke bawah dari <strong>D</strong> sampai <strong>G</strong>, tarik diagonal <strong>BE</strong>, lalu tarik garis horizontal melalui titik <strong>H</strong> dengan panjang sama seperti <strong>AB</strong>. Dalam pembuktian luasnya, persegi panjang <span class="area-tag area-tag--mint">AL</span> sama luas dengan <span class="area-tag area-tag--mint">DF</span>, sehingga persegi panjang <strong>AH</strong> (yang dibentuk sisi <strong>AD</strong> dan <strong>DB</strong>) sama luas dengan area siku <strong>Gnomon NOP</strong>. Jika kedua area tersebut sama-sama ditambahkan persegi kecil <span class="area-tag area-tag--butter">LG</span> (yang sisinya adalah selisih <strong>CD</strong>), maka hasilnya akan membentuk persegi utuh <strong>CEFB</strong>.</p>
+            </div>
 
             <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas CEFB</span>
-              <span>= Gnomon NOP + LG = AH + LG = (AD &times; DB) + CD&#178;</span>
+              <span class="prop1-equation-label">Luas Persegi CEFB</span>
+              <span>= Persegi panjang AH + Persegi kecil LG</span>
               <span class="prop1-equation-cont">&there4; CB&#178; = (AD &times; DB) + CD&#178;</span>
             </div>
           </div>
@@ -3879,32 +3876,34 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian memadankan persegi panjang <strong>AD &times; DB</strong> dengan bangun siku <strong>gnomon NOP</strong> (Definisi 2) di dalam persegi <strong>CEFD</strong>:</p>
+            <p class="prop1-section-label">Penjelasan:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun CEFD &amp; garis bantu:</strong> Pada gabungan <strong>CD</strong> dibentuk persegi <strong>CEFD</strong> dengan diagonal <strong>ED</strong>; melalui <strong>B</strong> ditarik <strong>BG</strong> sejajar <strong>DF</strong> memotong <strong>ED</strong> di <strong>H</strong>, melalui <strong>H</strong> ditarik <strong>KM</strong> sejajar <strong>AD</strong>, lalu ditarik <strong>AK</strong> sejajar <strong>CL</strong>.</span>
+                <span>Buat persegi <strong>CEFD</strong> pada sisi <strong>CD</strong>, lalu tarik garis bantu sejajar melalui <strong>B</strong>, <strong>H</strong>, dan <strong>A</strong>, sehingga gambar terbagi menjadi beberapa bagian.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Buktikan kesamaan AL = HF:</strong> Karena <strong>AC = CB</strong>, diperoleh <span class="area-tag area-tag--mint">AL</span> = <span class="area-tag area-tag--peach">CH</span>. Karena komplemen di sekitar diagonal sama luas (<strong>CH = HF</strong>), diperoleh <span class="area-tag area-tag--mint">AL</span> = <span class="area-tag area-tag--mint">HF</span>.</span>
+                <span>Karena <strong>AC = CB</strong>, luas persegi panjang <span class="area-tag area-tag--mint">AL</span> sama dengan <span style="white-space: nowrap;"><span class="area-tag area-tag--peach">CH</span>.</span> <strong>CH</strong> juga sama dengan <span style="white-space: nowrap;"><span class="area-tag area-tag--mint">HF</span>,</span> jadi <strong>AL = HF</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Padankan AM dengan Gnomon NOP:</strong> Penambahan daerah gabungan <strong>CM</strong> (<span class="area-tag area-tag--peach">CH</span> + <span class="area-tag area-tag--lavender">DM</span>) menghasilkan <strong>AM = Gnomon NOP</strong>. Karena <strong>DM = DB</strong>, maka <strong>AD &times; DB = AM = Gnomon NOP</strong>.</span>
+                <span>Tambahkan <strong>CM</strong> (<span class="area-tag area-tag--peach">CH</span> + <span class="area-tag area-tag--lavender">DM</span>) pada <strong>AL</strong> dan <strong>HF</strong>. Hasilnya, seluruh <strong>AM</strong> sama luasnya dengan bangun berbentuk L (<strong>gnomon NOP</strong>).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Lengkapi dengan persegi LG:</strong> Penambahan persegi <span class="area-tag area-tag--butter">LG</span> (bersisi <strong>CB</strong>, luas <strong>CB&#178;</strong>) pada gnomon <strong>NOP</strong> melengkapi seluruh persegi <strong>CEFD</strong> (luas <strong>CD&#178;</strong>):</span>
+                <span><strong>AM</strong> adalah persegi panjang <strong>AD &times; DB</strong> (karena <strong>DM = DB</strong>), jadi <strong>gnomon NOP = AD &times; DB</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">5</span>
+                <span>Tambahkan persegi kecil <span class="area-tag area-tag--butter">LG</span> (sisinya <strong>BC</strong>) pada <strong>gnomon NOP</strong>. Hasilnya adalah seluruh persegi <strong>CEFD</strong>, yaitu persegi dengan sisi <strong>CD</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">6</span>
+                <span>Jadi, <strong>AD &times; DB + CB&#178; = CD&#178;</strong>. <em>(Terbukti)</em> &mdash; <strong>AC = CB = a</strong>, <strong>BD = b</strong>, maka <strong>AD = 2a + b</strong> dan <strong>CD = a + b</strong>.</span>
               </li>
             </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">Luas CEFD</span>
-              <span>= Gnomon NOP + LG = AM + LG</span>
-              <span class="prop1-equation-cont">= (AD &times; DB) + CB&#178; &nbsp;&there4;&nbsp; (AD &times; DB) + CB&#178; = CD&#178;</span>
-            </div>
           </div>
         </div>
 
@@ -4137,32 +4136,34 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Pembuktian menghubungkan dua persegi panjang tumpang-tindih (<strong>AF</strong> dan <strong>CE</strong>) dengan bangun siku <strong>gnomon KLM</strong> (Definisi 2) di dalam persegi <strong>ADEB</strong>:</p>
+            <p class="prop1-section-label">Penjelasan:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Bangun persegi ADEB:</strong> Pada AB dibentuk persegi <strong>ADEB</strong> dengan diagonal <strong>BD</strong>, garis tegak <strong>CN</strong> memotong diagonal di <strong>G</strong>, dan garis mendatar <strong>HF</strong> sejajar <strong>AB</strong>.</span>
+                <span>Buat persegi <strong>ADEB</strong> pada sisi <strong>AB</strong>, lalu lengkapi garis bantu pembagi beserta diagonal <strong>BD</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Jumlahkan AF &amp; CE:</strong> Karena komplemen di sekitar diagonal sama luas (<span class="area-tag area-tag--peach">AG</span> = <span class="area-tag area-tag--peach">GE</span>), penambahan <span class="area-tag area-tag--butter">CF</span> menghasilkan <strong>AF = CE</strong>, sehingga <strong>AF + CE = 2 &times; AF</strong>.</span>
+                <span>Persegi panjang <span class="area-tag area-tag--peach">AG</span> = <span style="white-space: nowrap;"><span class="area-tag area-tag--peach">GE</span>.</span> Tambahkan persegi <span class="area-tag area-tag--butter">CF</span> pada keduanya, maka <strong>AF = CE</strong>. Jadi <strong>AF + CE = 2 &times; AF</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Hubungkan dengan Gnomon KLM:</strong> Gabungan <strong>AF + CE</strong> membentuk <strong>gnomon KLM</strong> (<span class="area-tag area-tag--peach">AG</span> + <span class="area-tag area-tag--butter">CF</span> + <span class="area-tag area-tag--peach">GE</span>) ditambah sekali lagi <span class="area-tag area-tag--butter">CF</span>. Karena <strong>BF = BC</strong>, maka <strong>AF = AB &times; BC</strong> dan <strong>KLM + CF = 2(AB &times; BC)</strong>.</span>
+                <span><strong>AF + CE</strong> membentuk <strong>gnomon KLM</strong> (<span class="area-tag area-tag--peach">AG</span> + <span class="area-tag area-tag--butter">CF</span> + <span class="area-tag area-tag--peach">GE</span>) ditambah persegi <span style="white-space: nowrap;"><span class="area-tag area-tag--butter">CF</span>.</span> Karena <strong>BF = BC</strong>, diperoleh <strong>AF = AB &times; BC</strong>. Jadi <strong>gnomon KLM + CF = 2 &times; (AB &times; BC)</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Tambahkan persegi DG (bersisi AC):</strong> Karena <strong>CF = BG</strong> (sudut diagonal berhadapan) dan <strong>GD = DG</strong>, penambahan <span class="area-tag area-tag--mint">DG</span> (= <strong>AC&#178;</strong>) melengkapi <strong>KLM</strong> menjadi persegi <strong>ADEB</strong>:</span>
+                <span>Tambahkan persegi <span class="area-tag area-tag--mint">DG</span> (sisinya <strong>AC</strong>) pada kedua ruas: <strong>gnomon KLM + BG + GD = 2(AB &times; BC) + AC&#178;</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">5</span>
+                <span><strong>Gnomon KLM + BG + GD</strong> sama dengan persegi <strong>ADEB</strong> ditambah persegi <strong>CF</strong>, yaitu <strong>AB&#178; + BC&#178;</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">6</span>
+                <span>Jadi, <strong>AB&#178; + BC&#178; = 2(AB &times; BC) + AC&#178;</strong>. <em>(Terbukti)</em> &mdash; <strong>BC = a</strong>, <strong>AC = b</strong>, <strong>AB = a + b</strong>.</span>
               </li>
             </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">KLM + BG + GD</span>
-              <span>= (KLM + DG) + CF = ADEB + CF = AB&#178; + BC&#178;</span>
-              <span class="prop1-equation-cont">&there4; AB&#178; + BC&#178; = 2(AB &times; BC) + AC&#178;</span>
-            </div>
           </div>
         </div>
 
@@ -4390,32 +4391,34 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Persegi <strong>AEFD</strong> bersisi <strong>AD = AB + BD</strong> (<strong>BD = BC</strong>) terbagi menjadi 9 daerah, dengan 8 daerah pembentuk <strong>gnomon STU</strong> (Definisi 2):</p>
+            <p class="prop1-section-label">Penjelasan:</p>
 
             <ol class="prop1-steps-list">
               <li>
                 <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi &amp; garis bantu:</strong> Perpanjangan <strong>BD = BC</strong> membentuk <strong>AD</strong>, lalu dibangun persegi <strong>AEFD</strong>, diagonal <strong>ED</strong>, garis tegak <strong>CH</strong> &amp; <strong>BL</strong>, serta garis mendatar <strong>MN</strong> &amp; <strong>OP</strong>.</span>
+                <span>Perpanjang <strong>AB</strong> sampai <strong>D</strong> sehingga <strong>BD = CB</strong>, buat persegi <strong>AEFD</strong> pada <strong>AD</strong>, lalu lengkapi diagonal <strong>ED</strong> beserta garis pembagi (<strong>CB = BD = GK = KN</strong> dan <strong>QR = RP</strong>, sehingga <strong>CK = KD</strong> dan <strong>GR = RN</strong>).</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Empat persegi sama luas:</strong> Karena <strong>CB = BD = GK = KN</strong> dan <strong>QR = RP</strong>, diperoleh <strong>CK = KD</strong> dan <strong>GR = RN</strong>; komplemen pada <strong>CP</strong> memberi <strong>CK = RN</strong>, sehingga <span class="area-tag area-tag--butter">DK = CK = GR = RN = 4&times;CK</span>.</span>
+                <span>Karena <strong>CK = RN</strong> (pelengkap dalam jajargenjang <strong>CP</strong>), keempat persegi <span class="area-tag area-tag--butter">DK, CK, GR, RN</span> sama luas dengan jumlah <strong>4 &times; CK</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Empat persegi panjang sama luas:</strong> Karena <strong>CG = GQ</strong> dan komplemen pada <strong>ML</strong> memberi <strong>MQ = QL</strong>, diperoleh kesamaan <span class="area-tag area-tag--peach">AG = MQ = QL = RF = 4&times;AG</span>.</span>
+                <span>Karena <strong>CG = GQ</strong> (<strong>CB = BK = CG = GQ</strong>) dan <strong>MQ = QL</strong> (pelengkap jajargenjang <strong>ML</strong>), keempat persegi panjang <span class="area-tag area-tag--peach">AG, MQ, QL, RF</span> juga sama luas dengan jumlah <strong>4 &times; AG</strong>.</span>
               </li>
               <li>
                 <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Gnomon STU &amp; persegi OH:</strong> Delapan daerah tersebut membentuk <strong>gnomon STU = 4 &times; AK = 4(AB &times; BD)</strong>. Penambahan persegi <span class="area-tag area-tag--mint">OH</span> (= <strong>AC&#178;</strong>) melengkapi <strong>AEFD</strong> (= <strong>AD&#178;</strong>):</span>
+                <span>Delapan bangun tersebut (<strong>4 &times; CK</strong> dan <strong>4 &times; AG</strong>) membentuk <strong>gnomon STU = 4 &times; AK</strong>. Karena <strong>AK = AB &times; BD</strong>, maka <strong>gnomon STU = 4(AB &times; BD)</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">5</span>
+                <span>Tambahkan persegi <span class="area-tag area-tag--mint">OH</span> (sisinya <strong>AC</strong>) pada <strong>gnomon STU</strong>: hasilnya tepat melengkapi seluruh persegi <strong>AEFD</strong> yang bersisi <strong>AD</strong>.</span>
+              </li>
+              <li>
+                <span class="step-num" aria-hidden="true">6</span>
+                <span>Karena <strong>BD = BC</strong>, maka <strong>4(AB &times; BC) + AC&#178; = AD&#178;</strong>. <em>(Terbukti)</em> &mdash; <strong>BC = BD = a</strong>, <strong>AC = b</strong>, <strong>AB = a + b</strong>, <strong>AD = (a + b) + a</strong>.</span>
               </li>
             </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">STU + OH</span>
-              <span>= 4(AB &times; BD) + AC&#178; = AEFD = AD&#178;</span>
-              <span class="prop1-equation-cont">&there4; 4(AB &times; BC) + AC&#178; = (AB + BC)&#178;</span>
-            </div>
           </div>
         </div>
 
@@ -4665,31 +4668,14 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Konstruksi segitiga siku-siku <strong>AEB</strong> di atas alas <strong>AB</strong> menghubungkan kedua pasangan kuadrat lewat hipotenusa <strong>AF</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi &triangle;AEB:</strong> Tarik <strong>CE &perp; AB</strong> dengan <strong>CE = CA = CB</strong>, lalu hubungkan <strong>EA</strong> dan <strong>EB</strong>. Kedua segitiga sama kaki siku-siku <strong>&triangle;ACE</strong> dan <strong>&triangle;ECB</strong> bersudut alas <strong>45&deg;</strong>, sehingga <strong>&ang;AEB = 90&deg;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Garis DF &amp; FG:</strong> Tarik <strong>DF &#8741; CE</strong> hingga <strong>EB</strong> di <strong>F</strong>, tarik <strong>FG &#8741; AB</strong> hingga <strong>CE</strong> di <strong>G</strong>, lalu hubungkan <strong>AF</strong>. Diperoleh <span class="area-tag area-tag--butter">DF = DB</span> dan <span class="area-tag area-tag--peach">EG = GF = CD</span>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Kuadrat EA&#178; &amp; EF&#178;:</strong> Menurut Pythagoras, pada <strong>&triangle;ACE</strong> berlaku <strong>EA&#178; = AC&#178; + CE&#178; = 2AC&#178;</strong> dan pada <strong>&triangle;GEF</strong> berlaku <strong>EF&#178; = EG&#178; + GF&#178; = 2CD&#178;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Hipotenusa bersama AF:</strong> Karena <strong>&ang;AEF = 90&deg;</strong> dan <strong>&ang;ADF = 90&deg;</strong>, diperoleh <span class="area-tag area-tag--mint">AD&#178; + DF&#178; = AF&#178; = EA&#178; + EF&#178;</span> dengan <strong>DF = DB</strong>:</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">AD&#178; + DB&#178;</span>
-              <span>= AD&#178; + DF&#178; = AF&#178; = EA&#178; + EF&#178;</span>
-              <span class="prop1-equation-cont">&there4; AD&#178; + DB&#178; = 2(AC&#178; + CD&#178;)</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Dari titik tengah <strong>C</strong> pada alas <strong>AB</strong> ditarik garis tinggi tegak lurus <strong>CE</strong> sepanjang <strong>AC = CB</strong>, lalu <strong>E</strong> dihubungkan ke <strong>A</strong> dan <strong>B</strong> membentuk dua segitiga siku-siku sama kaki bersudut alas <strong>45&deg;</strong> (<strong>&ang;AEB = 90&deg;</strong>). Pada titik potong <strong>D</strong> ditarik <strong>DF &#8741; CE</strong> hingga sisi miring <strong>EB</strong> di <strong>F</strong> (membentuk segitiga sama kaki <span class="area-tag area-tag--butter">DF = DB</span>) dan <strong>FG &#8741; AB</strong> hingga tinggi tengah di <strong>G</strong> (membentuk segitiga sama kaki <span class="area-tag area-tag--peach">EG = GF = CD</span>), lalu ditarik hipotenusa <strong>AF</strong>. (<strong>AC = CB = a</strong>, <strong>AD</strong> dan <strong>DB</strong> bagian tak sama panjang <strong>a &plusmn; b</strong>, <strong>CD = b</strong> selisih titik potong).</p>
+              <ul class="prop1-bullets">
+                <li>Dari dua segitiga sama kaki siku-siku (<strong>&triangle;ACE</strong> dan <strong>&triangle;EGF</strong>): <strong>EA&#178; = AC&#178; + CE&#178; = 2&middot;AC&#178;</strong> dan <strong>EF&#178; = EG&#178; + GF&#178; = 2&middot;CD&#178;</strong>.</li>
+                <li>Dari dua segitiga siku-siku berhipotenusa bersama <strong>AF</strong> (<strong>&triangle;ADF</strong> dan <strong>&triangle;AEF</strong>): <span class="area-tag area-tag--mint">AF&#178; = AD&#178; + DF&#178; = AD&#178; + DB&#178;</span>, sekaligus <strong>AF&#178; = EA&#178; + EF&#178; = 2&middot;AC&#178; + 2&middot;CD&#178;</strong>.</li>
+                <li>Jadi, <strong>AD&#178; + DB&#178; = 2(AC&#178; + CD&#178;)</strong>. <em>(Terbukti)</em></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -4913,31 +4899,14 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Konstruksi <strong>CE &perp; AD</strong> serta perpanjangan <strong>EB</strong> dan <strong>FD</strong> ke titik <strong>G</strong> menghubungkan kedua pasangan kuadrat lewat hipotenusa <strong>AG</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi &triangle;AEB:</strong> Tarik <strong>CE &perp; AD</strong> dengan <strong>CE = AC = CB</strong>, lalu hubungkan <strong>EA</strong> dan <strong>EB</strong>. Kedua segitiga sama kaki siku-siku <strong>&triangle;ACE</strong> dan <strong>&triangle;ECB</strong> bersudut alas <strong>45&deg;</strong>, sehingga <strong>&ang;AEB = 90&deg;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Garis EF, FD &amp; titik G:</strong> Tarik <strong>EF &#8741; AD</strong> dan <strong>FD &#8741; CE</strong>, perpanjang <strong>EB</strong> dan <strong>FD</strong> bertemu di <strong>G</strong>, lalu hubungkan <strong>AG</strong>. Karena <strong>&ang;DBG = 45&deg;</strong>, diperoleh <span class="area-tag area-tag--butter">DG = DB</span> dan <span class="area-tag area-tag--peach">EF = FG = CD</span>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Kuadrat EA&#178; &amp; EG&#178;:</strong> Menurut Pythagoras, pada <strong>&triangle;ACE</strong> berlaku <strong>EA&#178; = AC&#178; + CE&#178; = 2AC&#178;</strong> dan pada segitiga siku-siku sama kaki <strong>&triangle;EFG</strong> berlaku <strong>EG&#178; = EF&#178; + FG&#178; = 2CD&#178;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Hipotenusa bersama AG:</strong> Karena <strong>&ang;AEG = 90&deg;</strong> dan <strong>&ang;ADG = 90&deg;</strong>, diperoleh <span class="area-tag area-tag--mint">AD&#178; + DG&#178; = AG&#178; = EA&#178; + EG&#178;</span> dengan <strong>DG = DB</strong>:</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">AD&#178; + DB&#178;</span>
-              <span>= AD&#178; + DG&#178; = AG&#178; = EA&#178; + EG&#178;</span>
-              <span class="prop1-equation-cont">&there4; AD&#178; + DB&#178; = 2(AC&#178; + CD&#178;)</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Dibentuk garis awal <strong>AB</strong> yang terbagi sama panjang di titik <strong>C</strong> lalu diperpanjang dengan <strong>BD</strong>. Dari titik <strong>C</strong> ditarik tinggi <strong>CE &perp; AD</strong> sepanjang <strong>AC = CB</strong>, kemudian <strong>E</strong> dihubungkan ke <strong>A</strong> dan <strong>B</strong> membentuk sudut siku-siku <strong>&ang;AEB = 90&deg;</strong>. Tarik <strong>EF &#8741; AD</strong> dan <strong>FD &#8741; CE</strong>, lalu perpanjang <strong>EB</strong> dan <strong>FD</strong> hingga bertemu di <strong>G</strong> (membentuk segitiga sama kaki bersudut <strong>45&deg;</strong> dengan <span class="area-tag area-tag--butter">DG = DB</span>), serta hubungkan hipotenusa <strong>AG</strong>. (<strong>2a = AB</strong> panjang garis awal, <strong>a = AC = CB</strong> setengah garis, <strong>b = BD</strong> garis tambahan, <strong>2a + b = AD</strong> panjang total).</p>
+              <ul class="prop1-bullets">
+                <li>Dari dua segitiga sama kaki siku-siku (<strong>&triangle;ACE</strong> dan <strong>&triangle;EFG</strong> dengan <span class="area-tag area-tag--peach">EF = FG = CD</span>): <strong>EA&#178; = AC&#178; + CE&#178; = 2&middot;AC&#178;</strong> dan <strong>EG&#178; = EF&#178; + FG&#178; = 2&middot;CD&#178;</strong>.</li>
+                <li>Dari dua segitiga siku-siku berhipotenusa bersama <strong>AG</strong> (<strong>&triangle;ADG</strong> dan <strong>&triangle;AEG</strong>): <span class="area-tag area-tag--mint">AG&#178; = AD&#178; + DG&#178; = AD&#178; + DB&#178;</span>, sekaligus <strong>AG&#178; = EA&#178; + EG&#178; = 2&middot;AC&#178; + 2&middot;CD&#178;</strong>.</li>
+                <li>Jadi, <strong>AD&#178; + DB&#178; = 2(AC&#178; + CD&#178;)</strong>. <em>(Terbukti)</em></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -5160,31 +5129,10 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Konstruksi kompas berpusat di titik tengah <strong>E</strong> menghasilkan potongan rasio emas lewat selisih luas daerah:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi ABDC &amp; FH:</strong> Lukis persegi <strong>ABDC</strong> pada <strong>AB</strong>, bagi <strong>AC</strong> sama di <strong>E</strong>, perpanjang <strong>CA</strong> ke <strong>F</strong> dengan <strong>EF = EB</strong>, bangun persegi <strong>FH</strong> (= <strong>AH&#178;</strong>), lalu perpanjang <strong>GH</strong> sampai <strong>K</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Prop. 2.6 &amp; Pythagoras:</strong> Karena <strong>AC</strong> terbagi dua di <strong>E</strong> dan diperpanjang dengan <strong>FA</strong>, maka <strong>CF &middot; FA + AE&#178; = EF&#178; = EB&#178; = AB&#178; + AE&#178;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Kesamaan FK = AD:</strong> Eliminasi <strong>AE&#178;</strong> memberi <strong>CF &middot; FA = AB&#178;</strong>. Karena <strong>FA = FG</strong>, persegi panjang <strong>FK</strong> (= <strong>CF &times; FA</strong>) tepat sama luas dengan persegi <strong>AD</strong> (= <strong>AB&#178;</strong>).</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Eliminasi daerah <span class="area-tag area-tag--peach">AK</span>:</strong> Pengurangan <strong>AK</strong> dari <strong>FK = AD</strong> menyisakan <span class="area-tag area-tag--mint">FH</span> (= <strong>AH&#178;</strong>) sama dengan <span class="area-tag area-tag--butter">HD</span> (= <strong>AB &times; BH</strong>):</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">FK &minus; AK</span>
-              <span>= AD &minus; AK &rArr; FH = HD</span>
-              <span class="prop1-equation-cont">&there4; AB &times; BH = AH&#178;</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Misalkan <strong>AB</strong> adalah garis lurus yang diberikan. Konstruksi: lukis persegi <strong>ABDC</strong> pada <strong>AB</strong> [Prop. 1.46]; bagi <strong>AC</strong> sama panjang di <strong>E</strong> [Prop. 1.10] dan hubungkan <strong>BE</strong>. Perpanjang <strong>CA</strong> sampai <strong>F</strong> dengan <strong>EF = BE</strong> [Prop. 1.3]. Lukis persegi <span class="area-tag area-tag--mint">FH</span> pada <strong>AF</strong> [Prop. 1.46] dan perpanjang <strong>GH</strong> sampai <strong>K</strong>. Akan ditunjukkan bahwa <strong>AB</strong> terpotong di <strong>H</strong> sehingga <strong>AB&middot;BH = AH&#178;</strong>.</p>
+              <p>Karena <strong>AC</strong> terbagi sama di <strong>E</strong> dan diperpanjang dengan <strong>FA</strong>, maka <strong>CF&middot;FA + AE&#178; = EF&#178;</strong> [Prop. 2.6]. Karena <strong>EF = EB</strong>, maka <strong>CF&middot;FA + AE&#178; = EB&#178;</strong>. Sudut di <strong>A</strong> siku-siku, sehingga <strong>EB&#178; = BA&#178; + AE&#178;</strong> [Prop. 1.47]. Jadi <strong>CF&middot;FA + AE&#178; = BA&#178; + AE&#178;</strong>; setelah <strong>AE&#178;</strong> dikurangkan dari kedua ruas, <strong>CF&middot;FA = AB&#178;</strong>. Persegi panjang <strong>FK</strong> adalah <strong>CF&middot;FA</strong> (sebab <strong>AF = FG</strong>) dan <strong>AD</strong> adalah persegi pada <strong>AB</strong>, sehingga <strong>FK = AD</strong>. Kurangkan <span class="area-tag area-tag--peach">AK</span> dari keduanya: sisa <span class="area-tag area-tag--mint">FH</span> = <span style="white-space: nowrap;"><span class="area-tag area-tag--butter">HD</span>.</span> <strong>HD</strong> adalah <strong>AB&middot;BH</strong> (sebab <strong>AB = BD</strong>) dan <strong>FH</strong> adalah <strong>AH&#178;</strong>. Jadi <strong>AB&middot;BH = AH&#178;</strong>.</p>
             </div>
           </div>
         </div>
@@ -5409,31 +5357,10 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Gabungan ekspansi kuadrat ruas garis dan Teorema Pythagoras membuktikan selisih luas tersebut:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Tinggi BD:</strong> Tarik <strong>BD</strong> tegak lurus perpanjangan <strong>CA</strong> [Prop. 1.12] hingga sudut di <strong>D</strong> siku-siku dan <strong>CD = CA + AD</strong> terpotong di <strong>A</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Ekspansi Prop. 2.4:</strong> Karena <strong>CD</strong> terpotong di <strong>A</strong>, berlaku <strong>DC&#178; = CA&#178; + AD&#178; + 2&middot;(CA&middot;AD)</strong> [Prop. 2.4].</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Penambahan DB&#178;:</strong> Tambahkan <strong>DB&#178;</strong> ke kedua ruas: <strong>CD&#178; + DB&#178; = CA&#178; + AD&#178; + DB&#178; + 2&middot;(CA&middot;AD)</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Pythagoras (Prop. 1.47):</strong> Karena sudut di <strong>D</strong> siku-siku, substitusi <span class="area-tag area-tag--lavender">CB&#178;</span> <strong>= CD&#178; + DB&#178;</strong> dan <span class="area-tag area-tag--peach">AB&#178;</span> <strong>= AD&#178; + DB&#178;</strong> [Prop. 1.47] menghasilkan:</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">CB&#178;</span>
-              <span>= CA&#178; + AB&#178; + 2&middot;(CA&middot;AD)</span>
-              <span class="prop1-equation-cont">&there4; selisih = 2&middot;(CA&middot;AD)</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Misalkan <strong>ABC</strong> adalah segitiga tumpul dengan sudut <strong>BAC</strong> tumpul, dan <strong>BD</strong> ditarik dari <strong>B</strong> tegak lurus terhadap perpanjangan <strong>CA</strong> [Prop. 1.12]. Akan ditunjukkan bahwa <strong>BC&#178;</strong> lebih besar daripada <strong>BA&#178; + AC&#178;</strong> sebesar <strong>2&middot;(CA&middot;AD)</strong>.</p>
+              <p>Karena <strong>CD</strong> terpotong di <strong>A</strong>, maka <strong>DC&#178; = CA&#178; + AD&#178; + 2&middot;(CA&middot;AD)</strong> [Prop. 2.4]. Tambahkan <strong>DB&#178;</strong> pada kedua ruas: <strong>CD&#178; + DB&#178; = CA&#178; + AD&#178; + DB&#178; + 2&middot;(CA&middot;AD)</strong>. Sudut di <strong>D</strong> siku-siku, sehingga <span class="area-tag area-tag--lavender">CB&#178; = CD&#178; + DB&#178;</span> dan <span class="area-tag area-tag--peach">AB&#178; = AD&#178; + DB&#178;</span> [Prop. 1.47]. Jadi <strong>CB&#178; = CA&#178; + AB&#178; + 2&middot;(CA&middot;AD)</strong>, yaitu <strong>CB&#178;</strong> lebih besar daripada <strong>CA&#178; + AB&#178;</strong> sebesar <strong>2&middot;(CA&middot;AD)</strong>.</p>
             </div>
           </div>
         </div>
@@ -5650,31 +5577,10 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Gabungan selisih kuadrat alas pada titik tinggi <strong>D</strong> dan Teorema Pythagoras membuktikan selisih luas tersebut:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi Tinggi AD:</strong> Tarik <strong>AD</strong> dari puncak <strong>A</strong> tegak lurus ke <strong>BC</strong> [Prop. 1.12] sehingga sudut di <strong>D</strong> siku-siku dan alas <strong>CB</strong> terpotong di <strong>D</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Ekspansi Prop. 2.7:</strong> Karena <strong>CB</strong> terpotong di <strong>D</strong>, berlaku <strong>CB&#178; + BD&#178; = 2&middot;(CB&middot;BD) + DC&#178;</strong> [Prop. 2.7].</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Penambahan DA&#178;:</strong> Tambahkan <strong>DA&#178;</strong> pada kedua ruas: <strong>CB&#178; + BD&#178; + DA&#178; = 2&middot;(CB&middot;BD) + AD&#178; + DC&#178;</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Pythagoras (Prop. 1.47):</strong> Pada siku-siku di <strong>D</strong>, substitusi <span class="area-tag area-tag--mint">AB&#178;</span> <strong>= BD&#178; + DA&#178;</strong> dan <span class="area-tag area-tag--lavender">AC&#178;</span> <strong>= AD&#178; + DC&#178;</strong> [Prop. 1.47] menghasilkan:</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">CB&#178; + BA&#178;</span>
-              <span>= AC&#178; + 2&middot;(CB&middot;BD)</span>
-              <span class="prop1-equation-cont">&there4; AC&#178; = CB&#178; + BA&#178; &minus; 2&middot;(CB&middot;BD)</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Misalkan <strong>ABC</strong> adalah segitiga lancip dengan sudut <strong>B</strong> lancip, dan <strong>AD</strong> ditarik dari <strong>A</strong> tegak lurus terhadap <strong>BC</strong> [Prop. 1.12]. Akan ditunjukkan bahwa <strong>AC&#178;</strong> lebih kecil daripada <strong>CB&#178; + BA&#178;</strong> sebesar <strong>2&middot;(CB&middot;BD)</strong>.</p>
+              <p>Karena <strong>CB</strong> terpotong di <strong>D</strong>, maka <strong>CB&#178; + BD&#178; = 2&middot;(CB&middot;BD) + DC&#178;</strong> [Prop. 2.7]. Tambahkan <strong>DA&#178;</strong> pada kedua ruas: <strong>CB&#178; + BD&#178; + DA&#178; = 2&middot;(CB&middot;BD) + AD&#178; + DC&#178;</strong>. Sudut di <strong>D</strong> siku-siku, sehingga <span class="area-tag area-tag--mint">AB&#178; = BD&#178; + DA&#178;</span> dan <span class="area-tag area-tag--lavender">AC&#178; = AD&#178; + DC&#178;</span> [Prop. 1.47]. Jadi <strong>CB&#178; + BA&#178; = AC&#178; + 2&middot;(CB&middot;BD)</strong>, yaitu <strong>AC&#178;</strong> lebih kecil daripada <strong>CB&#178; + BA&#178;</strong> sebesar <strong>2&middot;(CB&middot;BD)</strong>.</p>
             </div>
           </div>
         </div>
@@ -5890,31 +5796,10 @@
           </p>
 
           <div class="prop1-proof-stack">
-            <p class="prop1-intro">Konstruksi setengah lingkaran mengubah persegi panjang perantara <strong>BD</strong> menjadi persegi <strong>EH&#178;</strong>:</p>
-
-            <ol class="prop1-steps-list">
-              <li>
-                <span class="step-num" aria-hidden="true">1</span>
-                <span><strong>Konstruksi BD &amp; BF:</strong> Buat persegi panjang <strong>BD</strong> sama dengan <strong>A</strong> [Prop. 1.45]; jika <strong>BE &ne; ED</strong>, perpanjang <strong>BE</strong> ke <strong>F</strong> dengan <strong>EF = ED</strong>, lalu bagi dua <strong>BF</strong> di <strong>G</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">2</span>
-                <span><strong>Setengah Lingkaran BHF:</strong> Lukis setengah lingkaran <strong>BHF</strong> berpusat di <strong>G</strong> berjari-jari <strong>GB</strong>; perpanjang <strong>DE</strong> hingga memotong lengkung di <strong>H</strong> dan hubungkan <strong>GH</strong>.</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">3</span>
-                <span><strong>Prop. 2.5 &amp; Jari-jari:</strong> Karena <strong>BF</strong> terpotong sama di <strong>G</strong> dan tak sama di <strong>E</strong>, berlaku <strong>BE&middot;EF + EG&#178; = GF&#178; = GH&#178;</strong> [Prop. 2.5].</span>
-              </li>
-              <li>
-                <span class="step-num" aria-hidden="true">4</span>
-                <span><strong>Pythagoras (Prop. 1.47):</strong> Pada siku-siku <strong>E</strong>, substitusi <strong>GH&#178; = HE&#178; + EG&#178;</strong> [Prop. 1.47] lalu pengurangan <strong>EG&#178;</strong> menyisakan <span class="area-tag area-tag--peach">BD</span> (= <strong>BE&middot;EF</strong>) = <span class="area-tag area-tag--mint">EH&#178;</span>:</span>
-              </li>
-            </ol>
-
-            <div class="prop1-equation">
-              <span class="prop1-equation-label">BE&middot;EF + EG&#178;</span>
-              <span>= HE&#178; + EG&#178; &rArr; BD = EH&#178;</span>
-              <span class="prop1-equation-cont">&there4; A = BD = EH&#178;</span>
+            <p class="prop1-section-label">Penjelasan:</p>
+            <div class="prop1-prose">
+              <p>Misalkan <strong>A</strong> adalah bangun datar bersisi lurus yang diberikan; akan dibuat persegi yang luasnya sama dengan <strong>A</strong>. Konstruksi: buat persegi panjang <span class="area-tag area-tag--peach">BD</span> yang sama luas dengan <strong>A</strong> [Prop. 1.45]. Jika <strong>BE = ED</strong>, <strong>BD</strong> sudah berupa persegi dan selesai. Jika tidak, misalkan <strong>BE</strong> lebih besar; perpanjang <strong>BE</strong> sampai <strong>F</strong> dengan <strong>EF = ED</strong> [Prop. 1.3]. Bagi <strong>BF</strong> sama panjang di <strong>G</strong> [Prop. 1.10], lukis setengah lingkaran <strong>BHF</strong> berpusat di <strong>G</strong> dengan jari-jari <strong>GB</strong>, perpanjang <strong>DE</strong> sampai <strong>H</strong>, dan hubungkan <strong>GH</strong>.</p>
+              <p>Karena <strong>BF</strong> terpotong sama di <strong>G</strong> dan tidak sama di <strong>E</strong>, maka <strong>BE&middot;EF + EG&#178; = GF&#178;</strong> [Prop. 2.5]. Karena <strong>GF = GH</strong>, maka <strong>BE&middot;EF + EG&#178; = GH&#178;</strong>. Sudut di <strong>E</strong> siku-siku, sehingga <strong>GH&#178; = HE&#178; + EG&#178;</strong> [Prop. 1.47]. Jadi <strong>BE&middot;EF + EG&#178; = HE&#178; + EG&#178;</strong>; setelah <strong>EG&#178;</strong> dikurangkan, <strong>BE&middot;EF = EH&#178;</strong>. Karena <strong>EF = ED</strong>, <strong>BE&middot;EF</strong> adalah <span style="white-space: nowrap;"><span class="area-tag area-tag--peach">BD</span>,</span> sehingga <strong>BD = HE&#178;</strong>. Karena <strong>BD</strong> sama luas dengan <strong>A</strong>, maka <strong>A</strong> sama luas dengan persegi pada <strong>EH</strong> (<span style="white-space: nowrap;"><span class="area-tag area-tag--mint">EH&#178;</span>).</span></p>
             </div>
           </div>
         </div>
